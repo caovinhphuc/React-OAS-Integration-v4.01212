@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Loading from "../common/Loading";
+import Loading from "../Common/Loading";
 import { telegramService } from "../../services/telegramService";
 import { message } from "antd";
 import "./TelegramIntegration.css";

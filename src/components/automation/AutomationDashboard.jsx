@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Loading from "../common/Loading";
+import Loading from "../Common/Loading";
 import "./AutomationDashboard.css";
 
 const AutomationDashboard = () => {
   const { loading, error } = useSelector((state) => state.auth);
   const { isAuthenticated, serviceAccount } = useSelector(
-    (state) => state.auth,
+    (state) => state.auth
   );
 
   const [automations, setAutomations] = useState([]);
@@ -180,8 +180,8 @@ const AutomationDashboard = () => {
               ...auto,
               status: auto.status === "active" ? "inactive" : "active",
             }
-          : auto,
-      ),
+          : auto
+      )
     );
   };
 
@@ -356,7 +356,7 @@ const AutomationDashboard = () => {
                     className="status-badge"
                     style={{
                       backgroundColor: getStatusColor(
-                        selectedAutomation.status,
+                        selectedAutomation.status
                       ),
                     }}
                   >
@@ -466,7 +466,7 @@ const AutomationDashboard = () => {
                   <div className="logs-container">
                     {executionLogs
                       .filter(
-                        (log) => log.automationId === selectedAutomation.id,
+                        (log) => log.automationId === selectedAutomation.id
                       )
                       .slice(0, 10)
                       .map((log) => (

@@ -11,7 +11,7 @@ import {
   BarChart,
   Bar,
 } from "recharts";
-import Loading from "../common/Loading";
+import Loading from "../Common/Loading";
 import { aiService } from "../../services/aiService";
 import "./AIDashboard.css";
 

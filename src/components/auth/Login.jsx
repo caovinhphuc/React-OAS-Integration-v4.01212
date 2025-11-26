@@ -22,7 +22,7 @@ import {
 import { App } from "antd";
 import { loginUser, registerUser } from "../../services/securityService";
 import securityService from "../../services/securityService";
-import Loading from "../common/Loading";
+import Loading from "../Common/Loading";
 import "./Auth.css";
 
 const { Title, Text } = Typography;
