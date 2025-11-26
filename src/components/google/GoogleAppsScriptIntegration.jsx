@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Loading from "../Common/Loading";
+import Loading from "../common/Loading";
 import { scriptService } from "../../services/scriptService";
 import { message } from "antd";
 import "./GoogleAppsScriptIntegration.css";

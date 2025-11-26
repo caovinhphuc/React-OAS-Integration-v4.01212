@@ -10,7 +10,7 @@ import { ConfigProvider, theme, App as AntApp } from "antd";
 import viVN from "antd/locale/vi_VN";
 import "./global.css"; /* ✅ Import global styles first */
 import "./App.css";
-import Loading from "./components/Common/Loading";
+import Loading from "./components/common/Loading";
 import Layout from "./components/layout/Layout";
 import { store } from "./store/store";
 import { BRAND_CONFIG } from "./config/brand";
@@ -18,7 +18,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 // Enhanced lazy loading with preloading strategy
 const LiveDashboard = lazy(() =>
-  import("./components/Dashboard/LiveDashboard")
+  import("./components/dashboard/LiveDashboard")
 );
 const AIDashboard = lazy(() => import("./components/ai/AIDashboard"));
 const GoogleSheetsIntegration = lazy(() =>
@@ -62,7 +62,7 @@ const preloadComponent = (componentLoader) => {
 // Preload dashboard on app start
 if (typeof window !== "undefined") {
   setTimeout(() => {
-    preloadComponent(() => import("./components/Dashboard/LiveDashboard"));
+    preloadComponent(() => import("./components/dashboard/LiveDashboard"));
   }, 2000);
 }
 

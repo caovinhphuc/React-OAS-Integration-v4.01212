@@ -3,7 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { message } from "antd";
 import { logout } from "../../store/actions/authActions";
-import Loading from "../Common/Loading";
+import Loading from "../common/Loading";
 
 /**
  * ProtectedRoute - Component để bảo vệ routes yêu cầu authentication

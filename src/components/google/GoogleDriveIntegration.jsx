@@ -29,7 +29,7 @@ import {
   AppstoreOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import Loading from "../Common/Loading";
+import Loading from "../common/Loading";
 import { googleDriveApiService } from "../../services/googleDriveApi";
 import "./GoogleDriveIntegration.css";
 
