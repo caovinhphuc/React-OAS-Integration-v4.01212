@@ -6,14 +6,14 @@
 [1] > react-oas-integration@3.0.0 backend
 [1] > cd backend && npm start
 [1] 
-[2] 
-[2] > react-oas-integration@3.0.0 ai-service
-[2] > cd ai-service && python -m uvicorn main_simple:app --host 0.0.0.0 --port 8000 --reload
-[2] 
 [0] 
 [0] > react-oas-integration@3.0.0 start
 [0] > react-scripts start
 [0] 
+[2] 
+[2] > react-oas-integration@3.0.0 ai-service
+[2] > cd ai-service && python -m uvicorn main_simple:app --host 0.0.0.0 --port 8000 --reload
+[2] 
 [2] sh: python: command not found
 [2] npm run ai-service exited with code 127
 [1] 

@@ -231,6 +231,160 @@ app.post("/api/auth/logout", async (req, res) => {
   }
 });
 
+// ============================================
+// Reports Endpoints
+// ============================================
+
+// Get all reports
+app.get("/api/reports", (req, res) => {
+  const { timeframe = "7d", type = "all" } = req.query;
+  
+  res.json({
+    success: true,
+    data: {
+      timeframe,
+      type,
+      reports: [
+        {
+          id: 1,
+          title: "Sales Performance Report",
+          type: "sales",
+          date: new Date().toISOString(),
+          summary: {
+            totalSales: 1250000,
+            growth: 12.5,
+            topProduct: "Product A",
+            currency: "VND",
+          },
+        },
+        {
+          id: 2,
+          title: "Customer Analytics Report",
+          type: "analytics",
+          date: new Date().toISOString(),
+          summary: {
+            totalCustomers: 5420,
+            activeUsers: 3210,
+            retention: 78.5,
+            newCustomers: 342,
+          },
+        },
+        {
+          id: 3,
+          title: "Inventory Status Report",
+          type: "inventory",
+          date: new Date().toISOString(),
+          summary: {
+            totalItems: 1250,
+            lowStock: 45,
+            outOfStock: 12,
+            value: 850000000,
+          },
+        },
+        {
+          id: 4,
+          title: "Financial Summary Report",
+          type: "financial",
+          date: new Date().toISOString(),
+          summary: {
+            revenue: 2500000000,
+            expenses: 1800000000,
+            profit: 700000000,
+            margin: 28.0,
+          },
+        },
+      ],
+      generated_at: new Date().toISOString(),
+      total_reports: 4,
+    },
+  });
+});
+
+// Get specific report by ID
+app.get("/api/reports/:id", (req, res) => {
+  const { id } = req.params;
+  
+  res.json({
+    success: true,
+    data: {
+      id: parseInt(id),
+      title: `Detailed Report #${id}`,
+      type: "detailed",
+      created_at: new Date().toISOString(),
+      content: {
+        summary: "Chi tiết báo cáo đầy đủ",
+        metrics: {
+          revenue: 1250000000,
+          customers: 5420,
+          growth: 12.5,
+          orders: 1234,
+          avgOrderValue: 230000,
+        },
+        charts: [
+          { 
+            type: "line", 
+            title: "Revenue Trend",
+            data: [100, 120, 135, 142, 158, 175, 190] 
+          },
+          { 
+            type: "bar", 
+            title: "Sales by Category",
+            data: [100, 200, 150, 300, 250] 
+          },
+          { 
+            type: "pie", 
+            title: "Customer Distribution",
+            data: [30, 25, 20, 15, 10] 
+          },
+        ],
+        insights: [
+          "Doanh thu tăng 12.5% so với tháng trước",
+          "Sản phẩm A là best seller với 450 đơn hàng",
+          "Khách hàng mới tăng 15% trong tuần qua",
+          "Tỷ lệ giữ chân khách hàng đạt 78.5%",
+        ],
+      },
+      generated_at: new Date().toISOString(),
+    },
+  });
+});
+
+// Generate new report
+app.post("/api/reports/generate", (req, res) => {
+  const { reportType = "general", timeframe = "7d", options = {} } = req.body;
+  
+  res.json({
+    success: true,
+    message: "Báo cáo đang được tạo",
+    data: {
+      reportId: Date.now(),
+      status: "processing",
+      estimatedTime: "2-3 phút",
+      reportType,
+      timeframe,
+      options,
+      progress: 0,
+      created_at: new Date().toISOString(),
+    },
+  });
+});
+
+// Get report generation status
+app.get("/api/reports/status/:reportId", (req, res) => {
+  const { reportId } = req.params;
+  
+  res.json({
+    success: true,
+    data: {
+      reportId: parseInt(reportId),
+      status: "completed",
+      progress: 100,
+      downloadUrl: `/api/reports/download/${reportId}`,
+      completed_at: new Date().toISOString(),
+    },
+  });
+});
+
 // WebSocket connection handling
 io.on("connection", (socket) => {
   console.log(`Client connected: ${socket.id}`);

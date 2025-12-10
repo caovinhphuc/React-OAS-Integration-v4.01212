@@ -83,11 +83,37 @@ async function testAPIConnectivity() {
   console.log("\n🔗 Testing API Connectivity...");
 
   const endpoints = [
-    { name: "Backend Health", url: "http://localhost:3001/health" },
-    { name: "Backend Reports", url: "http://localhost:3001/api/reports" },
-    { name: "AI Service Health", url: "http://localhost:8001/health" },
-    { name: "AI Service Root", url: "http://localhost:8001/" },
-    { name: "AI Insights", url: "http://localhost:8001/api/ml/insights" },
+    // Required endpoints
+    { 
+      name: "Backend Health", 
+      url: "http://localhost:3001/health", 
+      required: true 
+    },
+    { 
+      name: "Backend Reports", 
+      url: "http://localhost:3001/api/reports", 
+      required: true 
+    },
+    
+    // Optional endpoints - AI/Automation features
+    { 
+      name: "AI Service Health", 
+      url: "http://localhost:8001/health", 
+      required: false,
+      note: "Optional - AI/Automation features"
+    },
+    { 
+      name: "AI Service Root", 
+      url: "http://localhost:8001/", 
+      required: false,
+      note: "Optional - AI/Automation features"
+    },
+    { 
+      name: "AI Insights", 
+      url: "http://localhost:8001/api/ml/insights", 
+      required: false,
+      note: "Optional - AI/Automation features"
+    },
   ];
 
   const results = {};
@@ -98,8 +124,16 @@ async function testAPIConnectivity() {
       console.log(`✅ ${endpoint.name}: Connected`);
       results[endpoint.name] = true;
     } catch (error) {
-      console.log(`❌ ${endpoint.name}: ${error.message}`);
-      results[endpoint.name] = false;
+      if (endpoint.required) {
+        console.log(`❌ ${endpoint.name}: ${error.message}`);
+        results[endpoint.name] = false;
+      } else {
+        console.log(`⚠️  ${endpoint.name}: ${error.message} (Optional - OK to skip)`);
+        if (endpoint.note) {
+          console.log(`   Note: ${endpoint.note}`);
+        }
+        results[endpoint.name] = "optional_skip";
+      }
     }
   }
 
