@@ -5,7 +5,7 @@
 .google-sheets-integration {
   padding: 0;
   background: transparent;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #1e293b;
 }
 
@@ -366,9 +366,7 @@
   flex: 1;
   overflow: auto;
   background: white;
-  max-height: calc(
-    100vh - 400px
-  ); /* ✅ Ensure scrollable when content is long */
+  max-height: calc(100vh - 400px); /* ✅ Ensure scrollable when content is long */
 }
 
 .sheet-table {
@@ -417,7 +415,7 @@
   padding: 0;
 }
 
-.sheet-table td input[type="text"] {
+.sheet-table td input[type='text'] {
   width: 100%;
   height: 100%;
   padding: 10px 16px;

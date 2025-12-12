@@ -1,15 +1,15 @@
-import React from "react";
-import { Button, Result } from "antd";
+import React from 'react'
+import { Button, Result } from 'antd'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
+    super(props)
+    this.state = { hasError: false, error: null, errorInfo: null }
   }
 
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI
-    return { hasError: true };
+    return { hasError: true }
   }
 
   componentDidCatch(error, errorInfo) {
@@ -17,20 +17,20 @@ class ErrorBoundary extends React.Component {
     this.setState({
       error,
       errorInfo,
-    });
+    })
 
     // Send error to analytics/monitoring
     if (window.gtag) {
-      window.gtag("event", "exception", {
+      window.gtag('event', 'exception', {
         description: error.toString(),
         fatal: false,
-      });
+      })
     }
 
     // Log to console in development
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
-      console.error("Error Boundary caught an error:", error, errorInfo);
+      console.error('Error Boundary caught an error:', error, errorInfo)
     }
 
     // Send to error tracking service
@@ -40,8 +40,8 @@ class ErrorBoundary extends React.Component {
   }
 
   handleRetry = () => {
-    this.setState({ hasError: false, error: null, errorInfo: null });
-  };
+    this.setState({ hasError: false, error: null, errorInfo: null })
+  }
 
   handleReportError = () => {
     // Report error to support team
@@ -52,26 +52,26 @@ class ErrorBoundary extends React.Component {
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
       url: window.location.href,
-    };
+    }
 
     // Send to support endpoint
-    fetch("/api/error-report", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    fetch('/api/error-report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(errorReport),
     }).catch(() => {
       // Fallback: open email client
-      const subject = encodeURIComponent("Error Report - MIA.vn Integration");
-      const body = encodeURIComponent(JSON.stringify(errorReport, null, 2));
-      window.open(`mailto:support@mia.vn?subject=${subject}&body=${body}`);
-    });
-  };
+      const subject = encodeURIComponent('Error Report - MIA.vn Integration')
+      const body = encodeURIComponent(JSON.stringify(errorReport, null, 2))
+      window.open(`mailto:support@mia.vn?subject=${subject}&body=${body}`)
+    })
+  }
 
   render() {
     if (this.state.hasError) {
       // Custom error UI
       return (
-        <div style={{ padding: "40px", maxWidth: "800px", margin: "0 auto" }}>
+        <div style={{ padding: '40px', maxWidth: '800px', margin: '0 auto' }}>
           <Result
             status="error"
             title="⚠️ Đã xảy ra lỗi"
@@ -83,23 +83,23 @@ class ErrorBoundary extends React.Component {
               <Button key="report" onClick={this.handleReportError}>
                 📧 Báo cáo lỗi
               </Button>,
-              <Button key="home" onClick={() => (window.location.href = "/")}>
+              <Button key="home" onClick={() => (window.location.href = '/')}>
                 🏠 Về trang chủ
               </Button>,
             ]}
           >
-            {process.env.NODE_ENV === "development" && this.state.error && (
-              <details style={{ whiteSpace: "pre-wrap", marginTop: "20px" }}>
-                <summary style={{ cursor: "pointer", marginBottom: "10px" }}>
+            {process.env.NODE_ENV === 'development' && this.state.error && (
+              <details style={{ whiteSpace: 'pre-wrap', marginTop: '20px' }}>
+                <summary style={{ cursor: 'pointer', marginBottom: '10px' }}>
                   Chi tiết lỗi (Development)
                 </summary>
                 <div
                   style={{
-                    background: "#f5f5f5",
-                    padding: "15px",
-                    borderRadius: "4px",
-                    fontSize: "12px",
-                    fontFamily: "monospace",
+                    background: '#f5f5f5',
+                    padding: '15px',
+                    borderRadius: '4px',
+                    fontSize: '12px',
+                    fontFamily: 'monospace',
                   }}
                 >
                   <strong>Error:</strong> {this.state.error.toString()}
@@ -118,11 +118,11 @@ class ErrorBoundary extends React.Component {
             )}
           </Result>
         </div>
-      );
+      )
     }
 
-    return this.props.children;
+    return this.props.children
   }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundary

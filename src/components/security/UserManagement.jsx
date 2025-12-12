@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import {
   Table,
   Card,
@@ -12,7 +12,7 @@ import {
   Tooltip,
   Input,
   Badge,
-} from "antd";
+} from 'antd'
 import {
   UserOutlined,
   EditOutlined,
@@ -21,112 +21,112 @@ import {
   PlusOutlined,
   SafetyOutlined,
   SearchOutlined,
-} from "@ant-design/icons";
-import securityService from "../../services/securityService";
-import "./Security.css";
+} from '@ant-design/icons'
+import securityService from '../../services/securityService'
+import './Security.css'
 
-const { Option } = Select;
+const { Option } = Select
 
 const ROLE_COLORS = {
-  admin: "red",
-  manager: "orange",
-  user: "blue",
-  guest: "default",
-};
+  admin: 'red',
+  manager: 'orange',
+  user: 'blue',
+  guest: 'default',
+}
 
 const ROLE_LABELS = {
-  admin: "Quản trị viên",
-  manager: "Quản lý",
-  user: "Người dùng",
-  guest: "Khách",
-};
+  admin: 'Quản trị viên',
+  manager: 'Quản lý',
+  user: 'Người dùng',
+  guest: 'Khách',
+}
 
 const UserManagement = () => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [searchText, setSearchText] = useState("");
-  const [editingUser, setEditingUser] = useState(null);
-  const [editModalVisible, setEditModalVisible] = useState(false);
-  const [newRole, setNewRole] = useState(null);
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [searchText, setSearchText] = useState('')
+  const [editingUser, setEditingUser] = useState(null)
+  const [editModalVisible, setEditModalVisible] = useState(false)
+  const [newRole, setNewRole] = useState(null)
 
   useEffect(() => {
-    loadUsers();
-  }, []);
+    loadUsers()
+  }, [])
 
   const loadUsers = async () => {
-    setLoading(true);
+    setLoading(true)
     try {
-      const data = await securityService.getAllUsers();
-      setUsers(Array.isArray(data) ? data : data?.users || []);
+      const data = await securityService.getAllUsers()
+      setUsers(Array.isArray(data) ? data : data?.users || [])
     } catch (error) {
-      console.error("Load users error:", error);
-      message.error("Không thể tải danh sách người dùng");
+      console.error('Load users error:', error)
+      message.error('Không thể tải danh sách người dùng')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const handleEditRole = (user) => {
-    setEditingUser(user);
-    setNewRole(user.role);
-    setEditModalVisible(true);
-  };
+    setEditingUser(user)
+    setNewRole(user.role)
+    setEditModalVisible(true)
+  }
 
   const handleSaveRole = async () => {
     if (!editingUser || !newRole) {
-      message.warning("Vui lòng chọn vai trò mới");
-      return;
+      message.warning('Vui lòng chọn vai trò mới')
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
     try {
-      await securityService.updateUserRole(editingUser.id, newRole);
-      message.success(`Đã cập nhật vai trò của ${editingUser.email}`);
-      setEditModalVisible(false);
-      setEditingUser(null);
-      setNewRole(null);
-      await loadUsers();
+      await securityService.updateUserRole(editingUser.id, newRole)
+      message.success(`Đã cập nhật vai trò của ${editingUser.email}`)
+      setEditModalVisible(false)
+      setEditingUser(null)
+      setNewRole(null)
+      await loadUsers()
     } catch (error) {
-      console.error("Update role error:", error);
-      message.error(error.message || "Không thể cập nhật vai trò");
+      console.error('Update role error:', error)
+      message.error(error.message || 'Không thể cập nhật vai trò')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const handleDeleteUser = async (userId, email) => {
-    setLoading(true);
+    setLoading(true)
     try {
-      await securityService.deleteUser(userId);
-      message.success(`Đã xóa người dùng ${email}`);
-      await loadUsers();
+      await securityService.deleteUser(userId)
+      message.success(`Đã xóa người dùng ${email}`)
+      await loadUsers()
     } catch (error) {
-      console.error("Delete user error:", error);
-      message.error(error.message || "Không thể xóa người dùng");
+      console.error('Delete user error:', error)
+      message.error(error.message || 'Không thể xóa người dùng')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const filteredUsers = users.filter((user) => {
-    if (!searchText) return true;
-    const searchLower = searchText.toLowerCase();
+    if (!searchText) return true
+    const searchLower = searchText.toLowerCase()
     return (
       user.email?.toLowerCase().includes(searchLower) ||
       user.role?.toLowerCase().includes(searchLower) ||
       user.id?.toString().includes(searchLower)
-    );
-  });
+    )
+  })
 
   const columns = [
     {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
       render: (text, record) => (
         <Space>
           <UserOutlined />
-          <span>{text || "N/A"}</span>
+          <span>{text || 'N/A'}</span>
           {record.mfaEnabled && (
             <Tooltip title="MFA đã kích hoạt">
               <Badge status="success" />
@@ -134,16 +134,14 @@ const UserManagement = () => {
           )}
         </Space>
       ),
-      sorter: (a, b) => (a.email || "").localeCompare(b.email || ""),
+      sorter: (a, b) => (a.email || '').localeCompare(b.email || ''),
     },
     {
-      title: "Vai trò",
-      dataIndex: "role",
-      key: "role",
+      title: 'Vai trò',
+      dataIndex: 'role',
+      key: 'role',
       render: (role) => (
-        <Tag color={ROLE_COLORS[role] || "default"}>
-          {ROLE_LABELS[role] || role}
-        </Tag>
+        <Tag color={ROLE_COLORS[role] || 'default'}>{ROLE_LABELS[role] || role}</Tag>
       ),
       filters: Object.keys(ROLE_LABELS).map((role) => ({
         text: ROLE_LABELS[role],
@@ -152,26 +150,24 @@ const UserManagement = () => {
       onFilter: (value, record) => record.role === value,
     },
     {
-      title: "MFA",
-      dataIndex: "mfaEnabled",
-      key: "mfaEnabled",
+      title: 'MFA',
+      dataIndex: 'mfaEnabled',
+      key: 'mfaEnabled',
       render: (enabled) => (
-        <Tag color={enabled ? "green" : "default"}>
-          {enabled ? "Đã bật" : "Chưa bật"}
-        </Tag>
+        <Tag color={enabled ? 'green' : 'default'}>{enabled ? 'Đã bật' : 'Chưa bật'}</Tag>
       ),
       filters: [
-        { text: "Đã bật", value: true },
-        { text: "Chưa bật", value: false },
+        { text: 'Đã bật', value: true },
+        { text: 'Chưa bật', value: false },
       ],
       onFilter: (value, record) => record.mfaEnabled === value,
     },
     {
-      title: "Quyền",
-      dataIndex: "permissions",
-      key: "permissions",
+      title: 'Quyền',
+      dataIndex: 'permissions',
+      key: 'permissions',
       render: (permissions) => {
-        if (!permissions || !Array.isArray(permissions)) return "N/A";
+        if (!permissions || !Array.isArray(permissions)) return 'N/A'
         return (
           <Space wrap>
             {permissions.slice(0, 3).map((perm) => (
@@ -179,24 +175,18 @@ const UserManagement = () => {
                 {perm}
               </Tag>
             ))}
-            {permissions.length > 3 && (
-              <Tag color="default">+{permissions.length - 3}</Tag>
-            )}
+            {permissions.length > 3 && <Tag color="default">+{permissions.length - 3}</Tag>}
           </Space>
-        );
+        )
       },
     },
     {
-      title: "Hành động",
-      key: "action",
+      title: 'Hành động',
+      key: 'action',
       render: (_, record) => (
         <Space>
           <Tooltip title="Chỉnh sửa vai trò">
-            <Button
-              type="link"
-              icon={<EditOutlined />}
-              onClick={() => handleEditRole(record)}
-            >
+            <Button type="link" icon={<EditOutlined />} onClick={() => handleEditRole(record)}>
               Sửa
             </Button>
           </Tooltip>
@@ -213,7 +203,7 @@ const UserManagement = () => {
                 type="link"
                 danger
                 icon={<DeleteOutlined />}
-                disabled={record.role === "admin"}
+                disabled={record.role === 'admin'}
               >
                 Xóa
               </Button>
@@ -222,7 +212,7 @@ const UserManagement = () => {
         </Space>
       ),
     },
-  ];
+  ]
 
   return (
     <div className="security-container">
@@ -241,14 +231,10 @@ const UserManagement = () => {
               prefix={<SearchOutlined />}
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              style={{ width: "250px" }}
+              style={{ width: '250px' }}
               allowClear
             />
-            <Button
-              icon={<ReloadOutlined />}
-              onClick={loadUsers}
-              loading={loading}
-            >
+            <Button icon={<ReloadOutlined />} onClick={loadUsers} loading={loading}>
               Làm mới
             </Button>
           </Space>
@@ -276,9 +262,9 @@ const UserManagement = () => {
           open={editModalVisible}
           onOk={handleSaveRole}
           onCancel={() => {
-            setEditModalVisible(false);
-            setEditingUser(null);
-            setNewRole(null);
+            setEditModalVisible(false)
+            setEditingUser(null)
+            setNewRole(null)
           }}
           confirmLoading={loading}
         >
@@ -287,19 +273,17 @@ const UserManagement = () => {
               <p>
                 <strong>Email:</strong> {editingUser.email}
               </p>
-              <p style={{ marginTop: "16px", marginBottom: "8px" }}>
-                <strong>Vai trò hiện tại:</strong>{" "}
-                <Tag color={ROLE_COLORS[editingUser.role]}>
-                  {ROLE_LABELS[editingUser.role]}
-                </Tag>
+              <p style={{ marginTop: '16px', marginBottom: '8px' }}>
+                <strong>Vai trò hiện tại:</strong>{' '}
+                <Tag color={ROLE_COLORS[editingUser.role]}>{ROLE_LABELS[editingUser.role]}</Tag>
               </p>
-              <p style={{ marginTop: "16px", marginBottom: "8px" }}>
+              <p style={{ marginTop: '16px', marginBottom: '8px' }}>
                 <strong>Vai trò mới:</strong>
               </p>
               <Select
                 value={newRole}
                 onChange={setNewRole}
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
                 placeholder="Chọn vai trò mới"
               >
                 {Object.keys(ROLE_LABELS).map((role) => (
@@ -313,7 +297,7 @@ const UserManagement = () => {
         </Modal>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default UserManagement;
+export default UserManagement

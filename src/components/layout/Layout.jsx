@@ -176,8 +176,8 @@ const Layout = ({ children }) => {
                     {user.role === 'admin'
                       ? 'Quản trị viên'
                       : user.role === 'manager'
-                      ? 'Quản lý'
-                      : 'Người dùng'}
+                        ? 'Quản lý'
+                        : 'Người dùng'}
                   </span>
                 </div>
               </div>

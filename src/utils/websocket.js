@@ -4,106 +4,100 @@
  */
 
 class WebSocketClient {
-  constructor(url = "ws://localhost:3002/ws") {
-    this.url = url;
-    this.ws = null;
-    this.clientId = null;
-    this.reconnectAttempts = 0;
-    this.maxReconnectAttempts = 10;
-    this.reconnectDelay = 1000; // Start with 1 second
-    this.maxReconnectDelay = 30000; // Max 30 seconds
-    this.isConnecting = false;
-    this.isConnected = false;
-    this.listeners = new Map();
-    this.rooms = new Set();
+  constructor(url = 'ws://localhost:3002/ws') {
+    this.url = url
+    this.ws = null
+    this.clientId = null
+    this.reconnectAttempts = 0
+    this.maxReconnectAttempts = 10
+    this.reconnectDelay = 1000 // Start with 1 second
+    this.maxReconnectDelay = 30000 // Max 30 seconds
+    this.isConnecting = false
+    this.isConnected = false
+    this.listeners = new Map()
+    this.rooms = new Set()
 
     // Auto-reconnect
-    this.autoReconnect = true;
+    this.autoReconnect = true
   }
 
   /**
    * Connect to WebSocket server
    */
   connect() {
-    if (
-      this.isConnecting ||
-      (this.isConnected && this.ws?.readyState === WebSocket.OPEN)
-    ) {
-      return Promise.resolve();
+    if (this.isConnecting || (this.isConnected && this.ws?.readyState === WebSocket.OPEN)) {
+      return Promise.resolve()
     }
 
-    this.isConnecting = true;
+    this.isConnecting = true
 
     return new Promise((resolve, reject) => {
       try {
-        this.ws = new WebSocket(this.url);
+        this.ws = new WebSocket(this.url)
 
         this.ws.onopen = () => {
-          console.log("✅ WebSocket connected");
-          this.isConnected = true;
-          this.isConnecting = false;
-          this.reconnectAttempts = 0;
-          this.reconnectDelay = 1000;
-          this.emit("connected");
-          resolve();
-        };
+          console.log('✅ WebSocket connected')
+          this.isConnected = true
+          this.isConnecting = false
+          this.reconnectAttempts = 0
+          this.reconnectDelay = 1000
+          this.emit('connected')
+          resolve()
+        }
 
         this.ws.onmessage = (event) => {
           try {
-            const data = JSON.parse(event.data);
-            this.handleMessage(data);
+            const data = JSON.parse(event.data)
+            this.handleMessage(data)
           } catch (error) {
-            console.error("Error parsing WebSocket message:", error);
+            console.error('Error parsing WebSocket message:', error)
           }
-        };
+        }
 
         this.ws.onerror = (error) => {
-          console.error("WebSocket error:", error);
-          this.emit("error", error);
-          this.isConnecting = false;
-          reject(error);
-        };
+          console.error('WebSocket error:', error)
+          this.emit('error', error)
+          this.isConnecting = false
+          reject(error)
+        }
 
         this.ws.onclose = () => {
-          console.log("🔌 WebSocket disconnected");
-          this.isConnected = false;
-          this.isConnecting = false;
-          this.emit("disconnected");
+          console.log('🔌 WebSocket disconnected')
+          this.isConnected = false
+          this.isConnecting = false
+          this.emit('disconnected')
 
           // Auto-reconnect
-          if (
-            this.autoReconnect &&
-            this.reconnectAttempts < this.maxReconnectAttempts
-          ) {
-            this.scheduleReconnect();
+          if (this.autoReconnect && this.reconnectAttempts < this.maxReconnectAttempts) {
+            this.scheduleReconnect()
           }
-        };
+        }
       } catch (error) {
-        this.isConnecting = false;
-        reject(error);
+        this.isConnecting = false
+        reject(error)
       }
-    });
+    })
   }
 
   /**
    * Schedule reconnection
    */
   scheduleReconnect() {
-    this.reconnectAttempts++;
+    this.reconnectAttempts++
     const delay = Math.min(
       this.reconnectDelay * Math.pow(2, this.reconnectAttempts - 1),
       this.maxReconnectDelay,
-    );
+    )
 
     console.log(
       `🔄 Reconnecting in ${delay}ms (attempt ${this.reconnectAttempts}/${this.maxReconnectAttempts})`,
-    );
+    )
 
     setTimeout(() => {
       if (!this.isConnected && this.autoReconnect) {
-        this.connect().catch(console.error);
+        this.connect().catch(console.error)
       }
-    }, delay);
+    }, delay)
   }
 
   /**
@@ -111,19 +105,19 @@ class WebSocketClient {
    */
   handleMessage(data) {
     // Handle special message types
-    if (data.type === "connected") {
-      this.clientId = data.clientId;
-      this.emit("connected", data);
+    if (data.type === 'connected') {
+      this.clientId = data.clientId
+      this.emit('connected', data)
 
       // Rejoin rooms after reconnection
       this.rooms.forEach((room) => {
-        this.joinRoom(room);
-      });
-    } else if (data.type === "error") {
-      this.emit("error", data);
+        this.joinRoom(room)
+      })
+    } else if (data.type === 'error') {
+      this.emit('error', data)
     } else {
       // Emit message to listeners
-      this.emit(data.type || "message", data);
+      this.emit(data.type || 'message', data)
     }
   }
 
@@ -132,16 +126,16 @@ class WebSocketClient {
    */
   send(type, data = {}) {
     if (!this.isConnected || this.ws?.readyState !== WebSocket.OPEN) {
-      console.warn("WebSocket not connected. Message not sent:", type);
-      return false;
+      console.warn('WebSocket not connected. Message not sent:', type)
+      return false
     }
 
     try {
-      this.ws.send(JSON.stringify({ type, ...data }));
-      return true;
+      this.ws.send(JSON.stringify({ type, ...data }))
+      return true
     } catch (error) {
-      console.error("Error sending WebSocket message:", error);
-      return false;
+      console.error('Error sending WebSocket message:', error)
+      return false
     }
   }
 
@@ -150,12 +144,12 @@ class WebSocketClient {
    */
   joinRoom(roomId) {
     if (this.rooms.has(roomId)) {
-      return;
+      return
     }
 
-    this.rooms.add(roomId);
-    this.send("join", { room: roomId });
-    this.emit("room_joined", { room: roomId });
+    this.rooms.add(roomId)
+    this.send('join', { room: roomId })
+    this.emit('room_joined', { room: roomId })
   }
 
   /**
@@ -163,19 +157,19 @@ class WebSocketClient {
    */
   leaveRoom(roomId) {
     if (!this.rooms.has(roomId)) {
-      return;
+      return
     }
 
-    this.rooms.delete(roomId);
-    this.send("leave", { room: roomId });
-    this.emit("room_left", { room: roomId });
+    this.rooms.delete(roomId)
+    this.send('leave', { room: roomId })
+    this.emit('room_left', { room: roomId })
   }
 
   /**
    * Broadcast message to room
    */
   broadcastToRoom(roomId, data) {
-    this.send("broadcast", { room: roomId, data });
+    this.send('broadcast', { room: roomId, data })
   }
 
   /**
@@ -183,21 +177,21 @@ class WebSocketClient {
    */
   on(event, callback) {
     if (!this.listeners.has(event)) {
-      this.listeners.set(event, []);
+      this.listeners.set(event, [])
     }
-    this.listeners.get(event).push(callback);
+    this.listeners.get(event).push(callback)
   }
 
   /**
    * Unsubscribe from event
    */
   off(event, callback) {
-    if (!this.listeners.has(event)) return;
+    if (!this.listeners.has(event)) return
 
-    const callbacks = this.listeners.get(event);
-    const index = callbacks.indexOf(callback);
+    const callbacks = this.listeners.get(event)
+    const index = callbacks.indexOf(callback)
     if (index > -1) {
-      callbacks.splice(index, 1);
+      callbacks.splice(index, 1)
     }
   }
 
@@ -208,22 +202,22 @@ class WebSocketClient {
     if (this.listeners.has(event)) {
       this.listeners.get(event).forEach((callback) => {
         try {
-          callback(data);
+          callback(data)
         } catch (error) {
-          console.error(`Error in event listener for ${event}:`, error);
+          console.error(`Error in event listener for ${event}:`, error)
         }
-      });
+      })
     }
 
     // Also emit to 'message' listeners for all messages
-    if (event !== "message" && this.listeners.has("message")) {
-      this.listeners.get("message").forEach((callback) => {
+    if (event !== 'message' && this.listeners.has('message')) {
+      this.listeners.get('message').forEach((callback) => {
         try {
-          callback({ type: event, ...data });
+          callback({ type: event, ...data })
         } catch (error) {
-          console.error("Error in message listener:", error);
+          console.error('Error in message listener:', error)
         }
-      });
+      })
     }
   }
 
@@ -231,15 +225,15 @@ class WebSocketClient {
    * Disconnect from server
    */
   disconnect() {
-    this.autoReconnect = false;
+    this.autoReconnect = false
 
     if (this.ws) {
-      this.ws.close();
-      this.ws = null;
+      this.ws.close()
+      this.ws = null
     }
 
-    this.isConnected = false;
-    this.rooms.clear();
+    this.isConnected = false
+    this.rooms.clear()
   }
 
   /**
@@ -252,35 +246,34 @@ class WebSocketClient {
       clientId: this.clientId,
       rooms: Array.from(this.rooms),
       reconnectAttempts: this.reconnectAttempts,
-    };
+    }
   }
 
   /**
    * Ping server
    */
   ping() {
-    this.send("ping");
+    this.send('ping')
   }
 }
 
 // Create singleton instance
-let wsClientInstance = null;
+let wsClientInstance = null
 
 /**
  * Get WebSocket client instance
  */
 export function getWebSocketClient(url = null) {
   if (!wsClientInstance) {
-    const wsUrl =
-      url || process.env.REACT_APP_WS_URL || "ws://localhost:3002/ws";
-    wsClientInstance = new WebSocketClient(wsUrl);
+    const wsUrl = url || process.env.REACT_APP_WS_URL || 'ws://localhost:3002/ws'
+    wsClientInstance = new WebSocketClient(wsUrl)
   }
-  return wsClientInstance;
+  return wsClientInstance
 }
 
 // Note: React Hook đã được tách ra file riêng
 // Sử dụng: import { useWebSocket } from '../hooks/useWebSocket';
 // Xem file: src/hooks/useWebSocket.js
 
-export default WebSocketClient;
-export { WebSocketClient };
+export default WebSocketClient
+export { WebSocketClient }

@@ -17,18 +17,18 @@ const LiveDashboard = lazy(() => import('./components/Dashboard/LiveDashboard'))
 const AIDashboard = lazy(() => import('./components/ai/AIDashboard'))
 const GoogleSheetsIntegration = lazy(() => import('./components/google/GoogleSheetsIntegration'))
 const GoogleDriveIntegration = lazy(() => import('./components/google/GoogleDriveIntegration'))
-const GoogleAppsScriptIntegration = lazy(() =>
-  import('./components/google/GoogleAppsScriptIntegration'),
+const GoogleAppsScriptIntegration = lazy(
+  () => import('./components/google/GoogleAppsScriptIntegration'),
 )
 const TelegramIntegration = lazy(() => import('./components/telegram/TelegramIntegration'))
 const AutomationDashboard = lazy(() => import('./components/automation/AutomationDashboard'))
 const MIARetailDashboard = lazy(() => import('./components/custom/MIARetailDashboard'))
 const AlertsManagement = lazy(() => import('./components/Alerts/AlertsManagement'))
-const AdvancedAnalyticsDashboard = lazy(() =>
-  import('./components/analytics/AdvancedAnalyticsDashboard'),
+const AdvancedAnalyticsDashboard = lazy(
+  () => import('./components/analytics/AdvancedAnalyticsDashboard'),
 )
-const SmartAutomationDashboard = lazy(() =>
-  import('./components/smart-automation/SmartAutomationDashboard'),
+const SmartAutomationDashboard = lazy(
+  () => import('./components/smart-automation/SmartAutomationDashboard'),
 )
 const NLPDashboard = lazy(() => import('./components/nlp/NLPDashboard'))
 const SecurityDashboard = lazy(() => import('./components/security/SecurityDashboard'))

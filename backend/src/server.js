@@ -245,7 +245,7 @@ app.get('/api/reports', (req, res) => {
           type: 'sales',
           date: new Date().toISOString(),
           summary: {
-            totalSales: 9999999,
+            totalSales: 1250000,
             growth: 12.5,
             topProduct: 'Product A',
             currency: 'VND',
@@ -436,12 +436,7 @@ app.get('/api/retail/dashboard', (req, res) => {
   res.json({
     success: true,
     data: {
-      today: {
-        revenue: 9999999,
-        orders: 342,
-        aov: 3654, // nếu UI có dùng AOV
-      },
-      totalSales: 9999999,
+      totalSales: 1250000,
       totalOrders: 342,
       averageOrderValue: 3654,
       conversionRate: 3.2,
@@ -571,7 +566,7 @@ app.get('/api/drive/files', async (req, res) => {
     ]
 
     res.json({
-      success: true,s
+      success: true,
       data: mockFiles,
       nextPageToken: null,
     })

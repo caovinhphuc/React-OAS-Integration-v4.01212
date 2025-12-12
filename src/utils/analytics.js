@@ -3,42 +3,41 @@
  * Tracks user events, page views, and custom metrics
  */
 
-const ANALYTICS_ENDPOINT =
-  process.env.REACT_APP_ANALYTICS_ENDPOINT || "/api/analytics/event";
-const ENABLE_ANALYTICS = process.env.REACT_APP_ENABLE_ANALYTICS !== "false";
+const ANALYTICS_ENDPOINT = process.env.REACT_APP_ANALYTICS_ENDPOINT || '/api/analytics/event'
+const ENABLE_ANALYTICS = process.env.REACT_APP_ENABLE_ANALYTICS !== 'false'
 
 // Session tracking
-let sessionId = null;
-let userId = null;
+let sessionId = null
+let userId = null
 
 // Get or create session ID
 function getSessionId() {
   if (!sessionId) {
-    sessionId = sessionStorage.getItem("analytics_session_id");
+    sessionId = sessionStorage.getItem('analytics_session_id')
     if (!sessionId) {
-      sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-      sessionStorage.setItem("analytics_session_id", sessionId);
+      sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      sessionStorage.setItem('analytics_session_id', sessionId)
     }
   }
-  return sessionId;
+  return sessionId
 }
 
 // Get user ID from storage or Redux
 function getUserId() {
   if (!userId) {
     // Try to get from localStorage or Redux store
-    const stored = localStorage.getItem("user_id");
+    const stored = localStorage.getItem('user_id')
     if (stored) {
-      userId = stored;
+      userId = stored
     }
   }
-  return userId;
+  return userId
 }
 
 // Send analytics event
 function sendEvent(eventData) {
   if (!ENABLE_ANALYTICS) {
-    return;
+    return
   }
 
   const payload = {
@@ -57,26 +56,26 @@ function sendEvent(eventData) {
       width: window.innerWidth,
       height: window.innerHeight,
     },
-  };
+  }
 
   // Use sendBeacon for better reliability
   if (navigator.sendBeacon) {
     const blob = new Blob([JSON.stringify(payload)], {
-      type: "application/json",
-    });
-    navigator.sendBeacon(ANALYTICS_ENDPOINT, blob);
+      type: 'application/json',
+    })
+    navigator.sendBeacon(ANALYTICS_ENDPOINT, blob)
   } else {
     // Fallback to fetch
     fetch(ANALYTICS_ENDPOINT, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
       keepalive: true,
     }).catch((error) => {
-      console.warn("Analytics event failed:", error);
-    });
+      console.warn('Analytics event failed:', error)
+    })
   }
 }
 
@@ -85,10 +84,10 @@ function sendEvent(eventData) {
  */
 export function trackPageView(pageName, additionalData = {}) {
   sendEvent({
-    type: "page_view",
+    type: 'page_view',
     page: pageName,
     ...additionalData,
-  });
+  })
 }
 
 /**
@@ -96,12 +95,12 @@ export function trackPageView(pageName, additionalData = {}) {
  */
 export function trackEvent(category, action, label = null, value = null) {
   sendEvent({
-    type: "event",
+    type: 'event',
     category,
     action,
     label,
     value,
-  });
+  })
 }
 
 /**
@@ -109,11 +108,11 @@ export function trackEvent(category, action, label = null, value = null) {
  */
 export function trackInteraction(element, action, details = {}) {
   sendEvent({
-    type: "interaction",
+    type: 'interaction',
     element,
     action,
     ...details,
-  });
+  })
 }
 
 /**
@@ -121,13 +120,13 @@ export function trackInteraction(element, action, details = {}) {
  */
 export function trackAPI(endpoint, method, duration, status, error = null) {
   sendEvent({
-    type: "api_call",
+    type: 'api_call',
     endpoint,
     method,
     duration,
     status,
     error,
-  });
+  })
 }
 
 /**
@@ -135,14 +134,14 @@ export function trackAPI(endpoint, method, duration, status, error = null) {
  */
 export function trackError(error, context = {}) {
   sendEvent({
-    type: "error",
+    type: 'error',
     error: {
       message: error.message,
       stack: error.stack,
       name: error.name,
     },
     context,
-  });
+  })
 }
 
 /**
@@ -150,11 +149,11 @@ export function trackError(error, context = {}) {
  */
 export function trackBusinessMetric(metricName, value, metadata = {}) {
   sendEvent({
-    type: "business_metric",
+    type: 'business_metric',
     metric: metricName,
     value,
     ...metadata,
-  });
+  })
 }
 
 /**
@@ -162,23 +161,23 @@ export function trackBusinessMetric(metricName, value, metadata = {}) {
  */
 export function trackConversion(goalName, value = null, metadata = {}) {
   sendEvent({
-    type: "conversion",
+    type: 'conversion',
     goal: goalName,
     value,
     ...metadata,
-  });
+  })
 }
 
 /**
  * Track timing
  */
-export function trackTiming(name, duration, category = "custom") {
+export function trackTiming(name, duration, category = 'custom') {
   sendEvent({
-    type: "timing",
+    type: 'timing',
     name,
     duration,
     category,
-  });
+  })
 }
 
 /**
@@ -186,30 +185,30 @@ export function trackTiming(name, duration, category = "custom") {
  */
 export function initAnalytics() {
   if (!ENABLE_ANALYTICS) {
-    return;
+    return
   }
 
   // Track initial page view
-  trackPageView(window.location.pathname);
+  trackPageView(window.location.pathname)
 
   // Track page visibility changes
-  document.addEventListener("visibilitychange", () => {
+  document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-      trackEvent("Page", "Hidden");
+      trackEvent('Page', 'Hidden')
     } else {
-      trackEvent("Page", "Visible");
+      trackEvent('Page', 'Visible')
     }
-  });
+  })
 
   // Track unload
-  window.addEventListener("beforeunload", () => {
-    trackEvent("Session", "End");
-  });
+  window.addEventListener('beforeunload', () => {
+    trackEvent('Session', 'End')
+  })
 }
 
 // Auto-initialize if in browser
-if (typeof window !== "undefined") {
-  initAnalytics();
+if (typeof window !== 'undefined') {
+  initAnalytics()
 }
 
 export default {
@@ -222,4 +221,4 @@ export default {
   trackConversion,
   trackTiming,
   initAnalytics,
-};
+}

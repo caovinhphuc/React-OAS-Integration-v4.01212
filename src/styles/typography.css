@@ -22,7 +22,12 @@ body {
    HEADINGS
    ======================================== */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
   letter-spacing: -0.025em;
@@ -91,50 +96,118 @@ p {
    ======================================== */
 
 /* Font Weights */
-.font-thin { font-weight: var(--font-thin); }
-.font-extralight { font-weight: var(--font-extralight); }
-.font-light { font-weight: var(--font-light); }
-.font-normal { font-weight: var(--font-normal); }
-.font-medium { font-weight: var(--font-medium); }
-.font-semibold { font-weight: var(--font-semibold); }
-.font-bold { font-weight: var(--font-bold); }
-.font-extrabold { font-weight: var(--font-extrabold); }
-.font-black { font-weight: var(--font-black); }
+.font-thin {
+  font-weight: var(--font-thin);
+}
+.font-extralight {
+  font-weight: var(--font-extralight);
+}
+.font-light {
+  font-weight: var(--font-light);
+}
+.font-normal {
+  font-weight: var(--font-normal);
+}
+.font-medium {
+  font-weight: var(--font-medium);
+}
+.font-semibold {
+  font-weight: var(--font-semibold);
+}
+.font-bold {
+  font-weight: var(--font-bold);
+}
+.font-extrabold {
+  font-weight: var(--font-extrabold);
+}
+.font-black {
+  font-weight: var(--font-black);
+}
 
 /* Text Sizes */
-.text-xs { font-size: var(--text-xs); }
-.text-sm { font-size: var(--text-sm); }
-.text-base { font-size: var(--text-base); }
-.text-lg { font-size: var(--text-lg); }
-.text-xl { font-size: var(--text-xl); }
-.text-2xl { font-size: var(--text-2xl); }
-.text-3xl { font-size: var(--text-3xl); }
-.text-4xl { font-size: var(--text-4xl); }
-.text-5xl { font-size: var(--text-5xl); }
+.text-xs {
+  font-size: var(--text-xs);
+}
+.text-sm {
+  font-size: var(--text-sm);
+}
+.text-base {
+  font-size: var(--text-base);
+}
+.text-lg {
+  font-size: var(--text-lg);
+}
+.text-xl {
+  font-size: var(--text-xl);
+}
+.text-2xl {
+  font-size: var(--text-2xl);
+}
+.text-3xl {
+  font-size: var(--text-3xl);
+}
+.text-4xl {
+  font-size: var(--text-4xl);
+}
+.text-5xl {
+  font-size: var(--text-5xl);
+}
 
 /* Text Colors */
-.text-primary { color: var(--color-primary-600); }
-.text-success { color: var(--color-success-600); }
-.text-warning { color: var(--color-warning-600); }
-.text-error { color: var(--color-error-600); }
-.text-gray { color: var(--color-gray-600); }
-.text-muted { color: var(--color-gray-500); }
+.text-primary {
+  color: var(--color-primary-600);
+}
+.text-success {
+  color: var(--color-success-600);
+}
+.text-warning {
+  color: var(--color-warning-600);
+}
+.text-error {
+  color: var(--color-error-600);
+}
+.text-gray {
+  color: var(--color-gray-600);
+}
+.text-muted {
+  color: var(--color-gray-500);
+}
 
 /* Text Alignment */
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.text-justify { text-align: justify; }
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
 
 /* Text Transform */
-.uppercase { text-transform: uppercase; }
-.lowercase { text-transform: lowercase; }
-.capitalize { text-transform: capitalize; }
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
 
 /* Text Decoration */
-.underline { text-decoration: underline; }
-.line-through { text-decoration: line-through; }
-.no-underline { text-decoration: none; }
+.underline {
+  text-decoration: underline;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.no-underline {
+  text-decoration: none;
+}
 
 /* ========================================
    SPECIAL TEXT EFFECTS
@@ -263,7 +336,8 @@ pre code {
    LISTS
    ======================================== */
 
-ul, ol {
+ul,
+ol {
   margin-top: 0;
   margin-bottom: var(--spacing-md);
   padding-left: var(--spacing-lg);
@@ -366,4 +440,3 @@ hr {
     font-size: var(--text-xl);
   }
 }
-

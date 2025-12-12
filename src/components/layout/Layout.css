@@ -4,7 +4,11 @@
   flex-direction: column;
   height: 100vh;
   background: #f8fafc; /* ✅ Fix: Use solid color instead of gradient */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 /* Header Styles */

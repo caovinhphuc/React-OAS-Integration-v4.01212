@@ -2,7 +2,7 @@
 .apps-script-container {
   padding: 0;
   background: transparent;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #1e293b;
   height: 100%;
 }
@@ -253,7 +253,7 @@
   border: none;
   outline: none;
   padding: 24px;
-  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   font-size: 14px;
   line-height: 1.5;
   background: #f8fafc;

@@ -4,7 +4,7 @@
   background: transparent;
   color: #1e293b;
   min-height: auto;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .ai-dashboard-header {
@@ -76,7 +76,7 @@
 }
 
 .ai-card::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -466,7 +466,7 @@
   font-weight: 500;
 }
 
-.prediction-stats .change:has-text("-") {
+.prediction-stats .change:has-text('-') {
   color: #ef4444;
 }
 

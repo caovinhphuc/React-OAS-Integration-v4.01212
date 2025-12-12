@@ -4,110 +4,104 @@
  * Voice commands integration for hands-free data queries
  */
 
-import React, { useState, useEffect, useRef } from "react";
-import { Card, Button, Space, Typography, Tag, Alert, message } from "antd";
-import {
-  AudioOutlined,
-  StopOutlined,
-  SoundOutlined,
-  ReloadOutlined,
-} from "@ant-design/icons";
-import "./VoiceCommands.css";
+import React, { useState, useEffect, useRef } from 'react'
+import { Card, Button, Space, Typography, Tag, Alert, message } from 'antd'
+import { AudioOutlined, StopOutlined, SoundOutlined, ReloadOutlined } from '@ant-design/icons'
+import './VoiceCommands.css'
 
-const { Title, Text } = Typography;
+const { Title, Text } = Typography
 
 const VoiceCommands = ({ onCommand = null }) => {
-  const [isListening, setIsListening] = useState(false);
-  const [transcript, setTranscript] = useState("");
-  const [isSupported, setIsSupported] = useState(false);
-  const [error, setError] = useState(null);
-  const recognitionRef = useRef(null);
+  const [isListening, setIsListening] = useState(false)
+  const [transcript, setTranscript] = useState('')
+  const [isSupported, setIsSupported] = useState(false)
+  const [error, setError] = useState(null)
+  const recognitionRef = useRef(null)
 
   useEffect(() => {
     // Check browser support
-    if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
-      setIsSupported(true);
-      initializeSpeechRecognition();
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      setIsSupported(true)
+      initializeSpeechRecognition()
     } else {
-      setIsSupported(false);
-      setError("Voice commands không được hỗ trợ trong trình duyệt này.");
+      setIsSupported(false)
+      setError('Voice commands không được hỗ trợ trong trình duyệt này.')
     }
 
     return () => {
       if (recognitionRef.current) {
-        recognitionRef.current.stop();
+        recognitionRef.current.stop()
       }
-    };
-  }, []);
+    }
+  }, [])
 
   const initializeSpeechRecognition = () => {
     try {
-      const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-      const recognition = new SpeechRecognition();
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+      const recognition = new SpeechRecognition()
 
-      recognition.continuous = false;
-      recognition.interimResults = false;
-      recognition.lang = "vi-VN"; // Vietnamese
+      recognition.continuous = false
+      recognition.interimResults = false
+      recognition.lang = 'vi-VN' // Vietnamese
 
       recognition.onstart = () => {
-        setIsListening(true);
-        setError(null);
-        message.info("Đang nghe...");
-      };
+        setIsListening(true)
+        setError(null)
+        message.info('Đang nghe...')
+      }
 
       recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        setTranscript(transcript);
+        const transcript = event.results[0][0].transcript
+        setTranscript(transcript)
 
         if (onCommand) {
-          onCommand(transcript);
+          onCommand(transcript)
         }
 
-        message.success(`Đã nhận lệnh: ${transcript}`);
-      };
+        message.success(`Đã nhận lệnh: ${transcript}`)
+      }
 
       recognition.onerror = (event) => {
-        console.error("Speech recognition error:", event.error);
-        setError(`Lỗi nhận diện giọng nói: ${event.error}`);
-        setIsListening(false);
-        message.error("Lỗi nhận diện giọng nói");
-      };
+        console.error('Speech recognition error:', event.error)
+        setError(`Lỗi nhận diện giọng nói: ${event.error}`)
+        setIsListening(false)
+        message.error('Lỗi nhận diện giọng nói')
+      }
 
       recognition.onend = () => {
-        setIsListening(false);
-      };
+        setIsListening(false)
+      }
 
-      recognitionRef.current = recognition;
+      recognitionRef.current = recognition
     } catch (err) {
-      console.error("Speech recognition initialization error:", err);
-      setError("Không thể khởi tạo voice recognition");
-      setIsSupported(false);
+      console.error('Speech recognition initialization error:', err)
+      setError('Không thể khởi tạo voice recognition')
+      setIsSupported(false)
     }
-  };
+  }
 
   const startListening = () => {
     if (!isSupported) {
-      message.warning("Voice commands không được hỗ trợ");
-      return;
+      message.warning('Voice commands không được hỗ trợ')
+      return
     }
 
     if (recognitionRef.current) {
       try {
-        recognitionRef.current.start();
+        recognitionRef.current.start()
       } catch (err) {
-        console.error("Start listening error:", err);
-        message.error("Không thể bắt đầu nghe");
+        console.error('Start listening error:', err)
+        message.error('Không thể bắt đầu nghe')
       }
     }
-  };
+  }
 
   const stopListening = () => {
     if (recognitionRef.current) {
-      recognitionRef.current.stop();
-      setIsListening(false);
+      recognitionRef.current.stop()
+      setIsListening(false)
     }
-  };
+  }
 
   return (
     <Card className="voice-commands">
@@ -137,7 +131,7 @@ const VoiceCommands = ({ onCommand = null }) => {
         />
       )}
 
-      <Space direction="vertical" style={{ width: "100%" }} size="large">
+      <Space direction="vertical" style={{ width: '100%' }} size="large">
         <div className="voice-controls">
           {!isListening ? (
             <Button
@@ -146,7 +140,7 @@ const VoiceCommands = ({ onCommand = null }) => {
               icon={<AudioOutlined />}
               onClick={startListening}
               disabled={!isSupported}
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             >
               Bắt đầu nghe
             </Button>
@@ -156,7 +150,7 @@ const VoiceCommands = ({ onCommand = null }) => {
               size="large"
               icon={<StopOutlined />}
               onClick={stopListening}
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             >
               Dừng nghe
             </Button>
@@ -181,7 +175,7 @@ const VoiceCommands = ({ onCommand = null }) => {
         </div>
       </Space>
     </Card>
-  );
-};
+  )
+}
 
-export default VoiceCommands;
+export default VoiceCommands

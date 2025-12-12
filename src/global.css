@@ -50,7 +50,11 @@ body {
   flex-direction: column;
   height: 100vh;
   background: #f8fafc;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 /* Main Content Area */
