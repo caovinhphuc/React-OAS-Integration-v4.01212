@@ -1,6 +1,6 @@
 {
   "title": "Email Service Test Report",
-  "timestamp": "2025-12-15T00:48:32.960Z",
+  "timestamp": "2025-12-15T01:51:10.563Z",
   "summary": {
     "total_tests": 3,
     "passed": 1,
@@ -25,7 +25,7 @@
           "SendGrid API"
         ]
       },
-      "timestamp": "2025-12-15T00:48:32.175Z"
+      "timestamp": "2025-12-15T01:51:09.833Z"
     },
     {
       "test": "sendgrid-connection",
@@ -43,7 +43,7 @@
           ]
         }
       },
-      "timestamp": "2025-12-15T00:48:32.959Z"
+      "timestamp": "2025-12-15T01:51:10.563Z"
     },
     {
       "test": "sendgrid-test-email",
@@ -52,7 +52,7 @@
       "details": {
         "error": "Cannot find module '@sendgrid/mail'\nRequire stack:\n- /Users/phuccao/Projects/React-OAS-Integration-v4.0/scripts/testEmailService.js"
       },
-      "timestamp": "2025-12-15T00:48:32.960Z"
+      "timestamp": "2025-12-15T01:51:10.563Z"
     }
   ]
 }
