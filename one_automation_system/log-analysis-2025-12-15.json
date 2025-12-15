@@ -1,0 +1,579 @@
+{
+  "timestamp": "2025-12-15T15:17:16.590Z",
+  "logDir": "logs",
+  "files": [
+    {
+      "file": "automation_20251215.log",
+      "totalLines": 130,
+      "errors": [
+        {
+          "line": 24,
+          "content": "2025-12-15 16:13:20 - OneAutomation - ERROR - ❌ Lỗi khởi tạo WebDriver: ❌ Không tìm thấy ChromeDriver! Chạy: python install_chromedriver.py"
+        },
+        {
+          "line": 25,
+          "content": "2025-12-15 16:13:20 - OneAutomation - ERROR - ❌ Lỗi quy trình tự động hóa: Không thể khởi tạo WebDriver"
+        },
+        {
+          "line": 88,
+          "content": "  (Session info: chrome=143.0.7499.110); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception"
+        },
+        {
+          "line": 111,
+          "content": "2025-12-15 21:12:18 - OneAutomation - ERROR - ❌ Không tìm thấy dữ liệu thông qua JavaScript"
+        },
+        {
+          "line": 115,
+          "content": "2025-12-15 21:12:27 - OneAutomation - ERROR - ❌ Lỗi quy trình tự động hóa: Không lấy được dữ liệu đơn hàng"
+        }
+      ],
+      "warnings": [
+        {
+          "line": 18,
+          "content": "2025-12-15 09:12:30 - OneAutomation - WARNING - ⚠️ Cấu hình email chưa được thiết lập đúng - bỏ qua gửi thông báo"
+        },
+        {
+          "line": 22,
+          "content": "2025-12-15 16:13:04 - OneAutomation - WARNING - ⚠️ ChromeDriverManager failed: Could not reach host. Are you offline?..."
+        },
+        {
+          "line": 27,
+          "content": "2025-12-15 16:13:20 - OneAutomation - WARNING - ⚠️ Cấu hình email chưa được thiết lập đúng - bỏ qua gửi thông báo"
+        },
+        {
+          "line": 45,
+          "content": "2025-12-15 16:36:10 - OneAutomation - WARNING - ⚠️ Cấu hình email chưa được thiết lập đúng - bỏ qua gửi thông báo"
+        },
+        {
+          "line": 63,
+          "content": "2025-12-15 18:28:42 - OneAutomation - WARNING - ⚠️ Cấu hình email chưa được thiết lập đúng - bỏ qua gửi thông báo"
+        },
+        {
+          "line": 80,
+          "content": "2025-12-15 21:07:12 - OneAutomation - WARNING - ⚠️ Không tìm thấy tab 'Đơn chờ xuất kho'"
+        },
+        {
+          "line": 83,
+          "content": "2025-12-15 21:09:16 - OneAutomation - WARNING - ⚠️ Không tìm thấy dropdown giới hạn"
+        },
+        {
+          "line": 85,
+          "content": "2025-12-15 21:11:05 - OneAutomation - WARNING - ⚠️ Không tìm thấy dropdown thời gian"
+        },
+        {
+          "line": 87,
+          "content": "2025-12-15 21:12:17 - OneAutomation - WARNING - ⚠️ Lỗi bấm nút tìm kiếm: Message: invalid selector: An invalid or illegal selector was specified"
+        },
+        {
+          "line": 117,
+          "content": "2025-12-15 21:12:27 - OneAutomation - WARNING - ⚠️ Cấu hình email chưa được thiết lập đúng - bỏ qua gửi thông báo"
+        },
+        {
+          "line": 130,
+          "content": "2025-12-15 22:06:42 - OneAutomation - WARNING - ⚠️ Cấu hình email chưa được thiết lập đúng - bỏ qua gửi thông báo"
+        }
+      ],
+      "info": [
+        {
+          "line": 1,
+          "content": "2025-12-15 09:11:11 - OneAutomation - INFO - 🚀 Bắt đầu quy trình tự động hóa ONE..."
+        },
+        {
+          "line": 2,
+          "content": "2025-12-15 09:11:11 - OneAutomation - INFO - 📥 Khởi tạo ChromeDriver..."
+        },
+        {
+          "line": 3,
+          "content": "2025-12-15 09:11:11 - OneAutomation - INFO - 📦 Kiểm tra ChromeDriver từ cache..."
+        },
+        {
+          "line": 4,
+          "content": "2025-12-15 09:11:15 - OneAutomation - INFO - ✅ ChromeDriver đã khởi tạo thành công"
+        },
+        {
+          "line": 5,
+          "content": "2025-12-15 09:11:15 - OneAutomation - INFO - ✅ WebDriver tối ưu đã sẵn sàng"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-15 09:11:15 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập vào hệ thống ONE..."
+        },
+        {
+          "line": 7,
+          "content": "2025-12-15 09:11:15 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập mới..."
+        },
+        {
+          "line": 8,
+          "content": "2025-12-15 09:11:19 - OneAutomation - INFO - ✅ Tìm thấy username field: input[name='username']"
+        },
+        {
+          "line": 9,
+          "content": "2025-12-15 09:11:20 - OneAutomation - INFO - ✅ Đã nhập username"
+        },
+        {
+          "line": 10,
+          "content": "2025-12-15 09:11:20 - OneAutomation - INFO - ✅ Đã nhập password"
+        },
+        {
+          "line": 11,
+          "content": "2025-12-15 09:11:20 - OneAutomation - INFO - ✅ Đã click nút đăng nhập"
+        },
+        {
+          "line": 12,
+          "content": "2025-12-15 09:11:28 - OneAutomation - INFO - ✅ Đăng nhập thành công"
+        },
+        {
+          "line": 13,
+          "content": "2025-12-15 09:11:28 - OneAutomation - INFO - 💾 Đã lưu session"
+        },
+        {
+          "line": 14,
+          "content": "2025-12-15 09:11:28 - OneAutomation - INFO - 📋 Điều hướng đến trang danh sách đơn hàng..."
+        },
+        {
+          "line": 15,
+          "content": "2025-12-15 09:11:35 - OneAutomation - INFO - ✅ Đã tải trang đơn hàng nhanh chóng"
+        },
+        {
+          "line": 16,
+          "content": "2025-12-15 09:11:35 - OneAutomation - INFO - 🟠 Bấm vào tab 'Đơn chờ xuất kho'..."
+        },
+        {
+          "line": 17,
+          "content": "2025-12-15 09:12:30 - OneAutomation - INFO - 📧 Gửi thông báo email..."
+        },
+        {
+          "line": 19,
+          "content": "2025-12-15 16:12:05 - OneAutomation - INFO - 🚀 Bắt đầu quy trình tự động hóa ONE..."
+        },
+        {
+          "line": 20,
+          "content": "2025-12-15 16:12:05 - OneAutomation - INFO - 📥 Khởi tạo ChromeDriver..."
+        },
+        {
+          "line": 21,
+          "content": "2025-12-15 16:12:05 - OneAutomation - INFO - 📦 Kiểm tra ChromeDriver từ cache..."
+        },
+        {
+          "line": 23,
+          "content": "2025-12-15 16:13:04 - OneAutomation - INFO - 🔧 Thử dùng system ChromeDriver..."
+        },
+        {
+          "line": 26,
+          "content": "2025-12-15 16:13:20 - OneAutomation - INFO - 📧 Gửi thông báo email..."
+        },
+        {
+          "line": 28,
+          "content": "2025-12-15 16:34:15 - OneAutomation - INFO - 🚀 Bắt đầu quy trình tự động hóa ONE..."
+        },
+        {
+          "line": 29,
+          "content": "2025-12-15 16:34:15 - OneAutomation - INFO - 📥 Khởi tạo ChromeDriver..."
+        },
+        {
+          "line": 30,
+          "content": "2025-12-15 16:34:15 - OneAutomation - INFO - 📦 Kiểm tra ChromeDriver từ cache..."
+        },
+        {
+          "line": 31,
+          "content": "2025-12-15 16:34:19 - OneAutomation - INFO - ✅ ChromeDriver đã khởi tạo thành công"
+        },
+        {
+          "line": 32,
+          "content": "2025-12-15 16:34:19 - OneAutomation - INFO - ✅ WebDriver tối ưu đã sẵn sàng"
+        },
+        {
+          "line": 33,
+          "content": "2025-12-15 16:34:19 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập vào hệ thống ONE..."
+        },
+        {
+          "line": 34,
+          "content": "2025-12-15 16:34:19 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập mới..."
+        },
+        {
+          "line": 35,
+          "content": "2025-12-15 16:34:24 - OneAutomation - INFO - ✅ Tìm thấy username field: input[name='username']"
+        },
+        {
+          "line": 36,
+          "content": "2025-12-15 16:34:24 - OneAutomation - INFO - ✅ Đã nhập username"
+        },
+        {
+          "line": 37,
+          "content": "2025-12-15 16:34:24 - OneAutomation - INFO - ✅ Đã nhập password"
+        },
+        {
+          "line": 38,
+          "content": "2025-12-15 16:34:24 - OneAutomation - INFO - ✅ Đã click nút đăng nhập"
+        },
+        {
+          "line": 39,
+          "content": "2025-12-15 16:34:32 - OneAutomation - INFO - ✅ Đăng nhập thành công"
+        },
+        {
+          "line": 40,
+          "content": "2025-12-15 16:34:32 - OneAutomation - INFO - 💾 Đã lưu session"
+        },
+        {
+          "line": 41,
+          "content": "2025-12-15 16:34:32 - OneAutomation - INFO - 📋 Điều hướng đến trang danh sách đơn hàng..."
+        },
+        {
+          "line": 42,
+          "content": "2025-12-15 16:34:38 - OneAutomation - INFO - ✅ Đã tải trang đơn hàng nhanh chóng"
+        },
+        {
+          "line": 43,
+          "content": "2025-12-15 16:34:38 - OneAutomation - INFO - 🟠 Bấm vào tab 'Đơn chờ xuất kho'..."
+        },
+        {
+          "line": 44,
+          "content": "2025-12-15 16:36:10 - OneAutomation - INFO - 📧 Gửi thông báo email..."
+        },
+        {
+          "line": 46,
+          "content": "2025-12-15 18:26:35 - OneAutomation - INFO - 🚀 Bắt đầu quy trình tự động hóa ONE..."
+        },
+        {
+          "line": 47,
+          "content": "2025-12-15 18:26:35 - OneAutomation - INFO - 📥 Khởi tạo ChromeDriver..."
+        },
+        {
+          "line": 48,
+          "content": "2025-12-15 18:26:35 - OneAutomation - INFO - 📦 Kiểm tra ChromeDriver từ cache..."
+        },
+        {
+          "line": 49,
+          "content": "2025-12-15 18:26:39 - OneAutomation - INFO - ✅ ChromeDriver đã khởi tạo thành công"
+        },
+        {
+          "line": 50,
+          "content": "2025-12-15 18:26:39 - OneAutomation - INFO - ✅ WebDriver tối ưu đã sẵn sàng"
+        },
+        {
+          "line": 51,
+          "content": "2025-12-15 18:26:39 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập vào hệ thống ONE..."
+        },
+        {
+          "line": 52,
+          "content": "2025-12-15 18:26:39 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập mới..."
+        },
+        {
+          "line": 53,
+          "content": "2025-12-15 18:26:44 - OneAutomation - INFO - ✅ Tìm thấy username field: input[name='username']"
+        },
+        {
+          "line": 54,
+          "content": "2025-12-15 18:26:44 - OneAutomation - INFO - ✅ Đã nhập username"
+        },
+        {
+          "line": 55,
+          "content": "2025-12-15 18:26:44 - OneAutomation - INFO - ✅ Đã nhập password"
+        },
+        {
+          "line": 56,
+          "content": "2025-12-15 18:26:44 - OneAutomation - INFO - ✅ Đã click nút đăng nhập"
+        },
+        {
+          "line": 57,
+          "content": "2025-12-15 18:26:52 - OneAutomation - INFO - ✅ Đăng nhập thành công"
+        },
+        {
+          "line": 58,
+          "content": "2025-12-15 18:26:52 - OneAutomation - INFO - 💾 Đã lưu session"
+        },
+        {
+          "line": 59,
+          "content": "2025-12-15 18:26:52 - OneAutomation - INFO - 📋 Điều hướng đến trang danh sách đơn hàng..."
+        },
+        {
+          "line": 60,
+          "content": "2025-12-15 18:26:58 - OneAutomation - INFO - ✅ Đã tải trang đơn hàng nhanh chóng"
+        },
+        {
+          "line": 61,
+          "content": "2025-12-15 18:26:58 - OneAutomation - INFO - 🟠 Bấm vào tab 'Đơn chờ xuất kho'..."
+        },
+        {
+          "line": 62,
+          "content": "2025-12-15 18:28:42 - OneAutomation - INFO - 📧 Gửi thông báo email..."
+        },
+        {
+          "line": 64,
+          "content": "2025-12-15 21:03:31 - OneAutomation - INFO - 🚀 Bắt đầu quy trình tự động hóa ONE..."
+        },
+        {
+          "line": 65,
+          "content": "2025-12-15 21:03:31 - OneAutomation - INFO - 📥 Khởi tạo ChromeDriver..."
+        },
+        {
+          "line": 66,
+          "content": "2025-12-15 21:03:31 - OneAutomation - INFO - 📦 Kiểm tra ChromeDriver từ cache..."
+        },
+        {
+          "line": 67,
+          "content": "2025-12-15 21:04:47 - OneAutomation - INFO - ✅ ChromeDriver đã khởi tạo thành công"
+        },
+        {
+          "line": 68,
+          "content": "2025-12-15 21:04:47 - OneAutomation - INFO - ✅ WebDriver tối ưu đã sẵn sàng"
+        },
+        {
+          "line": 69,
+          "content": "2025-12-15 21:04:47 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập vào hệ thống ONE..."
+        },
+        {
+          "line": 70,
+          "content": "2025-12-15 21:04:47 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập mới..."
+        },
+        {
+          "line": 71,
+          "content": "2025-12-15 21:04:53 - OneAutomation - INFO - ✅ Tìm thấy username field: input[name='username']"
+        },
+        {
+          "line": 72,
+          "content": "2025-12-15 21:04:53 - OneAutomation - INFO - ✅ Đã nhập username"
+        },
+        {
+          "line": 73,
+          "content": "2025-12-15 21:04:53 - OneAutomation - INFO - ✅ Đã nhập password"
+        },
+        {
+          "line": 74,
+          "content": "2025-12-15 21:04:54 - OneAutomation - INFO - ✅ Đã click nút đăng nhập"
+        },
+        {
+          "line": 75,
+          "content": "2025-12-15 21:05:02 - OneAutomation - INFO - ✅ Đăng nhập thành công"
+        },
+        {
+          "line": 76,
+          "content": "2025-12-15 21:05:02 - OneAutomation - INFO - 💾 Đã lưu session"
+        },
+        {
+          "line": 77,
+          "content": "2025-12-15 21:05:02 - OneAutomation - INFO - 📋 Điều hướng đến trang danh sách đơn hàng..."
+        },
+        {
+          "line": 78,
+          "content": "2025-12-15 21:05:08 - OneAutomation - INFO - ✅ Đã tải trang đơn hàng nhanh chóng"
+        },
+        {
+          "line": 79,
+          "content": "2025-12-15 21:05:08 - OneAutomation - INFO - 🟠 Bấm vào tab 'Đơn chờ xuất kho'..."
+        },
+        {
+          "line": 81,
+          "content": "2025-12-15 21:07:12 - OneAutomation - INFO - ⚙️ Cấu hình bộ lọc trang đơn hàng..."
+        },
+        {
+          "line": 82,
+          "content": "2025-12-15 21:07:12 - OneAutomation - INFO - 📊 Thay đổi giới hạn hiển thị thành 2000 đơn..."
+        },
+        {
+          "line": 84,
+          "content": "2025-12-15 21:09:18 - OneAutomation - INFO - 📅 Thay đổi bộ lọc thời gian thành 'Thời gian sàn TMĐT'..."
+        },
+        {
+          "line": 86,
+          "content": "2025-12-15 21:11:07 - OneAutomation - INFO - 🔍 Bấm nút tìm kiếm để áp dụng bộ lọc..."
+        },
+        {
+          "line": 109,
+          "content": "2025-12-15 21:12:17 - OneAutomation - INFO - ✅ Hoàn thành cấu hình bộ lọc"
+        },
+        {
+          "line": 110,
+          "content": "2025-12-15 21:12:17 - OneAutomation - INFO - 📊 Bắt đầu lấy dữ liệu đơn hàng..."
+        },
+        {
+          "line": 112,
+          "content": "2025-12-15 21:12:27 - OneAutomation - INFO - ✅ Tìm thấy 0 dòng dữ liệu"
+        },
+        {
+          "line": 113,
+          "content": "2025-12-15 21:12:27 - OneAutomation - INFO - 🐌 Full mode: Lấy tất cả 0 dòng"
+        },
+        {
+          "line": 114,
+          "content": "2025-12-15 21:12:27 - OneAutomation - INFO - ✅ Hoàn thành lấy 0 đơn hàng trong 9.42 giây"
+        },
+        {
+          "line": 116,
+          "content": "2025-12-15 21:12:27 - OneAutomation - INFO - 📧 Gửi thông báo email..."
+        },
+        {
+          "line": 118,
+          "content": "2025-12-15 22:06:29 - OneAutomation - INFO - 🚀 Bắt đầu quy trình tự động hóa ONE..."
+        },
+        {
+          "line": 119,
+          "content": "2025-12-15 22:06:29 - OneAutomation - INFO - 📥 Khởi tạo ChromeDriver..."
+        },
+        {
+          "line": 120,
+          "content": "2025-12-15 22:06:29 - OneAutomation - INFO - 📦 Kiểm tra ChromeDriver từ cache..."
+        },
+        {
+          "line": 121,
+          "content": "2025-12-15 22:06:32 - OneAutomation - INFO - ✅ ChromeDriver đã khởi tạo thành công"
+        },
+        {
+          "line": 122,
+          "content": "2025-12-15 22:06:32 - OneAutomation - INFO - ✅ WebDriver tối ưu đã sẵn sàng"
+        },
+        {
+          "line": 123,
+          "content": "2025-12-15 22:06:32 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập vào hệ thống ONE..."
+        },
+        {
+          "line": 124,
+          "content": "2025-12-15 22:06:32 - OneAutomation - INFO - 🔐 Bắt đầu đăng nhập mới..."
+        },
+        {
+          "line": 125,
+          "content": "2025-12-15 22:06:37 - OneAutomation - INFO - ✅ Tìm thấy username field: input[name='username']"
+        },
+        {
+          "line": 126,
+          "content": "2025-12-15 22:06:37 - OneAutomation - INFO - ✅ Đã nhập username"
+        },
+        {
+          "line": 127,
+          "content": "2025-12-15 22:06:37 - OneAutomation - INFO - ✅ Đã nhập password"
+        },
+        {
+          "line": 128,
+          "content": "2025-12-15 22:06:37 - OneAutomation - INFO - ✅ Đã click nút đăng nhập"
+        },
+        {
+          "line": 129,
+          "content": "2025-12-15 22:06:42 - OneAutomation - INFO - 📧 Gửi thông báo email..."
+        }
+      ],
+      "timestamps": [
+        "2025-12-15 09:11:11",
+        "2025-12-15 09:11:11",
+        "2025-12-15 09:11:11",
+        "2025-12-15 09:11:15",
+        "2025-12-15 09:11:15",
+        "2025-12-15 09:11:15",
+        "2025-12-15 09:11:15",
+        "2025-12-15 09:11:19",
+        "2025-12-15 09:11:20",
+        "2025-12-15 09:11:20",
+        "2025-12-15 09:11:20",
+        "2025-12-15 09:11:28",
+        "2025-12-15 09:11:28",
+        "2025-12-15 09:11:28",
+        "2025-12-15 09:11:35",
+        "2025-12-15 09:11:35",
+        "2025-12-15 09:12:30",
+        "2025-12-15 09:12:30",
+        "2025-12-15 16:12:05",
+        "2025-12-15 16:12:05",
+        "2025-12-15 16:12:05",
+        "2025-12-15 16:13:04",
+        "2025-12-15 16:13:04",
+        "2025-12-15 16:13:20",
+        "2025-12-15 16:13:20",
+        "2025-12-15 16:13:20",
+        "2025-12-15 16:13:20",
+        "2025-12-15 16:34:15",
+        "2025-12-15 16:34:15",
+        "2025-12-15 16:34:15",
+        "2025-12-15 16:34:19",
+        "2025-12-15 16:34:19",
+        "2025-12-15 16:34:19",
+        "2025-12-15 16:34:19",
+        "2025-12-15 16:34:24",
+        "2025-12-15 16:34:24",
+        "2025-12-15 16:34:24",
+        "2025-12-15 16:34:24",
+        "2025-12-15 16:34:32",
+        "2025-12-15 16:34:32",
+        "2025-12-15 16:34:32",
+        "2025-12-15 16:34:38",
+        "2025-12-15 16:34:38",
+        "2025-12-15 16:36:10",
+        "2025-12-15 16:36:10",
+        "2025-12-15 18:26:35",
+        "2025-12-15 18:26:35",
+        "2025-12-15 18:26:35",
+        "2025-12-15 18:26:39",
+        "2025-12-15 18:26:39",
+        "2025-12-15 18:26:39",
+        "2025-12-15 18:26:39",
+        "2025-12-15 18:26:44",
+        "2025-12-15 18:26:44",
+        "2025-12-15 18:26:44",
+        "2025-12-15 18:26:44",
+        "2025-12-15 18:26:52",
+        "2025-12-15 18:26:52",
+        "2025-12-15 18:26:52",
+        "2025-12-15 18:26:58",
+        "2025-12-15 18:26:58",
+        "2025-12-15 18:28:42",
+        "2025-12-15 18:28:42",
+        "2025-12-15 21:03:31",
+        "2025-12-15 21:03:31",
+        "2025-12-15 21:03:31",
+        "2025-12-15 21:04:47",
+        "2025-12-15 21:04:47",
+        "2025-12-15 21:04:47",
+        "2025-12-15 21:04:47",
+        "2025-12-15 21:04:53",
+        "2025-12-15 21:04:53",
+        "2025-12-15 21:04:53",
+        "2025-12-15 21:04:54",
+        "2025-12-15 21:05:02",
+        "2025-12-15 21:05:02",
+        "2025-12-15 21:05:02",
+        "2025-12-15 21:05:08",
+        "2025-12-15 21:05:08",
+        "2025-12-15 21:07:12",
+        "2025-12-15 21:07:12",
+        "2025-12-15 21:07:12",
+        "2025-12-15 21:09:16",
+        "2025-12-15 21:09:18",
+        "2025-12-15 21:11:05",
+        "2025-12-15 21:11:07",
+        "2025-12-15 21:12:17",
+        "2025-12-15 21:12:17",
+        "2025-12-15 21:12:17",
+        "2025-12-15 21:12:18",
+        "2025-12-15 21:12:27",
+        "2025-12-15 21:12:27",
+        "2025-12-15 21:12:27",
+        "2025-12-15 21:12:27",
+        "2025-12-15 21:12:27",
+        "2025-12-15 21:12:27",
+        "2025-12-15 22:06:29",
+        "2025-12-15 22:06:29",
+        "2025-12-15 22:06:29",
+        "2025-12-15 22:06:32",
+        "2025-12-15 22:06:32",
+        "2025-12-15 22:06:32",
+        "2025-12-15 22:06:32",
+        "2025-12-15 22:06:37",
+        "2025-12-15 22:06:37",
+        "2025-12-15 22:06:37",
+        "2025-12-15 22:06:37",
+        "2025-12-15 22:06:42",
+        "2025-12-15 22:06:42"
+      ],
+      "errorCount": 5,
+      "warningCount": 11,
+      "infoCount": 94,
+      "patterns": {
+        "failed": 1
+      }
+    }
+  ],
+  "summary": {
+    "totalFiles": 1,
+    "totalLines": 130,
+    "totalErrors": 5,
+    "totalWarnings": 11
+  }
+}

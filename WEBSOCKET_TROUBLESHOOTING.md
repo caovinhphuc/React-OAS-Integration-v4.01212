@@ -9,6 +9,7 @@
 **Solution:**
 
 1. **Check if backend is running:**
+
    ```bash
    npm run check:backend
    # or
@@ -16,6 +17,7 @@
    ```
 
 2. **Start backend server:**
+
    ```bash
    # Option 1: Start backend only
    cd backend
@@ -29,6 +31,7 @@
    ```
 
 3. **Verify backend started successfully:**
+
    ```bash
    # Should see:
    # 🚀 Backend server running on port 3001
@@ -49,12 +52,14 @@
 **Solutions:**
 
 1. **Check backend URL:**
+
    ```bash
    echo $REACT_APP_API_URL
    # Should be: http://localhost:3001
    ```
 
 2. **Check if port is correct:**
+
    ```bash
    lsof -i:3001
    # Should show backend server process
@@ -73,13 +78,15 @@
 **Solutions:**
 
 1. **Increase timeout in test script:**
+
    ```javascript
    const socket = io(url, {
-     timeout: 10000 // 10 seconds instead of 5
-   });
+     timeout: 10000, // 10 seconds instead of 5
+   })
    ```
 
 2. **Check server logs for errors:**
+
    ```bash
    # Check backend logs
    tail -f logs/backend.log
@@ -105,10 +112,10 @@ Check backend `server.js` has proper CORS config:
 ```javascript
 const io = socketIo(server, {
   cors: {
-    origin: "*", // or specific origin
-    methods: ["GET", "POST"]
-  }
-});
+    origin: '*', // or specific origin
+    methods: ['GET', 'POST'],
+  },
+})
 ```
 
 ---
@@ -126,6 +133,7 @@ curl http://localhost:3001/health
 ```
 
 **Expected output:**
+
 ```json
 {
   "status": "OK",
@@ -207,19 +215,19 @@ curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" \
 
 ```javascript
 // Open browser console and run:
-const socket = io('http://localhost:3001');
+const socket = io('http://localhost:3001')
 
 socket.on('connect', () => {
-  console.log('Connected:', socket.id);
-});
+  console.log('Connected:', socket.id)
+})
 
 socket.on('welcome', (data) => {
-  console.log('Welcome:', data);
-});
+  console.log('Welcome:', data)
+})
 
 socket.on('connect_error', (error) => {
-  console.error('Error:', error);
-});
+  console.error('Error:', error)
+})
 ```
 
 ---
@@ -235,7 +243,7 @@ npm run fix:ports
 # 2. Check ports are free
 npm run check:ports
 
-# 3. Start backend
+# 3. Start backendnpm run fix:ports
 cd backend
 npm start
 
@@ -254,4 +262,3 @@ npm run test:websocket
 ---
 
 **💡 Tip:** Always check backend logs first when debugging WebSocket issues!
-
