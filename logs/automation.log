@@ -1,42 +1,15 @@
-INFO:     Started server process [82843]
+INFO:     Started server process [26016]
 INFO:     Waiting for application startup.
-2025-12-15 05:49:09,633 - main - INFO - 🚀 Starting OneAutomation System...
+2025-12-15 09:19:56,057 - main - INFO - 🚀 Starting OneAutomation System...
 Credentials file not found: config/service_account.json
-2025-12-15 05:49:09,633 - main - INFO - ✅ Google Sheets service initialized
-2025-12-15 05:49:09,633 - main - INFO - ✅ Email service initialized
-2025-12-15 05:49:09,633 - main - INFO - ✅ Data processor initialized
-2025-12-15 05:49:09,633 - main - INFO - 🎉 OneAutomation System started successfully!
+2025-12-15 09:19:56,058 - main - INFO - ✅ Google Sheets service initialized
+2025-12-15 09:19:56,058 - main - INFO - ✅ Email service initialized
+2025-12-15 09:19:56,058 - main - INFO - ✅ Data processor initialized
+2025-12-15 09:19:56,058 - main - INFO - 🎉 OneAutomation System started successfully!
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
-INFO:     127.0.0.1:60441 - "GET /api/ml/insights HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60441 - "POST /api/ml/predict HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60441 - "POST /api/ml/optimize HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60441 - "GET /api/ml/insights HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60441 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60456 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60458 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60465 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60466 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60466 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60466 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60466 - "GET /api/ml/insights HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60466 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60688 - "GET /api/ml/insights HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60688 - "GET /api/ml/insights HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60688 - "GET /api/ml/insights HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60688 - "GET /api/ml/insights HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:60688 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60688 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60866 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60868 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60688 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60866 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60868 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60866 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60871 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60873 - "GET /health HTTP/1.1" 200 OK
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
-2025-12-15 05:50:53,973 - main - INFO - 👋 Shutting down OneAutomation System...
+2025-12-15 09:21:19,034 - main - INFO - 👋 Shutting down OneAutomation System...
 INFO:     Application shutdown complete.
-INFO:     Finished server process [82843]
+INFO:     Finished server process [26016]

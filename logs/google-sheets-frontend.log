@@ -33,3 +33,4 @@ LOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-l
 ERROR in [eslint] Plugin "react" was conflicted between "../.eslintrc.json » eslint-config-react-app » /Users/phuccao/Projects/React-OAS-Integration-v4.0/node_modules/eslint-config-react-app/base.js" and "BaseConfig » /Users/phuccao/Projects/React-OAS-Integration-v4.0/google-sheets-project/node_modules/eslint-config-react-app/base.js".
 
 webpack compiled with 1 error
+The build failed because the process exited too early. This probably means the system ran out of memory or someone called `kill -9` on the process.
