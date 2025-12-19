@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "react-oas-integration-v4",
   "builds": [
     {
       "src": "package.json",
@@ -20,12 +19,6 @@
     {
       "src": "/(.*)",
       "dest": "/index.html"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ]
 }
