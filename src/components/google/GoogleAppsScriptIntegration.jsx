@@ -114,14 +114,14 @@ const GoogleAppsScriptIntegration = () => {
         result = await scriptService.executeScript(
           selectedScript.scriptId,
           selectedScript.functionName || "main",
-          selectedScript.parameters || []
+          selectedScript.parameters || [],
         );
       } else {
         // Try inline execution (will fail gracefully if not supported)
         result = await scriptService.executeInline(
           selectedScript.code,
           selectedScript.functionName || "main",
-          selectedScript.parameters || []
+          selectedScript.parameters || [],
         );
       }
 
@@ -192,8 +192,8 @@ const GoogleAppsScriptIntegration = () => {
               code: scriptCode,
               lastModified: new Date().toISOString(),
             }
-          : script
-      )
+          : script,
+      ),
     );
 
     setSelectedScript((prev) => ({

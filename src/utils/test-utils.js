@@ -34,7 +34,7 @@ if (typeof window !== "undefined" && !window.matchMedia) {
  */
 export const renderWithRedux = (
   ui,
-  { initialState = {}, store: customStore = store, ...renderOptions } = {}
+  { initialState = {}, store: customStore = store, ...renderOptions } = {},
 ) => {
   const Wrapper = ({ children }) => (
     <Provider store={customStore}>
@@ -55,7 +55,7 @@ export const renderWithRedux = (
  */
 export const renderWithRouter = (
   ui,
-  { route = "/", initialEntries = [route], ...renderOptions } = {}
+  { route = "/", initialEntries = [route], ...renderOptions } = {},
 ) => {
   const Wrapper = ({ children }) => (
     <MemoryRouter initialEntries={initialEntries}>
@@ -81,7 +81,7 @@ export const renderWithProviders = (
     initialState = {},
     store: customStore = store,
     ...renderOptions
-  } = {}
+  } = {},
 ) => {
   const Wrapper = ({ children }) => (
     <Provider store={customStore}>
@@ -104,7 +104,7 @@ export const renderWithProviders = (
  */
 export const renderWithBrowserRouter = (
   ui,
-  { route = "/", ...renderOptions } = {}
+  { route = "/", ...renderOptions } = {},
 ) => {
   window.history.pushState({}, "Test page", route);
 

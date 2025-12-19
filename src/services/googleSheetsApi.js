@@ -3,31 +3,35 @@
  * Calls backend API instead of direct Google APIs
  */
 
-import axios from 'axios'
+import axios from "axios";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || process.env.VITE_API_BASE_URL || 'http://localhost:3001/api'
+  process.env.REACT_APP_API_BASE_URL ||
+  process.env.VITE_API_BASE_URL ||
+  "http://localhost:3001/api";
 
 class GoogleSheetsApiService {
   /**
    * Read data from sheet
    */
-  async readSheet(range = 'A1:Z1000', sheetId) {
+  async readSheet(range = "A1:Z1000", sheetId) {
     try {
-      const params = { range }
-      if (sheetId) params.sheetId = sheetId
+      const params = { range };
+      if (sheetId) params.sheetId = sheetId;
 
       const response = await axios.get(`${API_BASE_URL}/sheets/read`, {
         params,
-      })
+      });
       return {
         data: response.data.data,
         range: response.data.range,
         majorDimension: response.data.majorDimension,
-      }
+      };
     } catch (error) {
-      console.error('Error reading sheet:', error)
-      throw new Error(error.response?.data?.error || `Failed to read sheet: ${error.message}`)
+      console.error("Error reading sheet:", error);
+      throw new Error(
+        error.response?.data?.error || `Failed to read sheet: ${error.message}`,
+      );
     }
   }
 
@@ -40,11 +44,14 @@ class GoogleSheetsApiService {
         range,
         values,
         sheetId,
-      })
-      return response.data.data
+      });
+      return response.data.data;
     } catch (error) {
-      console.error('Error writing to sheet:', error)
-      throw new Error(error.response?.data?.error || `Failed to write to sheet: ${error.message}`)
+      console.error("Error writing to sheet:", error);
+      throw new Error(
+        error.response?.data?.error ||
+          `Failed to write to sheet: ${error.message}`,
+      );
     }
   }
 
@@ -57,11 +64,14 @@ class GoogleSheetsApiService {
         range,
         values,
         sheetId,
-      })
-      return response.data.data
+      });
+      return response.data.data;
     } catch (error) {
-      console.error('Error appending to sheet:', error)
-      throw new Error(error.response?.data?.error || `Failed to append to sheet: ${error.message}`)
+      console.error("Error appending to sheet:", error);
+      throw new Error(
+        error.response?.data?.error ||
+          `Failed to append to sheet: ${error.message}`,
+      );
     }
   }
 
@@ -72,15 +82,16 @@ class GoogleSheetsApiService {
     try {
       const url = sheetId
         ? `${API_BASE_URL}/sheets/metadata/${sheetId}`
-        : `${API_BASE_URL}/sheets/metadata`
+        : `${API_BASE_URL}/sheets/metadata`;
 
-      const response = await axios.get(url)
-      return response.data.data
+      const response = await axios.get(url);
+      return response.data.data;
     } catch (error) {
-      console.error('Error getting sheet metadata:', error)
+      console.error("Error getting sheet metadata:", error);
       throw new Error(
-        error.response?.data?.error || `Failed to get sheet metadata: ${error.message}`,
-      )
+        error.response?.data?.error ||
+          `Failed to get sheet metadata: ${error.message}`,
+      );
     }
   }
 
@@ -91,11 +102,14 @@ class GoogleSheetsApiService {
     try {
       const response = await axios.delete(`${API_BASE_URL}/sheets/clear`, {
         data: { range, sheetId },
-      })
-      return response.data.data
+      });
+      return response.data.data;
     } catch (error) {
-      console.error('Error clearing sheet:', error)
-      throw new Error(error.response?.data?.error || `Failed to clear sheet: ${error.message}`)
+      console.error("Error clearing sheet:", error);
+      throw new Error(
+        error.response?.data?.error ||
+          `Failed to clear sheet: ${error.message}`,
+      );
     }
   }
 
@@ -107,15 +121,17 @@ class GoogleSheetsApiService {
       const response = await axios.post(`${API_BASE_URL}/sheets/add-sheet`, {
         sheetName,
         sheetId,
-      })
-      return response.data.data
+      });
+      return response.data.data;
     } catch (error) {
-      console.error('Error adding sheet:', error)
-      throw new Error(error.response?.data?.error || `Failed to add sheet: ${error.message}`)
+      console.error("Error adding sheet:", error);
+      throw new Error(
+        error.response?.data?.error || `Failed to add sheet: ${error.message}`,
+      );
     }
   }
 }
 
 // Export singleton instance
-export const googleSheetsApiService = new GoogleSheetsApiService()
-export default googleSheetsApiService
+export const googleSheetsApiService = new GoogleSheetsApiService();
+export default googleSheetsApiService;

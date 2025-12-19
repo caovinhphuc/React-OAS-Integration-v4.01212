@@ -62,7 +62,7 @@ const Login = () => {
           values.email,
           values.password,
           values.fullName,
-          "user"
+          "user",
         );
         message.success("Đăng ký thành công! Vui lòng đăng nhập.");
         setIsRegister(false);
@@ -122,7 +122,7 @@ const Login = () => {
         } else {
           // No token or user in response
           throw new Error(
-            "Đăng nhập thất bại: Không nhận được thông tin người dùng"
+            "Đăng nhập thất bại: Không nhận được thông tin người dùng",
           );
         }
       }
@@ -139,7 +139,7 @@ const Login = () => {
     try {
       // SSO not implemented yet - show info message
       message.info(
-        `Đăng nhập ${provider} sẽ được triển khai trong phiên bản tiếp theo`
+        `Đăng nhập ${provider} sẽ được triển khai trong phiên bản tiếp theo`,
       );
       setSsoLoading(null);
 
@@ -271,7 +271,7 @@ const Login = () => {
                           return Promise.resolve();
                         }
                         return Promise.reject(
-                          new Error("Mật khẩu xác nhận không khớp!")
+                          new Error("Mật khẩu xác nhận không khớp!"),
                         );
                       },
                     }),

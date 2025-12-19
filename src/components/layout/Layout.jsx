@@ -63,7 +63,7 @@ const Layout = ({ children }) => {
             // Ignore errors
           }
           message.warning(
-            "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại."
+            "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
           );
           navigate("/login");
         }
@@ -119,7 +119,7 @@ const Layout = ({ children }) => {
       navigate("/login");
     } catch (error) {
       message.error(
-        "Đăng xuất thất bại: " + (error.message || "Unknown error")
+        "Đăng xuất thất bại: " + (error.message || "Unknown error"),
       );
       // Still navigate to login even if logout fails
       navigate("/login");
@@ -196,8 +196,8 @@ const Layout = ({ children }) => {
                     {user.role === "admin"
                       ? "Quản trị viên"
                       : user.role === "manager"
-                      ? "Quản lý"
-                      : "Người dùng"}
+                        ? "Quản lý"
+                        : "Người dùng"}
                   </span>
                 </div>
               </div>

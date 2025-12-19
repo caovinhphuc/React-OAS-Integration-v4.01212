@@ -1,8 +1,13 @@
-import ConnectionItem from './ConnectionItem'
+import ConnectionItem from "./ConnectionItem";
 
-const ConnectionSection = ({ connections = [], expanded = false, onToggle, className = '' }) => {
+const ConnectionSection = ({
+  connections = [],
+  expanded = false,
+  onToggle,
+  className = "",
+}) => {
   if (!connections || connections.length === 0) {
-    return null
+    return null;
   }
 
   return (
@@ -14,16 +19,16 @@ const ConnectionSection = ({ connections = [], expanded = false, onToggle, class
           role="button"
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault()
-              onToggle()
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onToggle();
             }
           }}
           aria-expanded={expanded}
-          aria-label={`${expanded ? 'Đóng' : 'Mở'} trạng thái kết nối`}
+          aria-label={`${expanded ? "Đóng" : "Mở"} trạng thái kết nối`}
         >
           <h4 className="connection-title">Trạng thái kết nối</h4>
-          <span className="expand-icon">{expanded ? '▼' : '▶'}</span>
+          <span className="expand-icon">{expanded ? "▼" : "▶"}</span>
         </div>
 
         {expanded && (
@@ -40,7 +45,7 @@ const ConnectionSection = ({ connections = [], expanded = false, onToggle, class
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ConnectionSection
+export default ConnectionSection;

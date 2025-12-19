@@ -3,36 +3,36 @@
  * Provides elegant loading placeholders
  */
 
-import React from 'react'
-import './Skeleton.css'
+import React from "react";
+import "./Skeleton.css";
 
 const Skeleton = ({
-  variant = 'text',
+  variant = "text",
   width,
   height,
   circle = false,
-  animation = 'wave',
-  className = '',
+  animation = "wave",
+  className = "",
   count = 1,
   ...props
 }) => {
   const skeletonClasses = [
-    'skeleton',
+    "skeleton",
     `skeleton--${variant}`,
     `skeleton--animation-${animation}`,
-    circle && 'skeleton--circle',
+    circle && "skeleton--circle",
     className,
   ]
     .filter(Boolean)
-    .join(' ')
+    .join(" ");
 
   const style = {
     width: width,
     height: height,
-  }
+  };
 
   if (count === 1) {
-    return <div className={skeletonClasses} style={style} {...props} />
+    return <div className={skeletonClasses} style={style} {...props} />;
   }
 
   return (
@@ -41,31 +41,66 @@ const Skeleton = ({
         <div key={index} className={skeletonClasses} style={style} {...props} />
       ))}
     </div>
-  )
-}
+  );
+};
 
 // Skeleton Avatar
-Skeleton.Avatar = ({ size = 48, className = '', ...props }) => (
-  <Skeleton variant="avatar" width={size} height={size} circle className={className} {...props} />
-)
+Skeleton.Avatar = ({ size = 48, className = "", ...props }) => (
+  <Skeleton
+    variant="avatar"
+    width={size}
+    height={size}
+    circle
+    className={className}
+    {...props}
+  />
+);
 
 // Skeleton Button
-Skeleton.Button = ({ width = 100, height = 40, className = '', ...props }) => (
-  <Skeleton variant="button" width={width} height={height} className={className} {...props} />
-)
+Skeleton.Button = ({ width = 100, height = 40, className = "", ...props }) => (
+  <Skeleton
+    variant="button"
+    width={width}
+    height={height}
+    className={className}
+    {...props}
+  />
+);
 
 // Skeleton Input
-Skeleton.Input = ({ width = '100%', height = 40, className = '', ...props }) => (
-  <Skeleton variant="input" width={width} height={height} className={className} {...props} />
-)
+Skeleton.Input = ({
+  width = "100%",
+  height = 40,
+  className = "",
+  ...props
+}) => (
+  <Skeleton
+    variant="input"
+    width={width}
+    height={height}
+    className={className}
+    {...props}
+  />
+);
 
 // Skeleton Image
-Skeleton.Image = ({ width = '100%', height = 200, className = '', ...props }) => (
-  <Skeleton variant="image" width={width} height={height} className={className} {...props} />
-)
+Skeleton.Image = ({
+  width = "100%",
+  height = 200,
+  className = "",
+  ...props
+}) => (
+  <Skeleton
+    variant="image"
+    width={width}
+    height={height}
+    className={className}
+    {...props}
+  />
+);
 
 // Skeleton Card
-Skeleton.Card = ({ className = '', ...props }) => (
+Skeleton.Card = ({ className = "", ...props }) => (
   <div className={`skeleton-card ${className}`} {...props}>
     <Skeleton.Image height={160} />
     <div className="skeleton-card__content">
@@ -77,10 +112,10 @@ Skeleton.Card = ({ className = '', ...props }) => (
       </div>
     </div>
   </div>
-)
+);
 
 // Skeleton List
-Skeleton.List = ({ rows = 5, className = '', ...props }) => (
+Skeleton.List = ({ rows = 5, className = "", ...props }) => (
   <div className={`skeleton-list ${className}`} {...props}>
     {Array.from({ length: rows }).map((_, index) => (
       <div key={index} className="skeleton-list__item">
@@ -92,10 +127,10 @@ Skeleton.List = ({ rows = 5, className = '', ...props }) => (
       </div>
     ))}
   </div>
-)
+);
 
 // Skeleton Table
-Skeleton.Table = ({ rows = 5, columns = 4, className = '', ...props }) => (
+Skeleton.Table = ({ rows = 5, columns = 4, className = "", ...props }) => (
   <div className={`skeleton-table ${className}`} {...props}>
     <div className="skeleton-table__header">
       {Array.from({ length: columns }).map((_, index) => (
@@ -110,6 +145,6 @@ Skeleton.Table = ({ rows = 5, columns = 4, className = '', ...props }) => (
       </div>
     ))}
   </div>
-)
+);
 
-export default Skeleton
+export default Skeleton;

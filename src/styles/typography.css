@@ -1,7 +1,7 @@
 /* 📝 Typography - Modern & Readable */
 
 /* Import Inter font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /* ========================================
    BASE TYPOGRAPHY
@@ -215,7 +215,11 @@ p {
 
 /* Gradient Text */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-400));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-600),
+    var(--color-primary-400)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -223,7 +227,11 @@ p {
 }
 
 .text-gradient-success {
-  background: linear-gradient(135deg, var(--color-success-600), var(--color-success-400));
+  background: linear-gradient(
+    135deg,
+    var(--color-success-600),
+    var(--color-success-400)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

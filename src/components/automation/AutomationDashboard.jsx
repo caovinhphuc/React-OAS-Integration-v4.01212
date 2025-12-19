@@ -178,8 +178,8 @@ const AutomationDashboard = () => {
               ...auto,
               status: auto.status === "active" ? "inactive" : "active",
             }
-          : auto
-      )
+          : auto,
+      ),
     );
   };
 
@@ -354,7 +354,7 @@ const AutomationDashboard = () => {
                     className="status-badge"
                     style={{
                       backgroundColor: getStatusColor(
-                        selectedAutomation.status
+                        selectedAutomation.status,
                       ),
                     }}
                   >
@@ -464,7 +464,7 @@ const AutomationDashboard = () => {
                   <div className="logs-container">
                     {executionLogs
                       .filter(
-                        (log) => log.automationId === selectedAutomation.id
+                        (log) => log.automationId === selectedAutomation.id,
                       )
                       .slice(0, 10)
                       .map((log) => (

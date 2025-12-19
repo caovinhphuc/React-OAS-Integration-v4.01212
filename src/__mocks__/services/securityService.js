@@ -39,7 +39,7 @@ export const registerUser = jest.fn(
         role: role,
       },
     });
-  }
+  },
 );
 
 // Mock logout function

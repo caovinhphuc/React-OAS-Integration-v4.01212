@@ -116,7 +116,7 @@ describe("Login Component", () => {
       expect(screen.getByLabelText("Họ tên")).toBeInTheDocument();
       expect(screen.getByLabelText("Xác nhận mật khẩu")).toBeInTheDocument();
       expect(
-        screen.getByRole("button", { name: /đăng ký/i })
+        screen.getByRole("button", { name: /đăng ký/i }),
       ).toBeInTheDocument();
     });
 
@@ -192,7 +192,7 @@ describe("Login Component", () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText("Mật khẩu phải có ít nhất 6 ký tự!")
+          screen.getByText("Mật khẩu phải có ít nhất 6 ký tự!"),
         ).toBeInTheDocument();
       });
     });
@@ -224,7 +224,7 @@ describe("Login Component", () => {
       await waitFor(() => {
         expect(loginUser).toHaveBeenCalledWith(
           "test@example.com",
-          "password123"
+          "password123",
         );
       });
     });
@@ -254,15 +254,15 @@ describe("Login Component", () => {
       await waitFor(() => {
         expect(localStorageMock.setItem).toHaveBeenCalledWith(
           "authToken",
-          "mock-jwt-token"
+          "mock-jwt-token",
         );
         expect(localStorageMock.setItem).toHaveBeenCalledWith(
           "token",
-          "mock-jwt-token"
+          "mock-jwt-token",
         );
         expect(localStorageMock.setItem).toHaveBeenCalledWith(
           "sessionId",
-          "mock-session-id"
+          "mock-session-id",
         );
       });
     });
@@ -379,7 +379,7 @@ describe("Login Component", () => {
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0]; // First password field
       const fullNameInput = screen.getByPlaceholderText(
-        "Nhập họ và tên của bạn"
+        "Nhập họ và tên của bạn",
       );
       const confirmPasswordInput = passwordInputs[1]; // Confirm password field
 
@@ -399,7 +399,7 @@ describe("Login Component", () => {
           "new@example.com",
           "password123",
           "New User",
-          "user"
+          "user",
         );
       });
     });
@@ -427,7 +427,7 @@ describe("Login Component", () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText("Mật khẩu xác nhận không khớp!")
+          screen.getByText("Mật khẩu xác nhận không khớp!"),
         ).toBeInTheDocument();
       });
     });
@@ -444,7 +444,7 @@ describe("Login Component", () => {
       // Should show info message via antd message API
       await waitFor(() => {
         expect(mockMessage.info).toHaveBeenCalledWith(
-          expect.stringContaining("google")
+          expect.stringContaining("google"),
         );
       });
     });
@@ -492,9 +492,9 @@ describe("Login Component", () => {
                   user: { id: "1", email: "test@example.com" },
                   sessionId: "session",
                 }),
-              100
-            )
-          )
+              100,
+            ),
+          ),
       );
 
       const { container } = renderWithProviders(<Login />);
@@ -515,7 +515,7 @@ describe("Login Component", () => {
       await waitFor(() => {
         expect(loginUser).toHaveBeenCalledWith(
           "test@example.com",
-          "password123"
+          "password123",
         );
       });
     });
@@ -539,7 +539,7 @@ describe("Login Component", () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText(/email hoặc mật khẩu không đúng/i)
+          screen.getByText(/email hoặc mật khẩu không đúng/i),
         ).toBeInTheDocument();
       });
     });

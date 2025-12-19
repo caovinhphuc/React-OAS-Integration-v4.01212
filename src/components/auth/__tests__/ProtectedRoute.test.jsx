@@ -109,7 +109,7 @@ describe("ProtectedRoute Component", () => {
       Promise.resolve({
         ok: true,
         json: async () => ({ valid: true, success: true }),
-      })
+      }),
     );
   });
 
@@ -133,7 +133,7 @@ describe("ProtectedRoute Component", () => {
 
       expect(screen.getByTestId("loading")).toBeInTheDocument();
       expect(
-        screen.getByText(/Đang kiểm tra phiên đăng nhập/i)
+        screen.getByText(/Đang kiểm tra phiên đăng nhập/i),
       ).toBeInTheDocument();
     });
   });
@@ -161,7 +161,7 @@ describe("ProtectedRoute Component", () => {
       // Should not render protected content (Navigate component redirects)
       await waitFor(() => {
         expect(
-          screen.queryByTestId("protected-content")
+          screen.queryByTestId("protected-content"),
         ).not.toBeInTheDocument();
       });
     });
@@ -188,7 +188,7 @@ describe("ProtectedRoute Component", () => {
       // Protected content should not be rendered (Navigate redirects)
       await waitFor(() => {
         expect(
-          screen.queryByTestId("protected-content")
+          screen.queryByTestId("protected-content"),
         ).not.toBeInTheDocument();
       });
     });
@@ -261,7 +261,7 @@ describe("ProtectedRoute Component", () => {
           headers: expect.objectContaining({
             Authorization: "Bearer valid-token",
           }),
-        })
+        }),
       );
 
       // Wait for component to finish checking and render children
@@ -269,7 +269,7 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(screen.getByTestId("protected-content")).toBeInTheDocument();
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
     });
 
@@ -300,16 +300,16 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(logout).toHaveBeenCalledWith(false);
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
 
       await waitFor(
         () => {
           expect(mockMessage.warning).toHaveBeenCalledWith(
-            "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại."
+            "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
           );
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
 
       // Should clear tokens
@@ -345,18 +345,18 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(global.fetch).toHaveBeenCalled();
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
 
       await waitFor(
         () => {
           expect(mockLogoutThunk).toHaveBeenCalledWith(false);
         },
-        { timeout: 2000 }
+        { timeout: 2000 },
       );
 
       expect(mockMessage.warning).toHaveBeenCalledWith(
-        "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại."
+        "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
       );
 
       expect(localStorageMock.removeItem).toHaveBeenCalledWith("authToken");
@@ -388,7 +388,7 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(screen.getByTestId("protected-content")).toBeInTheDocument();
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
 
       expect(logout).not.toHaveBeenCalled();
@@ -420,14 +420,14 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(global.fetch).toHaveBeenCalled();
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
 
       await waitFor(
         () => {
           expect(mockLogoutThunk).toHaveBeenCalledWith(false);
         },
-        { timeout: 2000 }
+        { timeout: 2000 },
       );
     });
   });
@@ -462,7 +462,7 @@ describe("ProtectedRoute Component", () => {
       // Should still call verify API
       expect(global.fetch).toHaveBeenCalledWith(
         expect.stringContaining("/api/auth/verify"),
-        expect.any(Object)
+        expect.any(Object),
       );
     });
 
@@ -515,7 +515,7 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(screen.getByTestId("protected-content")).toBeInTheDocument();
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
 
       // Should not call verify API when no sessionId
@@ -638,7 +638,7 @@ describe("ProtectedRoute Component", () => {
         <ProtectedRoute>{mockChildren}</ProtectedRoute>,
         {
           initialState,
-        }
+        },
       );
 
       const clearIntervalSpy = jest.spyOn(global, "clearInterval");

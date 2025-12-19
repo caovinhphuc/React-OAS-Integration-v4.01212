@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, useEffect, useCallback } from "react";
+import { useSelector } from "react-redux";
 import {
   AreaChart,
   Area,
@@ -10,36 +10,36 @@ import {
   ResponsiveContainer,
   BarChart,
   Bar,
-} from 'recharts'
-import Loading from '../Common/Loading'
-import { aiService } from '../../services/aiService'
-import './AIDashboard.css'
+} from "recharts";
+import Loading from "../Common/Loading";
+import { aiService } from "../../services/aiService";
+import "./AIDashboard.css";
 
 const AIDashboard = () => {
-  const { sheets } = useSelector((state) => state.sheets)
-  const { files } = useSelector((state) => state.drive)
-  const { alerts } = useSelector((state) => state.alerts)
+  const { sheets } = useSelector((state) => state.sheets);
+  const { files } = useSelector((state) => state.drive);
+  const { alerts } = useSelector((state) => state.alerts);
 
-  const [aiInsights, setAiInsights] = useState([])
-  const [predictions, setPredictions] = useState({})
-  const [recommendations, setRecommendations] = useState([])
-  const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [selectedTimeframe, setSelectedTimeframe] = useState('7d')
-  const [error, setError] = useState(null)
-  const [predictionChartData, setPredictionChartData] = useState([])
-  const [trendChartData, setTrendChartData] = useState([])
-  const [autoRefresh, setAutoRefresh] = useState(false)
+  const [aiInsights, setAiInsights] = useState([]);
+  const [predictions, setPredictions] = useState({});
+  const [recommendations, setRecommendations] = useState([]);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [selectedTimeframe, setSelectedTimeframe] = useState("7d");
+  const [error, setError] = useState(null);
+  const [predictionChartData, setPredictionChartData] = useState([]);
+  const [trendChartData, setTrendChartData] = useState([]);
+  const [autoRefresh, setAutoRefresh] = useState(false);
 
   // AI Chat state
-  const [chatMessages, setChatMessages] = useState([])
-  const [chatInput, setChatInput] = useState('')
-  const [isChatting, setIsChatting] = useState(false)
-  const [showChat, setShowChat] = useState(false)
+  const [chatMessages, setChatMessages] = useState([]);
+  const [chatInput, setChatInput] = useState("");
+  const [isChatting, setIsChatting] = useState(false);
+  const [showChat, setShowChat] = useState(false);
 
   // Real AI analysis using aiService
   const analyzeData = useCallback(async () => {
-    setIsAnalyzing(true)
-    setError(null)
+    setIsAnalyzing(true);
+    setError(null);
 
     try {
       // Prepare data for analysis
@@ -48,29 +48,30 @@ const AIDashboard = () => {
         files: files.length,
         alerts: alerts.length,
         timestamp: new Date().toISOString(),
-      }
+      };
 
       // Call AI service
-      const [insightsResult, predictionsResult, recommendationsResult] = await Promise.all([
-        aiService.analyzeData(analysisData, selectedTimeframe),
-        aiService.getPredictions(
-          {
+      const [insightsResult, predictionsResult, recommendationsResult] =
+        await Promise.all([
+          aiService.analyzeData(analysisData, selectedTimeframe),
+          aiService.getPredictions(
+            {
+              sheets: sheets.length,
+              files: files.length,
+              alerts: alerts.length,
+            },
+            selectedTimeframe,
+          ),
+          aiService.getRecommendations({
             sheets: sheets.length,
             files: files.length,
             alerts: alerts.length,
-          },
-          selectedTimeframe,
-        ),
-        aiService.getRecommendations({
-          sheets: sheets.length,
-          files: files.length,
-          alerts: alerts.length,
-        }),
-      ])
+          }),
+        ]);
 
-      setAiInsights(insightsResult.insights || [])
-      setPredictions(predictionsResult.predictions || {})
-      setRecommendations(recommendationsResult.recommendations || [])
+      setAiInsights(insightsResult.insights || []);
+      setPredictions(predictionsResult.predictions || {});
+      setRecommendations(recommendationsResult.recommendations || []);
 
       // Generate chart data for predictions
       if (predictionsResult.predictions) {
@@ -78,70 +79,70 @@ const AIDashboard = () => {
           sheets: sheets.length,
           files: files.length,
           alerts: alerts.length,
-        }
-        const nextWeek = predictionsResult.predictions.nextWeek || {}
-        const nextMonth = predictionsResult.predictions.nextMonth || {}
+        };
+        const nextWeek = predictionsResult.predictions.nextWeek || {};
+        const nextMonth = predictionsResult.predictions.nextMonth || {};
 
         setPredictionChartData([
           {
-            period: 'Hiện tại',
+            period: "Hiện tại",
             sheets: current.sheets,
             files: current.files,
             alerts: current.alerts,
           },
           {
-            period: 'Tuần tới',
+            period: "Tuần tới",
             sheets: nextWeek.sheets || 0,
             files: nextWeek.files || 0,
             alerts: nextWeek.alerts || 0,
           },
           {
-            period: 'Tháng tới',
+            period: "Tháng tới",
             sheets: nextMonth.sheets || 0,
             files: nextMonth.files || 0,
             alerts: nextMonth.alerts || 0,
           },
-        ])
+        ]);
 
         // Generate trend data (last 7 days projection)
-        const trendData = []
-        const days = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']
+        const trendData = [];
+        const days = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
         for (let i = 0; i < 7; i++) {
-          const growth = 1 + (i / 7) * 0.15 // 15% growth over week
+          const growth = 1 + (i / 7) * 0.15; // 15% growth over week
           trendData.push({
             day: days[i],
             sheets: Math.round(current.sheets * growth),
             files: Math.round(current.files * growth * 0.9),
             alerts: Math.max(0, Math.round(current.alerts * (1 - i * 0.05))),
-          })
+          });
         }
-        setTrendChartData(trendData)
+        setTrendChartData(trendData);
       }
     } catch (err) {
-      console.error('AI Analysis Error:', err)
-      setError('Không thể phân tích dữ liệu. Vui lòng thử lại.')
+      console.error("AI Analysis Error:", err);
+      setError("Không thể phân tích dữ liệu. Vui lòng thử lại.");
 
       // Fallback to sample data if API fails
       const fallbackInsights = [
         {
           id: 1,
-          type: 'trend',
-          title: '📈 Xu hướng tăng trưởng',
-          description: 'Dữ liệu Google Sheets tăng 23% trong 7 ngày qua',
+          type: "trend",
+          title: "📈 Xu hướng tăng trưởng",
+          description: "Dữ liệu Google Sheets tăng 23% trong 7 ngày qua",
           confidence: 0.87,
-          impact: 'high',
-          action: 'Tăng cường backup và monitoring',
+          impact: "high",
+          action: "Tăng cường backup và monitoring",
         },
         {
           id: 2,
-          type: 'anomaly',
-          title: '⚠️ Phát hiện bất thường',
-          description: 'Hoạt động upload Drive tăng đột biến 150% vào 14:30',
+          type: "anomaly",
+          title: "⚠️ Phát hiện bất thường",
+          description: "Hoạt động upload Drive tăng đột biến 150% vào 14:30",
           confidence: 0.92,
-          impact: 'medium',
-          action: 'Kiểm tra và xác minh hoạt động',
+          impact: "medium",
+          action: "Kiểm tra và xác minh hoạt động",
         },
-      ]
+      ];
 
       const fallbackPredictions = {
         nextWeek: {
@@ -154,145 +155,146 @@ const AIDashboard = () => {
           files: Math.round(files.length * 1.25),
           alerts: Math.max(0, Math.round(alerts.length * 0.8)),
         },
-      }
+      };
 
       const fallbackRecommendations = [
         {
           id: 1,
-          category: 'performance',
-          title: 'Tối ưu hóa Google Sheets API',
-          description: 'Sử dụng batch requests để giảm 40% thời gian xử lý',
-          priority: 'high',
-          effort: 'medium',
-          impact: 'high',
+          category: "performance",
+          title: "Tối ưu hóa Google Sheets API",
+          description: "Sử dụng batch requests để giảm 40% thời gian xử lý",
+          priority: "high",
+          effort: "medium",
+          impact: "high",
         },
-      ]
+      ];
 
-      setAiInsights(fallbackInsights)
-      setPredictions(fallbackPredictions)
-      setRecommendations(fallbackRecommendations)
+      setAiInsights(fallbackInsights);
+      setPredictions(fallbackPredictions);
+      setRecommendations(fallbackRecommendations);
     } finally {
-      setIsAnalyzing(false)
+      setIsAnalyzing(false);
     }
-  }, [sheets.length, files.length, alerts.length, selectedTimeframe])
+  }, [sheets.length, files.length, alerts.length, selectedTimeframe]);
 
   // AI Chat handler
   const handleChatSend = async () => {
-    if (!chatInput.trim() || isChatting) return
+    if (!chatInput.trim() || isChatting) return;
 
     const userMessage = {
       id: Date.now(),
-      type: 'user',
+      type: "user",
       message: chatInput,
       timestamp: new Date().toISOString(),
-    }
+    };
 
-    setChatMessages((prev) => [...prev, userMessage])
-    setChatInput('')
-    setIsChatting(true)
+    setChatMessages((prev) => [...prev, userMessage]);
+    setChatInput("");
+    setIsChatting(true);
 
     try {
       const context = {
         sheets: sheets.length,
         files: files.length,
         alerts: alerts.length,
-      }
+      };
 
-      const response = await aiService.chat(chatInput, context)
+      const response = await aiService.chat(chatInput, context);
 
       const aiMessage = {
         id: Date.now() + 1,
-        type: 'ai',
+        type: "ai",
         message: response.response,
         confidence: response.confidence,
         suggestions: response.suggestions || [],
         timestamp: new Date().toISOString(),
-      }
+      };
 
-      setChatMessages((prev) => [...prev, aiMessage])
+      setChatMessages((prev) => [...prev, aiMessage]);
     } catch (err) {
-      console.error('AI Chat Error:', err)
+      console.error("AI Chat Error:", err);
       const errorMessage = {
         id: Date.now() + 1,
-        type: 'ai',
-        message: 'Xin lỗi, tôi không thể trả lời ngay bây giờ. Vui lòng thử lại sau.',
+        type: "ai",
+        message:
+          "Xin lỗi, tôi không thể trả lời ngay bây giờ. Vui lòng thử lại sau.",
         timestamp: new Date().toISOString(),
-      }
-      setChatMessages((prev) => [...prev, errorMessage])
+      };
+      setChatMessages((prev) => [...prev, errorMessage]);
     } finally {
-      setIsChatting(false)
+      setIsChatting(false);
     }
-  }
+  };
 
   useEffect(() => {
-    analyzeData()
-  }, [analyzeData])
+    analyzeData();
+  }, [analyzeData]);
 
   // Auto-refresh analysis
   useEffect(() => {
     if (autoRefresh) {
       const interval = setInterval(() => {
-        analyzeData()
-      }, 60000) // Refresh every 60 seconds
+        analyzeData();
+      }, 60000); // Refresh every 60 seconds
 
-      return () => clearInterval(interval)
+      return () => clearInterval(interval);
     }
-  }, [autoRefresh, analyzeData])
+  }, [autoRefresh, analyzeData]);
 
   // Handle recommendation implementation
   const handleImplementRecommendation = async (recId) => {
-    const recommendation = recommendations.find((r) => r.id === recId)
-    if (!recommendation) return
+    const recommendation = recommendations.find((r) => r.id === recId);
+    if (!recommendation) return;
 
     // Show confirmation
     if (window.confirm(`Bạn có muốn triển khai: ${recommendation.title}?`)) {
       // Here you can add actual implementation logic
-      console.log('Implementing recommendation:', recommendation)
+      console.log("Implementing recommendation:", recommendation);
       // TODO: Add actual implementation logic
-      alert(`Đã lên lịch triển khai: ${recommendation.title}`)
+      alert(`Đã lên lịch triển khai: ${recommendation.title}`);
     }
-  }
+  };
 
   const getInsightIcon = (type) => {
     switch (type) {
-      case 'trend':
-        return '📈'
-      case 'anomaly':
-        return '⚠️'
-      case 'optimization':
-        return '⚡'
-      case 'security':
-        return '🔒'
+      case "trend":
+        return "📈";
+      case "anomaly":
+        return "⚠️";
+      case "optimization":
+        return "⚡";
+      case "security":
+        return "🔒";
       default:
-        return '🤖'
+        return "🤖";
     }
-  }
+  };
 
   const getImpactColor = (impact) => {
     switch (impact) {
-      case 'high':
-        return '#ef4444'
-      case 'medium':
-        return '#f59e0b'
-      case 'low':
-        return '#10b981'
+      case "high":
+        return "#ef4444";
+      case "medium":
+        return "#f59e0b";
+      case "low":
+        return "#10b981";
       default:
-        return '#6b7280'
+        return "#6b7280";
     }
-  }
+  };
 
   const getPriorityColor = (priority) => {
     switch (priority) {
-      case 'high':
-        return '#ef4444'
-      case 'medium':
-        return '#f59e0b'
-      case 'low':
-        return '#10b981'
+      case "high":
+        return "#ef4444";
+      case "medium":
+        return "#f59e0b";
+      case "low":
+        return "#10b981";
       default:
-        return '#6b7280'
+        return "#6b7280";
     }
-  }
+  };
 
   return (
     <div className="ai-dashboard ai-dashboard-container">
@@ -309,17 +311,24 @@ const AIDashboard = () => {
             <option value="30d">30 ngày</option>
             <option value="90d">90 ngày</option>
           </select>
-          <button className="analyze-btn" onClick={analyzeData} disabled={isAnalyzing}>
-            {isAnalyzing ? '🔄 Đang phân tích...' : '🔍 Phân tích lại'}
-          </button>
-          <button className="chat-toggle-btn" onClick={() => setShowChat(!showChat)}>
-            {showChat ? '💬 Ẩn Chat' : '💬 AI Chat'}
+          <button
+            className="analyze-btn"
+            onClick={analyzeData}
+            disabled={isAnalyzing}
+          >
+            {isAnalyzing ? "🔄 Đang phân tích..." : "🔍 Phân tích lại"}
           </button>
           <button
-            className={`auto-refresh-btn ${autoRefresh ? 'active' : ''}`}
+            className="chat-toggle-btn"
+            onClick={() => setShowChat(!showChat)}
+          >
+            {showChat ? "💬 Ẩn Chat" : "💬 AI Chat"}
+          </button>
+          <button
+            className={`auto-refresh-btn ${autoRefresh ? "active" : ""}`}
             onClick={() => setAutoRefresh(!autoRefresh)}
           >
-            {autoRefresh ? '⏸️ Tắt Auto' : '▶️ Bật Auto'}
+            {autoRefresh ? "⏸️ Tắt Auto" : "▶️ Bật Auto"}
           </button>
         </div>
       </div>
@@ -336,7 +345,9 @@ const AIDashboard = () => {
             {aiInsights.map((insight) => (
               <div key={insight.id} className="insight-card">
                 <div className="insight-header">
-                  <span className="insight-icon">{getInsightIcon(insight.type)}</span>
+                  <span className="insight-icon">
+                    {getInsightIcon(insight.type)}
+                  </span>
                   <span className="insight-title">{insight.title}</span>
                   <span
                     className="confidence-badge"
@@ -425,12 +436,15 @@ const AIDashboard = () => {
               <div className="prediction-stats">
                 <div className="stat">
                   <span className="label">Sheets:</span>
-                  <span className="value">{predictions.nextWeek?.sheets || 0}</span>
+                  <span className="value">
+                    {predictions.nextWeek?.sheets || 0}
+                  </span>
                   {sheets.length > 0 && (
                     <span className="change">
-                      ({predictions.nextWeek?.sheets > sheets.length ? '+' : ''}
+                      ({predictions.nextWeek?.sheets > sheets.length ? "+" : ""}
                       {(
-                        ((predictions.nextWeek?.sheets - sheets.length) / sheets.length) *
+                        ((predictions.nextWeek?.sheets - sheets.length) /
+                          sheets.length) *
                         100
                       ).toFixed(1)}
                       %)
@@ -439,12 +453,15 @@ const AIDashboard = () => {
                 </div>
                 <div className="stat">
                   <span className="label">Files:</span>
-                  <span className="value">{predictions.nextWeek?.files || 0}</span>
+                  <span className="value">
+                    {predictions.nextWeek?.files || 0}
+                  </span>
                   {files.length > 0 && (
                     <span className="change">
-                      ({predictions.nextWeek?.files > files.length ? '+' : ''}
+                      ({predictions.nextWeek?.files > files.length ? "+" : ""}
                       {(
-                        ((predictions.nextWeek?.files - files.length) / files.length) *
+                        ((predictions.nextWeek?.files - files.length) /
+                          files.length) *
                         100
                       ).toFixed(1)}
                       %)
@@ -453,7 +470,9 @@ const AIDashboard = () => {
                 </div>
                 <div className="stat">
                   <span className="label">Alerts:</span>
-                  <span className="value">{predictions.nextWeek?.alerts || 0}</span>
+                  <span className="value">
+                    {predictions.nextWeek?.alerts || 0}
+                  </span>
                 </div>
               </div>
             </div>
@@ -462,12 +481,16 @@ const AIDashboard = () => {
               <div className="prediction-stats">
                 <div className="stat">
                   <span className="label">Sheets:</span>
-                  <span className="value">{predictions.nextMonth?.sheets || 0}</span>
+                  <span className="value">
+                    {predictions.nextMonth?.sheets || 0}
+                  </span>
                   {sheets.length > 0 && (
                     <span className="change">
-                      ({predictions.nextMonth?.sheets > sheets.length ? '+' : ''}
+                      (
+                      {predictions.nextMonth?.sheets > sheets.length ? "+" : ""}
                       {(
-                        ((predictions.nextMonth?.sheets - sheets.length) / sheets.length) *
+                        ((predictions.nextMonth?.sheets - sheets.length) /
+                          sheets.length) *
                         100
                       ).toFixed(1)}
                       %)
@@ -476,12 +499,15 @@ const AIDashboard = () => {
                 </div>
                 <div className="stat">
                   <span className="label">Files:</span>
-                  <span className="value">{predictions.nextMonth?.files || 0}</span>
+                  <span className="value">
+                    {predictions.nextMonth?.files || 0}
+                  </span>
                   {files.length > 0 && (
                     <span className="change">
-                      ({predictions.nextMonth?.files > files.length ? '+' : ''}
+                      ({predictions.nextMonth?.files > files.length ? "+" : ""}
                       {(
-                        ((predictions.nextMonth?.files - files.length) / files.length) *
+                        ((predictions.nextMonth?.files - files.length) /
+                          files.length) *
                         100
                       ).toFixed(1)}
                       %)
@@ -490,7 +516,9 @@ const AIDashboard = () => {
                 </div>
                 <div className="stat">
                   <span className="label">Alerts:</span>
-                  <span className="value">{predictions.nextMonth?.alerts || 0}</span>
+                  <span className="value">
+                    {predictions.nextMonth?.alerts || 0}
+                  </span>
                 </div>
               </div>
             </div>
@@ -521,7 +549,9 @@ const AIDashboard = () => {
                   className="implement-btn"
                   onClick={() => handleImplementRecommendation(rec.id)}
                 >
-                  {rec.status === 'implemented' ? '✅ Đã triển khai' : '🚀 Triển khai'}
+                  {rec.status === "implemented"
+                    ? "✅ Đã triển khai"
+                    : "🚀 Triển khai"}
                 </button>
               </div>
             ))}
@@ -556,7 +586,10 @@ const AIDashboard = () => {
         <div className="ai-chat-panel">
           <div className="chat-header">
             <h3>💬 AI Assistant</h3>
-            <button className="close-chat-btn" onClick={() => setShowChat(false)}>
+            <button
+              className="close-chat-btn"
+              onClick={() => setShowChat(false)}
+            >
               ✕
             </button>
           </div>
@@ -583,7 +616,9 @@ const AIDashboard = () => {
                       ))}
                     </div>
                   )}
-                  <div className="message-time">{new Date(msg.timestamp).toLocaleTimeString()}</div>
+                  <div className="message-time">
+                    {new Date(msg.timestamp).toLocaleTimeString()}
+                  </div>
                 </div>
               ))
             )}
@@ -595,7 +630,7 @@ const AIDashboard = () => {
               placeholder="Nhập câu hỏi của bạn..."
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleChatSend()}
+              onKeyPress={(e) => e.key === "Enter" && handleChatSend()}
               disabled={isChatting}
             />
             <button
@@ -603,13 +638,13 @@ const AIDashboard = () => {
               onClick={handleChatSend}
               disabled={isChatting || !chatInput.trim()}
             >
-              {isChatting ? '⏳' : '📤'}
+              {isChatting ? "⏳" : "📤"}
             </button>
           </div>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default AIDashboard
+export default AIDashboard;

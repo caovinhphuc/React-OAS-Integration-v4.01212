@@ -4,9 +4,9 @@
    ======================================== */
 
 /* Import Design System */
-@import './styles/design-tokens.css';
-@import './styles/animations.css';
-@import './styles/typography.css';
+@import "./styles/design-tokens.css";
+@import "./styles/animations.css";
+@import "./styles/typography.css";
 
 /* CSS Reset & Base Styles */
 *,
@@ -51,7 +51,7 @@ body {
   height: 100vh;
   background: #f8fafc;
   font-family:
-    'Inter',
+    "Inter",
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;

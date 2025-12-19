@@ -88,8 +88,8 @@ const GoogleSheetsIntegration = () => {
     if (searchTerm) {
       const filtered = sheetContent.filter((row) =>
         row.some((cell) =>
-          cell.toString().toLowerCase().includes(searchTerm.toLowerCase())
-        )
+          cell.toString().toLowerCase().includes(searchTerm.toLowerCase()),
+        ),
       );
       setFilteredData(filtered);
     } else {
@@ -162,13 +162,12 @@ const GoogleSheetsIntegration = () => {
       // Call API to create new sheet
       const newSheet = await googleSheetsApiService.addSheet(
         newSheetName.trim(),
-        spreadsheetId
+        spreadsheetId,
       );
 
       // Reload metadata to show the new sheet
-      const metadata = await googleSheetsApiService.getSheetMetadata(
-        spreadsheetId
-      );
+      const metadata =
+        await googleSheetsApiService.getSheetMetadata(spreadsheetId);
       const spreadsheet = {
         id: spreadsheetId,
         title: metadata.title,
@@ -183,7 +182,7 @@ const GoogleSheetsIntegration = () => {
 
       // Select the newly created sheet
       const createdSheet = spreadsheet.sheets.find(
-        (s) => s.id === newSheet.sheetId
+        (s) => s.id === newSheet.sheetId,
       );
       if (createdSheet) {
         setSelectedSheet(createdSheet);
@@ -223,7 +222,7 @@ const GoogleSheetsIntegration = () => {
     if (!selectedSheet) return;
 
     const updatedContent = sheetContent.map((row) =>
-      row.filter((_, index) => index !== columnIndex)
+      row.filter((_, index) => index !== columnIndex),
     );
 
     setSheetContent(updatedContent);
@@ -240,7 +239,7 @@ const GoogleSheetsIntegration = () => {
   // eslint-disable-next-line no-unused-vars
   const handleDeleteRow = (rowIndex) => {
     const updatedContent = sheetContent.filter(
-      (_, index) => index !== rowIndex
+      (_, index) => index !== rowIndex,
     );
     setSheetContent(updatedContent);
   };
@@ -248,7 +247,7 @@ const GoogleSheetsIntegration = () => {
   // eslint-disable-next-line no-unused-vars
   const handleDeleteEmptyRows = () => {
     const updatedContent = sheetContent.filter((row) =>
-      row.some((cell) => cell.toString().trim() !== "")
+      row.some((cell) => cell.toString().trim() !== ""),
     );
     setSheetContent(updatedContent);
   };
@@ -258,7 +257,7 @@ const GoogleSheetsIntegration = () => {
     setSelectedRows((prev) =>
       prev.includes(rowIndex)
         ? prev.filter((index) => index !== rowIndex)
-        : [...prev, rowIndex]
+        : [...prev, rowIndex],
     );
   };
 
@@ -266,14 +265,14 @@ const GoogleSheetsIntegration = () => {
   const handleSelectAllRows = () => {
     const allRowIndices = sheetContent.map((_, index) => index);
     setSelectedRows(
-      selectedRows.length === allRowIndices.length ? [] : allRowIndices
+      selectedRows.length === allRowIndices.length ? [] : allRowIndices,
     );
   };
 
   // eslint-disable-next-line no-unused-vars
   const handleDeleteSelectedRows = () => {
     const updatedContent = sheetContent.filter(
-      (_, index) => !selectedRows.includes(index)
+      (_, index) => !selectedRows.includes(index),
     );
     setSheetContent(updatedContent);
     setSelectedRows([]);
@@ -550,7 +549,7 @@ const GoogleSheetsIntegration = () => {
                                     handleCellEdit(
                                       rowIndex + 1,
                                       colIndex,
-                                      e.target.value
+                                      e.target.value,
                                     )
                                   }
                                   className="cell-input"

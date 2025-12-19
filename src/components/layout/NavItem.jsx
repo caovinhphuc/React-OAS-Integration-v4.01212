@@ -1,24 +1,33 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-const NavItem = ({ item, isActive, collapsed, onClick, className = '', isChild = false }) => {
-  const { path, icon, label, description } = item
+const NavItem = ({
+  item,
+  isActive,
+  collapsed,
+  onClick,
+  className = "",
+  isChild = false,
+}) => {
+  const { path, icon, label, description } = item;
 
   const navItemClasses = `
     nav-item
-    ${isChild ? 'nav-child' : ''}
-    ${isActive ? 'active' : ''}
+    ${isChild ? "nav-child" : ""}
+    ${isActive ? "active" : ""}
     ${className}
-  `.trim()
+  `.trim();
 
   const content = (
     <>
       <span className="nav-icon">{icon}</span>
       <div className="nav-content">
         <span className="nav-label">{label}</span>
-        {!collapsed && description && <span className="nav-description">{description}</span>}
+        {!collapsed && description && (
+          <span className="nav-description">{description}</span>
+        )}
       </div>
     </>
-  )
+  );
 
   // Nếu có onClick (cho static items), render div
   if (onClick) {
@@ -26,7 +35,7 @@ const NavItem = ({ item, isActive, collapsed, onClick, className = '', isChild =
       <div className={navItemClasses} onClick={onClick}>
         {content}
       </div>
-    )
+    );
   }
 
   // Nếu có path (cho navigation items), render Link
@@ -35,11 +44,11 @@ const NavItem = ({ item, isActive, collapsed, onClick, className = '', isChild =
       <Link to={path} className={navItemClasses}>
         {content}
       </Link>
-    )
+    );
   }
 
   // Fallback: render div
-  return <div className={navItemClasses}>{content}</div>
-}
+  return <div className={navItemClasses}>{content}</div>;
+};
 
-export default NavItem
+export default NavItem;

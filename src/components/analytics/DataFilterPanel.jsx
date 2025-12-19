@@ -4,38 +4,52 @@
  * Advanced filtering và search functionality
  */
 
-import React from 'react'
-import { Input, Select, DatePicker, Space, Button, Typography, Row, Col } from 'antd'
-import { SearchOutlined, FilterOutlined, ClearOutlined } from '@ant-design/icons'
+import React from "react";
+import {
+  Input,
+  Select,
+  DatePicker,
+  Space,
+  Button,
+  Typography,
+  Row,
+  Col,
+} from "antd";
+import {
+  SearchOutlined,
+  FilterOutlined,
+  ClearOutlined,
+} from "@ant-design/icons";
 
-const { Text } = Typography
-const { RangePicker } = DatePicker
-const { Option } = Select
+const { Text } = Typography;
+const { RangePicker } = DatePicker;
+const { Option } = Select;
 
 export const DataFilterPanel = ({ filters, onFiltersChange, onSearch }) => {
   const handleSearch = (value) => {
-    onSearch(value)
-    onFiltersChange((prev) => ({ ...prev, search: value }))
-  }
+    onSearch(value);
+    onFiltersChange((prev) => ({ ...prev, search: value }));
+  };
 
   const handleFilterChange = (key, value) => {
-    onFiltersChange((prev) => ({ ...prev, [key]: value }))
-  }
+    onFiltersChange((prev) => ({ ...prev, [key]: value }));
+  };
 
   const handleClearFilters = () => {
     onFiltersChange({
-      search: '',
+      search: "",
       dateRange: null,
       chartType: null,
-    })
-  }
+    });
+  };
 
-  const hasActiveFilters = filters.search || filters.dateRange || filters.chartType
+  const hasActiveFilters =
+    filters.search || filters.dateRange || filters.chartType;
 
   return (
     <Row gutter={[16, 16]} align="middle">
       <Col xs={24} sm={12} md={8}>
-        <Space direction="vertical" style={{ width: '100%' }} size="small">
+        <Space direction="vertical" style={{ width: "100%" }} size="small">
           <Text strong>Search</Text>
           <Input
             placeholder="Search widgets by title..."
@@ -48,13 +62,13 @@ export const DataFilterPanel = ({ filters, onFiltersChange, onSearch }) => {
       </Col>
 
       <Col xs={24} sm={12} md={6}>
-        <Space direction="vertical" style={{ width: '100%' }} size="small">
+        <Space direction="vertical" style={{ width: "100%" }} size="small">
           <Text strong>Chart Type</Text>
           <Select
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
             placeholder="All Types"
             value={filters.chartType}
-            onChange={(value) => handleFilterChange('chartType', value)}
+            onChange={(value) => handleFilterChange("chartType", value)}
             allowClear
           >
             <Option value="line">Line Chart</Option>
@@ -67,12 +81,12 @@ export const DataFilterPanel = ({ filters, onFiltersChange, onSearch }) => {
       </Col>
 
       <Col xs={24} sm={12} md={8}>
-        <Space direction="vertical" style={{ width: '100%' }} size="small">
+        <Space direction="vertical" style={{ width: "100%" }} size="small">
           <Text strong>Date Range</Text>
           <RangePicker
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
             value={filters.dateRange}
-            onChange={(dates) => handleFilterChange('dateRange', dates)}
+            onChange={(dates) => handleFilterChange("dateRange", dates)}
             format="YYYY-MM-DD"
           />
         </Space>
@@ -84,14 +98,14 @@ export const DataFilterPanel = ({ filters, onFiltersChange, onSearch }) => {
             icon={<ClearOutlined />}
             onClick={handleClearFilters}
             danger
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
           >
             Clear
           </Button>
         )}
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default DataFilterPanel
+export default DataFilterPanel;

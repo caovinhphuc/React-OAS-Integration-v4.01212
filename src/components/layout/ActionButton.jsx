@@ -1,4 +1,4 @@
-const ActionButton = ({ icon, title, onClick, className = '' }) => {
+const ActionButton = ({ icon, title, onClick, className = "" }) => {
   return (
     <button
       className={`action-btn ${className}`}
@@ -8,7 +8,7 @@ const ActionButton = ({ icon, title, onClick, className = '' }) => {
     >
       {icon}
     </button>
-  )
-}
+  );
+};
 
-export default ActionButton
+export default ActionButton;

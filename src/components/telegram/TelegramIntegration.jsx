@@ -115,7 +115,7 @@ const TelegramIntegration = () => {
       const result = await telegramService.sendMessage(
         newMessage,
         selectedChat.id,
-        messageType === "text" ? "HTML" : "HTML"
+        messageType === "text" ? "HTML" : "HTML",
       );
 
       if (result.success) {

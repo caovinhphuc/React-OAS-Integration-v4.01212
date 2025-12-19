@@ -3,43 +3,43 @@
  * Enhanced with design tokens and multiple variants
  */
 
-import React from 'react'
-import './Button.css'
+import React from "react";
+import "./Button.css";
 
 const Button = ({
   children,
-  variant = 'primary',
-  size = 'md',
+  variant = "primary",
+  size = "md",
   icon,
-  iconPosition = 'left',
+  iconPosition = "left",
   loading = false,
   disabled = false,
   fullWidth = false,
-  className = '',
+  className = "",
   onClick,
-  type = 'button',
+  type = "button",
   ...props
 }) => {
   const buttonClasses = [
-    'btn',
+    "btn",
     `btn--${variant}`,
     `btn--${size}`,
-    loading && 'btn--loading',
-    disabled && 'btn--disabled',
-    fullWidth && 'btn--full-width',
-    icon && !children && 'btn--icon-only',
+    loading && "btn--loading",
+    disabled && "btn--disabled",
+    fullWidth && "btn--full-width",
+    icon && !children && "btn--icon-only",
     className,
   ]
     .filter(Boolean)
-    .join(' ')
+    .join(" ");
 
   const handleClick = (e) => {
     if (loading || disabled) {
-      e.preventDefault()
-      return
+      e.preventDefault();
+      return;
     }
-    onClick?.(e)
-  }
+    onClick?.(e);
+  };
 
   return (
     <button
@@ -63,22 +63,25 @@ const Button = ({
           </svg>
         </span>
       )}
-      {!loading && icon && iconPosition === 'left' && (
+      {!loading && icon && iconPosition === "left" && (
         <span className="btn__icon btn__icon--left">{icon}</span>
       )}
       {children && <span className="btn__text">{children}</span>}
-      {!loading && icon && iconPosition === 'right' && (
+      {!loading && icon && iconPosition === "right" && (
         <span className="btn__icon btn__icon--right">{icon}</span>
       )}
     </button>
-  )
-}
+  );
+};
 
 // Button Group Component
-Button.Group = ({ children, className = '', spacing = 'sm', ...props }) => (
-  <div className={`btn-group btn-group--spacing-${spacing} ${className}`} {...props}>
+Button.Group = ({ children, className = "", spacing = "sm", ...props }) => (
+  <div
+    className={`btn-group btn-group--spacing-${spacing} ${className}`}
+    {...props}
+  >
     {children}
   </div>
-)
+);
 
-export default Button
+export default Button;

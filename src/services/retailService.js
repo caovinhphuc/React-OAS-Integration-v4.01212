@@ -32,7 +32,7 @@ export const fetchRetailDashboard = async () => {
 export const fetchSalesMetrics = async (timeframe = "30d") => {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/api/retail/sales?timeframe=${timeframe}`
+      `${API_BASE_URL}/api/retail/sales?timeframe=${timeframe}`,
     );
     if (!response.ok) {
       throw new Error("Failed to fetch sales metrics");
@@ -68,7 +68,7 @@ export const fetchInventoryStatus = async () => {
 export const fetchCustomerAnalytics = async (timeframe = "30d") => {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/api/retail/customers?timeframe=${timeframe}`
+      `${API_BASE_URL}/api/retail/customers?timeframe=${timeframe}`,
     );
     if (!response.ok) {
       throw new Error("Failed to fetch customer analytics");
@@ -103,7 +103,7 @@ export const fetchStorePerformance = async () => {
  */
 export const fetchProductPerformance = async (
   category = null,
-  timeframe = "30d"
+  timeframe = "30d",
 ) => {
   try {
     let url = `${API_BASE_URL}/api/retail/products?timeframe=${timeframe}`;
@@ -152,7 +152,7 @@ export const calculateGrowth = (current, previous) => {
  */
 export const getStatusColor = (
   value,
-  thresholds = { good: 0.8, excellent: 1.2 }
+  thresholds = { good: 0.8, excellent: 1.2 },
 ) => {
   if (value >= thresholds.excellent) return "#06a77d"; // Green - Excellent
   if (value >= thresholds.good) return "#3b82f6"; // Blue - Good
