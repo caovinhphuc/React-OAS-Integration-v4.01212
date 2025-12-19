@@ -38,7 +38,11 @@
   },
 
   // Python paths
-  "python.analysis.extraPaths": ["./automation", "./ai-service", "./one_automation_system"],
+  "python.analysis.extraPaths": [
+    "./automation",
+    "./ai-service",
+    "./one_automation_system"
+  ],
 
   // Terminal
   "terminal.integrated.cwd": "${workspaceFolder}",
