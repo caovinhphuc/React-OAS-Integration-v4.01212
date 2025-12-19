@@ -80,16 +80,40 @@ python test_drive_upload.py
 ### Integration Tests
 
 ```bash
-# Full integration test suite
-npm run test:integration
+# Full integration test suite (comprehensive)
+npm run test:complete
+# hoặc
+npm run test:scripts
 
 # Individual service tests
-npm run test:google      # Google APIs (Sheets, Drive)
-npm run test:telegram    # Telegram bot connection
-npm run test:email       # Email service (SendGrid)
+npm run test:google-sheets  # Google Sheets API test
+npm run test:api            # Backend & AI Service API endpoints
+npm run test:automation     # Automation System (Python FastAPI)
+npm run test:websocket      # WebSocket connection test
 
 # System health check
 npm run health-check
+# hoặc comprehensive health check
+npm run health:full
+```
+
+### Complete System Tests (Root Level)
+
+```bash
+# Complete system test (end-to-end)
+node complete_system_test.js
+
+# End-to-end test
+node end_to_end_test.js
+
+# Integration test
+node integration_test.js
+
+# Frontend connection test
+node frontend_connection_test.js
+
+# WebSocket test
+node ws-test.js
 ```
 
 ### All Tests Summary
@@ -141,10 +165,29 @@ automation/one_automation_system/
 
 ```
 scripts/
-├── testGoogleConnection.js         ✅ Google API connection test
+├── test-all.js                     ✅ Comprehensive test runner (chạy tất cả tests)
+├── testGoogleConnection.cjs        ✅ Google API connection test
+├── testGoogleSheets.js             ✅ Google Sheets service test
 ├── testTelegramConnection.js       ✅ Telegram bot test
 ├── testEmailService.js             ✅ Email service test
-└── health-check.js                 ✅ System health check
+├── test-api-endpoints.js           ✅ Backend & AI Service API endpoints
+├── test-automation-system.js       ✅ Automation System test
+├── test-websocket.js               ✅ WebSocket connection test
+├── test_frontend_api_connection.js ✅ Frontend API connection test
+├── health-check.cjs                ✅ System health check
+└── test-api-key.sh                 ✅ API key validation script
+```
+
+### Root Level Test Files
+
+```
+(root)/
+├── complete_system_test.js         ✅ Complete system end-to-end test
+├── end_to_end_test.js              ✅ End-to-end integration test
+├── integration_test.js             ✅ System integration test
+├── frontend_connection_test.js     ✅ Frontend connection validation
+├── ws-test.js                      ✅ WebSocket test utility
+└── test_google_sheets.js           ✅ Google Sheets standalone test
 ```
 
 ### Coverage Thresholds
@@ -174,20 +217,20 @@ Current settings (relaxed for initial setup):
 ### Component Test Example
 
 ```javascript
-import { render, screen } from '@testing-library/react';
-import MyComponent from './MyComponent';
+import { render, screen } from "@testing-library/react";
+import MyComponent from "./MyComponent";
 
-describe('MyComponent', () => {
-  test('renders component', () => {
+describe("MyComponent", () => {
+  test("renders component", () => {
     render(<MyComponent />);
-    expect(screen.getByText('Hello')).toBeInTheDocument();
+    expect(screen.getByText("Hello")).toBeInTheDocument();
   });
 
-  test('handles click event', () => {
+  test("handles click event", () => {
     const handleClick = jest.fn();
     render(<MyComponent onClick={handleClick} />);
 
-    const button = screen.getByRole('button');
+    const button = screen.getByRole("button");
     fireEvent.click(button);
 
     expect(handleClick).toHaveBeenCalledTimes(1);
@@ -198,17 +241,17 @@ describe('MyComponent', () => {
 ### Service Test Example
 
 ```javascript
-import { fetchData } from './dataService';
+import { fetchData } from "./dataService";
 
-describe('dataService', () => {
-  test('fetches data successfully', async () => {
+describe("dataService", () => {
+  test("fetches data successfully", async () => {
     const data = await fetchData();
     expect(data).toBeDefined();
     expect(Array.isArray(data)).toBe(true);
   });
 
-  test('handles errors gracefully', async () => {
-    await expect(fetchData('invalid')).rejects.toThrow();
+  test("handles errors gracefully", async () => {
+    await expect(fetchData("invalid")).rejects.toThrow();
   });
 });
 ```
@@ -216,22 +259,22 @@ describe('dataService', () => {
 ### Redux Test Example
 
 ```javascript
-import { configureStore } from '@reduxjs/toolkit';
-import reducer, { increment, decrement } from './counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import reducer, { increment, decrement } from "./counterSlice";
 
-describe('counterSlice', () => {
+describe("counterSlice", () => {
   let store;
 
   beforeEach(() => {
     store = configureStore({ reducer });
   });
 
-  test('increments value', () => {
+  test("increments value", () => {
     store.dispatch(increment());
     expect(store.getState().value).toBe(1);
   });
 
-  test('decrements value', () => {
+  test("decrements value", () => {
     store.dispatch(decrement());
     expect(store.getState().value).toBe(-1);
   });
@@ -278,7 +321,7 @@ src/
 ### 1. AAA Pattern (Arrange, Act, Assert)
 
 ```javascript
-test('example test', () => {
+test("example test", () => {
   // Arrange: Set up test data
   const value = 5;
 
@@ -294,24 +337,24 @@ test('example test', () => {
 
 ```javascript
 // ❌ Bad: Testing multiple things
-test('component works', () => {
+test("component works", () => {
   const { container } = render(<Component />);
   expect(container).toBeTruthy();
-  expect(screen.getByText('Hello')).toBeInTheDocument();
-  fireEvent.click(screen.getByRole('button'));
-  expect(screen.getByText('Clicked')).toBeInTheDocument();
+  expect(screen.getByText("Hello")).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button"));
+  expect(screen.getByText("Clicked")).toBeInTheDocument();
 });
 
 // ✅ Good: Separate tests
-test('component renders', () => {
+test("component renders", () => {
   render(<Component />);
-  expect(screen.getByText('Hello')).toBeInTheDocument();
+  expect(screen.getByText("Hello")).toBeInTheDocument();
 });
 
-test('handles button click', () => {
+test("handles button click", () => {
   render(<Component />);
-  fireEvent.click(screen.getByRole('button'));
-  expect(screen.getByText('Clicked')).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button"));
+  expect(screen.getByText("Clicked")).toBeInTheDocument();
 });
 ```
 
@@ -329,9 +372,9 @@ test('displays error message when API call fails', () => { ... });
 
 ```javascript
 // Mock axios
-jest.mock('axios');
+jest.mock("axios");
 
-test('fetches data', async () => {
+test("fetches data", async () => {
   axios.get.mockResolvedValue({ data: { id: 1 } });
   const result = await fetchUser(1);
   expect(result.id).toBe(1);
@@ -345,14 +388,14 @@ test('fetches data', async () => {
 ### Testing Async Code
 
 ```javascript
-test('async function', async () => {
+test("async function", async () => {
   const data = await fetchData();
   expect(data).toBeDefined();
 });
 
 // Or with promises
-test('promise', () => {
-  return fetchData().then(data => {
+test("promise", () => {
+  return fetchData().then((data) => {
     expect(data).toBeDefined();
   });
 });
@@ -361,13 +404,13 @@ test('promise', () => {
 ### Testing Error Handling
 
 ```javascript
-test('throws error', () => {
+test("throws error", () => {
   expect(() => {
     throwError();
-  }).toThrow('Error message');
+  }).toThrow("Error message");
 });
 
-test('async error', async () => {
+test("async error", async () => {
   await expect(asyncThrowError()).rejects.toThrow();
 });
 ```
@@ -375,10 +418,10 @@ test('async error', async () => {
 ### Testing React Hooks
 
 ```javascript
-import { renderHook, act } from '@testing-library/react';
-import { useCounter } from './useCounter';
+import { renderHook, act } from "@testing-library/react";
+import { useCounter } from "./useCounter";
 
-test('useCounter hook', () => {
+test("useCounter hook", () => {
   const { result } = renderHook(() => useCounter());
 
   expect(result.current.count).toBe(0);
@@ -409,7 +452,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: "18"
       - run: npm ci
       - run: npm run test:ci
       - run: npm run build:prod
@@ -479,7 +522,7 @@ npm install --save-dev @testing-library/react @testing-library/jest-dom
 jest.setTimeout(10000);
 
 // Or per test
-test('slow test', async () => {
+test("slow test", async () => {
   // test code
 }, 10000);
 ```
@@ -488,11 +531,11 @@ test('slow test', async () => {
 
 ```javascript
 // Always return or await promises
-test('async', async () => {
+test("async", async () => {
   await asyncFunction(); // ✅
 });
 
-test('async', () => {
+test("async", () => {
   return asyncFunction(); // ✅
 });
 ```
@@ -524,10 +567,484 @@ test('async', () => {
 
 ### Phase 3: Integration Testing
 
-- [ ] Test Redux store
-- [ ] Test API calls
-- [ ] Test routing
-- [ ] Achieve 70% coverage
+#### 3.1 Redux Store Testing
+
+**Store Configuration:**
+
+- [ ] Store initialization
+- [ ] Redux Persist configuration
+- [ ] Middleware setup (thunk)
+- [ ] State persistence (localStorage)
+
+**Reducers:**
+
+- [ ] `authReducer` - Authentication state management
+  - [ ] LOGIN_REQUEST action
+  - [ ] LOGIN_SUCCESS action
+  - [ ] LOGIN_FAILURE action
+  - [ ] LOGOUT action
+  - [ ] State transitions
+- [ ] `sheetsReducer` - Google Sheets state
+  - [ ] FETCH_SHEETS_REQUEST/SUCCESS/FAILURE
+  - [ ] UPDATE_SHEET_DATA action
+- [ ] `driveReducer` - Google Drive state
+  - [ ] FETCH_FILES_REQUEST/SUCCESS/FAILURE
+  - [ ] UPLOAD_FILE_REQUEST/SUCCESS/FAILURE
+- [ ] `dashboardReducer` - Dashboard state
+  - [ ] FETCH_DASHBOARD_DATA action
+  - [ ] UPDATE_DASHBOARD_DATA action
+  - [ ] SET_ACTIVE_TAB action
+- [ ] `alertsReducer` - Alerts state
+  - [ ] SHOW_ALERT action
+  - [ ] HIDE_ALERT action
+  - [ ] CLEAR_ALL_ALERTS action
+
+**Redux Toolkit Slices:**
+
+- [ ] `aiSlice` - AI service state
+  - [ ] `fetchAIAnalysis` async thunk
+  - [ ] `fetchPrediction` async thunk
+  - [ ] `fetchAvailableModels` async thunk
+  - [ ] Reducers: `clearError`, `setAIServiceStatus`, `addAnalysisResult`
+  - [ ] Extra reducers (pending/fulfilled/rejected)
+- [ ] `dashboardSlice` - Dashboard with WebSocket
+  - [ ] `connectWebSocket` async thunk
+  - [ ] Reducers: `setConnectionStatus`, `updateRealTimeData`, `setWelcomeMessage`, `updateMetrics`, `clearError`
+  - [ ] WebSocket integration state
+
+**Actions:**
+
+- [ ] `authActions.js` - Authentication actions
+  - [ ] Login action (async)
+  - [ ] Logout action
+  - [ ] Session verification
+  - [ ] Error handling
+
+**State Selectors:**
+
+- [ ] Select authentication state
+- [ ] Select user data
+- [ ] Select loading states
+- [ ] Select error states
+- [ ] Select sheets/drive data
+- [ ] Select dashboard metrics
+
+**Integration with Components:**
+
+- [ ] Component → Action → Reducer flow
+- [ ] Component state updates from store
+- [ ] Persisted state restoration
+- [ ] Middleware execution (thunk)
+
+#### 3.2 API Service Calls Testing
+
+**Authentication Service:**
+
+- [ ] `securityService.js`
+  - [ ] `registerUser()` - User registration
+  - [ ] `loginUser()` - User login with MFA
+  - [ ] `logoutUser()` - User logout
+  - [ ] `getCurrentUser()` - Get user info
+  - [ ] `enableMFA()` / `disableMFA()` - MFA management
+  - [ ] SSO login (Google, Microsoft, etc.)
+  - [ ] Token management (get/set/remove)
+  - [ ] Error handling and retry logic
+
+**Google Services:**
+
+- [ ] `googleSheetsApi.js` / `googleSheetsService.js`
+  - [ ] `readSheet()` - Read data from sheets
+  - [ ] `writeSheet()` - Write data to sheets
+  - [ ] `appendSheet()` - Append data
+  - [ ] `getSheetMetadata()` - Get sheet info
+  - [ ] `clearSheet()` - Clear sheet data
+  - [ ] Authentication handling
+- [ ] `googleDriveApi.js`
+  - [ ] `listFiles()` - List files/folders
+  - [ ] `getFileMetadata()` - Get file info
+  - [ ] `uploadFile()` - Upload file
+  - [ ] `createFolder()` - Create folder
+  - [ ] `deleteFile()` - Delete file
+  - [ ] `shareFile()` - Share file
+  - [ ] `renameFile()` - Rename file
+  - [ ] `downloadFile()` - Download file
+
+**Automation Service:**
+
+- [ ] `automationService.js`
+  - [ ] `listAutomations()` - List all automations
+  - [ ] `getAutomation(id)` - Get automation by ID
+  - [ ] `createAutomation()` - Create new automation
+  - [ ] `updateAutomation()` - Update automation
+  - [ ] `deleteAutomation()` - Delete automation
+  - [ ] `toggleAutomation()` - Enable/disable automation
+  - [ ] `executeAutomation()` - Execute automation
+  - [ ] `getAutomationLogs()` - Get execution logs
+
+**AI Service:**
+
+- [ ] `aiService.js`
+  - [ ] `analyzeData()` - AI data analysis
+  - [ ] `getPredictions()` - Get AI predictions
+  - [ ] `detectAnomalies()` - Anomaly detection
+  - [ ] `getRecommendations()` - Get recommendations
+  - [ ] `chat()` - AI chat interface
+  - [ ] `analyzeSheets()` - Analyze Google Sheets
+  - [ ] `analyzeDrive()` - Analyze Google Drive
+  - [ ] `optimizeSystem()` - System optimization
+
+**Smart Automation Service:**
+
+- [ ] `smartAutomationService.js`
+  - [ ] `analyzePatterns()` - Pattern analysis
+  - [ ] `analyzeTrends()` - Trend analysis
+  - [ ] `detectAnomalies()` - Anomaly detection
+  - [ ] `generatePredictiveAlerts()` - Predictive alerts
+  - [ ] `categorizeColumn()` - Column categorization
+  - [ ] `categorizeRows()` - Row categorization
+  - [ ] `generateReport()` - Report generation
+  - [ ] `processChatQuery()` - NLP chat processing
+  - [ ] `generateSummary()` - Auto summary
+  - [ ] `smartSearch()` - Smart search
+  - [ ] `processVoiceCommand()` - Voice command processing
+
+**Telegram Service:**
+
+- [ ] `telegramService.js`
+  - [ ] `sendMessage()` - Send Telegram message
+  - [ ] `sendSimpleMessage()` - Send simple text
+  - [ ] `testConnection()` - Test bot connection
+  - [ ] Webhook management
+
+**Script Service:**
+
+- [ ] `scriptService.js`
+  - [ ] `executeScript()` - Execute Google Apps Script
+  - [ ] `executeInline()` - Execute inline code
+  - [ ] `getScriptStatus()` - Get execution status
+  - [ ] `listProjects()` - List script projects
+  - [ ] `testScript()` - Test script execution
+
+**Retail Service:**
+
+- [ ] `retailService.js`
+  - [ ] `fetchRetailDashboard()` - Get dashboard data
+  - [ ] `fetchSalesMetrics()` - Get sales metrics
+  - [ ] `fetchInventoryStatus()` - Get inventory data
+  - [ ] `fetchCustomerAnalytics()` - Get customer analytics
+  - [ ] `fetchStorePerformance()` - Get store performance
+  - [ ] `fetchProductPerformance()` - Get product performance
+
+**API Error Handling:**
+
+- [ ] Network errors (timeout, offline)
+- [ ] HTTP error responses (4xx, 5xx)
+- [ ] Authentication errors (401, 403)
+- [ ] Rate limiting (429)
+- [ ] Invalid response format
+- [ ] Retry logic for failed requests
+
+**API Mocking:**
+
+- [ ] Mock API responses for testing
+- [ ] Mock error scenarios
+- [ ] Mock loading states
+- [ ] Mock network delays
+
+#### 3.3 Routing & Navigation Testing
+
+**Route Configuration:**
+
+- [ ] Public routes (no authentication)
+  - [ ] `/login` - Login page
+- [ ] Protected routes (require authentication)
+  - [ ] `/dashboard` - Live Dashboard
+  - [ ] `/ai-analytics` - AI Analytics
+  - [ ] `/retail` - Retail Dashboard
+  - [ ] `/google-sheets` - Google Sheets Integration
+  - [ ] `/google-drive` - Google Drive Integration
+  - [ ] `/google-apps-script` - Apps Script Integration
+  - [ ] `/telegram` - Telegram Integration
+  - [ ] `/automation` - Automation Dashboard
+  - [ ] `/alerts` - Alerts Management
+  - [ ] `/advanced-analytics` - Advanced Analytics
+  - [ ] `/smart-automation` - Smart Automation
+  - [ ] `/nlp` - NLP Dashboard
+  - [ ] `/security` - Security Dashboard
+- [ ] Default route (`/`) - Home page
+- [ ] 404 route (catch-all) - Redirect to home
+
+**ProtectedRoute Component:**
+
+- [ ] Authentication check before rendering
+- [ ] Redirect to `/login` if not authenticated
+- [ ] Session verification
+- [ ] Loading state during verification
+- [ ] Error handling
+
+**Navigation:**
+
+- [ ] Programmatic navigation (`useNavigate`)
+- [ ] Link navigation (`Link`, `NavLink`)
+- [ ] Route parameters
+- [ ] Query parameters
+- [ ] Hash navigation
+- [ ] Browser back/forward buttons
+- [ ] Navigation state preservation
+
+**Lazy Loading:**
+
+- [ ] Component lazy loading
+- [ ] Suspense fallback rendering
+- [ ] Preloading critical components
+- [ ] Code splitting verification
+
+**Router Integration:**
+
+- [ ] Router initialization
+- [ ] Router configuration
+- [ ] Route matching
+- [ ] Route priority
+- [ ] Nested routes
+
+#### 3.4 WebSocket Connection Testing
+
+**WebSocket Service (`websocketService.js`):**
+
+- [ ] Connection establishment
+  - [ ] Initial connection
+  - [ ] Connection with userId
+  - [ ] Room joining (`join-room`)
+- [ ] Connection events
+  - [ ] `connect` event handling
+  - [ ] `disconnect` event handling
+  - [ ] `connect_error` event handling
+  - [ ] `reconnect` event handling
+- [ ] Reconnection logic
+  - [ ] Automatic reconnection
+  - [ ] Reconnection attempts limit
+  - [ ] Exponential backoff
+  - [ ] Reconnection delay
+- [ ] Message sending
+  - [ ] `emit()` method
+  - [ ] Message formatting
+  - [ ] Error handling when disconnected
+- [ ] Message receiving
+  - [ ] Event listeners (`on()`, `off()`)
+  - [ ] Message parsing
+  - [ ] Error handling for invalid messages
+- [ ] Room management
+  - [ ] Join room
+  - [ ] Leave room
+  - [ ] Room-specific events
+- [ ] Health checks
+  - [ ] Ping/Pong mechanism
+  - [ ] Connection status monitoring
+
+**WebSocket Client (`utils/websocket.js`):**
+
+- [ ] WebSocket initialization
+- [ ] Connection state management
+- [ ] Message handling
+  - [ ] `onopen` event
+  - [ ] `onmessage` event
+  - [ ] `onerror` event
+  - [ ] `onclose` event
+- [ ] Message sending (`send()`)
+- [ ] Event listeners (`on()`, `off()`, `emit()`)
+- [ ] Reconnection scheduling
+- [ ] Client ID management
+
+**WebSocket Integration with Redux:**
+
+- [ ] `connectWebSocket` thunk action
+- [ ] WebSocket events → Redux state updates
+- [ ] Real-time data updates in dashboard
+- [ ] Connection status in Redux state
+- [ ] Metrics updates via WebSocket
+
+**WebSocket Hooks:**
+
+- [ ] `useWebSocket` hook (if exists)
+  - [ ] Connection management
+  - [ ] Event subscription
+  - [ ] Cleanup on unmount
+
+**WebSocket Error Scenarios:**
+
+- [ ] Server unavailable
+- [ ] Network interruption
+- [ ] Invalid message format
+- [ ] Connection timeout
+- [ ] Authentication failure
+- [ ] Rate limiting
+
+#### 3.5 Service Integration Testing
+
+**Frontend ↔ Backend Integration:**
+
+- [ ] Authentication flow (Login → API → Redux → UI)
+- [ ] Data fetching flow (Component → Service → API → Redux → Component)
+- [ ] Real-time updates (WebSocket → Redux → Component)
+- [ ] Error propagation (API → Service → Redux → Component)
+
+**Component ↔ Service Integration:**
+
+- [ ] Component calls service method
+- [ ] Service handles API call
+- [ ] Service updates Redux state
+- [ ] Component reacts to state changes
+
+**Service ↔ Service Integration:**
+
+- [ ] Service dependencies
+- [ ] Service communication
+- [ ] Shared state management
+
+#### 3.6 End-to-End Integration Scenarios
+
+**Complete User Flows:**
+
+- [ ] Login → Dashboard → View Data
+- [ ] Google Sheets: Connect → Read → Write → Update
+- [ ] Automation: Create → Configure → Execute → View Logs
+- [ ] AI Analysis: Upload Data → Analyze → View Results → Get Recommendations
+- [ ] Real-time Dashboard: Connect → Receive Updates → Visualize Data
+
+**Cross-Feature Integration:**
+
+- [ ] Google Sheets ↔ Automation
+- [ ] AI Analytics ↔ Smart Automation
+- [ ] Alerts ↔ Automation Triggers
+- [ ] WebSocket ↔ Dashboard Updates
+- [ ] Authentication ↔ All Protected Features
+
+#### 3.7 Test Coverage Goals
+
+**Coverage Targets:**
+
+- [ ] Achieve 70% statement coverage
+- [ ] Achieve 70% branch coverage
+- [ ] Achieve 70% function coverage
+- [ ] Achieve 70% line coverage
+- [ ] Critical integrations (Auth, API, WebSocket) → 85% coverage
+
+**Test Types:**
+
+- [ ] Unit tests for individual services
+- [ ] Integration tests for service interactions
+- [ ] Route tests for navigation flows
+- [ ] WebSocket tests for real-time features
+- [ ] End-to-end scenarios
+
+#### 3.8 Testing Tools & Setup
+
+**Redux Testing:**
+
+```javascript
+// Redux store testing
+import { configureStore } from "@reduxjs/toolkit";
+import { renderWithProviders } from "./test-utils";
+
+test("Redux store integration", () => {
+  const store = configureStore({
+    reducer: { auth: authReducer },
+  });
+
+  store.dispatch(loginSuccess(userData));
+  expect(store.getState().auth.isAuthenticated).toBe(true);
+});
+```
+
+**API Service Testing:**
+
+```javascript
+// Mock API calls
+jest.mock("axios");
+import axios from "axios";
+
+test("API service call", async () => {
+  axios.get.mockResolvedValue({ data: { success: true } });
+  const result = await service.fetchData();
+  expect(result.success).toBe(true);
+});
+```
+
+**Routing Testing:**
+
+```javascript
+// Test routing
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+
+test("navigates to dashboard", () => {
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+  // Test navigation...
+});
+```
+
+**WebSocket Testing:**
+
+```javascript
+// Mock WebSocket
+const mockSocket = {
+  on: jest.fn(),
+  emit: jest.fn(),
+  disconnect: jest.fn(),
+};
+
+test("WebSocket connection", () => {
+  const service = new WebSocketService();
+  service.connect();
+  expect(mockSocket.on).toHaveBeenCalled();
+});
+```
+
+#### 3.9 Test Execution
+
+**Running Integration Tests:**
+
+```bash
+# Run all integration tests
+npm test -- --testPathPattern=integration
+
+# Run Redux tests
+npm test -- redux
+
+# Run API service tests
+npm test -- services
+
+# Run routing tests
+npm test -- routing
+
+# Run WebSocket tests
+npm test -- websocket
+
+# Run with coverage
+npm test -- --coverage --testPathPattern=integration
+```
+
+#### 3.10 Test Data & Mocking
+
+**Mock Data:**
+
+- [ ] Mock Redux store state
+- [ ] Mock API responses
+- [ ] Mock WebSocket messages
+- [ ] Mock route parameters
+- [ ] Mock authentication state
+
+**Test Utilities:**
+
+- [ ] `renderWithProviders` - Render with Redux Provider
+- [ ] `renderWithRouter` - Render with Router
+- [ ] Mock API service functions
+- [ ] Mock WebSocket client
+- [ ] Test fixtures for common scenarios
 
 ### Phase 4: Full Coverage
 
@@ -665,16 +1182,39 @@ npm run test:integration
 ### System Health Check
 
 ```bash
-# Run health check
+# Run basic health check
 npm run health-check
+# hoặc
+node scripts/health-check.cjs
 
-# Checks:
-# - Frontend status
-# - Backend API status
-# - Google Services status
-# - Database connections
-# - Environment variables
+# Run comprehensive health check
+npm run health:full
+
+# Check specific services
+npm run check:backend       # Check backend status
+npm run check:ports         # Check port availability
+npm run verify:setup        # Verify system setup
 ```
+
+**Health Check Scripts:**
+
+- `scripts/health-check.cjs` - Basic health check
+- `scripts/full-health-check.sh` - Comprehensive health check
+- `scripts/check-backend.sh` - Backend service check
+- `scripts/check-ports.sh` - Port availability check
+- `scripts/verify-setup.sh` - Setup verification
+
+**Checks:**
+
+- Frontend status (port 3000)
+- Backend API status (port 3001)
+- AI Service status (port 8000)
+- Google Services status (Sheets, Drive APIs)
+- Telegram Bot connection
+- Email Service (SendGrid)
+- Database connections
+- Environment variables
+- Service dependencies
 
 ### Manual Health Checks
 
@@ -707,9 +1247,36 @@ After running `npm run test:coverage`:
 
 Test reports are automatically generated:
 
-- `email-test-report-YYYY-MM-DD.json`
-- `telegram-test-report-YYYY-MM-DD.json`
-- `health-report-YYYY-MM-DD.json`
+**Service Test Reports:**
+
+- `email-test-report-YYYY-MM-DD.json` - Email service test results
+- `telegram-test-report-YYYY-MM-DD.json` - Telegram bot test results
+- `health-report-YYYY-MM-DD.json` - System health reports
+
+**Comprehensive Test Report:**
+
+- `test-report-[timestamp].json` - Complete test suite results (from `test-all.js`)
+
+**Report Format:**
+
+```json
+{
+  "timestamp": "2025-12-19T...",
+  "totalTests": 10,
+  "passed": 8,
+  "failed": 2,
+  "skipped": 0,
+  "duration": 12345,
+  "results": [
+    {
+      "name": "Test Name",
+      "status": "passed|failed|skipped",
+      "duration": 1234,
+      "error": null
+    }
+  ]
+}
+```
 
 ### Backend Test Output
 
@@ -781,21 +1348,35 @@ grep -r "GOOGLE\|TELEGRAM\|EMAIL" .env
 
 **Frontend:**
 
-- ✅ Tests passing (5/5)
+- ✅ Tests passing (5/5 basic tests)
 - ⚠️ Coverage: 0% (baseline tests only)
+- ✅ Jest configured and ready
+- ✅ React Testing Library setup complete
 
 **Backend:**
 
 - ✅ System tests: `run_tests.py`
-- ✅ Quick tests: `quick_test.py`
+- ✅ Quick tests: `quick_test.py`, `quick_test_advanced.py`
 - ✅ Component tests: Multiple test files
+- ✅ Python unittest framework ready
 
 **Integration:**
 
-- ✅ Google Services: Working
+- ✅ Google Services: Working (Sheets, Drive APIs)
 - ✅ Telegram Bot: Working
-- ✅ Email Service: Working
-- ⚠️ Health Check: Minor warnings
+- ✅ Email Service: Working (SendGrid)
+- ✅ WebSocket: Working
+- ✅ API Endpoints: Backend & AI Service tested
+- ✅ Automation System: Python FastAPI tested
+- ⚠️ Health Check: Minor warnings (non-critical)
+
+**Test Scripts:**
+
+- ✅ `test-all.js` - Comprehensive runner (7 test suites)
+- ✅ `test-api-endpoints.js` - API testing
+- ✅ `test-automation-system.js` - Automation testing
+- ✅ `test-websocket.js` - WebSocket testing
+- ✅ Root level tests: Complete system, E2E, Integration
 
 ---
 
@@ -803,17 +1384,556 @@ grep -r "GOOGLE\|TELEGRAM\|EMAIL" .env
 
 ### Phase 1: Frontend Component Testing
 
-- [ ] Test all React components
-- [ ] Test user interactions
-- [ ] Test conditional rendering
-- [ ] Achieve 50% coverage
+#### 1.1 Core UI Components
+
+- [ ] `ui/Button` - Button component with variants
+- [ ] `ui/Card` - Card container component
+- [ ] `ui/Loading` - Loading spinner component
+- [ ] `ui/Skeleton` - Skeleton loading component
+- [ ] `ui/Toast` - Toast notification component
+- [ ] `ui/Empty` - Empty state component
+
+#### 1.2 Common Components
+
+- [ ] `Common/ErrorBoundary` - Error boundary wrapper
+- [ ] `Common/Loading` - Loading states
+- [ ] `Common/LoadingSpinner` - Spinner component
+- [ ] `Common/Notification` - Notification component
+- [ ] `Common/VietnamClock` - Clock display component
+
+#### 1.3 Authentication & Security
+
+- [ ] `auth/Login` - Login form and authentication
+- [ ] `auth/ProtectedRoute` - Route protection wrapper
+- [ ] `security/SecurityDashboard` - Security dashboard container
+- [ ] `security/MFASetup` - Multi-factor authentication setup
+- [ ] `security/SSOLogin` - SSO login integration
+- [ ] `security/UserManagement` - User management interface
+- [ ] `security/AuditLogsViewer` - Audit logs viewer
+- [ ] `security/SecuritySettings` - Security settings panel
+
+#### 1.4 Layout Components
+
+- [ ] `layout/Layout` - Main layout wrapper
+- [ ] `layout/HamburgerMenu` - Mobile menu
+- [ ] `layout/NavItem` - Navigation item
+- [ ] `layout/NavSection` - Navigation section
+- [ ] `layout/ActionButton` - Action button component
+- [ ] `layout/ConnectionItem` - Connection status item
+- [ ] `layout/ConnectionSection` - Connection section
+
+#### 1.5 Dashboard Components
+
+- [ ] `Dashboard/DemoDashboard` - Demo dashboard
+- [ ] `Dashboard/TestDashboard` - Test dashboard
+- [ ] `Dashboard/LiveDashboard` - Live dashboard with real-time data
+
+#### 1.6 Google Integration Components
+
+- [ ] `google/GoogleSheetsIntegration` - Google Sheets integration
+- [ ] `google/GoogleSheetsCollaborative` - Collaborative sheets
+- [ ] `google/GoogleDriveIntegration` - Google Drive integration
+- [ ] `google/GoogleAppsScriptIntegration` - Apps Script integration
+- [ ] `GoogleSheet/SheetReader` - Sheet data reader
+- [ ] `GoogleSheet/SheetWriter` - Sheet data writer
+- [ ] `GoogleSheet/SheetManager` - Sheet management
+- [ ] `GoogleSheet/SheetTester` - Sheet testing component
+- [ ] `GoogleDrive/DriveManager` - Drive file manager
+- [ ] `GoogleDrive/DriveUploader` - File uploader
+- [ ] `GoogleDrive/DriveTester` - Drive testing component
+- [ ] `GoogleDrive/FileViewer` - File preview component
+
+#### 1.7 Automation Components
+
+- [ ] `automation/AutomationDashboard` - Automation dashboard
+- [ ] `smart-automation/SmartAutomationDashboard` - Smart automation features
+
+#### 1.8 AI & Analytics Components
+
+- [ ] `ai/AIDashboard` - AI-powered dashboard
+- [ ] `analytics/AdvancedAnalyticsDashboard` - Advanced analytics
+- [ ] `analytics/ChartComponents` - Chart components (Line, Bar, Pie, Area, HeatMap)
+- [ ] `analytics/DataFilterPanel` - Data filtering panel
+
+#### 1.9 NLP Components
+
+- [ ] `nlp/NLPDashboard` - NLP dashboard container
+- [ ] `nlp/NLPChatInterface` - Chat interface for queries
+- [ ] `nlp/VoiceCommands` - Voice command interface
+- [ ] `nlp/SmartSearch` - Smart search component
+
+#### 1.10 Integration Components
+
+- [ ] `telegram/TelegramIntegration` - Telegram bot integration
+- [ ] `Alerts/AlertsManagement` - Alerts management
+- [ ] `notifications/RealTimeNotifications` - Real-time notifications
+
+#### 1.11 Custom Components
+
+- [ ] `custom/MIARetailDashboard` - Retail-specific dashboard
+- [ ] `custom/YourMetricsWidget` - Metrics widget
+
+#### 1.12 Testing Focus Areas
+
+- [ ] Test component rendering with props
+- [ ] Test user interactions (clicks, inputs, form submissions)
+- [ ] Test conditional rendering (loading, error, empty states)
+- [ ] Test event handlers and callbacks
+- [ ] Test Redux integration (connected components)
+- [ ] Test form validation and error handling
+- [ ] Test async operations (API calls, data fetching)
+- [ ] Test responsive design and breakpoints
+- [ ] Test accessibility (ARIA labels, keyboard navigation)
+- [ ] Test component lifecycle (mount, update, unmount)
+
+#### 1.13 Coverage Goals
+
+- [ ] Achieve 50% statement coverage
+- [ ] Achieve 50% branch coverage
+- [ ] Achieve 50% function coverage
+- [ ] Achieve 50% line coverage
+- [ ] Critical components (auth, payments) → 80% coverage
+
+#### 1.14 Component Testing Priority
+
+**Priority 1 (Critical - Test First):**
+
+1. `auth/Login` - User authentication
+2. `auth/ProtectedRoute` - Route security
+3. `security/SecurityDashboard` - Security features
+4. `Common/ErrorBoundary` - Error handling
+
+**Priority 2 (High Value):**
+
+1. `layout/Layout` - Main layout
+2. `google/GoogleSheetsIntegration` - Core feature
+3. `google/GoogleDriveIntegration` - Core feature
+4. `Dashboard/LiveDashboard` - Main dashboard
+
+**Priority 3 (Standard):**
+
+1. All UI components (`ui/*`)
+2. Common components (`Common/*`)
+3. Chart components (`analytics/ChartComponents`)
+
+**Priority 4 (Nice to Have):**
+
+1. Testing components (`GoogleSheet/SheetTester`, `GoogleDrive/DriveTester`)
+2. Demo/Test dashboards
+3. Widget components
+
+#### 1.15 Example Test Structure
+
+**Component Test Template:**
+
+```javascript
+// ComponentName.test.js
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import ComponentName from "./ComponentName";
+import { Provider } from "react-redux";
+import { store } from "../../store/store";
+
+describe("ComponentName", () => {
+  // 1. Rendering tests
+  test("renders component", () => {
+    render(<ComponentName />);
+    expect(screen.getByRole("...")).toBeInTheDocument();
+  });
+
+  // 2. Props tests
+  test("renders with props", () => {
+    render(<ComponentName prop="value" />);
+    expect(screen.getByText("value")).toBeInTheDocument();
+  });
+
+  // 3. Interaction tests
+  test("handles user interaction", () => {
+    const handleClick = jest.fn();
+    render(<ComponentName onClick={handleClick} />);
+    fireEvent.click(screen.getByRole("button"));
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  // 4. Conditional rendering
+  test("shows loading state", () => {
+    render(<ComponentName loading={true} />);
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+  });
+
+  // 5. Async operations
+  test("fetches data on mount", async () => {
+    render(<ComponentName />);
+    await waitFor(() => {
+      expect(screen.getByText("Data loaded")).toBeInTheDocument();
+    });
+  });
+
+  // 6. Error handling
+  test("displays error message", () => {
+    render(<ComponentName error="Error message" />);
+    expect(screen.getByText("Error message")).toBeInTheDocument();
+  });
+});
+```
+
+---
 
 ### Phase 2: Backend Coverage
 
-- [ ] Test all automation functions
-- [ ] Test error handling
-- [ ] Test edge cases
-- [ ] Achieve 70% coverage
+#### 2.1 Core Automation Modules
+
+**Automation Classes:**
+
+- [ ] `automation.py` - Main automation class
+  - [ ] Session management
+  - [ ] Automation workflow execution
+  - [ ] Error handling and retry logic
+  - [ ] State management
+- [ ] `automation_enhanced.py` - Enhanced automation with SLA monitoring
+  - [ ] SLA tracking
+  - [ ] Performance metrics
+  - [ ] Enhanced error handling
+- [ ] `automation_bridge.py` - Bridge between frontend and automation
+  - [ ] API integration
+  - [ ] Data transformation
+- [ ] `one_automation.py` - Single automation run
+- [ ] `one_automation_once.py` - One-time automation execution
+
+**Session Management:**
+
+- [ ] `SessionManager` class
+  - [ ] Session creation
+  - [ ] Session persistence
+  - [ ] Session validation
+  - [ ] Session cleanup
+
+#### 2.2 Authentication & Security
+
+**Authentication Services:**
+
+- [ ] `auth_service.py` - Authentication service
+  - [ ] User authentication
+  - [ ] Session verification
+  - [ ] Logout functionality
+  - [ ] Token management
+- [ ] `auth_api_server.py` - Authentication API server
+  - [ ] API endpoints
+  - [ ] Request validation
+  - [ ] Response formatting
+- [ ] `test_auth_system.py` - Authentication system tests
+  - [ ] Google Sheets connection test
+  - [ ] Authentication service test
+  - [ ] API server test
+  - [ ] Prerequisites check
+
+#### 2.3 Scripts & Utilities
+
+**Initialization & Setup:**
+
+- [ ] `scripts/initialization.py` - System initialization
+  - [ ] Environment setup
+  - [ ] Configuration loading
+  - [ ] Logger setup
+- [ ] `scripts/setup.py` - System setup
+  - [ ] Component initialization
+  - [ ] Service setup
+  - [ ] Driver setup
+
+**Login Management:**
+
+- [ ] `scripts/login.py` - Login functionality
+  - [ ] Login flow
+  - [ ] Credential handling
+  - [ ] Error handling
+- [ ] `scripts/login_manager.py` - Complete login manager
+  - [ ] 4-module login process
+  - [ ] Integration testing
+  - [ ] Error recovery
+
+**Scraping & Data Processing:**
+
+- [ ] `scripts/enhanced_scraper.py` - Enhanced web scraper
+  - [ ] Data extraction
+  - [ ] Pagination handling
+  - [ ] Error recovery
+- [ ] `scripts/pagination_handler.py` - Pagination logic
+  - [ ] Page navigation
+  - [ ] Data collection
+- [ ] `scripts/date_customizer.py` - Date handling utilities
+  - [ ] Date parsing
+  - [ ] Date formatting
+  - [ ] Date range validation
+
+#### 2.4 Services Integration
+
+**Google Sheets Service:**
+
+- [ ] `services/google_sheets_service.py` - Google Sheets integration
+  - [ ] Connection initialization
+  - [ ] Read operations
+  - [ ] Write operations
+  - [ ] Append operations
+  - [ ] Error handling
+- [ ] `google_sheets_config.py` - Google Sheets configuration
+  - [ ] Config loading
+  - [ ] Credential management
+- [ ] `test_google_sheets_verification.py` - Google Sheets verification tests
+  - [ ] Connection test
+  - [ ] Config loading test
+  - [ ] Logging functions test
+  - [ ] Dashboard creation test
+  - [ ] Config backup test
+  - [ ] Automation history test
+- [ ] `verify_sheets.py` - Sheets verification script
+
+**Email Service:**
+
+- [ ] `services/email_service.py` - Email service
+  - [ ] Email sending
+  - [ ] Template rendering
+  - [ ] Attachment handling
+  - [ ] Error handling
+
+**Data Processing:**
+
+- [ ] `services/data_processor.py` - Data processing service
+  - [ ] Data transformation
+  - [ ] Data validation
+  - [ ] Data aggregation
+- [ ] `modules/data_processor.py` - Data processing module
+- [ ] `dashboard_integration.py` - Dashboard integration
+
+#### 2.5 Monitoring & Logging
+
+**Monitoring:**
+
+- [ ] `sla_monitor.py` - SLA monitoring
+  - [ ] Performance tracking
+  - [ ] SLA violation detection
+  - [ ] Alert generation
+- [ ] `system_check.py` - System health checks
+  - [ ] Component health
+  - [ ] Dependency checks
+  - [ ] Configuration validation
+- [ ] `utils/logger.py` - Logging utilities
+  - [ ] Log initialization
+  - [ ] Log formatting
+  - [ ] Log rotation
+
+**Dashboard:**
+
+- [ ] `dashboard.py` - Dashboard application
+  - [ ] Dashboard rendering
+  - [ ] Real-time updates
+  - [ ] Data visualization
+
+#### 2.6 Verification & Test Scripts
+
+**Verification Scripts:**
+
+- [ ] `verify_authentication_and_user.py` - Authentication verification
+- [ ] `verify_sheets.py` - Sheets verification
+- [ ] `inspect_sheets_data.py` - Data inspection
+- [ ] `test_webdriver.py` - WebDriver testing
+
+**Demo & Test Scripts:**
+
+- [ ] `run_all_demo.py` - Complete demo runner
+  - [ ] Authentication verification
+  - [ ] Sheets connection
+  - [ ] Data inspection
+  - [ ] Automation with logging
+  - [ ] Complete automation simulation
+  - [ ] Summary generation
+- [ ] `run_automation_with_logging.py` - Automation with logging
+- [ ] `run_complete_automation.py` - Complete automation runner
+- [ ] `generate_summary.py` - Summary generation
+
+**Test Files:**
+
+- [ ] `tests/test_health.py` - Health check tests
+- [ ] `quick_test.py` - Quick test suite
+
+#### 2.7 FastAPI Service (main.py)
+
+**API Endpoints:**
+
+- [ ] `GET /` - Basic health check
+- [ ] `GET /health` - Detailed health check
+- [ ] `POST /api/automation/run` - Run automation tasks
+- [ ] `GET /api/google-sheets/{spreadsheet_id}` - Read Sheets data
+- [ ] `POST /api/google-sheets/{spreadsheet_id}` - Update Sheets data
+- [ ] `POST /api/email/send` - Send email
+- [ ] `GET /api/logs` - Get logs
+
+**Service Initialization:**
+
+- [ ] Google Sheets Service initialization
+- [ ] Email Service initialization
+- [ ] Data Processor initialization
+- [ ] Logger setup
+
+#### 2.8 Error Handling & Edge Cases
+
+**Error Handling:**
+
+- [ ] Network errors (timeouts, connection failures)
+- [ ] API errors (rate limits, authentication failures)
+- [ ] Data validation errors
+- [ ] File system errors
+- [ ] Database errors (if applicable)
+
+**Edge Cases:**
+
+- [ ] Empty data sets
+- [ ] Large data sets
+- [ ] Invalid input data
+- [ ] Missing configuration
+- [ ] Concurrent requests
+- [ ] Resource exhaustion
+
+**Retry Logic:**
+
+- [ ] Automatic retry on failures
+- [ ] Exponential backoff
+- [ ] Maximum retry limits
+- [ ] Error recovery
+
+#### 2.9 Integration Testing
+
+**Service Integration:**
+
+- [ ] Google Sheets ↔ Automation
+- [ ] Email Service ↔ Automation
+- [ ] Authentication ↔ Automation
+- [ ] Frontend API ↔ Backend
+
+**Workflow Testing:**
+
+- [ ] Complete automation workflow
+- [ ] Login → Automation → Logging → Reporting
+- [ ] Error recovery workflows
+- [ ] Multi-step processes
+
+#### 2.10 Performance Testing
+
+**Performance Metrics:**
+
+- [ ] Response times
+- [ ] Throughput
+- [ ] Resource usage (CPU, Memory)
+- [ ] Database query performance
+- [ ] API call efficiency
+
+**Load Testing:**
+
+- [ ] Concurrent users
+- [ ] High data volume
+- [ ] Stress testing
+- [ ] Endurance testing
+
+#### 2.11 Test Coverage Goals
+
+**Coverage Targets:**
+
+- [ ] Achieve 70% statement coverage
+- [ ] Achieve 70% branch coverage
+- [ ] Achieve 70% function coverage
+- [ ] Achieve 70% line coverage
+- [ ] Critical functions (auth, data processing) → 85% coverage
+
+**Test Types:**
+
+- [ ] Unit tests for individual functions
+- [ ] Integration tests for service interactions
+- [ ] End-to-end tests for complete workflows
+- [ ] Performance tests for optimization
+
+#### 2.12 Testing Tools & Frameworks
+
+**Python Testing:**
+
+- [ ] unittest - Built-in testing framework
+- [ ] pytest - Advanced testing (optional)
+- [ ] Coverage.py - Code coverage analysis
+- [ ] Mock - Mocking external dependencies
+
+**Test Structure:**
+
+```python
+# Example test structure
+import unittest
+from unittest.mock import Mock, patch
+
+class TestAutomationModule(unittest.TestCase):
+    def setUp(self):
+        """Setup test fixtures"""
+        pass
+
+    def tearDown(self):
+        """Cleanup after tests"""
+        pass
+
+    def test_function_success(self):
+        """Test successful execution"""
+        pass
+
+    def test_function_error_handling(self):
+        """Test error handling"""
+        pass
+
+    def test_edge_cases(self):
+        """Test edge cases"""
+        pass
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+#### 2.13 Test Execution
+
+**Running Tests:**
+
+```bash
+# Run all tests
+python -m pytest tests/
+python -m unittest discover tests/
+
+# Run specific test file
+python -m pytest tests/test_automation.py
+python -m unittest tests.test_automation
+
+# Run with coverage
+coverage run -m pytest tests/
+coverage report
+coverage html  # Generate HTML report
+
+# Run quick test suite
+cd automation/automation_new
+python quick_test.py
+
+# Run verification tests
+python test_auth_system.py
+python test_google_sheets_verification.py
+python verify_sheets.py
+```
+
+#### 2.14 Test Data Management
+
+**Test Data:**
+
+- [ ] Mock data for unit tests
+- [ ] Sample data for integration tests
+- [ ] Test fixtures for consistent testing
+- [ ] Test databases (if applicable)
+- [ ] Cleanup after tests
+
+**Environment Setup:**
+
+- [ ] Test environment configuration
+- [ ] Test credentials (separate from production)
+- [ ] Test database setup
+- [ ] Mock external services
 
 ### Phase 3: Integration Testing
 
@@ -825,12 +1945,1343 @@ grep -r "GOOGLE\|TELEGRAM\|EMAIL" .env
 
 ### Phase 4: E2E Testing
 
-- [ ] Add E2E tests (Cypress/Playwright)
-- [ ] Test complete user flows
-- [ ] Test automation workflows
-- [ ] Increase thresholds to 80%
+#### 4.1 E2E Framework Setup
+
+**Framework Selection:**
+
+- [ ] Choose E2E framework (Cypress or Playwright)
+- [ ] Install E2E testing dependencies
+- [ ] Configure E2E test environment
+- [ ] Setup test runners and reporters
+- [ ] Configure CI/CD integration
+
+**Cypress Setup (Recommended):**
+
+- [ ] Install Cypress: `npm install --save-dev cypress`
+- [ ] Initialize Cypress: `npx cypress open`
+- [ ] Configure `cypress.config.js`
+- [ ] Setup base URL and API endpoints
+- [ ] Configure environment variables
+- [ ] Setup custom commands
+- [ ] Configure fixtures and test data
+
+**Playwright Setup (Alternative):**
+
+- [ ] Install Playwright: `npm install --save-dev @playwright/test`
+- [ ] Initialize Playwright: `npx playwright install`
+- [ ] Configure `playwright.config.js`
+- [ ] Setup browsers (Chromium, Firefox, WebKit)
+- [ ] Configure test execution modes
+
+**Test Structure:**
+
+```
+e2e/
+├── cypress/                    # Cypress tests
+│   ├── e2e/
+│   │   ├── auth/              # Authentication flows
+│   │   ├── dashboard/         # Dashboard flows
+│   │   ├── google-sheets/     # Google Sheets flows
+│   │   ├── automation/        # Automation flows
+│   │   └── integrations/      # Integration flows
+│   ├── fixtures/              # Test data
+│   ├── support/               # Custom commands
+│   └── cypress.config.js
+└── playwright/                # Playwright tests (alternative)
+    ├── tests/
+    ├── fixtures/
+    └── playwright.config.js
+```
+
+#### 4.2 Authentication & User Management Flows
+
+**Login Flow:**
+
+- [ ] Navigate to login page
+- [ ] Enter valid credentials
+- [ ] Submit login form
+- [ ] Verify successful login
+- [ ] Verify redirect to dashboard
+- [ ] Verify user data in UI
+- [ ] Test login with invalid credentials
+- [ ] Test login with missing fields
+- [ ] Test MFA login flow
+- [ ] Test SSO login (Google, Microsoft)
+
+**Registration Flow:**
+
+- [ ] Navigate to registration page
+- [ ] Fill registration form
+- [ ] Submit registration
+- [ ] Verify email verification
+- [ ] Verify account creation
+- [ ] Test validation errors
+- [ ] Test duplicate email handling
+
+**Logout Flow:**
+
+- [ ] Click logout button
+- [ ] Verify session termination
+- [ ] Verify redirect to login
+- [ ] Verify protected routes are blocked
+
+**Session Management:**
+
+- [ ] Test session persistence
+- [ ] Test session expiration
+- [ ] Test session refresh
+- [ ] Test concurrent sessions
+
+#### 4.3 Dashboard & Analytics Flows
+
+**Main Dashboard:**
+
+- [ ] Load dashboard page
+- [ ] Verify data loading
+- [ ] Verify real-time updates via WebSocket
+- [ ] Verify metrics display
+- [ ] Verify charts rendering
+- [ ] Test data refresh
+- [ ] Test date range filtering
+- [ ] Test data export functionality
+
+**AI Analytics Dashboard:**
+
+- [ ] Navigate to AI Analytics
+- [ ] Upload/select data for analysis
+- [ ] Trigger AI analysis
+- [ ] Verify analysis results display
+- [ ] Verify predictions and insights
+- [ ] Test recommendation implementation
+- [ ] Test AI chat interface
+- [ ] Verify real-time analysis updates
+
+**Advanced Analytics:**
+
+- [ ] Navigate to Advanced Analytics
+- [ ] Create custom dashboard
+- [ ] Add widgets (Line, Bar, Pie charts)
+- [ ] Configure data filters
+- [ ] Test drag & drop widget arrangement
+- [ ] Test widget interactions
+- [ ] Export analytics reports (PDF, Excel, CSV)
+- [ ] Save and load dashboard configurations
+
+**Retail Dashboard:**
+
+- [ ] Navigate to Retail Dashboard
+- [ ] Verify sales metrics display
+- [ ] Verify inventory status
+- [ ] Verify customer analytics
+- [ ] Verify store performance data
+- [ ] Verify product performance metrics
+- [ ] Test filtering and sorting
+
+#### 4.4 Google Integration Flows
+
+**Google Sheets Integration:**
+
+- [ ] Navigate to Google Sheets page
+- [ ] Authenticate with Google account
+- [ ] Select/connect spreadsheet
+- [ ] Read data from sheets
+- [ ] Display data in UI
+- [ ] Edit cell data
+- [ ] Save changes to sheets
+- [ ] Append new rows
+- [ ] Delete rows
+- [ ] Create new spreadsheet
+- [ ] Test collaborative editing
+- [ ] Test real-time sync
+
+**Google Drive Integration:**
+
+- [ ] Navigate to Google Drive page
+- [ ] Authenticate with Google account
+- [ ] List files and folders
+- [ ] Navigate folder structure
+- [ ] Upload file
+- [ ] Download file
+- [ ] Create folder
+- [ ] Rename file/folder
+- [ ] Delete file/folder
+- [ ] Share file
+- [ ] View file preview
+- [ ] Test search functionality
+- [ ] Test file sorting and filtering
+
+**Google Apps Script Integration:**
+
+- [ ] Navigate to Apps Script page
+- [ ] List available scripts
+- [ ] Create new script
+- [ ] Edit script code
+- [ ] Execute script
+- [ ] Verify execution results
+- [ ] Test script scheduling
+- [ ] Test script error handling
+
+#### 4.5 Automation Workflows
+
+**Automation Dashboard:**
+
+- [ ] Navigate to Automation Dashboard
+- [ ] View list of automations
+- [ ] Create new automation
+- [ ] Configure automation settings
+- [ ] Enable/disable automation
+- [ ] Execute automation manually
+- [ ] View automation logs
+- [ ] Test automation error handling
+- [ ] Verify automation status updates
+
+**Automation Execution Flow:**
+
+- [ ] Trigger automation from UI
+- [ ] Verify automation starts
+- [ ] Monitor progress in real-time
+- [ ] Verify WebSocket updates
+- [ ] Verify data extraction
+- [ ] Verify Google Sheets update
+- [ ] Verify completion notification
+- [ ] Verify log generation
+- [ ] Test automation failure scenario
+
+**Smart Automation:**
+
+- [ ] Navigate to Smart Automation
+- [ ] Upload data for analysis
+- [ ] Trigger pattern analysis
+- [ ] View pattern detection results
+- [ ] Trigger trend analysis
+- [ ] View trend predictions
+- [ ] Generate predictive alerts
+- [ ] Test auto-categorization
+- [ ] Generate automated reports
+
+#### 4.6 Integration Feature Flows
+
+**Telegram Integration:**
+
+- [ ] Navigate to Telegram page
+- [ ] Connect Telegram bot
+- [ ] Send test message
+- [ ] Verify message delivery
+- [ ] Setup webhook
+- [ ] Test incoming message handling
+- [ ] View chat history
+- [ ] Test bot commands
+
+**Email Service:**
+
+- [ ] Navigate to email settings
+- [ ] Configure email service
+- [ ] Send test email
+- [ ] Verify email delivery
+- [ ] Test email templates
+- [ ] Test bulk email sending
+
+**Alerts Management:**
+
+- [ ] Navigate to Alerts page
+- [ ] Create new alert rule
+- [ ] Configure alert conditions
+- [ ] Test alert triggering
+- [ ] Verify alert notification
+- [ ] View alert history
+- [ ] Edit alert configuration
+- [ ] Delete alert
+- [ ] Test alert statistics
+
+**NLP Dashboard:**
+
+- [ ] Navigate to NLP Dashboard
+- [ ] Test chat interface
+  - [ ] Send natural language query
+  - [ ] Verify AI response
+  - [ ] Test query processing
+- [ ] Test voice commands
+  - [ ] Start voice recognition
+  - [ ] Issue voice command
+  - [ ] Verify command execution
+- [ ] Test smart search
+  - [ ] Enter search query
+  - [ ] Verify search results
+  - [ ] Test advanced search filters
+- [ ] Test auto-summary generation
+
+#### 4.7 Security & Compliance Flows
+
+**Security Dashboard:**
+
+- [ ] Navigate to Security Dashboard
+- [ ] View security settings
+- [ ] Setup MFA
+  - [ ] Generate QR code
+  - [ ] Verify setup process
+  - [ ] Test MFA login
+- [ ] Configure SSO
+  - [ ] Setup Google SSO
+  - [ ] Setup Microsoft SSO
+  - [ ] Test SSO login
+- [ ] User Management
+  - [ ] View user list
+  - [ ] Create new user
+  - [ ] Update user role
+  - [ ] Delete user
+- [ ] Audit Logs
+  - [ ] View audit logs
+  - [ ] Filter logs by date/user
+  - [ ] Export audit logs
+  - [ ] View statistics
+
+**Protected Routes:**
+
+- [ ] Test accessing protected route without auth
+- [ ] Verify redirect to login
+- [ ] Test accessing protected route with expired session
+- [ ] Test role-based access control
+- [ ] Test permission restrictions
+
+#### 4.8 Real-Time Features
+
+**WebSocket Integration:**
+
+- [ ] Verify WebSocket connection on page load
+- [ ] Test real-time data updates
+- [ ] Test connection reconnection
+- [ ] Test connection status indicator
+- [ ] Test message broadcasting
+- [ ] Test room-based messaging
+
+**Live Dashboard Updates:**
+
+- [ ] Verify dashboard auto-refresh
+- [ ] Verify metrics update in real-time
+- [ ] Verify chart updates
+- [ ] Test update performance
+- [ ] Test update frequency
+
+#### 4.9 Cross-Feature Integration Scenarios
+
+**Complete User Journeys:**
+
+- [ ] **Journey 1: New User Onboarding**
+  - [ ] Register → Verify Email → Login → Dashboard Tour → First Automation Setup
+- [ ] **Journey 2: Data Analysis Workflow**
+  - [ ] Login → Connect Google Sheets → Import Data → Run AI Analysis → View Insights → Export Report
+- [ ] **Journey 3: Automation Setup & Execution**
+  - [ ] Login → Create Automation → Configure Settings → Enable Automation → Monitor Execution → View Results
+- [ ] **Journey 4: Collaborative Workflow**
+  - [ ] Login → Open Google Sheets → Edit Data → See Real-time Updates → Get Alert → Respond via Telegram
+- [ ] **Journey 5: Advanced Analytics Workflow**
+  - [ ] Login → Upload Data → Create Custom Dashboard → Add Charts → Apply Filters → Generate Report → Share
+
+**Multi-Service Integration:**
+
+- [ ] Google Sheets → Automation → AI Analysis → Email Report
+- [ ] Data Collection → Smart Automation → Predictive Alerts → Telegram Notification
+- [ ] Automation Execution → Google Sheets Update → Dashboard Refresh → Real-time Display
+
+#### 4.10 Error Scenarios & Edge Cases
+
+**Error Handling:**
+
+- [ ] Network timeout scenarios
+- [ ] API error responses (4xx, 5xx)
+- [ ] Service unavailable scenarios
+- [ ] Invalid data input handling
+- [ ] Concurrent user conflicts
+- [ ] Large data set handling
+- [ ] Browser compatibility issues
+
+**Edge Cases:**
+
+- [ ] Empty state displays
+- [ ] Loading state handling
+- [ ] Offline mode behavior
+- [ ] Browser back/forward navigation
+- [ ] Multiple tab handling
+- [ ] Session timeout during operation
+- [ ] Partial data loading
+
+#### 4.11 Performance & Load Testing
+
+**Performance Tests:**
+
+- [ ] Page load time measurement
+- [ ] Time to interactive (TTI)
+- [ ] API response time
+- [ ] Data rendering performance
+- [ ] Chart rendering performance
+- [ ] Large dataset handling
+- [ ] WebSocket message throughput
+
+**Load Tests:**
+
+- [ ] Multiple concurrent users
+- [ ] High frequency API calls
+- [ ] Real-time update stress test
+- [ ] Database query performance
+- [ ] Memory usage monitoring
+
+#### 4.12 Mobile & Responsive Testing
+
+**Responsive Design:**
+
+- [ ] Test on mobile viewport (< 768px)
+- [ ] Test on tablet viewport (768px - 1024px)
+- [ ] Test on desktop viewport (> 1024px)
+- [ ] Verify touch interactions
+- [ ] Verify mobile navigation
+- [ ] Verify responsive charts and tables
+- [ ] Test mobile-specific features
+
+**Cross-Browser Testing:**
+
+- [ ] Chrome/Chromium
+- [ ] Firefox
+- [ ] Safari/WebKit
+- [ ] Edge
+
+#### 4.13 Accessibility Testing
+
+**Accessibility Checks:**
+
+- [ ] Keyboard navigation
+- [ ] Screen reader compatibility
+- [ ] ARIA labels and roles
+- [ ] Color contrast ratios
+- [ ] Focus indicators
+- [ ] Form accessibility
+- [ ] Error message accessibility
+
+#### 4.14 Test Data Management
+
+**Test Fixtures:**
+
+- [ ] Mock user accounts
+- [ ] Mock Google Sheets data
+- [ ] Mock API responses
+- [ ] Mock automation results
+- [ ] Test data cleanup after tests
+
+**Environment Setup:**
+
+- [ ] Test environment configuration
+- [ ] Test database setup
+- [ ] Mock external services
+- [ ] Test credentials management
+
+#### 4.15 Coverage Goals
+
+**Coverage Targets:**
+
+- [ ] Achieve 80% statement coverage
+- [ ] Achieve 80% branch coverage
+- [ ] Achieve 80% function coverage
+- [ ] Achieve 80% line coverage
+- [ ] Critical user flows → 90% coverage
+- [ ] All authentication flows → 95% coverage
+
+**Test Metrics:**
+
+- [ ] Test execution time
+- [ ] Test pass rate
+- [ ] Test flakiness rate
+- [ ] Coverage reports
+- [ ] Test maintenance overhead
+
+#### 4.16 E2E Test Examples
+
+**Cypress Example:**
+
+```javascript
+// cypress/e2e/dashboard/login.cy.js
+describe("User Login Flow", () => {
+  beforeEach(() => {
+    cy.visit("/login");
+  });
+
+  it("should login successfully with valid credentials", () => {
+    cy.get("[data-cy=email-input]").type("user@example.com");
+    cy.get("[data-cy=password-input]").type("password123");
+    cy.get("[data-cy=login-button]").click();
+
+    cy.url().should("include", "/dashboard");
+    cy.get("[data-cy=user-menu]").should("be.visible");
+    cy.get("[data-cy=welcome-message]").should("contain", "Welcome");
+  });
+
+  it("should show error with invalid credentials", () => {
+    cy.get("[data-cy=email-input]").type("wrong@example.com");
+    cy.get("[data-cy=password-input]").type("wrongpassword");
+    cy.get("[data-cy=login-button]").click();
+
+    cy.get("[data-cy=error-message]").should("be.visible");
+    cy.url().should("include", "/login");
+  });
+});
+```
+
+**Playwright Example:**
+
+```javascript
+// playwright/tests/dashboard.spec.js
+import { test, expect } from "@playwright/test";
+
+test.describe("Dashboard Flow", () => {
+  test("should load and display dashboard data", async ({ page }) => {
+    await page.goto("/dashboard");
+    await page.waitForSelector("[data-testid=dashboard-container]");
+
+    const metrics = await page.locator("[data-testid=metric-card]").count();
+    expect(metrics).toBeGreaterThan(0);
+
+    await expect(page.locator("[data-testid=chart-container]")).toBeVisible();
+  });
+});
+```
+
+#### 4.17 Test Execution & CI/CD
+
+**Running E2E Tests:**
+
+```bash
+# Cypress
+npm run test:e2e          # Run Cypress tests
+npm run test:e2e:headed   # Run with browser UI
+npm run test:e2e:ci       # Run in CI mode
+
+# Playwright
+npm run test:e2e          # Run Playwright tests
+npm run test:e2e:ui       # Run with UI mode
+npm run test:e2e:debug    # Run in debug mode
+```
+
+**CI/CD Integration:**
+
+- [ ] Run E2E tests on pull requests
+- [ ] Run E2E tests before deployment
+- [ ] Parallel test execution
+- [ ] Test result reporting
+- [ ] Screenshot on failure
+- [ ] Video recording on failure
+
+#### 4.18 Best Practices
+
+**Test Organization:**
+
+- [ ] Group related tests
+- [ ] Use descriptive test names
+- [ ] Keep tests independent
+- [ ] Use Page Object Model pattern
+- [ ] Reuse test utilities
+
+**Test Maintenance:**
+
+- [ ] Regular test review
+- [ ] Update tests with UI changes
+- [ ] Remove flaky tests
+- [ ] Optimize slow tests
+- [ ] Document test scenarios
 
 ---
 
-**Last Updated:** November 24, 2025
+## 📝 NPM Scripts Reference
+
+### Test Scripts
+
+```json
+{
+  "test": "react-scripts test",
+  "test:frontend": "react-scripts test",
+  "test:backend": "jest",
+  "test:integration": "jest integration-tests",
+  "test:e2e": "jest end-to-end-tests",
+  "test:all": "concurrently test scripts...",
+  "test:google-sheets": "node scripts/testGoogleSheets.js",
+  "test:api": "node scripts/test-api-endpoints.js",
+  "test:automation": "node scripts/test-automation-system.js",
+  "test:websocket": "node scripts/test-websocket.js",
+  "test:complete": "node scripts/test-all.js",
+  "test:scripts": "node scripts/test-all.js"
+}
+```
+
+### Health Check Scripts
+
+```json
+{
+  "health:full": "bash scripts/full-health-check.sh",
+  "check:ports": "bash scripts/check-ports.sh",
+  "check:backend": "bash scripts/check-backend.sh",
+  "verify:setup": "bash scripts/verify-setup.sh"
+}
+```
+
+## 🔧 Test Scripts Details
+
+### 1. `test-all.js` - Comprehensive Test Runner
+
+**Mô tả:** Chạy tất cả test suites tự động và tạo báo cáo tổng hợp.
+
+**Test Suites:**
+
+1. Google Sheets Connection (`testGoogleConnection.cjs`)
+2. Google Sheets Service (`testGoogleSheets.js`)
+3. Frontend API Connection (`test_frontend_api_connection.js`)
+4. Email Service (`testEmailService.js`)
+5. Telegram Connection (`testTelegramConnection.js`)
+6. Health Check (`health-check.cjs`)
+7. WebSocket Connection (`test-websocket.js`)
+
+**Root Level Tests:**
+
+- Complete System Test (`complete_system_test.js`)
+- End-to-End Test (`end_to_end_test.js`)
+- Integration Test (`integration_test.js`)
+- Frontend Connection Test (`frontend_connection_test.js`)
+
+**Output:**
+
+- Console: Real-time progress và kết quả
+- JSON Report: `test-report-[timestamp].json`
+
+### 2. `test-api-endpoints.js` - API Testing
+
+**Test các endpoints:**
+
+**Backend API (port 3001):**
+
+- `GET /health` - Health check
+- `GET /api/status` - API status
+- `GET /api/orders` - Get orders
+- `GET /api/analytics` - Get analytics
+- `GET /api/statistics` - Get statistics
+
+**AI Service (port 8000):**
+
+- `GET /health` - Health check
+- `GET /` - Service info
+- `GET /api/predictions` - AI predictions
+- `GET /api/analytics` - AI analytics
+
+### 3. `test-automation-system.js` - Automation Testing
+
+**Test các phần:**
+
+- ✅ Python environment check
+- ✅ Automation files check (`main.py`, `automation_bridge.py`)
+- ✅ Service dependencies
+- ✅ File structure validation
+
+### 4. `test-websocket.js` - WebSocket Testing
+
+**Tính năng:**
+
+- ✅ Test WebSocket connection
+- ✅ Test welcome message
+- ✅ Test real-time data updates
+- ✅ Test AI analysis results
+- ✅ Connection error handling
+
+### 5. `testGoogleSheets.js` - Google Sheets Testing
+
+**Test các chức năng:**
+
+- ✅ Google Sheets API connection
+- ✅ Read spreadsheet data
+- ✅ Write data to sheets
+- ✅ Append data to sheets
+- ✅ Service Account authentication
+
+## 🎓 Best Practices (Extended)
+
+### Test Organization
+
+1. **Unit Tests** - Test individual components/functions
+2. **Integration Tests** - Test component interactions
+3. **E2E Tests** - Test complete user flows
+4. **API Tests** - Test backend endpoints
+5. **Service Tests** - Test external services
+
+### Test Data Management
+
+```javascript
+// Use fixtures for test data
+const mockData = {
+  user: { id: 1, name: "Test User" },
+  order: { id: 1, status: "pending" },
+};
+
+// Clean up after tests
+afterEach(() => {
+  jest.clearAllMocks();
+});
+```
+
+### Mocking Strategies
+
+```javascript
+// Mock API calls
+jest.mock("./apiService", () => ({
+  fetchData: jest.fn(() => Promise.resolve({ data: [] })),
+}));
+
+// Mock React components
+jest.mock("./ExpensiveComponent", () => () => <div>Mock</div>);
+```
+
+## 📚 Additional Resources
+
+### Documentation
+
+- [Jest Documentation](https://jestjs.io/docs/getting-started)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Testing Best Practices](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
+- [Python unittest](https://docs.python.org/3/library/unittest.html)
+- [pytest Documentation](https://docs.pytest.org/)
+
+### Internal Documentation
+
+- `TEST_SCRIPTS_GUIDE.md` - Chi tiết về test scripts
+- `scripts/README.md` - Hướng dẫn sử dụng scripts
+- `QUICK_SCRIPTS_REFERENCE.md` - Quick reference cho scripts
+
+## ⚡ Quick Reference
+
+### Testing Workflow
+
+```bash
+# 1. Quick health check
+npm run health-check
+
+# 2. Run frontend tests
+npm test
+
+# 3. Run specific integration test
+npm run test:api          # API endpoints
+npm run test:automation   # Automation system
+npm run test:websocket    # WebSocket
+
+# 4. Run complete test suite
+npm run test:complete
+
+# 5. Check test coverage
+npm run test:coverage
+```
+
+### Common Test Commands
+
+```bash
+# Frontend
+npm test                    # Interactive watch mode
+npm test -- --coverage      # With coverage
+npm test -- App.test.js     # Specific file
+
+# Integration
+npm run test:complete       # All tests
+npm run test:google-sheets  # Google Sheets
+npm run test:api            # API endpoints
+npm run test:websocket      # WebSocket
+
+# Health Checks
+npm run health-check        # Basic
+npm run health:full         # Comprehensive
+npm run check:backend       # Backend only
+npm run check:ports         # Ports only
+
+# Backend (Python)
+cd automation/one_automation_system
+python run_tests.py         # All tests
+python quick_test.py        # Quick test
+```
+
+### Test Files Location
+
+```
+Frontend Tests:
+├── src/App.test.js
+└── src/setupTests.js
+
+Backend Tests:
+├── automation/one_automation_system/
+│   ├── run_tests.py
+│   ├── quick_test.py
+│   └── test_*.py
+
+Integration Tests:
+├── scripts/
+│   ├── test-all.js
+│   ├── test-api-endpoints.js
+│   └── ...
+└── (root)/
+    ├── complete_system_test.js
+    ├── end_to_end_test.js
+    └── ...
+```
+
+## 🚨 Troubleshooting Quick Fixes
+
+### Test không chạy
+
+```bash
+# Clear cache và reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Clear Jest cache
+npm test -- --clearCache
+```
+
+### API tests fail
+
+```bash
+# Kiểm tra services đang chạy
+npm run check:backend
+npm run check:ports
+
+# Start services
+npm run dev  # Start all services
+```
+
+### Python tests fail
+
+```bash
+# Activate virtual environment
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Check Python version
+python --version  # Should be 3.8+
+```
+
+### Coverage không hiển thị
+
+```bash
+# Regenerate coverage
+npm run test:coverage
+
+# Open HTML report
+open coverage/lcov-report/index.html
+```
+
+---
+
+## 🎯 ĐỀ XUẤT TRIỂN KHAI (IMPLEMENTATION ROADMAP)
+
+### 📅 Phương Pháp 80/20 - Ưu Tiên Cao Impact
+
+Triển khai testing theo nguyên tắc **80/20**: 20% effort tạo ra 80% giá trị. Bắt đầu với những test quan trọng nhất.
+
+### 🚀 Phase 1: Foundation (Tuần 1-2) - CRITICAL
+
+**Mục tiêu:** Setup infrastructure và test critical paths (20% effort → 80% coverage cho critical features)
+
+#### ✅ Tuần 1: Infrastructure Setup
+
+**Day 1-2: Test Infrastructure**
+
+- [ ] Setup Jest configuration cho Frontend
+- [ ] Tạo test utilities (`src/utils/test-utils.js`)
+  - [ ] `renderWithProviders` - Redux wrapper
+  - [ ] `renderWithRouter` - Router wrapper
+  - [ ] Mock API helpers
+- [ ] Setup test data fixtures (`src/__fixtures__/`)
+- [ ] Configure coverage reporting
+
+**Day 3-4: Critical Component Tests (Priority 1)**
+
+- [ ] `auth/Login` component (full test suite)
+  - [ ] Form validation
+  - [ ] API integration
+  - [ ] Error handling
+  - [ ] Success flow
+- [ ] `auth/ProtectedRoute` component
+  - [ ] Authentication check
+  - [ ] Redirect logic
+- [ ] `Common/ErrorBoundary` component
+
+**Day 5: Critical Service Tests**
+
+- [ ] `securityService.js` - Authentication methods
+- [ ] API error handling tests
+
+**Deliverable:**
+
+- ✅ Test infrastructure hoàn chỉnh
+- ✅ 3-5 critical components có tests
+- ✅ Coverage: ~15-20%
+
+#### ✅ Tuần 2: Core Features Testing
+
+**Day 1-2: Redux Store Tests**
+
+- [ ] `authReducer` - Full test suite
+- [ ] `authActions.js` - Async actions
+- [ ] Store configuration tests
+
+**Day 3-4: API Integration Tests**
+
+- [ ] `securityService` - Login, Logout, Session
+- [ ] Mock API responses
+- [ ] Error scenarios
+
+**Day 5: Routing Tests**
+
+- [ ] Protected route tests
+- [ ] Navigation tests
+- [ ] Redirect logic
+
+**Deliverable:**
+
+- ✅ Redux store fully tested
+- ✅ API integration tested
+- ✅ Routing tested
+- ✅ Coverage: ~30-35%
+
+### 🎯 Phase 2: High-Value Features (Tuần 3-4) - HIGH PRIORITY
+
+**Mục tiêu:** Test features được dùng nhiều nhất (Google Sheets, Dashboard)
+
+#### ✅ Tuần 3: Google Integration Tests
+
+**Day 1-2: Google Sheets Component**
+
+- [ ] `google/GoogleSheetsIntegration` component
+  - [ ] Render tests
+  - [ ] Data loading
+  - [ ] CRUD operations
+  - [ ] Error handling
+- [ ] `GoogleSheet/SheetReader` component
+- [ ] `GoogleSheet/SheetWriter` component
+
+**Day 3-4: Google Sheets Service**
+
+- [ ] `googleSheetsApi.js` - All methods
+- [ ] Mock Google API responses
+- [ ] Error handling tests
+
+**Day 5: Google Drive Tests**
+
+- [ ] `google/GoogleDriveIntegration` component
+- [ ] `googleDriveApi.js` service
+
+**Deliverable:**
+
+- ✅ Google integration fully tested
+- ✅ Coverage: ~45-50%
+
+#### ✅ Tuần 4: Dashboard & Analytics
+
+**Day 1-2: Dashboard Components**
+
+- [ ] `Dashboard/LiveDashboard` component
+- [ ] WebSocket integration tests
+- [ ] Real-time updates
+
+**Day 3-4: Analytics Components**
+
+- [ ] `analytics/AdvancedAnalyticsDashboard`
+- [ ] Chart components rendering
+- [ ] Data filtering
+
+**Day 5: AI Dashboard**
+
+- [ ] `ai/AIDashboard` component
+- [ ] AI service integration
+- [ ] Chat interface
+
+**Deliverable:**
+
+- ✅ Dashboards fully tested
+- ✅ Coverage: ~55-60%
+
+### 🔧 Phase 3: Backend & Integration (Tuần 5-6) - MEDIUM PRIORITY
+
+**Mục tiêu:** Test backend services và integration flows
+
+#### ✅ Tuần 5: Backend Core Tests
+
+**Day 1-2: Authentication Service**
+
+- [ ] `automation/auth_service.py` tests
+- [ ] Session management tests
+- [ ] User management tests
+
+**Day 3-4: Automation Core**
+
+- [ ] `automation.py` main class tests
+- [ ] Error handling tests
+- [ ] Session manager tests
+
+**Day 5: Services Integration**
+
+- [ ] Google Sheets service (Python)
+- [ ] Email service tests
+
+**Deliverable:**
+
+- ✅ Backend core tested
+- ✅ Coverage: ~65-70%
+
+#### ✅ Tuần 6: Integration Tests
+
+**Day 1-2: API Integration**
+
+- [ ] Frontend ↔ Backend API tests
+- [ ] Endpoint testing
+- [ ] Error propagation
+
+**Day 3-4: WebSocket Integration**
+
+- [ ] WebSocket connection tests
+- [ ] Real-time updates
+- [ ] Reconnection logic
+
+**Day 5: Cross-Feature Integration**
+
+- [ ] Google Sheets → Automation flow
+- [ ] AI Analysis → Dashboard flow
+
+**Deliverable:**
+
+- ✅ Integration tests complete
+- ✅ Coverage: ~70-75%
+
+### 🌟 Phase 4: E2E & Polish (Tuần 7-8) - NICE TO HAVE
+
+**Mục tiêu:** E2E tests và tối ưu coverage
+
+#### ✅ Tuần 7: E2E Setup & Critical Flows
+
+**Day 1-2: Cypress Setup**
+
+- [ ] Install và configure Cypress
+- [ ] Setup test structure
+- [ ] Configure CI/CD
+
+**Day 3-4: Critical E2E Flows**
+
+- [ ] Login → Dashboard flow
+- [ ] Google Sheets: Connect → Read → Write flow
+- [ ] Automation: Create → Execute flow
+
+**Day 5: E2E Error Scenarios**
+
+- [ ] Error handling flows
+- [ ] Network failure scenarios
+
+**Deliverable:**
+
+- ✅ E2E framework setup
+- ✅ 3-5 critical flows tested
+- ✅ Coverage: ~75-80%
+
+#### ✅ Tuần 8: Polish & Optimization
+
+**Day 1-2: Additional E2E Flows**
+
+- [ ] Remaining user journeys
+- [ ] Cross-feature flows
+
+**Day 3-4: Test Optimization**
+
+- [ ] Fix flaky tests
+- [ ] Optimize slow tests
+- [ ] Improve test maintainability
+
+**Day 5: Documentation & Review**
+
+- [ ] Update test documentation
+- [ ] Code review test coverage
+- [ ] Team training on testing
+
+**Deliverable:**
+
+- ✅ E2E tests complete
+- ✅ Coverage: 80%+
+- ✅ Test suite optimized
+
+---
+
+### 📊 Implementation Checklist (Quick Start)
+
+**🎯 Week 1 Sprint:**
+
+```bash
+# Day 1: Setup
+- Setup test utilities
+- Create test fixtures
+- Configure Jest
+
+# Day 2-3: Critical Components
+- Test Login component
+- Test ProtectedRoute
+- Test ErrorBoundary
+
+# Day 4-5: Critical Services
+- Test securityService
+- Test Redux auth flow
+- Setup API mocking
+```
+
+**🎯 Week 2 Sprint:**
+
+```bash
+# Day 1-2: Redux Testing
+- Test all reducers
+- Test async actions
+- Test state persistence
+
+# Day 3-4: Google Integration
+- Test Google Sheets component
+- Test Google Sheets service
+- Test Google Drive integration
+
+# Day 5: Dashboard
+- Test LiveDashboard
+- Test WebSocket integration
+```
+
+### 💡 Quick Wins (Có thể làm ngay)
+
+**1. Test Utilities (1-2 giờ)**
+
+- Tạo `src/utils/test-utils.js` với render helpers
+- Tạo mock data fixtures
+
+**2. Critical Component Tests (3-4 giờ)**
+
+- Test Login component
+- Test ProtectedRoute
+- Đạt coverage ngay cho phần quan trọng nhất
+
+**3. Service Mocking (2-3 giờ)**
+
+- Setup API mocking
+- Tạo mock responses
+- Test error scenarios
+
+**4. Redux Tests (4-5 giờ)**
+
+- Test authReducer
+- Test authActions
+- Test store configuration
+
+### 🎯 Success Metrics
+
+**Phase 1 (Week 2):**
+
+- ✅ 15-20% coverage
+- ✅ Critical components tested
+- ✅ Test infrastructure ready
+
+**Phase 2 (Week 4):**
+
+- ✅ 45-50% coverage
+- ✅ Core features tested
+- ✅ Google integration tested
+
+**Phase 3 (Week 6):**
+
+- ✅ 70% coverage
+- ✅ Backend tested
+- ✅ Integration flows tested
+
+**Phase 4 (Week 8):**
+
+- ✅ 80%+ coverage
+- ✅ E2E tests complete
+- ✅ Production ready
+
+### 🔥 Recommended Tools & Scripts
+
+**Tạo Helper Scripts:**
+
+```bash
+# scripts/setup-testing.sh
+- Setup test infrastructure
+- Install dependencies
+- Create test directories
+- Generate test templates
+
+# scripts/run-tests-fast.sh
+- Run only critical tests
+- Skip slow tests
+- Fast feedback loop
+
+# scripts/test-coverage.sh
+- Run tests with coverage
+- Generate reports
+- Check coverage thresholds
+```
+
+**Templates để bắt đầu nhanh:**
+
+**1. Component Test Template** (`src/components/__tests__/Component.test.js.template`)
+
+```javascript
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { store } from "../../../store/store";
+import Component from "../Component";
+
+const renderWithProviders = (ui) => {
+  return render(
+    <Provider store={store}>
+      <BrowserRouter>{ui}</BrowserRouter>
+    </Provider>
+  );
+};
+
+describe("Component", () => {
+  it("renders correctly", () => {
+    renderWithProviders(<Component />);
+    expect(screen.getByRole("...")).toBeInTheDocument();
+  });
+
+  // Add more tests...
+});
+```
+
+**2. Service Test Template** (`src/services/__tests__/service.test.js.template`)
+
+```javascript
+import service from "../service";
+import axios from "axios";
+
+jest.mock("axios");
+
+describe("Service", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("should handle success", async () => {
+    axios.get.mockResolvedValue({ data: { success: true } });
+    const result = await service.method();
+    expect(result.success).toBe(true);
+  });
+
+  it("should handle errors", async () => {
+    axios.get.mockRejectedValue(new Error("Network error"));
+    await expect(service.method()).rejects.toThrow("Network error");
+  });
+});
+```
+
+**3. Redux Test Template** (`src/store/__tests__/slice.test.js.template`)
+
+```javascript
+import reducer, { actions } from "../slice";
+
+describe("Slice", () => {
+  const initialState = {
+    /* initial state */
+  };
+
+  it("should return initial state", () => {
+    expect(reducer(undefined, {})).toEqual(initialState);
+  });
+
+  it("should handle action", () => {
+    const action = actions.actionName(payload);
+    const newState = reducer(initialState, action);
+    expect(newState).toEqual({
+      /* expected state */
+    });
+  });
+});
+```
+
+### 📝 Testing Best Practices Checklist
+
+- [ ] ✅ **Write tests first** cho critical features (TDD)
+- [ ] ✅ **Test behavior, not implementation**
+- [ ] ✅ **Keep tests independent** - No dependencies
+- [ ] ✅ **Use descriptive test names** - Clear intent
+- [ ] ✅ **Mock external dependencies** - Fast, reliable
+- [ ] ✅ **Test error scenarios** - Not just happy paths
+- [ ] ✅ **Maintain test data** - Use fixtures
+- [ ] ✅ **Review coverage regularly** - Identify gaps
+- [ ] ✅ **Fix flaky tests immediately** - Don't ignore
+- [ ] ✅ **Document test scenarios** - For team knowledge
+
+### 🚨 Common Pitfalls to Avoid
+
+❌ **Don't:**
+
+- Test implementation details
+- Write tests that depend on each other
+- Ignore flaky tests
+- Skip error scenarios
+- Test everything (focus on critical paths)
+- Over-mock (mock only external dependencies)
+
+✅ **Do:**
+
+- Test user-facing behavior
+- Keep tests fast and independent
+- Fix flaky tests immediately
+- Test both success and failure paths
+- Focus on critical features first
+- Mock external services only
+
+---
+
+### 🎓 Training & Resources
+
+**Để team bắt đầu nhanh:**
+
+1. **Xem video tutorials:**
+
+   - Jest & React Testing Library basics
+   - Testing Redux with React
+   - API mocking strategies
+   - E2E testing với Cypress
+
+2. **Đọc documentation:**
+
+   - [Jest Documentation](https://jestjs.io/docs/getting-started)
+   - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+   - [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices)
+
+3. **Practice exercises:**
+   - Start with simple component tests
+   - Gradually move to complex integrations
+   - Pair programming với experienced tester
+
+### 📈 Progress Tracking
+
+**Weekly Review Checklist:**
+
+- [ ] Coverage % increase từ tuần trước
+- [ ] Số tests mới được thêm
+- [ ] Số bugs found by tests
+- [ ] Test execution time
+- [ ] Flaky tests identified and fixed
+- [ ] Team feedback on testing process
+
+**Metrics Dashboard Example:**
+
+```
+Week | Coverage | Tests | Pass Rate | Avg Time | Issues Found
+-----|----------|-------|-----------|----------|-------------
+1    | 15%      | 25    | 100%      | 5s       | 3
+2    | 35%      | 80    | 98%       | 12s      | 8
+3    | 50%      | 150   | 99%       | 20s      | 15
+4    | 60%      | 220   | 99%       | 25s      | 20
+...
+```
+
+---
+
+**Last Updated:** December 19, 2025
 **Version:** 4.0.0
+**Status:** ✅ Complete and Up-to-Date
+**Maintained by:** Development Team

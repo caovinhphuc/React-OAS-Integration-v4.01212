@@ -2,4 +2,48 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
+
+// Mock window.matchMedia - Required for Ant Design responsive features
+// Ant Design's responsiveObserver stores MediaQueryList objects and expects them to have specific properties
+const createMatchMedia = (query) => {
+  const mediaQueryList = {
+    matches: false,
+    media: query || "",
+    onchange: null,
+    addListener: () => {}, // deprecated but required
+    removeListener: () => {}, // deprecated but required
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => true,
+  };
+  return mediaQueryList;
+};
+
+// Setup matchMedia before anything else
+if (typeof window !== "undefined") {
+  Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    configurable: true,
+    value: createMatchMedia,
+  });
+}
+
+// Mock IntersectionObserver
+global.IntersectionObserver = class IntersectionObserver {
+  constructor() {}
+  disconnect() {}
+  observe() {}
+  takeRecords() {
+    return [];
+  }
+  unobserve() {}
+};
+
+// Mock ResizeObserver
+global.ResizeObserver = class ResizeObserver {
+  constructor() {}
+  disconnect() {}
+  observe() {}
+  unobserve() {}
+};
