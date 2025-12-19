@@ -11,6 +11,8 @@ import {
 } from "../../../utils/test-utils";
 import Login from "../Login";
 
+import { loginUser, registerUser } from "../../../services/securityService";
+
 // Mock react-router-dom
 const mockNavigate = jest.fn();
 const mockSearchParamsGet = jest.fn();
@@ -52,8 +54,6 @@ jest.mock("../../../services/securityService", () => ({
   loginUser: jest.fn(),
   registerUser: jest.fn(),
 }));
-
-import { loginUser, registerUser } from "../../../services/securityService";
 
 // Helper to get login submit button (excludes SSO buttons)
 const getLoginSubmitButton = (container) => {

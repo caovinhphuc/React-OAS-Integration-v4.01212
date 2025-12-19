@@ -7,9 +7,6 @@ import "./GoogleAppsScriptIntegration.css";
 
 const GoogleAppsScriptIntegration = () => {
   const { loading, error } = useSelector((state) => state.auth);
-  const { isAuthenticated, serviceAccount } = useSelector(
-    (state) => state.auth
-  );
 
   const [scripts, setScripts] = useState([]);
   const [selectedScript, setSelectedScript] = useState(null);
@@ -87,6 +84,7 @@ const GoogleAppsScriptIntegration = () => {
 
   useEffect(() => {
     setScripts(sampleScripts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleScriptSelect = (script) => {
@@ -213,6 +211,8 @@ const GoogleAppsScriptIntegration = () => {
     }
   };
 
+  // Unused function - reserved for future use
+  // eslint-disable-next-line no-unused-vars
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("vi-VN", {
       year: "numeric",

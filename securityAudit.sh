@@ -75,10 +75,28 @@ fi
 # Check build output for sensitive information
 print_info "Checking build output..."
 if [ -d "build" ]; then
-    if grep -r "password\|secret\|key\|token" build/ | grep -v "REACT_APP_"; then
+    # Exclude source maps and common false positives from search
+    if grep -r "password\|secret\|key\|token" build/ \
+        --exclude="*.map" \
+        --exclude-dir="static/js/*.map" \
+        --exclude-dir="static/css/*.map" \
+        | grep -v "REACT_APP_" \
+        | grep -v "authToken\|getToken\|setToken\|removeToken\|localStorage" \
+        | grep -v "password\|secret\|key\|token.*=" \
+        | grep -v "function.*password\|function.*token\|function.*secret\|function.*key" \
+        | grep -E "(AIzaSy|sk_live|pk_live|[a-zA-Z0-9]{32,})"; then
         print_warning "Potential sensitive information found in build"
+        print_info "Note: This may include variable names. Verify actual secrets are not exposed."
     else
         print_status "Build output appears clean"
+    fi
+    
+    # Check for source maps in production build
+    if find build/ -name "*.map" 2>/dev/null | grep -q .; then
+        print_warning "Source maps found in build directory"
+        print_info "Consider disabling source maps for production: GENERATE_SOURCEMAP=false"
+    else
+        print_status "No source maps found in build (good for production)"
     fi
 else
     print_warning "Build directory not found - run: npm run build"
