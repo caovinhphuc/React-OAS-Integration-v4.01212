@@ -3,7 +3,7 @@ import {
   TransportRequestPDFService,
   TransportRequestPDFData,
 } from '@/services/pdf/transportRequestPDFService';
-import type { TransportRequest } from '@/features/shipments/components/TransportRequestsSheet';
+import type { TransportRequest } from '@/services/transportRequestsService';
 
 export const useTransportRequestPDF = () => {
   const [isGenerating, setIsGenerating] = useState(false);
