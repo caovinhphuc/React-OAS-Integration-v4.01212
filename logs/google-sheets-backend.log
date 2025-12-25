@@ -1,5 +1,6 @@
-[dotenv@17.2.2] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+[dotenv@17.2.2] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
 🚀 Server running on port 3003
 📊 Google Sheets: Not configured
 📧 Email: Not configured
 📱 Telegram: Not configured
+User logged in: admin@mia.vn at 2025-12-25T04:31:33.154Z
