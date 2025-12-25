@@ -9,7 +9,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from "react";
-import { Layout, WidthProvider, Responsive } from "react-grid-layout";
+import { Layout, ResponsiveGridLayout } from "react-grid-layout";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import {
@@ -58,7 +58,6 @@ import "./AdvancedAnalyticsDashboard.css";
 
 const { Title, Text } = Typography;
 const { RangePicker } = DatePicker;
-const ResponsiveGridLayout = WidthProvider(Responsive);
 
 // Sample data
 const generateSampleData = (type = "line", count = 10) => {
@@ -176,8 +175,8 @@ const AdvancedAnalyticsDashboard = () => {
     if (editingWidget) {
       setWidgets((prev) =>
         prev.map((w) =>
-          w.id === editingWidget.id ? { ...w, ...newWidget } : w,
-        ),
+          w.id === editingWidget.id ? { ...w, ...newWidget } : w
+        )
       );
       message.success("Widget updated successfully!");
     } else {

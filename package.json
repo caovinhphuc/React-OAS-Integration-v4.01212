@@ -8,7 +8,7 @@
     "build": "react-scripts build",
     "install:source-map-explorer": "npm install --save source-map-explorer",
     "test": "react-scripts test",
-    "build:prod": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build:prod": "GENERATE_SOURCEMAP=true react-scripts build",
     "build:analyze": "GENERATE_SOURCEMAP=true react-scripts build && npm run analyze",
     "serve:build": "npx serve -s build -p 3000",
     "serve:deployed": "bash serve-build.sh 3000",
@@ -99,6 +99,9 @@
   "devDependencies": {
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
+    "@size-limit/preset-app": "^12.0.0",
+    "@size-limit/preset-big-lib": "^12.0.0",
+    "@size-limit/preset-small-lib": "^12.0.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",

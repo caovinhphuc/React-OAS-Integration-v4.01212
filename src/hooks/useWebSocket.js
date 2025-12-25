@@ -3,7 +3,7 @@
  * Sử dụng trong React components
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getWebSocketClient } from "../utils/websocket";
 
 /**
@@ -98,6 +98,26 @@ export function useWebSocket(url = null, rooms = []) {
     }
   }, [connected, rooms, client]);
 
+  // Memoize subscribe function to avoid recreation on every render
+  const subscribe = useCallback(
+    (event, callback) => {
+      client.on(event, callback);
+      // Return unsubscribe function
+      return () => {
+        client.off(event, callback);
+      };
+    },
+    [client]
+  );
+
+  // Memoize unsubscribe function
+  const unsubscribe = useCallback(
+    (event, callback) => {
+      client.off(event, callback);
+    },
+    [client]
+  );
+
   return {
     client,
     connected,
@@ -115,6 +135,8 @@ export function useWebSocket(url = null, rooms = []) {
       client.leaveRoom(roomId);
     },
     broadcastToRoom: (roomId, data) => client.broadcastToRoom(roomId, data),
+    subscribe,
+    unsubscribe,
   };
 }
 
