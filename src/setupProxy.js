@@ -7,6 +7,6 @@ module.exports = function (app) {
       target: "http://localhost:3002",
       ws: true,
       changeOrigin: true,
-    }),
+    })
   );
 };

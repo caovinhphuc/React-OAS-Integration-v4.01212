@@ -5,21 +5,8 @@
  */
 
 import React from "react";
-import {
-  Input,
-  Select,
-  DatePicker,
-  Space,
-  Button,
-  Typography,
-  Row,
-  Col,
-} from "antd";
-import {
-  SearchOutlined,
-  FilterOutlined,
-  ClearOutlined,
-} from "@ant-design/icons";
+import { Input, Select, DatePicker, Space, Button, Typography, Row, Col } from "antd";
+import { SearchOutlined, FilterOutlined, ClearOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 const { RangePicker } = DatePicker;
@@ -43,8 +30,7 @@ export const DataFilterPanel = ({ filters, onFiltersChange, onSearch }) => {
     });
   };
 
-  const hasActiveFilters =
-    filters.search || filters.dateRange || filters.chartType;
+  const hasActiveFilters = filters.search || filters.dateRange || filters.chartType;
 
   return (
     <Row gutter={[16, 16]} align="middle">

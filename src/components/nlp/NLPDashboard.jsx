@@ -116,9 +116,7 @@ const NLPDashboard = () => {
     <div className="nlp-dashboard">
       <Card className="dashboard-header-card">
         <Title level={2}>💬 Natural Language Processing</Title>
-        <Text type="secondary">
-          Chat interface, voice commands, summaries, and smart search
-        </Text>
+        <Text type="secondary">Chat interface, voice commands, summaries, and smart search</Text>
       </Card>
 
       <Row gutter={[16, 16]}>
@@ -164,10 +162,7 @@ const NLPDashboard = () => {
                   </Space>
                 ),
                 children: (
-                  <NLPChatInterface
-                    data={sampleData}
-                    onQueryResult={handleChatQueryResult}
-                  />
+                  <NLPChatInterface data={sampleData} onQueryResult={handleChatQueryResult} />
                 ),
               },
               {
@@ -187,10 +182,7 @@ const NLPDashboard = () => {
                   </Space>
                 ),
                 children: (
-                  <SmartSearch
-                    data={sampleData}
-                    onResultSelect={handleSearchResultSelect}
-                  />
+                  <SmartSearch data={sampleData} onResultSelect={handleSearchResultSelect} />
                 ),
               },
             ]}

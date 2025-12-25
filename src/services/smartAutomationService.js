@@ -98,12 +98,7 @@ class SmartAutomationService {
   /**
    * Generate predictive alerts
    */
-  async generatePredictiveAlerts(
-    data,
-    valueColumn,
-    metricName = null,
-    threshold = null,
-  ) {
+  async generatePredictiveAlerts(data, valueColumn, metricName = null, threshold = null) {
     try {
       const response = await fetch(`${API_BASE_URL}/api/alerts/predictive`, {
         method: "POST",
@@ -194,7 +189,7 @@ class SmartAutomationService {
     valueColumn,
     reportType = "comprehensive",
     dateColumn = null,
-    title = null,
+    title = null
   ) {
     try {
       const response = await fetch(`${API_BASE_URL}/api/reports/generate`, {
@@ -325,9 +320,7 @@ class SmartAutomationService {
       });
 
       if (!response.ok) {
-        throw new Error(
-          `Voice command processing failed: ${response.statusText}`,
-        );
+        throw new Error(`Voice command processing failed: ${response.statusText}`);
       }
 
       const result = await response.json();

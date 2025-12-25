@@ -106,15 +106,7 @@ export const formatRelativeTimeVN = (date) => {
 export const formatDateWithDayVN = (date) => {
   if (!date) return "";
   const vnDate = toVNTime(date);
-  const dayNames = [
-    "Chủ Nhật",
-    "Thứ Hai",
-    "Thứ Ba",
-    "Thứ Tư",
-    "Thứ Năm",
-    "Thứ Sáu",
-    "Thứ Bảy",
-  ];
+  const dayNames = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
   const dayName = dayNames[vnDate.day()];
   return `${dayName}, ${vnDate.format("DD/MM/YYYY")}`;
 };
@@ -127,15 +119,7 @@ export const formatDateWithDayVN = (date) => {
 export const formatDateTimeWithDayVN = (date) => {
   if (!date) return "";
   const vnDate = toVNTime(date);
-  const dayNames = [
-    "Chủ Nhật",
-    "Thứ Hai",
-    "Thứ Ba",
-    "Thứ Tư",
-    "Thứ Năm",
-    "Thứ Sáu",
-    "Thứ Bảy",
-  ];
+  const dayNames = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
   const dayName = dayNames[vnDate.day()];
   return `${dayName}, ${vnDate.format("DD/MM/YYYY HH:mm")}`;
 };
@@ -314,9 +298,7 @@ export const parseDateTimeVN = (dateString, format = "DD/MM/YYYY HH:mm") => {
 export const formatForSheetVN = (date, includeTime = false) => {
   if (!date) return "";
   const vnDate = toVNTime(date);
-  return includeTime
-    ? vnDate.format("DD/MM/YYYY HH:mm:ss")
-    : vnDate.format("DD/MM/YYYY");
+  return includeTime ? vnDate.format("DD/MM/YYYY HH:mm:ss") : vnDate.format("DD/MM/YYYY");
 };
 
 /**

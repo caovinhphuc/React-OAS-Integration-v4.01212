@@ -5,22 +5,8 @@
  */
 
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Input,
-  List,
-  Typography,
-  Tag,
-  Space,
-  Button,
-  Empty,
-  Spin,
-} from "antd";
-import {
-  SearchOutlined,
-  ClearOutlined,
-  FilterOutlined,
-} from "@ant-design/icons";
+import { Card, Input, List, Typography, Tag, Space, Button, Empty, Spin } from "antd";
+import { SearchOutlined, ClearOutlined, FilterOutlined } from "@ant-design/icons";
 import { smartAutomationService } from "../../services/smartAutomationService";
 import "./SmartSearch.css";
 
@@ -154,12 +140,7 @@ const SmartSearch = ({ data = [], columns = null, onResultSelect = null }) => {
         prefix={<SearchOutlined />}
         suffix={
           searchQuery && (
-            <Button
-              type="text"
-              size="small"
-              icon={<ClearOutlined />}
-              onClick={handleClear}
-            />
+            <Button type="text" size="small" icon={<ClearOutlined />} onClick={handleClear} />
           )
         }
         value={searchQuery}
@@ -184,18 +165,12 @@ const SmartSearch = ({ data = [], columns = null, onResultSelect = null }) => {
           <Spin /> <Text type="secondary">Đang tìm kiếm...</Text>
         </div>
       ) : results.length === 0 && searchQuery ? (
-        <Empty
-          description="Không tìm thấy kết quả"
-          image={Empty.PRESENTED_IMAGE_SIMPLE}
-        />
+        <Empty description="Không tìm thấy kết quả" image={Empty.PRESENTED_IMAGE_SIMPLE} />
       ) : (
         <List
           dataSource={results}
           renderItem={(item, index) => (
-            <List.Item
-              className="search-result-item"
-              onClick={() => handleResultClick(item)}
-            >
+            <List.Item className="search-result-item" onClick={() => handleResultClick(item)}>
               <Space direction="vertical" style={{ width: "100%" }}>
                 <div className="result-content">
                   {Object.entries(item)

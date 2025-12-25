@@ -3,15 +3,8 @@ import { useGoogleDrive } from "../../hooks/useGoogleDrive";
 import DriveUploader from "./DriveUploader.jsx";
 
 const DriveManager = ({ folderId }) => {
-  const {
-    files,
-    loading,
-    error,
-    listFiles,
-    createFolder,
-    deleteFile,
-    clearError,
-  } = useGoogleDrive();
+  const { files, loading, error, listFiles, createFolder, deleteFile, clearError } =
+    useGoogleDrive();
 
   const [activeTab, setActiveTab] = useState("files");
   const [newFolderName, setNewFolderName] = useState("");
@@ -140,16 +133,10 @@ const DriveManager = ({ folderId }) => {
 
       {/* Tab Navigation */}
       <div style={{ marginBottom: "20px", borderBottom: "1px solid #ddd" }}>
-        <button
-          style={tabStyle(activeTab === "files")}
-          onClick={() => setActiveTab("files")}
-        >
+        <button style={tabStyle(activeTab === "files")} onClick={() => setActiveTab("files")}>
           📁 Files & Folders
         </button>
-        <button
-          style={tabStyle(activeTab === "upload")}
-          onClick={() => setActiveTab("upload")}
-        >
+        <button style={tabStyle(activeTab === "upload")} onClick={() => setActiveTab("upload")}>
           ⬆️ Upload Files
         </button>
       </div>
@@ -222,9 +209,7 @@ const DriveManager = ({ folderId }) => {
                     <tbody>
                       {files.map((file) => (
                         <tr key={file.id}>
-                          <td
-                            style={{ border: "1px solid #ddd", padding: "8px" }}
-                          >
+                          <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                             <a
                               href={file.webViewLink}
                               target="_blank"
@@ -237,30 +222,18 @@ const DriveManager = ({ folderId }) => {
                               {file.name}
                             </a>
                           </td>
-                          <td
-                            style={{ border: "1px solid #ddd", padding: "8px" }}
-                          >
-                            {file.mimeType.includes("folder")
-                              ? "📁 Folder"
-                              : "📄 File"}
+                          <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                            {file.mimeType.includes("folder") ? "📁 Folder" : "📄 File"}
                           </td>
-                          <td
-                            style={{ border: "1px solid #ddd", padding: "8px" }}
-                          >
+                          <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                             {formatFileSize(file.size)}
                           </td>
-                          <td
-                            style={{ border: "1px solid #ddd", padding: "8px" }}
-                          >
+                          <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                             {formatDate(file.modifiedTime)}
                           </td>
-                          <td
-                            style={{ border: "1px solid #ddd", padding: "8px" }}
-                          >
+                          <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                             <button
-                              onClick={() =>
-                                handleDeleteFile(file.id, file.name)
-                              }
+                              onClick={() => handleDeleteFile(file.id, file.name)}
                               disabled={loading}
                               style={{
                                 padding: "5px 10px",
@@ -288,10 +261,7 @@ const DriveManager = ({ folderId }) => {
                   color: "#666",
                 }}
               >
-                <p>
-                  No files found. Click "List Files" to load files from your
-                  Drive folder.
-                </p>
+                <p>No files found. Click "List Files" to load files from your Drive folder.</p>
               </div>
             )}
           </div>
@@ -299,10 +269,7 @@ const DriveManager = ({ folderId }) => {
 
         {activeTab === "upload" && (
           <div style={{ padding: "20px" }}>
-            <DriveUploader
-              folderId={folderId}
-              onUploadComplete={handleListFiles}
-            />
+            <DriveUploader folderId={folderId} onUploadComplete={handleListFiles} />
           </div>
         )}
       </div>
@@ -323,12 +290,10 @@ const DriveManager = ({ folderId }) => {
             <strong>Total items:</strong> {files.length}
           </p>
           <p>
-            <strong>Folders:</strong>{" "}
-            {files.filter((f) => f.mimeType.includes("folder")).length}
+            <strong>Folders:</strong> {files.filter((f) => f.mimeType.includes("folder")).length}
           </p>
           <p>
-            <strong>Files:</strong>{" "}
-            {files.filter((f) => !f.mimeType.includes("folder")).length}
+            <strong>Files:</strong> {files.filter((f) => !f.mimeType.includes("folder")).length}
           </p>
         </div>
       )}

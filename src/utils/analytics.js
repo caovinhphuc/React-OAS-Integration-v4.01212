@@ -3,8 +3,7 @@
  * Tracks user events, page views, and custom metrics
  */
 
-const ANALYTICS_ENDPOINT =
-  process.env.REACT_APP_ANALYTICS_ENDPOINT || "/api/analytics/event";
+const ANALYTICS_ENDPOINT = process.env.REACT_APP_ANALYTICS_ENDPOINT || "/api/analytics/event";
 const ENABLE_ANALYTICS = process.env.REACT_APP_ENABLE_ANALYTICS !== "false";
 
 // Session tracking
@@ -212,7 +211,7 @@ if (typeof window !== "undefined") {
   initAnalytics();
 }
 
-export default {
+const analyticsService = {
   trackPageView,
   trackEvent,
   trackInteraction,
@@ -223,3 +222,5 @@ export default {
   trackTiming,
   initAnalytics,
 };
+
+export default analyticsService;

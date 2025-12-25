@@ -20,14 +20,10 @@ const Loading = ({
     danger: "loading-danger",
   };
 
-  const containerClass = fullScreen
-    ? "loading-fullscreen"
-    : "loading-container";
+  const containerClass = fullScreen ? "loading-fullscreen" : "loading-container";
 
   return (
-    <div
-      className={`${containerClass} ${sizeClasses[size]} ${colorClasses[color]}`}
-    >
+    <div className={`${containerClass} ${sizeClasses[size]} ${colorClasses[color]}`}>
       <div className="loading-spinner">
         <div className="spinner-ring"></div>
         <div className="spinner-ring"></div>

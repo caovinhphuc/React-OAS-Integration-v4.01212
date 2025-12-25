@@ -19,11 +19,7 @@ const DriveTester = () => {
     setUploadProgress(`Uploading ${file.name}...`);
 
     try {
-      const result = await googleDriveApiService.uploadFile(
-        file,
-        file.name,
-        file.type,
-      );
+      const result = await googleDriveApiService.uploadFile(file, file.name, file.type);
 
       setTestResult(`✅ Upload successful: ${result.name}`);
       setUploadProgress("");
@@ -126,19 +122,11 @@ const DriveTester = () => {
 
       const jsonContent = JSON.stringify(reportData, null, 2);
       const blob = new Blob([jsonContent], { type: "application/json" });
-      const file = new File(
-        [blob],
-        `test-report-${new Date().getTime()}.json`,
-        {
-          type: "application/json",
-        },
-      );
+      const file = new File([blob], `test-report-${new Date().getTime()}.json`, {
+        type: "application/json",
+      });
 
-      const result = await googleDriveApiService.uploadFile(
-        file,
-        file.name,
-        file.type,
-      );
+      const result = await googleDriveApiService.uploadFile(file, file.name, file.type);
 
       setTestResult(`✅ Report uploaded: ${result.name}`);
       setUploadProgress("");
@@ -304,9 +292,7 @@ const DriveTester = () => {
                       </a>
                     </td>
                     <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                      {file.mimeType.includes("folder")
-                        ? "📁 Folder"
-                        : "📄 File"}
+                      {file.mimeType.includes("folder") ? "📁 Folder" : "📄 File"}
                     </td>
                     <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                       {formatFileSize(file.size)}

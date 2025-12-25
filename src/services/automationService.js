@@ -4,9 +4,7 @@
  */
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL ||
-  process.env.VITE_API_URL ||
-  "http://localhost:3001";
+  process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
 
 class AutomationService {
   /**
@@ -113,12 +111,9 @@ class AutomationService {
    */
   async toggleAutomation(id) {
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/automation/${id}/toggle`,
-        {
-          method: "POST",
-        },
-      );
+      const response = await fetch(`${API_BASE_URL}/api/automation/${id}/toggle`, {
+        method: "POST",
+      });
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to toggle automation");
@@ -135,12 +130,9 @@ class AutomationService {
    */
   async executeAutomation(id) {
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/automation/${id}/execute`,
-        {
-          method: "POST",
-        },
-      );
+      const response = await fetch(`${API_BASE_URL}/api/automation/${id}/execute`, {
+        method: "POST",
+      });
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to execute automation");

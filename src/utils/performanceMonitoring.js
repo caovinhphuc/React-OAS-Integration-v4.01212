@@ -3,10 +3,8 @@ import { getCLS, getFID, getFCP, getLCP, getTTFB } from "web-vitals";
 
 // Performance monitoring configuration
 const ANALYTICS_ENDPOINT =
-  process.env.REACT_APP_ANALYTICS_ENDPOINT ||
-  process.env.VITE_ANALYTICS_ENDPOINT;
-const APP_VERSION =
-  process.env.REACT_APP_VERSION || process.env.VITE_APP_VERSION || "1.0.0";
+  process.env.REACT_APP_ANALYTICS_ENDPOINT || process.env.VITE_ANALYTICS_ENDPOINT;
+const APP_VERSION = process.env.REACT_APP_VERSION || process.env.VITE_APP_VERSION || "1.0.0";
 
 // Send performance metrics to analytics
 function sendToAnalytics({ name, value, id, delta }) {
@@ -164,13 +162,8 @@ function measureResourceTiming() {
 
 // Measure user interactions
 function measureUserInteractions() {
-  let clickCount = 0;
-  const scrollDepth = 0;
-
   // Click tracking
   document.addEventListener("click", (event) => {
-    clickCount++;
-
     sendToAnalytics({
       name: "USER_CLICK",
       value: 1,
@@ -185,8 +178,7 @@ function measureUserInteractions() {
   let maxScroll = 0;
   window.addEventListener("scroll", () => {
     const scrolled = Math.round(
-      (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
-        100,
+      (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
     );
 
     if (scrolled > maxScroll) {
@@ -249,7 +241,7 @@ export function withPerformanceTracking(WrappedComponent, componentName) {
         delta: 0,
         component: componentName,
       });
-    }, []);
+    }, [startTime]);
 
     return React.createElement(WrappedComponent, props);
   };

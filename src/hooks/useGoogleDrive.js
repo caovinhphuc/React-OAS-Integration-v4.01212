@@ -13,12 +13,7 @@ export const useGoogleDrive = () => {
     setUploadProgress(`Uploading ${fileName || "file"}...`);
 
     try {
-      const result = await googleDriveApiService.uploadFile(
-        file,
-        fileName,
-        mimeType,
-        folderId,
-      );
+      const result = await googleDriveApiService.uploadFile(file, fileName, mimeType, folderId);
       setUploadProgress("");
       return result;
     } catch (err) {
@@ -51,10 +46,7 @@ export const useGoogleDrive = () => {
     setError(null);
 
     try {
-      const result = await googleDriveApiService.createFolder(
-        folderName,
-        parentFolderId,
-      );
+      const result = await googleDriveApiService.createFolder(folderName, parentFolderId);
       return result;
     } catch (err) {
       setError(err.message);

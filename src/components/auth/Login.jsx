@@ -5,18 +5,7 @@ import {
   UserOutlined,
   WindowsOutlined,
 } from "@ant-design/icons";
-import {
-  Alert,
-  App,
-  Button,
-  Card,
-  Checkbox,
-  Divider,
-  Form,
-  Input,
-  Space,
-  Typography,
-} from "antd";
+import { Alert, App, Button, Card, Checkbox, Divider, Form, Input, Space, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -43,8 +32,7 @@ const Login = () => {
 
   // Redirect if already authenticated
   useEffect(() => {
-    const token =
-      localStorage.getItem("authToken") || localStorage.getItem("token");
+    const token = localStorage.getItem("authToken") || localStorage.getItem("token");
     if (token || isAuthenticated) {
       // Nếu có returnUrl, redirect về đó, nếu không thì về home
       navigate(returnUrl !== "/" ? returnUrl : "/");
@@ -58,12 +46,7 @@ const Login = () => {
     try {
       if (isRegister) {
         // Register
-        await registerUser(
-          values.email,
-          values.password,
-          values.fullName,
-          "user",
-        );
+        await registerUser(values.email, values.password, values.fullName, "user");
         message.success("Đăng ký thành công! Vui lòng đăng nhập.");
         setIsRegister(false);
         form.resetFields();
@@ -116,14 +99,11 @@ const Login = () => {
           message.success("Đăng nhập thành công!");
 
           // Redirect về returnUrl nếu có, nếu không thì về home
-          const redirectTo =
-            returnUrl && returnUrl !== "/login" ? returnUrl : "/";
+          const redirectTo = returnUrl && returnUrl !== "/login" ? returnUrl : "/";
           navigate(redirectTo);
         } else {
           // No token or user in response
-          throw new Error(
-            "Đăng nhập thất bại: Không nhận được thông tin người dùng",
-          );
+          throw new Error("Đăng nhập thất bại: Không nhận được thông tin người dùng");
         }
       }
     } catch (err) {
@@ -138,9 +118,7 @@ const Login = () => {
     setSsoLoading(provider);
     try {
       // SSO not implemented yet - show info message
-      message.info(
-        `Đăng nhập ${provider} sẽ được triển khai trong phiên bản tiếp theo`,
-      );
+      message.info(`Đăng nhập ${provider} sẽ được triển khai trong phiên bản tiếp theo`);
       setSsoLoading(null);
 
       // TODO: Implement SSO when backend is ready
@@ -221,11 +199,7 @@ const Login = () => {
                 { type: "email", message: "Email không hợp lệ!" },
               ]}
             >
-              <Input
-                prefix={<UserOutlined />}
-                placeholder="your@email.com"
-                autoComplete="email"
-              />
+              <Input prefix={<UserOutlined />} placeholder="your@email.com" autoComplete="email" />
             </Form.Item>
 
             <Form.Item
@@ -270,9 +244,7 @@ const Login = () => {
                         if (!value || getFieldValue("password") === value) {
                           return Promise.resolve();
                         }
-                        return Promise.reject(
-                          new Error("Mật khẩu xác nhận không khớp!"),
-                        );
+                        return Promise.reject(new Error("Mật khẩu xác nhận không khớp!"));
                       },
                     }),
                   ]}
@@ -298,13 +270,7 @@ const Login = () => {
             )}
 
             <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                block
-                loading={loading}
-                size="large"
-              >
+              <Button type="primary" htmlType="submit" block loading={loading} size="large">
                 {isRegister ? "Đăng ký" : "Đăng nhập"}
               </Button>
             </Form.Item>

@@ -34,7 +34,7 @@ if (typeof window !== "undefined" && !window.matchMedia) {
  */
 export const renderWithRedux = (
   ui,
-  { initialState = {}, store: customStore = store, ...renderOptions } = {},
+  { initialState = {}, store: customStore = store, ...renderOptions } = {}
 ) => {
   const Wrapper = ({ children }) => (
     <Provider store={customStore}>
@@ -55,7 +55,7 @@ export const renderWithRedux = (
  */
 export const renderWithRouter = (
   ui,
-  { route = "/", initialEntries = [route], ...renderOptions } = {},
+  { route = "/", initialEntries = [route], ...renderOptions } = {}
 ) => {
   const Wrapper = ({ children }) => (
     <MemoryRouter initialEntries={initialEntries}>
@@ -81,7 +81,7 @@ export const renderWithProviders = (
     initialState = {},
     store: customStore = store,
     ...renderOptions
-  } = {},
+  } = {}
 ) => {
   const Wrapper = ({ children }) => (
     <Provider store={customStore}>
@@ -102,10 +102,7 @@ export const renderWithProviders = (
 /**
  * Render component with BrowserRouter (for integration tests)
  */
-export const renderWithBrowserRouter = (
-  ui,
-  { route = "/", ...renderOptions } = {},
-) => {
+export const renderWithBrowserRouter = (ui, { route = "/", ...renderOptions } = {}) => {
   window.history.pushState({}, "Test page", route);
 
   const Wrapper = ({ children }) => (
@@ -151,8 +148,7 @@ export const createMockStore = (initialState = {}) => {
 /**
  * Wait for async operations to complete
  */
-export const waitForLoadingToFinish = () =>
-  new Promise((resolve) => setTimeout(resolve, 0));
+export const waitForLoadingToFinish = () => new Promise((resolve) => setTimeout(resolve, 0));
 
 /**
  * Mock localStorage

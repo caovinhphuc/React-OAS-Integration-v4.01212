@@ -2,12 +2,7 @@ import { App as AntApp, ConfigProvider, theme } from "antd";
 import viVN from "antd/locale/vi_VN";
 import { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
-import {
-  Navigate,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Loading from "./components/Common/Loading";
@@ -18,41 +13,25 @@ import { store } from "./store/store";
 
 // Enhanced lazy loading with preloading strategy
 
-const LiveDashboard = lazy(
-  () => import("./components/Dashboard/LiveDashboard"),
-);
+const LiveDashboard = lazy(() => import("./components/Dashboard/LiveDashboard"));
 const AIDashboard = lazy(() => import("./components/ai/AIDashboard"));
-const GoogleSheetsIntegration = lazy(
-  () => import("./components/google/GoogleSheetsIntegration"),
-);
-const GoogleDriveIntegration = lazy(
-  () => import("./components/google/GoogleDriveIntegration"),
-);
+const GoogleSheetsIntegration = lazy(() => import("./components/google/GoogleSheetsIntegration"));
+const GoogleDriveIntegration = lazy(() => import("./components/google/GoogleDriveIntegration"));
 const GoogleAppsScriptIntegration = lazy(
-  () => import("./components/google/GoogleAppsScriptIntegration"),
+  () => import("./components/google/GoogleAppsScriptIntegration")
 );
-const TelegramIntegration = lazy(
-  () => import("./components/telegram/TelegramIntegration"),
-);
-const AutomationDashboard = lazy(
-  () => import("./components/automation/AutomationDashboard"),
-);
-const MIARetailDashboard = lazy(
-  () => import("./components/custom/MIARetailDashboard"),
-);
-const AlertsManagement = lazy(
-  () => import("./components/Alerts/AlertsManagement"),
-);
+const TelegramIntegration = lazy(() => import("./components/telegram/TelegramIntegration"));
+const AutomationDashboard = lazy(() => import("./components/automation/AutomationDashboard"));
+const MIARetailDashboard = lazy(() => import("./components/custom/MIARetailDashboard"));
+const AlertsManagement = lazy(() => import("./components/Alerts/AlertsManagement"));
 const AdvancedAnalyticsDashboard = lazy(
-  () => import("./components/analytics/AdvancedAnalyticsDashboard"),
+  () => import("./components/analytics/AdvancedAnalyticsDashboard")
 );
 const SmartAutomationDashboard = lazy(
-  () => import("./components/smart-automation/SmartAutomationDashboard"),
+  () => import("./components/smart-automation/SmartAutomationDashboard")
 );
 const NLPDashboard = lazy(() => import("./components/nlp/NLPDashboard"));
-const SecurityDashboard = lazy(
-  () => import("./components/security/SecurityDashboard"),
-);
+const SecurityDashboard = lazy(() => import("./components/security/SecurityDashboard"));
 const Login = lazy(() => import("./components/auth/Login"));
 
 // Preload critical components
@@ -79,8 +58,8 @@ const Home = () => (
       <div className="feature-card primary">
         <h3>📊 Live Dashboard</h3>
         <p>
-          Theo dõi thời gian thực, giám sát hiệu suất và phân tích hệ thống với
-          WebSocket integration.
+          Theo dõi thời gian thực, giám sát hiệu suất và phân tích hệ thống với WebSocket
+          integration.
         </p>
         <div className="feature-stats">
           <div className="stat">
@@ -97,8 +76,8 @@ const Home = () => (
       <div className="feature-card secondary">
         <h3>🛒 Retail Analytics</h3>
         <p>
-          Phân tích retail thông minh, dự đoán sales, quản lý inventory và tối
-          ưu hóa hiệu suất cửa hàng.
+          Phân tích retail thông minh, dự đoán sales, quản lý inventory và tối ưu hóa hiệu suất cửa
+          hàng.
         </p>
         <div className="feature-stats">
           <div className="stat">
@@ -114,10 +93,7 @@ const Home = () => (
 
       <div className="feature-card tertiary">
         <h3>📋 Google Sheets</h3>
-        <p>
-          Tích hợp Google Sheets để quản lý dữ liệu, báo cáo và tự động hóa quy
-          trình làm việc.
-        </p>
+        <p>Tích hợp Google Sheets để quản lý dữ liệu, báo cáo và tự động hóa quy trình làm việc.</p>
         <div className="feature-stats">
           <div className="stat">
             <span className="stat-value">1,250</span>
@@ -325,10 +301,7 @@ function App() {
                             }
                           />
 
-                          <Route
-                            path="*"
-                            element={<Navigate to="/" replace />}
-                          />
+                          <Route path="*" element={<Navigate to="/" replace />} />
                         </Routes>
                       </Layout>
                     }

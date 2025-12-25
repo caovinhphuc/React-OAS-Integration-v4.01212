@@ -1,13 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NavItem = ({
-  item,
-  isActive,
-  collapsed,
-  onClick,
-  className = "",
-  isChild = false,
-}) => {
+const NavItem = ({ item, isActive, collapsed, onClick, className = "", isChild = false }) => {
   const { path, icon, label, description } = item;
 
   const navItemClasses = `
@@ -22,9 +15,7 @@ const NavItem = ({
       <span className="nav-icon">{icon}</span>
       <div className="nav-content">
         <span className="nav-label">{label}</span>
-        {!collapsed && description && (
-          <span className="nav-description">{description}</span>
-        )}
+        {!collapsed && description && <span className="nav-description">{description}</span>}
       </div>
     </>
   );

@@ -310,14 +310,10 @@ export const useSimpleNotification = () => {
     showNotification,
     hideNotification,
     notificationComponent,
-    showSuccess: (message, duration) =>
-      showNotification("success", message, duration),
-    showError: (message, duration) =>
-      showNotification("error", message, duration),
-    showWarning: (message, duration) =>
-      showNotification("warning", message, duration),
-    showInfo: (message, duration) =>
-      showNotification("info", message, duration),
+    showSuccess: (message, duration) => showNotification("success", message, duration),
+    showError: (message, duration) => showNotification("error", message, duration),
+    showWarning: (message, duration) => showNotification("warning", message, duration),
+    showInfo: (message, duration) => showNotification("info", message, duration),
   };
 };
 

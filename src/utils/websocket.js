@@ -25,10 +25,7 @@ class WebSocketClient {
    * Connect to WebSocket server
    */
   connect() {
-    if (
-      this.isConnecting ||
-      (this.isConnected && this.ws?.readyState === WebSocket.OPEN)
-    ) {
+    if (this.isConnecting || (this.isConnected && this.ws?.readyState === WebSocket.OPEN)) {
       return Promise.resolve();
     }
 
@@ -71,10 +68,7 @@ class WebSocketClient {
           this.emit("disconnected");
 
           // Auto-reconnect
-          if (
-            this.autoReconnect &&
-            this.reconnectAttempts < this.maxReconnectAttempts
-          ) {
+          if (this.autoReconnect && this.reconnectAttempts < this.maxReconnectAttempts) {
             this.scheduleReconnect();
           }
         };
@@ -92,11 +86,11 @@ class WebSocketClient {
     this.reconnectAttempts++;
     const delay = Math.min(
       this.reconnectDelay * Math.pow(2, this.reconnectAttempts - 1),
-      this.maxReconnectDelay,
+      this.maxReconnectDelay
     );
 
     console.log(
-      `🔄 Reconnecting in ${delay}ms (attempt ${this.reconnectAttempts}/${this.maxReconnectAttempts})`,
+      `🔄 Reconnecting in ${delay}ms (attempt ${this.reconnectAttempts}/${this.maxReconnectAttempts})`
     );
 
     setTimeout(() => {
@@ -271,8 +265,7 @@ let wsClientInstance = null;
  */
 export function getWebSocketClient(url = null) {
   if (!wsClientInstance) {
-    const wsUrl =
-      url || process.env.REACT_APP_WS_URL || "ws://localhost:3002/ws";
+    const wsUrl = url || process.env.REACT_APP_WS_URL || "ws://localhost:3002/ws";
     wsClientInstance = new WebSocketClient(wsUrl);
   }
   return wsClientInstance;

@@ -114,14 +114,14 @@ const GoogleAppsScriptIntegration = () => {
         result = await scriptService.executeScript(
           selectedScript.scriptId,
           selectedScript.functionName || "main",
-          selectedScript.parameters || [],
+          selectedScript.parameters || []
         );
       } else {
         // Try inline execution (will fail gracefully if not supported)
         result = await scriptService.executeInline(
           selectedScript.code,
           selectedScript.functionName || "main",
-          selectedScript.parameters || [],
+          selectedScript.parameters || []
         );
       }
 
@@ -192,8 +192,8 @@ const GoogleAppsScriptIntegration = () => {
               code: scriptCode,
               lastModified: new Date().toISOString(),
             }
-          : script,
-      ),
+          : script
+      )
     );
 
     setSelectedScript((prev) => ({
@@ -253,10 +253,7 @@ const GoogleAppsScriptIntegration = () => {
         </div>
 
         <div className="header-right">
-          <button
-            className="btn btn-primary"
-            onClick={() => setShowCreateModal(true)}
-          >
+          <button className="btn btn-primary" onClick={() => setShowCreateModal(true)}>
             ➕ Tạo script mới
           </button>
         </div>
@@ -274,9 +271,7 @@ const GoogleAppsScriptIntegration = () => {
             {scripts.map((script) => (
               <div
                 key={script.id}
-                className={`script-item ${
-                  selectedScript?.id === script.id ? "active" : ""
-                }`}
+                className={`script-item ${selectedScript?.id === script.id ? "active" : ""}`}
                 onClick={() => handleScriptSelect(script)}
               >
                 <div className="script-info">
@@ -287,13 +282,9 @@ const GoogleAppsScriptIntegration = () => {
                       className="script-status"
                       style={{ color: getStatusColor(script.status) }}
                     >
-                      {script.status === "active"
-                        ? "🟢 Hoạt động"
-                        : "🔴 Tạm dừng"}
+                      {script.status === "active" ? "🟢 Hoạt động" : "🔴 Tạm dừng"}
                     </span>
-                    <span className="script-executions">
-                      {script.executions} lần chạy
-                    </span>
+                    <span className="script-executions">{script.executions} lần chạy</span>
                   </div>
                 </div>
                 <div className="script-actions">
@@ -323,10 +314,7 @@ const GoogleAppsScriptIntegration = () => {
                   <span className="script-id">ID: {selectedScript.id}</span>
                 </div>
                 <div className="editor-actions">
-                  <button
-                    className="btn btn-secondary"
-                    onClick={handleSaveScript}
-                  >
+                  <button className="btn btn-secondary" onClick={handleSaveScript}>
                     💾 Lưu
                   </button>
                   <button
@@ -358,10 +346,7 @@ const GoogleAppsScriptIntegration = () => {
                         <span className="log-time">
                           {new Date(log.time).toLocaleTimeString("vi-VN")}
                         </span>
-                        <span
-                          className="log-message"
-                          style={{ color: getLogTypeColor(log.type) }}
-                        >
+                        <span className="log-message" style={{ color: getLogTypeColor(log.type) }}>
                           {log.message}
                         </span>
                       </div>
@@ -386,10 +371,7 @@ const GoogleAppsScriptIntegration = () => {
           <div className="modal">
             <div className="modal-header">
               <h3>Tạo script mới</h3>
-              <button
-                className="close-btn"
-                onClick={() => setShowCreateModal(false)}
-              >
+              <button className="close-btn" onClick={() => setShowCreateModal(false)}>
                 ✕
               </button>
             </div>
@@ -416,10 +398,7 @@ const GoogleAppsScriptIntegration = () => {
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-secondary"
-                onClick={() => setShowCreateModal(false)}
-              >
+              <button className="btn btn-secondary" onClick={() => setShowCreateModal(false)}>
                 Hủy
               </button>
               <button

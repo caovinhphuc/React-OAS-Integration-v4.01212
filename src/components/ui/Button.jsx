@@ -76,10 +76,7 @@ const Button = ({
 
 // Button Group Component
 Button.Group = ({ children, className = "", spacing = "sm", ...props }) => (
-  <div
-    className={`btn-group btn-group--spacing-${spacing} ${className}`}
-    {...props}
-  >
+  <div className={`btn-group btn-group--spacing-${spacing} ${className}`} {...props}>
     {children}
   </div>
 );

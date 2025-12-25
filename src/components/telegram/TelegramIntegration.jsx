@@ -115,7 +115,7 @@ const TelegramIntegration = () => {
       const result = await telegramService.sendMessage(
         newMessage,
         selectedChat.id,
-        messageType === "text" ? "HTML" : "HTML",
+        messageType === "text" ? "HTML" : "HTML"
       );
 
       if (result.success) {
@@ -213,11 +213,7 @@ const TelegramIntegration = () => {
 
         <div className="header-right">
           <div className="connection-status">
-            <div
-              className={`status-dot ${
-                isConnected ? "connected" : "disconnected"
-              }`}
-            ></div>
+            <div className={`status-dot ${isConnected ? "connected" : "disconnected"}`}></div>
             <span>{isConnected ? "Đã kết nối" : "Chưa kết nối"}</span>
           </div>
         </div>
@@ -290,22 +286,16 @@ const TelegramIntegration = () => {
               {chats.map((chat) => (
                 <div
                   key={chat.id}
-                  className={`chat-item ${
-                    selectedChat?.id === chat.id ? "active" : ""
-                  }`}
+                  className={`chat-item ${selectedChat?.id === chat.id ? "active" : ""}`}
                   onClick={() => handleChatSelect(chat)}
                 >
                   <div className="chat-icon">{getChatIcon(chat)}</div>
                   <div className="chat-info">
                     <div className="chat-name">{getChatDisplayName(chat)}</div>
                     <div className="chat-meta">
-                      {chat.type === "group"
-                        ? `${chat.member_count} thành viên`
-                        : "Tin nhắn riêng"}
+                      {chat.type === "group" ? `${chat.member_count} thành viên` : "Tin nhắn riêng"}
                     </div>
-                    <div className="chat-last-activity">
-                      {formatDate(chat.last_activity)}
-                    </div>
+                    <div className="chat-last-activity">{formatDate(chat.last_activity)}</div>
                   </div>
                 </div>
               ))}
@@ -318,16 +308,11 @@ const TelegramIntegration = () => {
               <>
                 <div className="messages-header">
                   <div className="chat-title">
-                    <span className="chat-icon">
-                      {getChatIcon(selectedChat)}
-                    </span>
+                    <span className="chat-icon">{getChatIcon(selectedChat)}</span>
                     <span>{getChatDisplayName(selectedChat)}</span>
                   </div>
                   <div className="message-actions">
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => setShowSendModal(true)}
-                    >
+                    <button className="btn btn-primary" onClick={() => setShowSendModal(true)}>
                       ✉️ Gửi tin nhắn
                     </button>
                   </div>
@@ -343,9 +328,7 @@ const TelegramIntegration = () => {
                     >
                       <div className="message-content">
                         <div className="message-text">{message.text}</div>
-                        <div className="message-time">
-                          {formatDate(message.date)}
-                        </div>
+                        <div className="message-time">{formatDate(message.date)}</div>
                       </div>
                     </div>
                   ))}
@@ -368,10 +351,7 @@ const TelegramIntegration = () => {
           <div className="modal">
             <div className="modal-header">
               <h3>Gửi tin nhắn</h3>
-              <button
-                className="close-btn"
-                onClick={() => setShowSendModal(false)}
-              >
+              <button className="close-btn" onClick={() => setShowSendModal(false)}>
                 ✕
               </button>
             </div>
@@ -400,10 +380,7 @@ const TelegramIntegration = () => {
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-secondary"
-                onClick={() => setShowSendModal(false)}
-              >
+              <button className="btn btn-secondary" onClick={() => setShowSendModal(false)}>
                 Hủy
               </button>
               <button

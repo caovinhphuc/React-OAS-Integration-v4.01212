@@ -1,8 +1,4 @@
-import {
-  LogoutOutlined,
-  SettingOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { LogoutOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
 import { App, Dropdown } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,8 +16,7 @@ import { navigationData } from "./navigationData";
 const Layout = ({ children }) => {
   const { message } = App.useApp();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [connectionStatusExpanded, setConnectionStatusExpanded] =
-    useState(false);
+  const [connectionStatusExpanded, setConnectionStatusExpanded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -35,17 +30,14 @@ const Layout = ({ children }) => {
         return;
       }
 
-      const token =
-        localStorage.getItem("authToken") || localStorage.getItem("token");
+      const token = localStorage.getItem("authToken") || localStorage.getItem("token");
       if (!token) {
         return;
       }
 
       try {
         const API_BASE_URL =
-          process.env.REACT_APP_API_URL ||
-          process.env.VITE_API_URL ||
-          "http://localhost:3001";
+          process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
 
         const response = await fetch(`${API_BASE_URL}/api/auth/verify`, {
           method: "GET",
@@ -62,9 +54,7 @@ const Layout = ({ children }) => {
           } catch (e) {
             // Ignore errors
           }
-          message.warning(
-            "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
-          );
+          message.warning("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
           navigate("/login");
         }
       } catch (error) {
@@ -103,10 +93,7 @@ const Layout = ({ children }) => {
 
     // Only match if first segment matches (to avoid /security matching /security/mfa)
     if (pathSegments.length > 0 && currentSegments.length > 0) {
-      return (
-        currentSegments[0] === pathSegments[0] &&
-        location.pathname.startsWith(path)
-      );
+      return currentSegments[0] === pathSegments[0] && location.pathname.startsWith(path);
     }
 
     return false;
@@ -118,9 +105,7 @@ const Layout = ({ children }) => {
       message.success("Đăng xuất thành công");
       navigate("/login");
     } catch (error) {
-      message.error(
-        "Đăng xuất thất bại: " + (error.message || "Unknown error"),
-      );
+      message.error("Đăng xuất thất bại: " + (error.message || "Unknown error"));
       // Still navigate to login even if logout fails
       navigate("/login");
     }
@@ -183,11 +168,7 @@ const Layout = ({ children }) => {
 
         <div className="header-right">
           {isAuthenticated && user ? (
-            <Dropdown
-              menu={{ items: userMenuItems }}
-              placement="bottomRight"
-              trigger={["click"]}
-            >
+            <Dropdown menu={{ items: userMenuItems }} placement="bottomRight" trigger={["click"]}>
               <div className="user-info" style={{ cursor: "pointer" }}>
                 <div className="user-avatar">👤</div>
                 <div className="user-details">
@@ -228,11 +209,7 @@ const Layout = ({ children }) => {
               collapsed={sidebarCollapsed}
               isActive={isActive}
             />
-            <NavSection
-              title="Công cụ"
-              items={navigationData.tools}
-              collapsed={sidebarCollapsed}
-            />
+            <NavSection title="Công cụ" items={navigationData.tools} collapsed={sidebarCollapsed} />
             <NavSection
               title="Hỗ trợ"
               items={navigationData.support}
@@ -244,9 +221,7 @@ const Layout = ({ children }) => {
           <ConnectionSection
             connections={connectionData}
             expanded={connectionStatusExpanded}
-            onToggle={() =>
-              setConnectionStatusExpanded(!connectionStatusExpanded)
-            }
+            onToggle={() => setConnectionStatusExpanded(!connectionStatusExpanded)}
           />
         </aside>
 

@@ -94,8 +94,8 @@ const SheetManager = ({ sheetId }) => {
                     {sheet.gridProperties && (
                       <span style={{ color: "#666", fontSize: "12px" }}>
                         {" "}
-                        - {sheet.gridProperties.rowCount} rows ×{" "}
-                        {sheet.gridProperties.columnCount} columns
+                        - {sheet.gridProperties.rowCount} rows × {sheet.gridProperties.columnCount}{" "}
+                        columns
                       </span>
                     )}
                   </li>
@@ -123,16 +123,10 @@ const SheetManager = ({ sheetId }) => {
 
       {/* Tab Navigation */}
       <div style={{ marginBottom: "20px", borderBottom: "1px solid #ddd" }}>
-        <button
-          style={tabStyle(activeTab === "reader")}
-          onClick={() => setActiveTab("reader")}
-        >
+        <button style={tabStyle(activeTab === "reader")} onClick={() => setActiveTab("reader")}>
           📖 Read Data
         </button>
-        <button
-          style={tabStyle(activeTab === "writer")}
-          onClick={() => setActiveTab("writer")}
-        >
+        <button style={tabStyle(activeTab === "writer")} onClick={() => setActiveTab("writer")}>
           ✏️ Write Data
         </button>
       </div>

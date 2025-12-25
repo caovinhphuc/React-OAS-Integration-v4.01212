@@ -27,20 +27,18 @@ export const loginUser = jest.fn((email, password, mfaToken = null) => {
 });
 
 // Mock register function
-export const registerUser = jest.fn(
-  (email, password, fullName = "", role = "user") => {
-    return Promise.resolve({
-      success: true,
-      message: "Đăng ký thành công",
-      user: {
-        id: "1",
-        email: email,
-        name: fullName,
-        role: role,
-      },
-    });
-  },
-);
+export const registerUser = jest.fn((email, password, fullName = "", role = "user") => {
+  return Promise.resolve({
+    success: true,
+    message: "Đăng ký thành công",
+    user: {
+      id: "1",
+      email: email,
+      name: fullName,
+      role: role,
+    },
+  });
+});
 
 // Mock logout function
 export const logoutUser = jest.fn(() => {
@@ -108,7 +106,7 @@ export const disableMFA = jest.fn(() => {
 });
 
 // Export default object
-export default {
+const securityService = {
   loginUser,
   registerUser,
   logoutUser,
@@ -119,3 +117,5 @@ export default {
   enableMFA,
   disableMFA,
 };
+
+export default securityService;

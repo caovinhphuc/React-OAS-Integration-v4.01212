@@ -14,21 +14,19 @@ export const fetchAIAnalysis = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response?.data?.detail || error.message);
     }
-  },
+  }
 );
 
 export const fetchPrediction = createAsyncThunk(
   "ai/fetchPrediction",
   async (modelType, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        `http://localhost:8000/api/predict/${modelType}`,
-      );
+      const response = await axios.get(`http://localhost:8000/api/predict/${modelType}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.detail || error.message);
     }
-  },
+  }
 );
 
 export const fetchAvailableModels = createAsyncThunk(
@@ -40,7 +38,7 @@ export const fetchAvailableModels = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response?.data?.detail || error.message);
     }
-  },
+  }
 );
 
 const initialState = {
@@ -118,7 +116,6 @@ const aiSlice = createSlice({
   },
 });
 
-export const { clearError, setAIServiceStatus, addAnalysisResult } =
-  aiSlice.actions;
+export const { clearError, setAIServiceStatus, addAnalysisResult } = aiSlice.actions;
 
 export default aiSlice.reducer;

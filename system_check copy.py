@@ -10,7 +10,7 @@ import json
 
 def check_dependencies():
     """Kiểm tra dependencies"""
-    print("🔍 1. KIỂM TRA DEPENDENCIES")
+    print("🔍 1. KIỂM PO TRA DEPENDENCIES")
     print("-" * 40)
 
     required_packages = [

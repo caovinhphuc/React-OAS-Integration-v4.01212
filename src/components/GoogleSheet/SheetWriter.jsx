@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useGoogleSheets } from "../../hooks/useGoogleSheets";
 
 const SheetWriter = ({ sheetId, onDataWritten }) => {
-  const { loading, error, writeSheet, appendToSheet, clearError } =
-    useGoogleSheets();
+  const { loading, error, writeSheet, appendToSheet, clearError } = useGoogleSheets();
   const [range, setRange] = useState("A1:E3");
   const [data, setData] = useState("");
   const [writeMode, setWriteMode] = useState("write"); // "write" or "append"
@@ -32,9 +31,7 @@ const SheetWriter = ({ sheetId, onDataWritten }) => {
       clearError();
 
       // Parse data from textarea
-      const rows = data
-        .split("\n")
-        .map((row) => row.split("\t").map((cell) => cell.trim()));
+      const rows = data.split("\n").map((row) => row.split("\t").map((cell) => cell.trim()));
 
       let result;
       if (writeMode === "write") {
@@ -116,9 +113,7 @@ const SheetWriter = ({ sheetId, onDataWritten }) => {
 
       {/* Data Input */}
       <div style={{ marginBottom: "15px" }}>
-        <label htmlFor="data-input">
-          Data (separate columns with TAB, rows with ENTER):
-        </label>
+        <label htmlFor="data-input">Data (separate columns with TAB, rows with ENTER):</label>
         <textarea
           id="data-input"
           value={data}
@@ -149,9 +144,7 @@ const SheetWriter = ({ sheetId, onDataWritten }) => {
             cursor: loading ? "not-allowed" : "pointer",
           }}
         >
-          {loading
-            ? "Writing..."
-            : `${writeMode === "write" ? "Write" : "Append"} Data`}
+          {loading ? "Writing..." : `${writeMode === "write" ? "Write" : "Append"} Data`}
         </button>
 
         <button

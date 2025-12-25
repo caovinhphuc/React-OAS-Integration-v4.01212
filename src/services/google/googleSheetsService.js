@@ -53,46 +53,21 @@ class GoogleSheetsService {
       return {
         values: [
           ["Ngày", "Sản phẩm", "Số lượng", "Giá", "Trạng thái", "Khách hàng"],
-          [
-            "2025-09-27",
-            "Demo Product A",
-            "5",
-            "150000",
-            "Hoàn thành",
-            "Mock Customer A",
-          ],
-          [
-            "2025-09-27",
-            "Demo Product B",
-            "3",
-            "200000",
-            "Đang xử lý",
-            "Mock Customer B",
-          ],
-          [
-            "2025-09-26",
-            "Demo Product C",
-            "2",
-            "300000",
-            "Hoàn thành",
-            "Mock Customer C",
-          ],
+          ["2025-09-27", "Demo Product A", "5", "150000", "Hoàn thành", "Mock Customer A"],
+          ["2025-09-27", "Demo Product B", "3", "200000", "Đang xử lý", "Mock Customer B"],
+          ["2025-09-26", "Demo Product C", "2", "300000", "Hoàn thành", "Mock Customer C"],
         ],
       };
     }
   }
 
   async writeSheet(sheetName, range, values) {
-    console.warn(
-      "Write operations require authentication. Mock data written locally.",
-    );
+    console.warn("Write operations require authentication. Mock data written locally.");
     return Promise.resolve({ updatedRows: values.length });
   }
 
   async appendSheet(sheetName, values) {
-    console.warn(
-      "Append operations require authentication. Mock data appended locally.",
-    );
+    console.warn("Append operations require authentication. Mock data appended locally.");
     return Promise.resolve({ updates: { updatedRows: values.length } });
   }
 }

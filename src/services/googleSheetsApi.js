@@ -29,9 +29,7 @@ class GoogleSheetsApiService {
       };
     } catch (error) {
       console.error("Error reading sheet:", error);
-      throw new Error(
-        error.response?.data?.error || `Failed to read sheet: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to read sheet: ${error.message}`);
     }
   }
 
@@ -48,10 +46,7 @@ class GoogleSheetsApiService {
       return response.data.data;
     } catch (error) {
       console.error("Error writing to sheet:", error);
-      throw new Error(
-        error.response?.data?.error ||
-          `Failed to write to sheet: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to write to sheet: ${error.message}`);
     }
   }
 
@@ -68,10 +63,7 @@ class GoogleSheetsApiService {
       return response.data.data;
     } catch (error) {
       console.error("Error appending to sheet:", error);
-      throw new Error(
-        error.response?.data?.error ||
-          `Failed to append to sheet: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to append to sheet: ${error.message}`);
     }
   }
 
@@ -89,8 +81,7 @@ class GoogleSheetsApiService {
     } catch (error) {
       console.error("Error getting sheet metadata:", error);
       throw new Error(
-        error.response?.data?.error ||
-          `Failed to get sheet metadata: ${error.message}`,
+        error.response?.data?.error || `Failed to get sheet metadata: ${error.message}`
       );
     }
   }
@@ -106,10 +97,7 @@ class GoogleSheetsApiService {
       return response.data.data;
     } catch (error) {
       console.error("Error clearing sheet:", error);
-      throw new Error(
-        error.response?.data?.error ||
-          `Failed to clear sheet: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to clear sheet: ${error.message}`);
     }
   }
 
@@ -125,9 +113,7 @@ class GoogleSheetsApiService {
       return response.data.data;
     } catch (error) {
       console.error("Error adding sheet:", error);
-      throw new Error(
-        error.response?.data?.error || `Failed to add sheet: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to add sheet: ${error.message}`);
     }
   }
 }

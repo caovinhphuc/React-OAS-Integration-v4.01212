@@ -2,8 +2,7 @@ import React, { useState, useRef } from "react";
 import { useGoogleDrive } from "../../hooks/useGoogleDrive";
 
 const DriveUploader = ({ folderId, onUploadComplete }) => {
-  const { loading, error, uploadProgress, uploadFile, clearError } =
-    useGoogleDrive();
+  const { loading, error, uploadProgress, uploadFile, clearError } = useGoogleDrive();
 
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [uploadResults, setUploadResults] = useState([]);
@@ -25,12 +24,7 @@ const DriveUploader = ({ folderId, onUploadComplete }) => {
       try {
         clearError();
         const fileBuffer = await file.arrayBuffer();
-        const result = await uploadFile(
-          fileBuffer,
-          file.name,
-          file.type,
-          folderId,
-        );
+        const result = await uploadFile(fileBuffer, file.name, file.type, folderId);
 
         results.push({
           fileName: file.name,
@@ -224,18 +218,12 @@ const DriveUploader = ({ folderId, onUploadComplete }) => {
               <tbody>
                 {uploadResults.map((result, index) => (
                   <tr key={index}>
-                    <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                      {result.fileName}
-                    </td>
+                    <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.fileName}</td>
                     <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                       {result.success ? (
-                        <span style={{ color: "#4caf50", fontWeight: "bold" }}>
-                          ✅ Success
-                        </span>
+                        <span style={{ color: "#4caf50", fontWeight: "bold" }}>✅ Success</span>
                       ) : (
-                        <span style={{ color: "#f44336", fontWeight: "bold" }}>
-                          ❌ Failed
-                        </span>
+                        <span style={{ color: "#f44336", fontWeight: "bold" }}>❌ Failed</span>
                       )}
                     </td>
                     <td style={{ border: "1px solid #ddd", padding: "8px" }}>
@@ -257,9 +245,7 @@ const DriveUploader = ({ folderId, onUploadComplete }) => {
                         </a>
                       )}
                       {!result.success && (
-                        <span style={{ fontSize: "12px", color: "#f44336" }}>
-                          {result.error}
-                        </span>
+                        <span style={{ fontSize: "12px", color: "#f44336" }}>{result.error}</span>
                       )}
                     </td>
                   </tr>
@@ -284,9 +270,7 @@ const DriveUploader = ({ folderId, onUploadComplete }) => {
         <ul style={{ margin: "5px 0", paddingLeft: "20px" }}>
           <li>Select one or multiple files to upload</li>
           <li>Files will be uploaded to your configured Google Drive folder</li>
-          <li>
-            Supported file types: All types (images, documents, videos, etc.)
-          </li>
+          <li>Supported file types: All types (images, documents, videos, etc.)</li>
           <li>Maximum file size depends on your Google Drive quota</li>
           <li>Upload progress will be shown for each file</li>
         </ul>

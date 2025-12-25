@@ -4,22 +4,10 @@
  */
 
 import { screen, waitFor } from "@testing-library/react";
-import {
-  renderWithProviders,
-  setupLocalStorageMock,
-} from "../../../utils/test-utils";
+import { renderWithProviders, setupLocalStorageMock } from "../../../utils/test-utils";
 import ProtectedRoute from "../ProtectedRoute";
 
 import { logout } from "../../../store/actions/authActions";
-
-// Mock Ant Design message - define inside jest.mock to avoid hoisting issues
-const mockMessageMethods = {
-  success: jest.fn(),
-  error: jest.fn(),
-  info: jest.fn(),
-  warning: jest.fn(),
-  loading: jest.fn(),
-};
 
 jest.mock("antd", () => {
   const antd = jest.requireActual("antd");
@@ -80,9 +68,7 @@ describe("ProtectedRoute Component", () => {
   let localStorageMock;
   let mockMessage;
 
-  const mockChildren = (
-    <div data-testid="protected-content">Protected Content</div>
-  );
+  const mockChildren = <div data-testid="protected-content">Protected Content</div>;
 
   beforeEach(() => {
     // Get reference to mocked message
@@ -109,7 +95,7 @@ describe("ProtectedRoute Component", () => {
       Promise.resolve({
         ok: true,
         json: async () => ({ valid: true, success: true }),
-      }),
+      })
     );
   });
 
@@ -132,9 +118,7 @@ describe("ProtectedRoute Component", () => {
       });
 
       expect(screen.getByTestId("loading")).toBeInTheDocument();
-      expect(
-        screen.getByText(/Đang kiểm tra phiên đăng nhập/i),
-      ).toBeInTheDocument();
+      expect(screen.getByText(/Đang kiểm tra phiên đăng nhập/i)).toBeInTheDocument();
     });
   });
 
@@ -160,9 +144,7 @@ describe("ProtectedRoute Component", () => {
 
       // Should not render protected content (Navigate component redirects)
       await waitFor(() => {
-        expect(
-          screen.queryByTestId("protected-content"),
-        ).not.toBeInTheDocument();
+        expect(screen.queryByTestId("protected-content")).not.toBeInTheDocument();
       });
     });
 
@@ -187,9 +169,7 @@ describe("ProtectedRoute Component", () => {
 
       // Protected content should not be rendered (Navigate redirects)
       await waitFor(() => {
-        expect(
-          screen.queryByTestId("protected-content"),
-        ).not.toBeInTheDocument();
+        expect(screen.queryByTestId("protected-content")).not.toBeInTheDocument();
       });
     });
   });
@@ -261,7 +241,7 @@ describe("ProtectedRoute Component", () => {
           headers: expect.objectContaining({
             Authorization: "Bearer valid-token",
           }),
-        }),
+        })
       );
 
       // Wait for component to finish checking and render children
@@ -269,7 +249,7 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(screen.getByTestId("protected-content")).toBeInTheDocument();
         },
-        { timeout: 3000 },
+        { timeout: 3000 }
       );
     });
 
@@ -300,16 +280,16 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(logout).toHaveBeenCalledWith(false);
         },
-        { timeout: 3000 },
+        { timeout: 3000 }
       );
 
       await waitFor(
         () => {
           expect(mockMessage.warning).toHaveBeenCalledWith(
-            "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
+            "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại."
           );
         },
-        { timeout: 3000 },
+        { timeout: 3000 }
       );
 
       // Should clear tokens
@@ -345,18 +325,18 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(global.fetch).toHaveBeenCalled();
         },
-        { timeout: 3000 },
+        { timeout: 3000 }
       );
 
       await waitFor(
         () => {
           expect(mockLogoutThunk).toHaveBeenCalledWith(false);
         },
-        { timeout: 2000 },
+        { timeout: 2000 }
       );
 
       expect(mockMessage.warning).toHaveBeenCalledWith(
-        "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
+        "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại."
       );
 
       expect(localStorageMock.removeItem).toHaveBeenCalledWith("authToken");
@@ -388,7 +368,7 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(screen.getByTestId("protected-content")).toBeInTheDocument();
         },
-        { timeout: 3000 },
+        { timeout: 3000 }
       );
 
       expect(logout).not.toHaveBeenCalled();
@@ -420,14 +400,14 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(global.fetch).toHaveBeenCalled();
         },
-        { timeout: 3000 },
+        { timeout: 3000 }
       );
 
       await waitFor(
         () => {
           expect(mockLogoutThunk).toHaveBeenCalledWith(false);
         },
-        { timeout: 2000 },
+        { timeout: 2000 }
       );
     });
   });
@@ -462,7 +442,7 @@ describe("ProtectedRoute Component", () => {
       // Should still call verify API
       expect(global.fetch).toHaveBeenCalledWith(
         expect.stringContaining("/api/auth/verify"),
-        expect.any(Object),
+        expect.any(Object)
       );
     });
 
@@ -490,9 +470,9 @@ describe("ProtectedRoute Component", () => {
 
       await waitFor(() => {
         expect(localStorageMock.removeItem).toHaveBeenCalledWith("authToken");
-        expect(localStorageMock.removeItem).toHaveBeenCalledWith("token");
-        expect(localStorageMock.removeItem).toHaveBeenCalledWith("sessionId");
       });
+      expect(localStorageMock.removeItem).toHaveBeenCalledWith("token");
+      expect(localStorageMock.removeItem).toHaveBeenCalledWith("sessionId");
     });
   });
 
@@ -515,7 +495,7 @@ describe("ProtectedRoute Component", () => {
         () => {
           expect(screen.getByTestId("protected-content")).toBeInTheDocument();
         },
-        { timeout: 3000 },
+        { timeout: 3000 }
       );
 
       // Should not call verify API when no sessionId
@@ -541,9 +521,9 @@ describe("ProtectedRoute Component", () => {
 
       await waitFor(() => {
         expect(localStorageMock.removeItem).toHaveBeenCalledWith("authToken");
-        expect(localStorageMock.removeItem).toHaveBeenCalledWith("token");
-        expect(localStorageMock.removeItem).toHaveBeenCalledWith("sessionId");
       });
+      expect(localStorageMock.removeItem).toHaveBeenCalledWith("token");
+      expect(localStorageMock.removeItem).toHaveBeenCalledWith("sessionId");
     });
 
     it("should not redirect when already on login page", async () => {
@@ -634,12 +614,9 @@ describe("ProtectedRoute Component", () => {
         json: async () => ({ valid: true, success: true }),
       });
 
-      const { unmount } = renderWithProviders(
-        <ProtectedRoute>{mockChildren}</ProtectedRoute>,
-        {
-          initialState,
-        },
-      );
+      const { unmount } = renderWithProviders(<ProtectedRoute>{mockChildren}</ProtectedRoute>, {
+        initialState,
+      });
 
       const clearIntervalSpy = jest.spyOn(global, "clearInterval");
 

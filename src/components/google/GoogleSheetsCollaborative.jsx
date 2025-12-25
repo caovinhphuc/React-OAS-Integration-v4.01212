@@ -14,10 +14,7 @@ const { Title, Text } = Typography;
 const { TextArea } = Input;
 
 const GoogleSheetsCollaborative = ({ spreadsheetId, userId = null }) => {
-  const { connected, subscribe, unsubscribe, websocket } = useWebSocket(
-    userId,
-    true,
-  );
+  const { connected, subscribe, unsubscribe, websocket } = useWebSocket(userId, true);
   const [activeUsers, setActiveUsers] = useState([]);
   const [cellEdits, setCellEdits] = useState({});
   const [currentCell, setCurrentCell] = useState(null);
@@ -30,29 +27,23 @@ const GoogleSheetsCollaborative = ({ spreadsheetId, userId = null }) => {
       websocket.joinSheetsRoom(spreadsheetId, userId);
 
       // Listen for user joins/leaves
-      const unsubscribeJoin = subscribe(
-        "user-joined",
-        ({ userId: uid, room }) => {
-          if (room === `sheets:${spreadsheetId}`) {
-            setActiveUsers((prev) => [...prev.filter((u) => u !== uid), uid]);
-            message.info(`User ${uid} joined the sheet`);
-          }
-        },
-      );
+      const unsubscribeJoin = subscribe("user-joined", ({ userId: uid, room }) => {
+        if (room === `sheets:${spreadsheetId}`) {
+          setActiveUsers((prev) => [...prev.filter((u) => u !== uid), uid]);
+          message.info(`User ${uid} joined the sheet`);
+        }
+      });
 
-      const unsubscribeLeave = subscribe(
-        "user-left",
-        ({ userId: uid, room }) => {
-          if (room === `sheets:${spreadsheetId}`) {
-            setActiveUsers((prev) => prev.filter((u) => u !== uid));
-            setCursors((prev) => {
-              const newCursors = { ...prev };
-              delete newCursors[uid];
-              return newCursors;
-            });
-          }
-        },
-      );
+      const unsubscribeLeave = subscribe("user-left", ({ userId: uid, room }) => {
+        if (room === `sheets:${spreadsheetId}`) {
+          setActiveUsers((prev) => prev.filter((u) => u !== uid));
+          setCursors((prev) => {
+            const newCursors = { ...prev };
+            delete newCursors[uid];
+            return newCursors;
+          });
+        }
+      });
 
       // Listen for room users list
       const unsubscribeUsers = subscribe("room-users", ({ room, users }) => {
@@ -64,13 +55,7 @@ const GoogleSheetsCollaborative = ({ spreadsheetId, userId = null }) => {
       // Listen for sheet edits from other users
       const unsubscribeEdit = subscribe(
         "sheets-edit-received",
-        ({
-          spreadsheetId: sheetId,
-          range,
-          value,
-          userId: editorId,
-          timestamp,
-        }) => {
+        ({ spreadsheetId: sheetId, range, value, userId: editorId, timestamp }) => {
           if (sheetId === spreadsheetId && editorId !== userId) {
             setCellEdits((prev) => ({
               ...prev,
@@ -78,7 +63,7 @@ const GoogleSheetsCollaborative = ({ spreadsheetId, userId = null }) => {
             }));
             message.info(`Cell ${range} updated by another user`);
           }
-        },
+        }
       );
 
       // Listen for cursor positions
@@ -91,7 +76,7 @@ const GoogleSheetsCollaborative = ({ spreadsheetId, userId = null }) => {
               [cursorUserId]: cell,
             }));
           }
-        },
+        }
       );
 
       return () => {
@@ -114,7 +99,7 @@ const GoogleSheetsCollaborative = ({ spreadsheetId, userId = null }) => {
         websocket.sendCursorPosition(spreadsheetId, cell, userId);
       }
     },
-    [connected, spreadsheetId, userId, websocket],
+    [connected, spreadsheetId, userId, websocket]
   );
 
   // Handle cell edit
@@ -178,9 +163,7 @@ const GoogleSheetsCollaborative = ({ spreadsheetId, userId = null }) => {
       <div className="sheets-grid">
         {sampleCells.map((cell) => {
           const edit = cellEdits[cell];
-          const cursorUsers = Object.keys(cursors).filter(
-            (uid) => cursors[uid] === cell,
-          );
+          const cursorUsers = Object.keys(cursors).filter((uid) => cursors[uid] === cell);
 
           return (
             <div
@@ -244,8 +227,7 @@ const GoogleSheetsCollaborative = ({ spreadsheetId, userId = null }) => {
                   <Text strong>{range}:</Text>
                   <Text>{edit.value}</Text>
                   <Text type="secondary" style={{ fontSize: 12 }}>
-                    by {edit.userId} at{" "}
-                    {new Date(edit.timestamp).toLocaleTimeString("vi-VN")}
+                    by {edit.userId} at {new Date(edit.timestamp).toLocaleTimeString("vi-VN")}
                   </Text>
                 </div>
               ))}

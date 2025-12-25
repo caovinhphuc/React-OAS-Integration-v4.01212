@@ -9,20 +9,16 @@ const googleConfig = {
 
   // Google Sheets và Drive IDs (THỰC TẾ)
   spreadsheet_id:
-    process.env.REACT_APP_GOOGLE_SHEET_ID ||
-    "18B1PIhCDmBWyHZytvOcfj_1QbYBwczLf1x1Qbu0E5As",
+    process.env.REACT_APP_GOOGLE_SHEET_ID || "18B1PIhCDmBWyHZytvOcfj_1QbYBwczLf1x1Qbu0E5As",
   drive_folder_id: process.env.REACT_APP_GOOGLE_DRIVE_FOLDER_ID,
 
   // API endpoints
   api_base_url:
-    process.env.REACT_APP_API_BASE_URL ||
-    "https://react-google-backend.onrender.com/api",
+    process.env.REACT_APP_API_BASE_URL || "https://react-google-backend.onrender.com/api",
 
   // Alert thresholds
-  alert_threshold_low:
-    parseInt(process.env.REACT_APP_ALERT_THRESHOLD_LOW) || 10,
-  alert_threshold_high:
-    parseInt(process.env.REACT_APP_ALERT_THRESHOLD_HIGH) || 100,
+  alert_threshold_low: parseInt(process.env.REACT_APP_ALERT_THRESHOLD_LOW) || 10,
+  alert_threshold_high: parseInt(process.env.REACT_APP_ALERT_THRESHOLD_HIGH) || 100,
 
   // Email configuration
   email: {
@@ -41,12 +37,7 @@ const googleConfig = {
 
 // Validation function
 export const validateConfig = () => {
-  const required = [
-    "client_email",
-    "private_key",
-    "project_id",
-    "spreadsheet_id",
-  ];
+  const required = ["client_email", "private_key", "project_id", "spreadsheet_id"];
 
   const missing = required.filter((key) => !googleConfig[key]);
 

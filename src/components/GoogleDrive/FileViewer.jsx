@@ -44,8 +44,7 @@ const FileViewer = ({ fileId, fileName }) => {
     if (mimeType.includes("audio")) return "🎵";
     if (mimeType.includes("pdf")) return "📄";
     if (mimeType.includes("word")) return "📝";
-    if (mimeType.includes("excel") || mimeType.includes("spreadsheet"))
-      return "📊";
+    if (mimeType.includes("excel") || mimeType.includes("spreadsheet")) return "📊";
     if (mimeType.includes("presentation")) return "📋";
     if (mimeType.includes("text")) return "📄";
     return "📄";
@@ -130,8 +129,7 @@ const FileViewer = ({ fileId, fileName }) => {
                 <strong>Created:</strong> {formatDate(fileMetadata.createdTime)}
               </div>
               <div>
-                <strong>Modified:</strong>{" "}
-                {formatDate(fileMetadata.modifiedTime)}
+                <strong>Modified:</strong> {formatDate(fileMetadata.modifiedTime)}
               </div>
             </div>
           </div>
@@ -234,9 +232,7 @@ const FileViewer = ({ fileId, fileName }) => {
                   >
                     Name:
                   </td>
-                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                    {fileMetadata.name}
-                  </td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{fileMetadata.name}</td>
                 </tr>
                 <tr>
                   <td
@@ -327,8 +323,7 @@ const FileViewer = ({ fileId, fileName }) => {
               >
                 <p>Click "Preview" button above to view the file content</p>
                 <p style={{ fontSize: "14px", color: "#666" }}>
-                  Supported formats: Images, PDFs, Text files, Google Docs,
-                  Google Sheets
+                  Supported formats: Images, PDFs, Text files, Google Docs, Google Sheets
                 </p>
               </div>
             </div>

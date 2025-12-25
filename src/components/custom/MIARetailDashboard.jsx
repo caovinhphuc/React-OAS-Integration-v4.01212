@@ -74,12 +74,9 @@ const MIARetailDashboard = () => {
       }
 
       // Only set error if all requests failed
-      const allFailed = [
-        dashboardResult,
-        salesResult,
-        inventoryResult,
-        customersResult,
-      ].every((result) => result.status === "rejected");
+      const allFailed = [dashboardResult, salesResult, inventoryResult, customersResult].every(
+        (result) => result.status === "rejected"
+      );
 
       if (allFailed) {
         setError("Không thể tải dữ liệu. Vui lòng thử lại sau.");
@@ -152,10 +149,7 @@ const MIARetailDashboard = () => {
 
   return (
     <div style={{ padding: 16 }}>
-      <Typography.Title
-        level={2}
-        style={{ marginBottom: 24, fontWeight: 700, color: "#3b82f6" }}
-      >
+      <Typography.Title level={2} style={{ marginBottom: 24, fontWeight: 700, color: "#3b82f6" }}>
         🛒 MIA Retail Dashboard
       </Typography.Title>
 
@@ -178,10 +172,7 @@ const MIARetailDashboard = () => {
             >
               Today's Revenue
             </Typography.Text>
-            <Typography.Title
-              level={3}
-              style={{ fontWeight: 700, color: "white", margin: 0 }}
-            >
+            <Typography.Title level={3} style={{ fontWeight: 700, color: "white", margin: 0 }}>
               {formatVND(dashboardData?.today?.revenue || 0)}
             </Typography.Title>
             <Typography.Text
@@ -215,10 +206,7 @@ const MIARetailDashboard = () => {
             >
               Active Customers
             </Typography.Text>
-            <Typography.Title
-              level={3}
-              style={{ fontWeight: 700, color: "white", margin: 0 }}
-            >
+            <Typography.Title level={3} style={{ fontWeight: 700, color: "white", margin: 0 }}>
               {customerData?.activeCustomers?.toLocaleString() || 0}
             </Typography.Title>
             <Typography.Text
@@ -252,12 +240,8 @@ const MIARetailDashboard = () => {
             >
               Inventory
             </Typography.Text>
-            <Typography.Title
-              level={3}
-              style={{ fontWeight: 700, color: "white", margin: 0 }}
-            >
-              {inventoryData?.inStock || 0} /{" "}
-              {inventoryData?.totalProducts || 0}
+            <Typography.Title level={3} style={{ fontWeight: 700, color: "white", margin: 0 }}>
+              {inventoryData?.inStock || 0} / {inventoryData?.totalProducts || 0}
             </Typography.Title>
             <Typography.Text
               style={{
@@ -290,10 +274,7 @@ const MIARetailDashboard = () => {
             >
               Conversion Rate
             </Typography.Text>
-            <Typography.Title
-              level={3}
-              style={{ fontWeight: 700, color: "white", margin: 0 }}
-            >
+            <Typography.Title level={3} style={{ fontWeight: 700, color: "white", margin: 0 }}>
               {salesData?.conversionRate?.toFixed(1) || 0}%
             </Typography.Title>
             <Typography.Text
@@ -321,16 +302,9 @@ const MIARetailDashboard = () => {
                   <LineChart data={salesChartData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
-                    <YAxis
-                      tickFormatter={(value) =>
-                        value.toLocaleString("vi-VN") + "₫"
-                      }
-                    />
+                    <YAxis tickFormatter={(value) => value.toLocaleString("vi-VN") + "₫"} />
                     <Tooltip
-                      formatter={(value) => [
-                        value.toLocaleString("vi-VN") + "₫",
-                        "Revenue",
-                      ]}
+                      formatter={(value) => [value.toLocaleString("vi-VN") + "₫", "Revenue"]}
                     />
                     <Legend />
                     <Line
@@ -352,9 +326,7 @@ const MIARetailDashboard = () => {
                   justifyContent: "center",
                 }}
               >
-                <Typography.Text type="secondary">
-                  Không có dữ liệu để hiển thị
-                </Typography.Text>
+                <Typography.Text type="secondary">Không có dữ liệu để hiển thị</Typography.Text>
               </div>
             )}
           </Card>
@@ -375,18 +347,13 @@ const MIARetailDashboard = () => {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ name, percent }) =>
-                        `${name}: ${(percent * 100).toFixed(0)}%`
-                      }
+                      label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
                       outerRadius={80}
                       fill="#8884d8"
                       dataKey="value"
                     >
                       {inventoryStatusData.map((entry, index) => (
-                        <Cell
-                          key={`cell-${index}`}
-                          fill={COLORS[index % COLORS.length]}
-                        />
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                       ))}
                     </Pie>
                     <Tooltip />
@@ -403,9 +370,7 @@ const MIARetailDashboard = () => {
                   justifyContent: "center",
                 }}
               >
-                <Typography.Text type="secondary">
-                  Không có dữ liệu để hiển thị
-                </Typography.Text>
+                <Typography.Text type="secondary">Không có dữ liệu để hiển thị</Typography.Text>
               </div>
             )}
           </Card>
@@ -423,16 +388,9 @@ const MIARetailDashboard = () => {
                   <BarChart data={topProductsData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
-                    <YAxis
-                      tickFormatter={(value) =>
-                        value.toLocaleString("vi-VN") + "₫"
-                      }
-                    />
+                    <YAxis tickFormatter={(value) => value.toLocaleString("vi-VN") + "₫"} />
                     <Tooltip
-                      formatter={(value) => [
-                        value.toLocaleString("vi-VN") + "₫",
-                        "Sales",
-                      ]}
+                      formatter={(value) => [value.toLocaleString("vi-VN") + "₫", "Sales"]}
                     />
                     <Bar dataKey="sales" fill="#3b82f6" />
                   </BarChart>
@@ -447,9 +405,7 @@ const MIARetailDashboard = () => {
                   justifyContent: "center",
                 }}
               >
-                <Typography.Text type="secondary">
-                  Không có dữ liệu để hiển thị
-                </Typography.Text>
+                <Typography.Text type="secondary">Không có dữ liệu để hiển thị</Typography.Text>
               </div>
             )}
           </Card>
@@ -470,9 +426,7 @@ const MIARetailDashboard = () => {
                 }}
               >
                 <Typography.Text>Total Customers</Typography.Text>
-                <Tag color="blue">
-                  {customerData?.totalCustomers?.toLocaleString() || 0}
-                </Tag>
+                <Tag color="blue">{customerData?.totalCustomers?.toLocaleString() || 0}</Tag>
               </div>
               <div
                 style={{

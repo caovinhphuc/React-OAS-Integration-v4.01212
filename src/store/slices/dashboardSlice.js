@@ -28,7 +28,7 @@ export const connectWebSocket = createAsyncThunk(
     });
 
     return socket;
-  },
+  }
 );
 
 const initialState = {

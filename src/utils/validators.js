@@ -78,11 +78,7 @@ export const isValidPassword = (password) => {
 
   return {
     isValid:
-      password.length >= minLength &&
-      hasUpperCase &&
-      hasLowerCase &&
-      hasNumbers &&
-      hasSpecialChar,
+      password.length >= minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar,
     minLength: password.length >= minLength,
     hasUpperCase,
     hasLowerCase,

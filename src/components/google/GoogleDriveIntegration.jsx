@@ -80,10 +80,7 @@ const GoogleDriveIntegration = () => {
     setIsLoadingFiles(true);
     setFilesError(null);
     try {
-      const result = await googleDriveApiService.listFiles(
-        currentFolder?.id,
-        100,
-      );
+      const result = await googleDriveApiService.listFiles(currentFolder?.id, 100);
 
       const driveFiles = [];
       const driveFolders = [];
@@ -125,18 +122,16 @@ const GoogleDriveIntegration = () => {
   }, [currentFolder]);
 
   const filteredFiles = files.filter((file) =>
-    file.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    file.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const filteredFolders = folders.filter((folder) =>
-    folder.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    folder.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleItemSelect = (itemId) => {
     setSelectedItems((prev) =>
-      prev.includes(itemId)
-        ? prev.filter((id) => id !== itemId)
-        : [...prev, itemId],
+      prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId]
     );
   };
 
@@ -164,16 +159,11 @@ const GoogleDriveIntegration = () => {
 
     try {
       if (createType === "folder") {
-        await googleDriveApiService.createFolder(
-          newItemName,
-          currentFolder?.id,
-        );
+        await googleDriveApiService.createFolder(newItemName, currentFolder?.id);
         message.success("Thư mục đã được tạo thành công!");
         await loadFiles();
       } else {
-        message.info(
-          'Tạo file mới cần upload file. Vui lòng dùng nút "Tải lên".',
-        );
+        message.info('Tạo file mới cần upload file. Vui lòng dùng nút "Tải lên".');
       }
 
       setNewItemName("");
@@ -189,9 +179,7 @@ const GoogleDriveIntegration = () => {
     if (selectedItems.length === 0) return;
 
     try {
-      await Promise.all(
-        selectedItems.map((itemId) => googleDriveApiService.deleteFile(itemId)),
-      );
+      await Promise.all(selectedItems.map((itemId) => googleDriveApiService.deleteFile(itemId)));
 
       message.success(`Đã xóa ${selectedItems.length} mục thành công!`);
       await loadFiles();
@@ -223,11 +211,7 @@ const GoogleDriveIntegration = () => {
     if (!shareEmail.trim() || !selectedItemForAction) return;
 
     try {
-      await googleDriveApiService.shareFile(
-        selectedItemForAction.id,
-        shareEmail,
-        shareRole,
-      );
+      await googleDriveApiService.shareFile(selectedItemForAction.id, shareEmail, shareRole);
       message.success(`Đã chia sẻ với ${shareEmail} thành công!`);
       setShowShareModal(false);
       setShareEmail("");
@@ -242,10 +226,7 @@ const GoogleDriveIntegration = () => {
     if (!renameValue.trim() || !selectedItemForAction) return;
 
     try {
-      await googleDriveApiService.renameFile(
-        selectedItemForAction.id,
-        renameValue.trim(),
-      );
+      await googleDriveApiService.renameFile(selectedItemForAction.id, renameValue.trim());
       message.success("Đã đổi tên thành công!");
       setShowRenameModal(false);
       setRenameValue("");
@@ -305,20 +286,13 @@ const GoogleDriveIntegration = () => {
       setPreviewType("google");
       setShowPreviewModal(true);
     } else {
-      message.info(
-        "File preview không khả dụng cho loại file này. Vui lòng tải xuống để xem.",
-      );
+      message.info("File preview không khả dụng cho loại file này. Vui lòng tải xuống để xem.");
     }
   };
 
   const handleUpload = async (file) => {
     try {
-      await googleDriveApiService.uploadFile(
-        file,
-        file.name,
-        file.type,
-        currentFolder?.id,
-      );
+      await googleDriveApiService.uploadFile(file, file.name, file.type, currentFolder?.id);
       message.success("Upload thành công!");
       await loadFiles();
     } catch (err) {
@@ -348,8 +322,7 @@ const GoogleDriveIntegration = () => {
     });
   };
 
-  if (loading || isLoadingFiles)
-    return <Loading text="Đang tải Google Drive..." />;
+  if (loading || isLoadingFiles) return <Loading text="Đang tải Google Drive..." />;
   if (error || filesError) {
     return (
       <div className="error-state">
@@ -379,11 +352,7 @@ const GoogleDriveIntegration = () => {
     },
     ...folderHistory.map((folder, index) => ({
       title: (
-        <Button
-          type="link"
-          onClick={() => handleBreadcrumbClick(index + 1)}
-          style={{ padding: 0 }}
-        >
+        <Button type="link" onClick={() => handleBreadcrumbClick(index + 1)} style={{ padding: 0 }}>
           {folder.name}
         </Button>
       ),
@@ -484,10 +453,7 @@ const GoogleDriveIntegration = () => {
                     Xóa
                   </Button>
                 </Popconfirm>
-                <Button
-                  icon={<DownloadOutlined />}
-                  onClick={handleDownloadItems}
-                >
+                <Button icon={<DownloadOutlined />} onClick={handleDownloadItems}>
                   Tải xuống
                 </Button>
               </>
@@ -514,20 +480,13 @@ const GoogleDriveIntegration = () => {
                 >
                   <div className="item-content">
                     <div className="item-icon">
-                      <FolderOutlined
-                        style={{ fontSize: 32, color: "#1890ff" }}
-                      />
+                      <FolderOutlined style={{ fontSize: 32, color: "#1890ff" }} />
                     </div>
                     <div className="item-info">
                       <div className="item-name">{folder.name}</div>
-                      <div className="item-meta">
-                        {formatDate(folder.modifiedTime)}
-                      </div>
+                      <div className="item-meta">{formatDate(folder.modifiedTime)}</div>
                     </div>
-                    <div
-                      className="item-actions"
-                      onClick={(e) => e.stopPropagation()}
-                    >
+                    <div className="item-actions" onClick={(e) => e.stopPropagation()}>
                       <Space>
                         <Tooltip title="Mở">
                           <Button
@@ -595,18 +554,13 @@ const GoogleDriveIntegration = () => {
                         {file.size} • {formatDate(file.modifiedTime)}
                       </div>
                     </div>
-                    <div
-                      className="item-actions"
-                      onClick={(e) => e.stopPropagation()}
-                    >
+                    <div className="item-actions" onClick={(e) => e.stopPropagation()}>
                       <Space>
                         <Tooltip title="Mở">
                           <Button
                             type="text"
                             icon={<EyeOutlined />}
-                            onClick={() =>
-                              window.open(file.webViewLink, "_blank")
-                            }
+                            onClick={() => window.open(file.webViewLink, "_blank")}
                           />
                         </Tooltip>
                         <Tooltip title="Tải xuống">
@@ -615,9 +569,7 @@ const GoogleDriveIntegration = () => {
                             icon={<DownloadOutlined />}
                             onClick={async () => {
                               try {
-                                await googleDriveApiService.downloadFile(
-                                  file.id,
-                                );
+                                await googleDriveApiService.downloadFile(file.id);
                                 message.success("Đã tải xuống thành công!");
                               } catch (err) {
                                 message.error(`Lỗi: ${err.message}`);
@@ -717,11 +669,7 @@ const GoogleDriveIntegration = () => {
             onChange={(e) => setShareEmail(e.target.value)}
             onPressEnter={handleShare}
           />
-          <Select
-            value={shareRole}
-            onChange={setShareRole}
-            style={{ width: "100%" }}
-          >
+          <Select value={shareRole} onChange={setShareRole} style={{ width: "100%" }}>
             <Option value="reader">Reader (Chỉ đọc)</Option>
             <Option value="writer">Writer (Chỉnh sửa)</Option>
             <Option value="commenter">Commenter (Bình luận)</Option>
@@ -781,16 +729,13 @@ const GoogleDriveIntegration = () => {
           >
             Đổi tên
           </Button>,
-          selectedItemForAction?.type !==
-            "application/vnd.google-apps.folder" && (
+          selectedItemForAction?.type !== "application/vnd.google-apps.folder" && (
             <Button
               key="download"
               icon={<DownloadOutlined />}
               onClick={async () => {
                 try {
-                  await googleDriveApiService.downloadFile(
-                    selectedItemForAction.id,
-                  );
+                  await googleDriveApiService.downloadFile(selectedItemForAction.id);
                   message.success("Đã tải xuống thành công!");
                 } catch (err) {
                   message.error(`Lỗi: ${err.message}`);
@@ -805,9 +750,7 @@ const GoogleDriveIntegration = () => {
             title="Xóa file/folder này?"
             onConfirm={async () => {
               try {
-                await googleDriveApiService.deleteFile(
-                  selectedItemForAction.id,
-                );
+                await googleDriveApiService.deleteFile(selectedItemForAction.id);
                 message.success("Đã xóa thành công!");
                 setShowDetailsModal(false);
                 setSelectedItemForAction(null);
@@ -828,16 +771,10 @@ const GoogleDriveIntegration = () => {
       >
         {selectedItemForAction && (
           <Descriptions bordered column={1}>
-            <Descriptions.Item label="Tên">
-              {selectedItemForAction.name}
-            </Descriptions.Item>
-            <Descriptions.Item label="Loại">
-              {selectedItemForAction.type}
-            </Descriptions.Item>
+            <Descriptions.Item label="Tên">{selectedItemForAction.name}</Descriptions.Item>
+            <Descriptions.Item label="Loại">{selectedItemForAction.type}</Descriptions.Item>
             {selectedItemForAction.size && (
-              <Descriptions.Item label="Kích thước">
-                {selectedItemForAction.size}
-              </Descriptions.Item>
+              <Descriptions.Item label="Kích thước">{selectedItemForAction.size}</Descriptions.Item>
             )}
             <Descriptions.Item label="Ngày tạo">
               {formatDate(selectedItemForAction.createdTime)}
@@ -887,9 +824,7 @@ const GoogleDriveIntegration = () => {
             onClick={async () => {
               if (selectedItemForAction) {
                 try {
-                  await googleDriveApiService.downloadFile(
-                    selectedItemForAction.id,
-                  );
+                  await googleDriveApiService.downloadFile(selectedItemForAction.id);
                   message.success("Đã tải xuống thành công!");
                 } catch (err) {
                   message.error(`Lỗi: ${err.message}`);
@@ -942,9 +877,7 @@ const GoogleDriveIntegration = () => {
                   onClick={async () => {
                     if (selectedItemForAction) {
                       try {
-                        await googleDriveApiService.downloadFile(
-                          selectedItemForAction.id,
-                        );
+                        await googleDriveApiService.downloadFile(selectedItemForAction.id);
                         message.success("Đã tải xuống thành công!");
                       } catch (err) {
                         message.error(`Lỗi: ${err.message}`);

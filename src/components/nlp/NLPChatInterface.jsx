@@ -5,24 +5,8 @@
  */
 
 import React, { useState, useRef, useEffect } from "react";
-import {
-  Card,
-  Input,
-  Button,
-  List,
-  Avatar,
-  Typography,
-  Space,
-  Tag,
-  Spin,
-  Empty,
-} from "antd";
-import {
-  SendOutlined,
-  UserOutlined,
-  RobotOutlined,
-  ClearOutlined,
-} from "@ant-design/icons";
+import { Card, Input, Button, List, Avatar, Typography, Space, Tag, Spin, Empty } from "antd";
+import { SendOutlined, UserOutlined, RobotOutlined, ClearOutlined } from "@ant-design/icons";
 import { smartAutomationService } from "../../services/smartAutomationService";
 import "./NLPChatInterface.css";
 
@@ -119,13 +103,9 @@ const NLPChatInterface = ({ data = null, onQueryResult = null }) => {
         response.text = "Hiện tại chưa có dữ liệu để tổng kết.";
       }
     } else if (queryLower.includes("filter") || queryLower.includes("lọc")) {
-      response.text =
-        "Tôi có thể giúp bạn lọc dữ liệu. Bạn muốn lọc theo tiêu chí nào?";
+      response.text = "Tôi có thể giúp bạn lọc dữ liệu. Bạn muốn lọc theo tiêu chí nào?";
       response.intent = "filter";
-    } else if (
-      queryLower.includes("trend") ||
-      queryLower.includes("xu hướng")
-    ) {
+    } else if (queryLower.includes("trend") || queryLower.includes("xu hướng")) {
       if (availableData && availableData.length > 0) {
         response.text = "Đang phân tích xu hướng...";
         response.intent = "trend";
@@ -133,7 +113,7 @@ const NLPChatInterface = ({ data = null, onQueryResult = null }) => {
         try {
           const trendResult = await smartAutomationService.analyzeTrends(
             availableData,
-            "value", // Default column
+            "value" // Default column
           );
           response.text = `Xu hướng: ${trendResult.trend || "unknown"}, `;
           response.text += `Thay đổi: ${trendResult.change_percentage?.toFixed(1) || 0}%`;
@@ -144,18 +124,12 @@ const NLPChatInterface = ({ data = null, onQueryResult = null }) => {
       } else {
         response.text = "Cần dữ liệu để phân tích xu hướng.";
       }
-    } else if (
-      queryLower.includes("anomaly") ||
-      queryLower.includes("bất thường")
-    ) {
+    } else if (queryLower.includes("anomaly") || queryLower.includes("bất thường")) {
       if (availableData && availableData.length > 0) {
         response.text = "Đang tìm anomalies...";
         response.intent = "anomaly";
         try {
-          const anomalies = await smartAutomationService.detectAnomalies(
-            availableData,
-            "value",
-          );
+          const anomalies = await smartAutomationService.detectAnomalies(availableData, "value");
           response.text = `Tìm thấy ${anomalies?.length || 0} anomalies.`;
           response.data = anomalies;
         } catch (err) {
@@ -190,10 +164,7 @@ const NLPChatInterface = ({ data = null, onQueryResult = null }) => {
     <Card className="nlp-chat-interface">
       <div className="chat-header">
         <Space>
-          <Avatar
-            icon={<RobotOutlined />}
-            style={{ backgroundColor: "#1890ff" }}
-          />
+          <Avatar icon={<RobotOutlined />} style={{ backgroundColor: "#1890ff" }} />
           <div>
             <Text strong>AI Assistant</Text>
             <br />
@@ -202,12 +173,7 @@ const NLPChatInterface = ({ data = null, onQueryResult = null }) => {
             </Text>
           </div>
         </Space>
-        <Button
-          type="text"
-          icon={<ClearOutlined />}
-          onClick={handleClearChat}
-          size="small"
-        >
+        <Button type="text" icon={<ClearOutlined />} onClick={handleClearChat} size="small">
           Clear
         </Button>
       </div>
@@ -224,16 +190,9 @@ const NLPChatInterface = ({ data = null, onQueryResult = null }) => {
               >
                 <Space align="start" style={{ width: "100%" }}>
                   <Avatar
-                    icon={
-                      message.role === "user" ? (
-                        <UserOutlined />
-                      ) : (
-                        <RobotOutlined />
-                      )
-                    }
+                    icon={message.role === "user" ? <UserOutlined /> : <RobotOutlined />}
                     style={{
-                      backgroundColor:
-                        message.role === "user" ? "#87d068" : "#1890ff",
+                      backgroundColor: message.role === "user" ? "#87d068" : "#1890ff",
                     }}
                   />
                   <div className="message-content">
@@ -243,10 +202,7 @@ const NLPChatInterface = ({ data = null, onQueryResult = null }) => {
                         {message.intent}
                       </Tag>
                     )}
-                    <Text
-                      type="secondary"
-                      style={{ fontSize: 11, display: "block", marginTop: 4 }}
-                    >
+                    <Text type="secondary" style={{ fontSize: 11, display: "block", marginTop: 4 }}>
                       {new Date(message.timestamp).toLocaleTimeString("vi-VN")}
                     </Text>
                   </div>
@@ -283,12 +239,8 @@ const NLPChatInterface = ({ data = null, onQueryResult = null }) => {
             Send
           </Button>
         </Space.Compact>
-        <Text
-          type="secondary"
-          style={{ fontSize: 12, marginTop: 8, display: "block" }}
-        >
-          💡 Gợi ý: "Show trends", "Find anomalies", "Summary", "Filter data",
-          "Search..."
+        <Text type="secondary" style={{ fontSize: 12, marginTop: 8, display: "block" }}>
+          💡 Gợi ý: "Show trends", "Find anomalies", "Summary", "Filter data", "Search..."
         </Text>
       </div>
     </Card>

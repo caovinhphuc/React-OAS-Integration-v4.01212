@@ -3,9 +3,7 @@
  */
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL ||
-  process.env.VITE_API_URL ||
-  "http://localhost:3001";
+  process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
 
 class ScriptService {
   /**
@@ -27,9 +25,7 @@ class ScriptService {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.error || `Script execution failed: ${response.statusText}`,
-        );
+        throw new Error(errorData.error || `Script execution failed: ${response.statusText}`);
       }
 
       return await response.json();
@@ -45,26 +41,22 @@ class ScriptService {
    */
   async executeInline(code, functionName = "main", parameters = []) {
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/script/execute-inline`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            code,
-            functionName,
-            parameters,
-          }),
+      const response = await fetch(`${API_BASE_URL}/api/script/execute-inline`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          code,
+          functionName,
+          parameters,
+        }),
+      });
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(
-          errorData.error ||
-            `Inline script execution failed: ${response.statusText}`,
+          errorData.error || `Inline script execution failed: ${response.statusText}`
         );
       }
 
@@ -81,16 +73,11 @@ class ScriptService {
    */
   async getScriptStatus(scriptId) {
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/script/status/${scriptId}`,
-      );
+      const response = await fetch(`${API_BASE_URL}/api/script/status/${scriptId}`);
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.error ||
-            `Failed to get script status: ${response.statusText}`,
-        );
+        throw new Error(errorData.error || `Failed to get script status: ${response.statusText}`);
       }
 
       return await response.json();
@@ -110,9 +97,7 @@ class ScriptService {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.error || `Failed to list projects: ${response.statusText}`,
-        );
+        throw new Error(errorData.error || `Failed to list projects: ${response.statusText}`);
       }
 
       return await response.json();
@@ -142,9 +127,7 @@ class ScriptService {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.error || `Script test failed: ${response.statusText}`,
-        );
+        throw new Error(errorData.error || `Script test failed: ${response.statusText}`);
       }
 
       return await response.json();

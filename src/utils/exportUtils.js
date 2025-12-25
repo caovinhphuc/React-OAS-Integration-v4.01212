@@ -51,7 +51,7 @@ export const exportToPDF = async (data, filename = "export") => {
                   <td>${widget.type}</td>
                   <td>${widget.data?.length || 0}</td>
                 </tr>
-              `,
+              `
                 )
                 .join("")}
             </tbody>

@@ -1,9 +1,4 @@
-const ConnectionItem = ({
-  name,
-  icon,
-  status = "connected",
-  className = "",
-}) => {
+const ConnectionItem = ({ name, icon, status = "connected", className = "" }) => {
   const statusClasses = {
     connected: "connected",
     disconnected: "disconnected",
@@ -24,9 +19,7 @@ const ConnectionItem = ({
       <div className="connection-info">
         <div className="connection-name">{name}</div>
         <div className="connection-status">
-          <span
-            className={`status-dot ${statusClasses[status] || "disconnected"}`}
-          ></span>
+          <span className={`status-dot ${statusClasses[status] || "disconnected"}`}></span>
           <span>{statusTexts[status] || statusTexts.disconnected}</span>
         </div>
       </div>

@@ -1,11 +1,6 @@
 import ConnectionItem from "./ConnectionItem";
 
-const ConnectionSection = ({
-  connections = [],
-  expanded = false,
-  onToggle,
-  className = "",
-}) => {
+const ConnectionSection = ({ connections = [], expanded = false, onToggle, className = "" }) => {
   if (!connections || connections.length === 0) {
     return null;
   }

@@ -10,8 +10,7 @@ export const logout = (logoutAll = false) => {
     try {
       // Get sessionId from state or localStorage
       const state = getState();
-      const sessionId =
-        state.auth?.sessionId || localStorage.getItem("sessionId");
+      const sessionId = state.auth?.sessionId || localStorage.getItem("sessionId");
 
       // Call logout API
       await logoutUser(sessionId, logoutAll);

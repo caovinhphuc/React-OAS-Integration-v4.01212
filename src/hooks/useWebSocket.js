@@ -17,9 +17,7 @@ export function useWebSocket(url = null, rooms = []) {
   const [connected, setConnected] = useState(false);
   const [lastMessage, setLastMessage] = useState(null);
   const [error, setError] = useState(null);
-  const roomsRef = useRef(
-    Array.isArray(rooms) ? rooms : [rooms].filter(Boolean),
-  );
+  const roomsRef = useRef(Array.isArray(rooms) ? rooms : [rooms].filter(Boolean));
 
   useEffect(() => {
     // Connect on mount

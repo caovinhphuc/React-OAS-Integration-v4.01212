@@ -86,12 +86,7 @@ const LiveDashboard = () => {
                 suffix="%"
                 prefix={<ThunderboltOutlined />}
                 valueStyle={{
-                  color:
-                    metrics.cpu > 80
-                      ? "#cf1322"
-                      : metrics.cpu > 50
-                        ? "#faad14"
-                        : "#3f8600",
+                  color: metrics.cpu > 80 ? "#cf1322" : metrics.cpu > 50 ? "#faad14" : "#3f8600",
                 }}
               />
               <div className="metric-bar">
@@ -100,11 +95,7 @@ const LiveDashboard = () => {
                   style={{
                     width: `${metrics.cpu}%`,
                     backgroundColor:
-                      metrics.cpu > 80
-                        ? "#cf1322"
-                        : metrics.cpu > 50
-                          ? "#faad14"
-                          : "#3f8600",
+                      metrics.cpu > 80 ? "#cf1322" : metrics.cpu > 50 ? "#faad14" : "#3f8600",
                   }}
                 />
               </div>
@@ -122,11 +113,7 @@ const LiveDashboard = () => {
                 prefix={<DatabaseOutlined />}
                 valueStyle={{
                   color:
-                    metrics.memory > 80
-                      ? "#cf1322"
-                      : metrics.memory > 50
-                        ? "#faad14"
-                        : "#3f8600",
+                    metrics.memory > 80 ? "#cf1322" : metrics.memory > 50 ? "#faad14" : "#3f8600",
                 }}
               />
               <div className="metric-bar">
@@ -135,11 +122,7 @@ const LiveDashboard = () => {
                   style={{
                     width: `${metrics.memory}%`,
                     backgroundColor:
-                      metrics.memory > 80
-                        ? "#cf1322"
-                        : metrics.memory > 50
-                          ? "#faad14"
-                          : "#3f8600",
+                      metrics.memory > 80 ? "#cf1322" : metrics.memory > 50 ? "#faad14" : "#3f8600",
                   }}
                 />
               </div>
@@ -174,8 +157,7 @@ const LiveDashboard = () => {
               />
               {metrics.timestamp && (
                 <Text type="secondary" style={{ fontSize: 12 }}>
-                  Last update:{" "}
-                  {new Date(metrics.timestamp).toLocaleTimeString("vi-VN")}
+                  Last update: {new Date(metrics.timestamp).toLocaleTimeString("vi-VN")}
                 </Text>
               )}
             </Card>

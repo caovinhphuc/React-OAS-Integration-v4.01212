@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  message,
-  Card,
-  Button,
-  Input,
-  Steps,
-  QRCode,
-  Space,
-  Divider,
-  Alert,
-  Spin,
-} from "antd";
+import { message, Card, Button, Input, Steps, QRCode, Space, Divider, Alert, Spin } from "antd";
 import {
   SafetyOutlined,
   CheckCircleOutlined,
@@ -73,10 +62,7 @@ const MFASetup = () => {
       message.success("MFA đã được kích hoạt thành công!");
       await loadUserProfile();
     } catch (error) {
-      message.error(
-        error.message ||
-          "Không thể kích hoạt MFA. Vui lòng kiểm tra mã xác thực.",
-      );
+      message.error(error.message || "Không thể kích hoạt MFA. Vui lòng kiểm tra mã xác thực.");
     } finally {
       setLoading(false);
     }
@@ -162,9 +148,8 @@ const MFASetup = () => {
               <LockOutlined style={{ fontSize: "64px", color: "#1890ff" }} />
               <h3 style={{ marginTop: "16px" }}>Bảo vệ tài khoản của bạn</h3>
               <p style={{ color: "#666", maxWidth: "500px", margin: "0 auto" }}>
-                Xác thực hai lớp (MFA) giúp bảo vệ tài khoản của bạn bằng cách
-                yêu cầu mã xác thực từ ứng dụng xác thực trên điện thoại khi
-                đăng nhập.
+                Xác thực hai lớp (MFA) giúp bảo vệ tài khoản của bạn bằng cách yêu cầu mã xác thực
+                từ ứng dụng xác thực trên điện thoại khi đăng nhập.
               </p>
             </div>
 
@@ -193,17 +178,11 @@ const MFASetup = () => {
             />
 
             <div style={{ textAlign: "center", marginBottom: "24px" }}>
-              <QRCode
-                value={otpAuthUrl}
-                size={256}
-                style={{ margin: "0 auto" }}
-              />
+              <QRCode value={otpAuthUrl} size={256} style={{ margin: "0 auto" }} />
             </div>
 
             <div style={{ marginBottom: "24px", textAlign: "center" }}>
-              <p style={{ marginBottom: "8px", fontWeight: "bold" }}>
-                Hoặc nhập mã thủ công:
-              </p>
+              <p style={{ marginBottom: "8px", fontWeight: "bold" }}>Hoặc nhập mã thủ công:</p>
               <Input
                 value={mfaSecret.manualEntryKey || mfaSecret.secret}
                 readOnly
@@ -254,15 +233,13 @@ const MFASetup = () => {
         {current === 2 && (
           <div className="mfa-step-content">
             <div style={{ textAlign: "center" }}>
-              <CheckCircleOutlined
-                style={{ fontSize: "64px", color: "#52c41a" }}
-              />
+              <CheckCircleOutlined style={{ fontSize: "64px", color: "#52c41a" }} />
               <h3 style={{ marginTop: "16px", color: "#52c41a" }}>
                 MFA đã được kích hoạt thành công!
               </h3>
               <p style={{ color: "#666", marginBottom: "24px" }}>
-                Tài khoản của bạn giờ đã được bảo vệ bằng xác thực hai lớp. Bạn
-                sẽ cần nhập mã xác thực mỗi khi đăng nhập.
+                Tài khoản của bạn giờ đã được bảo vệ bằng xác thực hai lớp. Bạn sẽ cần nhập mã xác
+                thực mỗi khi đăng nhập.
               </p>
               <Button type="primary" onClick={() => setCurrent(0)}>
                 Quay lại

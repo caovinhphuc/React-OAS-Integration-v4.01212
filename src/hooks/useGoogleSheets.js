@@ -27,11 +27,7 @@ export const useGoogleSheets = () => {
     setError(null);
 
     try {
-      const result = await googleSheetsApiService.writeSheet(
-        range,
-        values,
-        sheetId,
-      );
+      const result = await googleSheetsApiService.writeSheet(range, values, sheetId);
       return result;
     } catch (err) {
       setError(err.message);
@@ -46,11 +42,7 @@ export const useGoogleSheets = () => {
     setError(null);
 
     try {
-      const result = await googleSheetsApiService.appendToSheet(
-        range,
-        values,
-        sheetId,
-      );
+      const result = await googleSheetsApiService.appendToSheet(range, values, sheetId);
       return result;
     } catch (err) {
       setError(err.message);

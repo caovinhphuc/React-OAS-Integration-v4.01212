@@ -6,12 +6,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { Card, Button, Space, Typography, Tag, Alert, message } from "antd";
-import {
-  AudioOutlined,
-  StopOutlined,
-  SoundOutlined,
-  ReloadOutlined,
-} from "@ant-design/icons";
+import { AudioOutlined, StopOutlined, SoundOutlined, ReloadOutlined } from "@ant-design/icons";
 import "./VoiceCommands.css";
 
 const { Title, Text } = Typography;
@@ -42,8 +37,7 @@ const VoiceCommands = ({ onCommand = null }) => {
 
   const initializeSpeechRecognition = () => {
     try {
-      const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       const recognition = new SpeechRecognition();
 
       recognition.continuous = false;

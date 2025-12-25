@@ -123,8 +123,7 @@ const SecuritySettings = () => {
                 <Tag>{userProfile?.role || "N/A"}</Tag>
               </Descriptions.Item>
               <Descriptions.Item label="Quyền" span={2}>
-                {userProfile?.permissions &&
-                Array.isArray(userProfile.permissions) ? (
+                {userProfile?.permissions && Array.isArray(userProfile.permissions) ? (
                   <Space wrap>
                     {userProfile.permissions.map((perm) => (
                       <Tag key={perm} color="blue">
@@ -173,11 +172,7 @@ const SecuritySettings = () => {
           </Card>
 
           {/* Session Settings */}
-          <Card
-            type="inner"
-            title="Cài đặt phiên đăng nhập"
-            style={{ marginBottom: "24px" }}
-          >
+          <Card type="inner" title="Cài đặt phiên đăng nhập" style={{ marginBottom: "24px" }}>
             <Form.Item
               name="sessionTimeout"
               label="Thời gian hết hạn phiên"
@@ -222,9 +217,7 @@ const SecuritySettings = () => {
 
             <Alert
               message={
-                userProfile?.mfaEnabled
-                  ? "MFA đã được kích hoạt"
-                  : "MFA chưa được kích hoạt"
+                userProfile?.mfaEnabled ? "MFA đã được kích hoạt" : "MFA chưa được kích hoạt"
               }
               description={
                 userProfile?.mfaEnabled
@@ -245,11 +238,7 @@ const SecuritySettings = () => {
           </Card>
 
           {/* Audit Logging */}
-          <Card
-            type="inner"
-            title="Ghi nhật ký Audit"
-            style={{ marginBottom: "24px" }}
-          >
+          <Card type="inner" title="Ghi nhật ký Audit" style={{ marginBottom: "24px" }}>
             <Form.Item
               name="enableAuditLogging"
               label="Bật ghi nhật ký Audit"
@@ -313,11 +302,7 @@ const SecuritySettings = () => {
               >
                 Lưu cài đặt
               </Button>
-              <Button
-                icon={<ReloadOutlined />}
-                onClick={loadUserProfile}
-                loading={loading}
-              >
+              <Button icon={<ReloadOutlined />} onClick={loadUserProfile} loading={loading}>
                 Làm mới
               </Button>
             </Space>

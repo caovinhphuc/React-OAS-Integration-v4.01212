@@ -1,0 +1,16 @@
+node_modules
+build
+coverage
+dist
+.next
+.vscode
+.idea
+*.log
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.DS_Store
+*.min.js
+*.min.css
+build-stats
+

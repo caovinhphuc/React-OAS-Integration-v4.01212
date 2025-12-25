@@ -6,22 +6,14 @@
 
 import React, { useState, useEffect } from "react";
 import { Card, List, Badge, Typography, Tag, Space, Button, Empty } from "antd";
-import {
-  BellOutlined,
-  CheckOutlined,
-  CloseOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
+import { BellOutlined, CheckOutlined, CloseOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useWebSocket } from "../../hooks/useWebSocket";
 import "./RealTimeNotifications.css";
 
 const { Title, Text } = Typography;
 
 const RealTimeNotifications = ({ userId = null }) => {
-  const { connected, subscribe, unsubscribe, websocket } = useWebSocket(
-    userId,
-    true,
-  );
+  const { connected, subscribe, unsubscribe, websocket } = useWebSocket(userId, true);
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
 
@@ -31,13 +23,10 @@ const RealTimeNotifications = ({ userId = null }) => {
       websocket.subscribeNotifications(userId);
 
       // Listen for notifications
-      const unsubscribeNotification = subscribe(
-        "notification",
-        (notification) => {
-          setNotifications((prev) => [notification, ...prev]);
-          setUnreadCount((prev) => prev + 1);
-        },
-      );
+      const unsubscribeNotification = subscribe("notification", (notification) => {
+        setNotifications((prev) => [notification, ...prev]);
+        setUnreadCount((prev) => prev + 1);
+      });
 
       return () => {
         websocket.unsubscribeNotifications(userId);
@@ -48,9 +37,7 @@ const RealTimeNotifications = ({ userId = null }) => {
 
   // Mark notification as read
   const markAsRead = (id) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n)),
-    );
+    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
     setUnreadCount((prev) => Math.max(0, prev - 1));
   };
 
@@ -136,10 +123,7 @@ const RealTimeNotifications = ({ userId = null }) => {
       </div>
 
       {notifications.length === 0 ? (
-        <Empty
-          description="No notifications yet"
-          image={Empty.PRESENTED_IMAGE_SIMPLE}
-        />
+        <Empty description="No notifications yet" image={Empty.PRESENTED_IMAGE_SIMPLE} />
       ) : (
         <List
           className="notifications-list"
@@ -175,9 +159,7 @@ const RealTimeNotifications = ({ userId = null }) => {
                 }
                 title={
                   <Space>
-                    <Tag
-                      color={getNotificationColor(notification.type || "info")}
-                    >
+                    <Tag color={getNotificationColor(notification.type || "info")}>
                       {notification.type || "info"}
                     </Tag>
                     <Text strong>{notification.title || "Notification"}</Text>
@@ -190,9 +172,7 @@ const RealTimeNotifications = ({ userId = null }) => {
                     <br />
                     <Text type="secondary" style={{ fontSize: 12 }}>
                       {notification.timestamp
-                        ? new Date(notification.timestamp).toLocaleString(
-                            "vi-VN",
-                          )
+                        ? new Date(notification.timestamp).toLocaleString("vi-VN")
                         : "Just now"}
                     </Text>
                   </div>

@@ -87,9 +87,7 @@ const GoogleSheetsIntegration = () => {
   useEffect(() => {
     if (searchTerm) {
       const filtered = sheetContent.filter((row) =>
-        row.some((cell) =>
-          cell.toString().toLowerCase().includes(searchTerm.toLowerCase()),
-        ),
+        row.some((cell) => cell.toString().toLowerCase().includes(searchTerm.toLowerCase()))
       );
       setFilteredData(filtered);
     } else {
@@ -160,14 +158,10 @@ const GoogleSheetsIntegration = () => {
         "18B1PIhCDmBWyHZytvOcfj_1QbYBwczLf1x1Qbu0E5As";
 
       // Call API to create new sheet
-      const newSheet = await googleSheetsApiService.addSheet(
-        newSheetName.trim(),
-        spreadsheetId,
-      );
+      const newSheet = await googleSheetsApiService.addSheet(newSheetName.trim(), spreadsheetId);
 
       // Reload metadata to show the new sheet
-      const metadata =
-        await googleSheetsApiService.getSheetMetadata(spreadsheetId);
+      const metadata = await googleSheetsApiService.getSheetMetadata(spreadsheetId);
       const spreadsheet = {
         id: spreadsheetId,
         title: metadata.title,
@@ -181,9 +175,7 @@ const GoogleSheetsIntegration = () => {
       setSpreadsheets([spreadsheet]);
 
       // Select the newly created sheet
-      const createdSheet = spreadsheet.sheets.find(
-        (s) => s.id === newSheet.sheetId,
-      );
+      const createdSheet = spreadsheet.sheets.find((s) => s.id === newSheet.sheetId);
       if (createdSheet) {
         setSelectedSheet(createdSheet);
       }
@@ -222,7 +214,7 @@ const GoogleSheetsIntegration = () => {
     if (!selectedSheet) return;
 
     const updatedContent = sheetContent.map((row) =>
-      row.filter((_, index) => index !== columnIndex),
+      row.filter((_, index) => index !== columnIndex)
     );
 
     setSheetContent(updatedContent);
@@ -238,16 +230,14 @@ const GoogleSheetsIntegration = () => {
 
   // eslint-disable-next-line no-unused-vars
   const handleDeleteRow = (rowIndex) => {
-    const updatedContent = sheetContent.filter(
-      (_, index) => index !== rowIndex,
-    );
+    const updatedContent = sheetContent.filter((_, index) => index !== rowIndex);
     setSheetContent(updatedContent);
   };
 
   // eslint-disable-next-line no-unused-vars
   const handleDeleteEmptyRows = () => {
     const updatedContent = sheetContent.filter((row) =>
-      row.some((cell) => cell.toString().trim() !== ""),
+      row.some((cell) => cell.toString().trim() !== "")
     );
     setSheetContent(updatedContent);
   };
@@ -255,25 +245,19 @@ const GoogleSheetsIntegration = () => {
   // eslint-disable-next-line no-unused-vars
   const handleRowSelect = (rowIndex) => {
     setSelectedRows((prev) =>
-      prev.includes(rowIndex)
-        ? prev.filter((index) => index !== rowIndex)
-        : [...prev, rowIndex],
+      prev.includes(rowIndex) ? prev.filter((index) => index !== rowIndex) : [...prev, rowIndex]
     );
   };
 
   // eslint-disable-next-line no-unused-vars
   const handleSelectAllRows = () => {
     const allRowIndices = sheetContent.map((_, index) => index);
-    setSelectedRows(
-      selectedRows.length === allRowIndices.length ? [] : allRowIndices,
-    );
+    setSelectedRows(selectedRows.length === allRowIndices.length ? [] : allRowIndices);
   };
 
   // eslint-disable-next-line no-unused-vars
   const handleDeleteSelectedRows = () => {
-    const updatedContent = sheetContent.filter(
-      (_, index) => !selectedRows.includes(index),
-    );
+    const updatedContent = sheetContent.filter((_, index) => !selectedRows.includes(index));
     setSheetContent(updatedContent);
     setSelectedRows([]);
   };
@@ -312,18 +296,12 @@ const GoogleSheetsIntegration = () => {
           <h2>📊 Google Sheets Integration</h2>
         </div>
         <div className="sheets-controls page-controls">
-          <button
-            className="btn btn-primary"
-            onClick={() => setShowCreateModal(true)}
-          >
+          <button className="btn btn-primary" onClick={() => setShowCreateModal(true)}>
             ➕ Tạo sheet mới
           </button>
           {selectedSheet && (
             <>
-              <button
-                className="btn btn-secondary"
-                onClick={() => setIsEditing(!isEditing)}
-              >
+              <button className="btn btn-secondary" onClick={() => setIsEditing(!isEditing)}>
                 {isEditing ? "💾 Lưu" : "✏️ Chỉnh sửa"}
               </button>
               <button className="btn btn-primary" onClick={handleExport}>
@@ -343,8 +321,7 @@ const GoogleSheetsIntegration = () => {
               <span className="sheets-count">Đang tải...</span>
             ) : (
               <span className="sheets-count">
-                {spreadsheets.reduce((sum, s) => sum + s.sheets.length, 0)}{" "}
-                sheets
+                {spreadsheets.reduce((sum, s) => sum + s.sheets.length, 0)} sheets
               </span>
             )}
           </div>
@@ -366,13 +343,9 @@ const GoogleSheetsIntegration = () => {
 
           <div className="sheets-list">
             {isLoadingMetadata ? (
-              <div style={{ padding: "20px", textAlign: "center" }}>
-                Đang tải...
-              </div>
+              <div style={{ padding: "20px", textAlign: "center" }}>Đang tải...</div>
             ) : spreadsheets.length === 0 ? (
-              <div style={{ padding: "20px", textAlign: "center" }}>
-                Không có sheets nào
-              </div>
+              <div style={{ padding: "20px", textAlign: "center" }}>Không có sheets nào</div>
             ) : (
               spreadsheets.map((spreadsheet) => (
                 <div key={spreadsheet.id} className="spreadsheet-group">
@@ -380,13 +353,9 @@ const GoogleSheetsIntegration = () => {
                   {spreadsheet.sheets.map((sheet) => (
                     <div
                       key={sheet.id}
-                      className={`sheet-item ${
-                        selectedSheet?.id === sheet.id ? "active" : ""
-                      }`}
+                      className={`sheet-item ${selectedSheet?.id === sheet.id ? "active" : ""}`}
                       onClick={() => handleSheetSelect(sheet)}
-                      onDoubleClick={() =>
-                        handleOpenSheetInGoogle(sheet, spreadsheet.id)
-                      }
+                      onDoubleClick={() => handleOpenSheetInGoogle(sheet, spreadsheet.id)}
                       title="Double-click để mở trên Google Sheets"
                     >
                       <div className="sheet-info">
@@ -395,15 +364,12 @@ const GoogleSheetsIntegration = () => {
                           <div className="sheet-status-container">
                             <span className="sheet-status">📊</span>
                             {selectedSheet?.id === sheet.id && (
-                              <span className="sheet-active-tag">
-                                Đang hoạt động
-                              </span>
+                              <span className="sheet-active-tag">Đang hoạt động</span>
                             )}
                           </div>
                         </div>
                         <div className="sheet-description">
-                          Google Sheets - {sheet.rowCount} hàng ×{" "}
-                          {sheet.columnCount} cột
+                          Google Sheets - {sheet.rowCount} hàng × {sheet.columnCount} cột
                         </div>
                         <div className="sheet-meta">
                           <span className="sheet-trigger">📊 sheets</span>
@@ -487,8 +453,7 @@ const GoogleSheetsIntegration = () => {
                   <div className="sheet-title-info">
                     <h3>{selectedSheet.name}</h3>
                     <span className="sheet-dimensions">
-                      {selectedSheet.rowCount} hàng ×{" "}
-                      {selectedSheet.columnCount} cột
+                      {selectedSheet.rowCount} hàng × {selectedSheet.columnCount} cột
                     </span>
                   </div>
                   <button
@@ -541,16 +506,9 @@ const GoogleSheetsIntegration = () => {
                               {isEditing ? (
                                 <input
                                   type="text"
-                                  value={
-                                    editData[`${rowIndex + 1}-${colIndex}`] ||
-                                    cell
-                                  }
+                                  value={editData[`${rowIndex + 1}-${colIndex}`] || cell}
                                   onChange={(e) =>
-                                    handleCellEdit(
-                                      rowIndex + 1,
-                                      colIndex,
-                                      e.target.value,
-                                    )
+                                    handleCellEdit(rowIndex + 1, colIndex, e.target.value)
                                   }
                                   className="cell-input"
                                 />
@@ -582,10 +540,7 @@ const GoogleSheetsIntegration = () => {
           <div className="modal">
             <div className="modal-header">
               <h3>Tạo sheet mới</h3>
-              <button
-                className="close-btn"
-                onClick={() => setShowCreateModal(false)}
-              >
+              <button className="close-btn" onClick={() => setShowCreateModal(false)}>
                 ✕
               </button>
             </div>
@@ -602,10 +557,7 @@ const GoogleSheetsIntegration = () => {
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-secondary"
-                onClick={() => setShowCreateModal(false)}
-              >
+              <button className="btn btn-secondary" onClick={() => setShowCreateModal(false)}>
                 Hủy
               </button>
               <button
@@ -626,10 +578,7 @@ const GoogleSheetsIntegration = () => {
           <div className="modal">
             <div className="modal-header">
               <h3>Thêm cột mới</h3>
-              <button
-                className="close-btn"
-                onClick={() => setShowColumnModal(false)}
-              >
+              <button className="close-btn" onClick={() => setShowColumnModal(false)}>
                 ✕
               </button>
             </div>
@@ -646,10 +595,7 @@ const GoogleSheetsIntegration = () => {
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-secondary"
-                onClick={() => setShowColumnModal(false)}
-              >
+              <button className="btn btn-secondary" onClick={() => setShowColumnModal(false)}>
                 Hủy
               </button>
               <button

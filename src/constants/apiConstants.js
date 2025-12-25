@@ -141,14 +141,7 @@ export const SUCCESS_MESSAGES = {
 export const FILE_TYPES = {
   IMAGES: {
     extensions: ["jpg", "jpeg", "png", "gif", "bmp", "svg", "webp"],
-    mimeTypes: [
-      "image/jpeg",
-      "image/png",
-      "image/gif",
-      "image/bmp",
-      "image/svg+xml",
-      "image/webp",
-    ],
+    mimeTypes: ["image/jpeg", "image/png", "image/gif", "image/bmp", "image/svg+xml", "image/webp"],
   },
 
   DOCUMENTS: {
@@ -204,13 +197,7 @@ export const FILE_TYPES = {
 
   AUDIO: {
     extensions: ["mp3", "wav", "flac", "aac", "ogg"],
-    mimeTypes: [
-      "audio/mpeg",
-      "audio/wav",
-      "audio/flac",
-      "audio/aac",
-      "audio/ogg",
-    ],
+    mimeTypes: ["audio/mpeg", "audio/wav", "audio/flac", "audio/aac", "audio/ogg"],
   },
 };
 

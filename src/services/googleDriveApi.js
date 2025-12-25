@@ -29,9 +29,7 @@ class GoogleDriveApiService {
       };
     } catch (error) {
       console.error("Error listing files:", error);
-      throw new Error(
-        error.response?.data?.error || `Failed to list files: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to list files: ${error.message}`);
     }
   }
 
@@ -45,8 +43,7 @@ class GoogleDriveApiService {
     } catch (error) {
       console.error("Error getting file metadata:", error);
       throw new Error(
-        error.response?.data?.error ||
-          `Failed to get file metadata: ${error.message}`,
+        error.response?.data?.error || `Failed to get file metadata: ${error.message}`
       );
     }
   }
@@ -60,22 +57,15 @@ class GoogleDriveApiService {
       formData.append("file", file);
       if (folderId) formData.append("folderId", folderId);
 
-      const response = await axios.post(
-        `${API_BASE_URL}/drive/upload`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+      const response = await axios.post(`${API_BASE_URL}/drive/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-      );
+      });
       return response.data.data;
     } catch (error) {
       console.error("Error uploading file:", error);
-      throw new Error(
-        error.response?.data?.error ||
-          `Failed to upload file: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to upload file: ${error.message}`);
     }
   }
 
@@ -91,10 +81,7 @@ class GoogleDriveApiService {
       return response.data.data;
     } catch (error) {
       console.error("Error creating folder:", error);
-      throw new Error(
-        error.response?.data?.error ||
-          `Failed to create folder: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to create folder: ${error.message}`);
     }
   }
 
@@ -103,16 +90,11 @@ class GoogleDriveApiService {
    */
   async deleteFile(fileId) {
     try {
-      const response = await axios.delete(
-        `${API_BASE_URL}/drive/files/${fileId}`,
-      );
+      const response = await axios.delete(`${API_BASE_URL}/drive/files/${fileId}`);
       return response.data.data;
     } catch (error) {
       console.error("Error deleting file:", error);
-      throw new Error(
-        error.response?.data?.error ||
-          `Failed to delete file: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to delete file: ${error.message}`);
     }
   }
 
@@ -121,19 +103,14 @@ class GoogleDriveApiService {
    */
   async shareFile(fileId, email, role = "writer") {
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/drive/files/${fileId}/share`,
-        {
-          email,
-          role,
-        },
-      );
+      const response = await axios.post(`${API_BASE_URL}/drive/files/${fileId}/share`, {
+        email,
+        role,
+      });
       return response.data.data;
     } catch (error) {
       console.error("Error sharing file:", error);
-      throw new Error(
-        error.response?.data?.error || `Failed to share file: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to share file: ${error.message}`);
     }
   }
 
@@ -142,19 +119,13 @@ class GoogleDriveApiService {
    */
   async renameFile(fileId, newName) {
     try {
-      const response = await axios.put(
-        `${API_BASE_URL}/drive/files/${fileId}/rename`,
-        {
-          name: newName,
-        },
-      );
+      const response = await axios.put(`${API_BASE_URL}/drive/files/${fileId}/rename`, {
+        name: newName,
+      });
       return response.data.data;
     } catch (error) {
       console.error("Error renaming file:", error);
-      throw new Error(
-        error.response?.data?.error ||
-          `Failed to rename file: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to rename file: ${error.message}`);
     }
   }
 
@@ -163,12 +134,9 @@ class GoogleDriveApiService {
    */
   async downloadFile(fileId) {
     try {
-      const response = await axios.get(
-        `${API_BASE_URL}/drive/files/${fileId}/download`,
-        {
-          responseType: "blob",
-        },
-      );
+      const response = await axios.get(`${API_BASE_URL}/drive/files/${fileId}/download`, {
+        responseType: "blob",
+      });
 
       // Create download link
       const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -194,10 +162,7 @@ class GoogleDriveApiService {
       return { success: true, fileName };
     } catch (error) {
       console.error("Error downloading file:", error);
-      throw new Error(
-        error.response?.data?.error ||
-          `Failed to download file: ${error.message}`,
-      );
+      throw new Error(error.response?.data?.error || `Failed to download file: ${error.message}`);
     }
   }
 }

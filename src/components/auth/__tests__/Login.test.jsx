@@ -5,10 +5,7 @@
 
 import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {
-  renderWithProviders,
-  setupLocalStorageMock,
-} from "../../../utils/test-utils";
+import { renderWithProviders, setupLocalStorageMock } from "../../../utils/test-utils";
 import Login from "../Login";
 
 import { loginUser, registerUser } from "../../../services/securityService";
@@ -56,14 +53,12 @@ jest.mock("../../../services/securityService", () => ({
 }));
 
 // Helper to get login submit button (excludes SSO buttons)
-const getLoginSubmitButton = (container) => {
-  const form = container.querySelector("form");
-  if (!form) {
-    return screen.getByRole("button", { name: /^đăng nhập$/i });
-  }
-  const buttons = within(form).getAllByRole("button");
+const getLoginSubmitButton = () => {
+  // Get all buttons and filter for login button
+  const buttons = screen.getAllByRole("button");
   return (
-    buttons.find((btn) => btn.textContent.trim() === "Đăng nhập") || buttons[0]
+    buttons.find((btn) => btn.textContent.trim() === "Đăng nhập") ||
+    screen.getByRole("button", { name: /^đăng nhập$/i })
   );
 };
 
@@ -99,7 +94,7 @@ describe("Login Component", () => {
       expect(screen.getByText("🔐 Đăng nhập")).toBeInTheDocument();
       expect(screen.getByPlaceholderText("your@email.com")).toBeInTheDocument();
       expect(screen.getByPlaceholderText("••••••••")).toBeInTheDocument();
-      const loginButton = getLoginSubmitButton(container);
+      const loginButton = getLoginSubmitButton();
       expect(loginButton).toBeInTheDocument();
     });
 
@@ -115,9 +110,7 @@ describe("Login Component", () => {
       expect(screen.getByText("📝 Đăng ký")).toBeInTheDocument();
       expect(screen.getByLabelText("Họ tên")).toBeInTheDocument();
       expect(screen.getByLabelText("Xác nhận mật khẩu")).toBeInTheDocument();
-      expect(
-        screen.getByRole("button", { name: /đăng ký/i }),
-      ).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /đăng ký/i })).toBeInTheDocument();
     });
 
     it("should show SSO login buttons", () => {
@@ -134,7 +127,7 @@ describe("Login Component", () => {
       const user = userEvent.setup();
       const { container } = renderWithProviders(<Login />);
 
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
       await user.click(submitButton);
 
       await waitFor(() => {
@@ -149,7 +142,7 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       await user.type(emailInput, "test@example.com");
 
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
       await user.click(submitButton);
 
       await waitFor(() => {
@@ -168,7 +161,7 @@ describe("Login Component", () => {
       const passwordInput = passwordInputs[0]; // First password input (login form)
       await user.type(passwordInput, "password123");
 
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
       await user.click(submitButton);
 
       await waitFor(() => {
@@ -187,13 +180,11 @@ describe("Login Component", () => {
       const passwordInput = passwordInputs[0]; // First password input (login form)
       await user.type(passwordInput, "12345"); // Less than 6 characters
 
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
       await user.click(submitButton);
 
       await waitFor(() => {
-        expect(
-          screen.getByText("Mật khẩu phải có ít nhất 6 ký tự!"),
-        ).toBeInTheDocument();
+        expect(screen.getByText("Mật khẩu phải có ít nhất 6 ký tự!")).toBeInTheDocument();
       });
     });
   });
@@ -215,17 +206,14 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0];
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
 
       await user.type(emailInput, "test@example.com");
       await user.type(passwordInput, "password123");
       await user.click(submitButton);
 
       await waitFor(() => {
-        expect(loginUser).toHaveBeenCalledWith(
-          "test@example.com",
-          "password123",
-        );
+        expect(loginUser).toHaveBeenCalledWith("test@example.com", "password123");
       });
     });
 
@@ -245,26 +233,17 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0];
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
 
       await user.type(emailInput, "test@example.com");
       await user.type(passwordInput, "password123");
       await user.click(submitButton);
 
       await waitFor(() => {
-        expect(localStorageMock.setItem).toHaveBeenCalledWith(
-          "authToken",
-          "mock-jwt-token",
-        );
-        expect(localStorageMock.setItem).toHaveBeenCalledWith(
-          "token",
-          "mock-jwt-token",
-        );
-        expect(localStorageMock.setItem).toHaveBeenCalledWith(
-          "sessionId",
-          "mock-session-id",
-        );
+        expect(localStorageMock.setItem).toHaveBeenCalledWith("authToken", "mock-jwt-token");
       });
+      expect(localStorageMock.setItem).toHaveBeenCalledWith("token", "mock-jwt-token");
+      expect(localStorageMock.setItem).toHaveBeenCalledWith("sessionId", "mock-session-id");
     });
 
     it("should update Redux store on successful login", async () => {
@@ -290,7 +269,7 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0];
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
 
       await user.type(emailInput, "test@example.com");
       await user.type(passwordInput, "password123");
@@ -299,8 +278,9 @@ describe("Login Component", () => {
       await waitFor(() => {
         const state = store.getState();
         expect(state.auth.isAuthenticated).toBe(true);
-        expect(state.auth.user).toEqual(mockUser);
       });
+      const state = store.getState();
+      expect(state.auth.user).toEqual(mockUser);
     });
 
     it("should show error message on login failure", async () => {
@@ -312,7 +292,7 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0];
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
 
       await user.type(emailInput, "wrong@example.com");
       await user.type(passwordInput, "wrongpassword");
@@ -338,7 +318,7 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0];
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
 
       await user.type(emailInput, "test@example.com");
       await user.type(passwordInput, "password123");
@@ -378,9 +358,7 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0]; // First password field
-      const fullNameInput = screen.getByPlaceholderText(
-        "Nhập họ và tên của bạn",
-      );
+      const fullNameInput = screen.getByPlaceholderText("Nhập họ và tên của bạn");
       const confirmPasswordInput = passwordInputs[1]; // Confirm password field
 
       await user.type(emailInput, "new@example.com");
@@ -388,8 +366,7 @@ describe("Login Component", () => {
       await user.type(fullNameInput, "New User");
       await user.type(confirmPasswordInput, "password123");
 
-      const form = container.querySelector("form");
-      const submitButton = within(form).getByRole("button", {
+      const submitButton = screen.getByRole("button", {
         name: /đăng ký/i,
       });
       await user.click(submitButton);
@@ -399,7 +376,7 @@ describe("Login Component", () => {
           "new@example.com",
           "password123",
           "New User",
-          "user",
+          "user"
         );
       });
     });
@@ -419,16 +396,13 @@ describe("Login Component", () => {
       await user.type(passwordInput, "password123");
       await user.type(confirmPasswordInput, "different123");
 
-      const form = container.querySelector("form");
-      const submitButton = within(form).getByRole("button", {
+      const submitButton = screen.getByRole("button", {
         name: /đăng ký/i,
       });
       await user.click(submitButton);
 
       await waitFor(() => {
-        expect(
-          screen.getByText("Mật khẩu xác nhận không khớp!"),
-        ).toBeInTheDocument();
+        expect(screen.getByText("Mật khẩu xác nhận không khớp!")).toBeInTheDocument();
       });
     });
   });
@@ -443,9 +417,7 @@ describe("Login Component", () => {
 
       // Should show info message via antd message API
       await waitFor(() => {
-        expect(mockMessage.info).toHaveBeenCalledWith(
-          expect.stringContaining("google"),
-        );
+        expect(mockMessage.info).toHaveBeenCalledWith(expect.stringContaining("google"));
       });
     });
   });
@@ -492,9 +464,9 @@ describe("Login Component", () => {
                   user: { id: "1", email: "test@example.com" },
                   sessionId: "session",
                 }),
-              100,
-            ),
-          ),
+              100
+            )
+          )
       );
 
       const { container } = renderWithProviders(<Login />);
@@ -506,17 +478,14 @@ describe("Login Component", () => {
       await user.type(emailInput, "test@example.com");
       await user.type(passwordInput, "password123");
 
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
       expect(submitButton).toBeInTheDocument();
 
       await user.click(submitButton);
 
       // Verify loginUser was called
       await waitFor(() => {
-        expect(loginUser).toHaveBeenCalledWith(
-          "test@example.com",
-          "password123",
-        );
+        expect(loginUser).toHaveBeenCalledWith("test@example.com", "password123");
       });
     });
   });
@@ -531,16 +500,14 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0];
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
 
       await user.type(emailInput, "wrong@example.com");
       await user.type(passwordInput, "wrongpassword");
       await user.click(submitButton);
 
       await waitFor(() => {
-        expect(
-          screen.getByText(/email hoặc mật khẩu không đúng/i),
-        ).toBeInTheDocument();
+        expect(screen.getByText(/email hoặc mật khẩu không đúng/i)).toBeInTheDocument();
       });
     });
 
@@ -553,7 +520,7 @@ describe("Login Component", () => {
       const emailInput = screen.getByPlaceholderText("your@email.com");
       const passwordInputs = screen.getAllByPlaceholderText("••••••••");
       const passwordInput = passwordInputs[0];
-      const submitButton = getLoginSubmitButton(container);
+      const submitButton = getLoginSubmitButton();
 
       await user.type(emailInput, "test@example.com");
       await user.type(passwordInput, "password123");

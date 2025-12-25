@@ -3,9 +3,7 @@
  */
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL ||
-  process.env.VITE_API_URL ||
-  "http://localhost:3001";
+  process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
 
 class TelegramService {
   /**
@@ -21,9 +19,7 @@ class TelegramService {
         body: JSON.stringify({
           message,
           chatId:
-            chatId ||
-            process.env.REACT_APP_TELEGRAM_CHAT_ID ||
-            process.env.VITE_TELEGRAM_CHAT_ID,
+            chatId || process.env.REACT_APP_TELEGRAM_CHAT_ID || process.env.VITE_TELEGRAM_CHAT_ID,
           parseMode,
           disableNotification: false,
         }),
@@ -31,9 +27,7 @@ class TelegramService {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.error || `Telegram send failed: ${response.statusText}`,
-        );
+        throw new Error(errorData.error || `Telegram send failed: ${response.statusText}`);
       }
 
       return await response.json();

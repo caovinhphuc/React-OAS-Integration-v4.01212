@@ -19,8 +19,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkSession = async () => {
       // Nếu không có authentication state, kiểm tra token trong localStorage
-      const token =
-        localStorage.getItem("authToken") || localStorage.getItem("token");
+      const token = localStorage.getItem("authToken") || localStorage.getItem("token");
       const storedSessionId = localStorage.getItem("sessionId");
 
       if (!token && !isAuthenticated) {
@@ -35,12 +34,9 @@ const ProtectedRoute = ({ children }) => {
         try {
           // Kiểm tra session với backend
           const API_BASE_URL =
-            process.env.REACT_APP_API_URL ||
-            process.env.VITE_API_URL ||
-            "http://localhost:3001";
+            process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
 
-          const token =
-            localStorage.getItem("authToken") || localStorage.getItem("token");
+          const token = localStorage.getItem("authToken") || localStorage.getItem("token");
 
           const response = await fetch(`${API_BASE_URL}/api/auth/verify`, {
             method: "GET",
@@ -82,13 +78,9 @@ const ProtectedRoute = ({ children }) => {
         if (sessionId || storedSessionId) {
           try {
             const API_BASE_URL =
-              process.env.REACT_APP_API_URL ||
-              process.env.VITE_API_URL ||
-              "http://localhost:3001";
+              process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
 
-            const token =
-              localStorage.getItem("authToken") ||
-              localStorage.getItem("token");
+            const token = localStorage.getItem("authToken") || localStorage.getItem("token");
 
             const response = await fetch(`${API_BASE_URL}/api/auth/verify`, {
               method: "GET",
@@ -111,9 +103,7 @@ const ProtectedRoute = ({ children }) => {
                 } catch (e) {
                   // Ignore logout errors
                 }
-                message.warning(
-                  "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
-                );
+                message.warning("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
               }
             } else if (response.status === 401) {
               // Session expired
@@ -124,9 +114,7 @@ const ProtectedRoute = ({ children }) => {
               } catch (e) {
                 // Ignore logout errors
               }
-              message.warning(
-                "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
-              );
+              message.warning("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
             } else {
               // Other error - don't show message, just set invalid
               setIsValid(false);
@@ -140,10 +128,7 @@ const ProtectedRoute = ({ children }) => {
             console.error("Session verification error:", error);
             // Nếu lỗi network, cho phép truy cập (có thể là backend chưa chạy)
             // Nhưng nếu là 401, thì session đã hết hạn
-            if (
-              error.message?.includes("401") ||
-              error.message?.includes("Unauthorized")
-            ) {
+            if (error.message?.includes("401") || error.message?.includes("Unauthorized")) {
               setIsValid(false);
               try {
                 await dispatch(logout(false));
@@ -174,7 +159,7 @@ const ProtectedRoute = ({ children }) => {
       () => {
         checkSession();
       },
-      5 * 60 * 1000,
+      5 * 60 * 1000
     ); // 5 minutes
 
     return () => clearInterval(interval);
@@ -194,12 +179,7 @@ const ProtectedRoute = ({ children }) => {
 
     // Redirect về login với returnUrl để quay lại sau khi login
     const returnUrl = location.pathname !== "/login" ? location.pathname : "/";
-    return (
-      <Navigate
-        to={`/login?returnUrl=${encodeURIComponent(returnUrl)}`}
-        replace
-      />
-    );
+    return <Navigate to={`/login?returnUrl=${encodeURIComponent(returnUrl)}`} replace />;
   }
 
   // Hợp lệ và đã authenticated, render children

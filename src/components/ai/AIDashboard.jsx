@@ -51,23 +51,22 @@ const AIDashboard = () => {
       };
 
       // Call AI service
-      const [insightsResult, predictionsResult, recommendationsResult] =
-        await Promise.all([
-          aiService.analyzeData(analysisData, selectedTimeframe),
-          aiService.getPredictions(
-            {
-              sheets: sheets.length,
-              files: files.length,
-              alerts: alerts.length,
-            },
-            selectedTimeframe,
-          ),
-          aiService.getRecommendations({
+      const [insightsResult, predictionsResult, recommendationsResult] = await Promise.all([
+        aiService.analyzeData(analysisData, selectedTimeframe),
+        aiService.getPredictions(
+          {
             sheets: sheets.length,
             files: files.length,
             alerts: alerts.length,
-          }),
-        ]);
+          },
+          selectedTimeframe
+        ),
+        aiService.getRecommendations({
+          sheets: sheets.length,
+          files: files.length,
+          alerts: alerts.length,
+        }),
+      ]);
 
       setAiInsights(insightsResult.insights || []);
       setPredictions(predictionsResult.predictions || {});
@@ -216,8 +215,7 @@ const AIDashboard = () => {
       const errorMessage = {
         id: Date.now() + 1,
         type: "ai",
-        message:
-          "Xin lỗi, tôi không thể trả lời ngay bây giờ. Vui lòng thử lại sau.",
+        message: "Xin lỗi, tôi không thể trả lời ngay bây giờ. Vui lòng thử lại sau.",
         timestamp: new Date().toISOString(),
       };
       setChatMessages((prev) => [...prev, errorMessage]);
@@ -311,17 +309,10 @@ const AIDashboard = () => {
             <option value="30d">30 ngày</option>
             <option value="90d">90 ngày</option>
           </select>
-          <button
-            className="analyze-btn"
-            onClick={analyzeData}
-            disabled={isAnalyzing}
-          >
+          <button className="analyze-btn" onClick={analyzeData} disabled={isAnalyzing}>
             {isAnalyzing ? "🔄 Đang phân tích..." : "🔍 Phân tích lại"}
           </button>
-          <button
-            className="chat-toggle-btn"
-            onClick={() => setShowChat(!showChat)}
-          >
+          <button className="chat-toggle-btn" onClick={() => setShowChat(!showChat)}>
             {showChat ? "💬 Ẩn Chat" : "💬 AI Chat"}
           </button>
           <button
@@ -345,9 +336,7 @@ const AIDashboard = () => {
             {aiInsights.map((insight) => (
               <div key={insight.id} className="insight-card">
                 <div className="insight-header">
-                  <span className="insight-icon">
-                    {getInsightIcon(insight.type)}
-                  </span>
+                  <span className="insight-icon">{getInsightIcon(insight.type)}</span>
                   <span className="insight-title">{insight.title}</span>
                   <span
                     className="confidence-badge"
@@ -436,15 +425,12 @@ const AIDashboard = () => {
               <div className="prediction-stats">
                 <div className="stat">
                   <span className="label">Sheets:</span>
-                  <span className="value">
-                    {predictions.nextWeek?.sheets || 0}
-                  </span>
+                  <span className="value">{predictions.nextWeek?.sheets || 0}</span>
                   {sheets.length > 0 && (
                     <span className="change">
                       ({predictions.nextWeek?.sheets > sheets.length ? "+" : ""}
                       {(
-                        ((predictions.nextWeek?.sheets - sheets.length) /
-                          sheets.length) *
+                        ((predictions.nextWeek?.sheets - sheets.length) / sheets.length) *
                         100
                       ).toFixed(1)}
                       %)
@@ -453,15 +439,12 @@ const AIDashboard = () => {
                 </div>
                 <div className="stat">
                   <span className="label">Files:</span>
-                  <span className="value">
-                    {predictions.nextWeek?.files || 0}
-                  </span>
+                  <span className="value">{predictions.nextWeek?.files || 0}</span>
                   {files.length > 0 && (
                     <span className="change">
                       ({predictions.nextWeek?.files > files.length ? "+" : ""}
                       {(
-                        ((predictions.nextWeek?.files - files.length) /
-                          files.length) *
+                        ((predictions.nextWeek?.files - files.length) / files.length) *
                         100
                       ).toFixed(1)}
                       %)
@@ -470,9 +453,7 @@ const AIDashboard = () => {
                 </div>
                 <div className="stat">
                   <span className="label">Alerts:</span>
-                  <span className="value">
-                    {predictions.nextWeek?.alerts || 0}
-                  </span>
+                  <span className="value">{predictions.nextWeek?.alerts || 0}</span>
                 </div>
               </div>
             </div>
@@ -481,16 +462,12 @@ const AIDashboard = () => {
               <div className="prediction-stats">
                 <div className="stat">
                   <span className="label">Sheets:</span>
-                  <span className="value">
-                    {predictions.nextMonth?.sheets || 0}
-                  </span>
+                  <span className="value">{predictions.nextMonth?.sheets || 0}</span>
                   {sheets.length > 0 && (
                     <span className="change">
-                      (
-                      {predictions.nextMonth?.sheets > sheets.length ? "+" : ""}
+                      ({predictions.nextMonth?.sheets > sheets.length ? "+" : ""}
                       {(
-                        ((predictions.nextMonth?.sheets - sheets.length) /
-                          sheets.length) *
+                        ((predictions.nextMonth?.sheets - sheets.length) / sheets.length) *
                         100
                       ).toFixed(1)}
                       %)
@@ -499,15 +476,12 @@ const AIDashboard = () => {
                 </div>
                 <div className="stat">
                   <span className="label">Files:</span>
-                  <span className="value">
-                    {predictions.nextMonth?.files || 0}
-                  </span>
+                  <span className="value">{predictions.nextMonth?.files || 0}</span>
                   {files.length > 0 && (
                     <span className="change">
                       ({predictions.nextMonth?.files > files.length ? "+" : ""}
                       {(
-                        ((predictions.nextMonth?.files - files.length) /
-                          files.length) *
+                        ((predictions.nextMonth?.files - files.length) / files.length) *
                         100
                       ).toFixed(1)}
                       %)
@@ -516,9 +490,7 @@ const AIDashboard = () => {
                 </div>
                 <div className="stat">
                   <span className="label">Alerts:</span>
-                  <span className="value">
-                    {predictions.nextMonth?.alerts || 0}
-                  </span>
+                  <span className="value">{predictions.nextMonth?.alerts || 0}</span>
                 </div>
               </div>
             </div>
@@ -549,9 +521,7 @@ const AIDashboard = () => {
                   className="implement-btn"
                   onClick={() => handleImplementRecommendation(rec.id)}
                 >
-                  {rec.status === "implemented"
-                    ? "✅ Đã triển khai"
-                    : "🚀 Triển khai"}
+                  {rec.status === "implemented" ? "✅ Đã triển khai" : "🚀 Triển khai"}
                 </button>
               </div>
             ))}
@@ -586,10 +556,7 @@ const AIDashboard = () => {
         <div className="ai-chat-panel">
           <div className="chat-header">
             <h3>💬 AI Assistant</h3>
-            <button
-              className="close-chat-btn"
-              onClick={() => setShowChat(false)}
-            >
+            <button className="close-chat-btn" onClick={() => setShowChat(false)}>
               ✕
             </button>
           </div>
@@ -616,9 +583,7 @@ const AIDashboard = () => {
                       ))}
                     </div>
                   )}
-                  <div className="message-time">
-                    {new Date(msg.timestamp).toLocaleTimeString()}
-                  </div>
+                  <div className="message-time">{new Date(msg.timestamp).toLocaleTimeString()}</div>
                 </div>
               ))
             )}

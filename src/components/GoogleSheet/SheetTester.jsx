@@ -44,9 +44,7 @@ const SheetTester = () => {
 
     try {
       const result = await googleSheetsApiService.writeSheet(range, sampleData);
-      setTestResult(
-        `✅ Write successful: ${result.updatedCells} cells updated`,
-      );
+      setTestResult(`✅ Write successful: ${result.updatedCells} cells updated`);
 
       // Refresh data after writing
       setTimeout(() => handleReadSheet(), 1000);
@@ -64,14 +62,9 @@ const SheetTester = () => {
     setError(null);
 
     try {
-      const newRow = [
-        [new Date().toISOString(), "Appended Product", "3", "50", "150"],
-      ];
+      const newRow = [[new Date().toISOString(), "Appended Product", "3", "50", "150"]];
 
-      const result = await googleSheetsApiService.appendToSheet(
-        "A1:E1",
-        newRow,
-      );
+      const result = await googleSheetsApiService.appendToSheet("A1:E1", newRow);
       setTestResult(`✅ Append successful: ${result.updatedCells} cells added`);
 
       // Refresh data after appending
@@ -91,9 +84,7 @@ const SheetTester = () => {
 
     try {
       const metadata = await googleSheetsApiService.getSheetMetadata();
-      setTestResult(
-        `✅ Metadata: "${metadata.title}" - ${metadata.sheets.length} sheets`,
-      );
+      setTestResult(`✅ Metadata: "${metadata.title}" - ${metadata.sheets.length} sheets`);
       console.log("Sheet metadata:", metadata);
     } catch (error) {
       setError(`Failed to get metadata: ${error.message}`);

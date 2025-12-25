@@ -10,11 +10,7 @@ import "./Toast.css";
 const ToastContext = createContext(null);
 
 // Toast Provider Component
-export const ToastProvider = ({
-  children,
-  position = "top-right",
-  maxToasts = 5,
-}) => {
+export const ToastProvider = ({ children, position = "top-right", maxToasts = 5 }) => {
   const [toasts, setToasts] = useState([]);
 
   const addToast = useCallback(
@@ -43,7 +39,7 @@ export const ToastProvider = ({
 
       return id;
     },
-    [maxToasts],
+    [maxToasts, removeToast]
   );
 
   const removeToast = useCallback((id) => {
@@ -56,25 +52,23 @@ export const ToastProvider = ({
 
   // Convenience methods
   const success = useCallback(
-    (message, options = {}) =>
-      addToast(message, { ...options, type: "success" }),
-    [addToast],
+    (message, options = {}) => addToast(message, { ...options, type: "success" }),
+    [addToast]
   );
 
   const error = useCallback(
     (message, options = {}) => addToast(message, { ...options, type: "error" }),
-    [addToast],
+    [addToast]
   );
 
   const warning = useCallback(
-    (message, options = {}) =>
-      addToast(message, { ...options, type: "warning" }),
-    [addToast],
+    (message, options = {}) => addToast(message, { ...options, type: "warning" }),
+    [addToast]
   );
 
   const info = useCallback(
     (message, options = {}) => addToast(message, { ...options, type: "info" }),
-    [addToast],
+    [addToast]
   );
 
   const value = {
@@ -91,11 +85,7 @@ export const ToastProvider = ({
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <ToastContainer
-        toasts={toasts}
-        position={position}
-        onRemove={removeToast}
-      />
+      <ToastContainer toasts={toasts} position={position} onRemove={removeToast} />
     </ToastContext.Provider>
   );
 };
@@ -128,11 +118,7 @@ const Toast = ({ toast, onRemove, index }) => {
     }, 300);
   };
 
-  const toastClasses = [
-    "toast",
-    `toast--${toast.type}`,
-    isExiting && "toast--exiting",
-  ]
+  const toastClasses = ["toast", `toast--${toast.type}`, isExiting && "toast--exiting"]
     .filter(Boolean)
     .join(" ");
 
@@ -155,10 +141,7 @@ const Toast = ({ toast, onRemove, index }) => {
     ),
     warning: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path
-          d="M1 17H19L10 2L1 17ZM11 14H9V12H11V14ZM11 10H9V6H11V10Z"
-          fill="currentColor"
-        />
+        <path d="M1 17H19L10 2L1 17ZM11 14H9V12H11V14ZM11 10H9V6H11V10Z" fill="currentColor" />
       </svg>
     ),
     info: (
@@ -172,20 +155,12 @@ const Toast = ({ toast, onRemove, index }) => {
   };
 
   return (
-    <div
-      className={toastClasses}
-      role="alert"
-      style={{ "--toast-index": index }}
-    >
+    <div className={toastClasses} role="alert" style={{ "--toast-index": index }}>
       <div className="toast__icon">{toast.icon || icons[toast.type]}</div>
       <div className="toast__content">
         <div className="toast__message">{toast.message}</div>
         {toast.action && (
-          <button
-            className="toast__action"
-            onClick={toast.action.onClick}
-            type="button"
-          >
+          <button className="toast__action" onClick={toast.action.onClick} type="button">
             {toast.action.label}
           </button>
         )}

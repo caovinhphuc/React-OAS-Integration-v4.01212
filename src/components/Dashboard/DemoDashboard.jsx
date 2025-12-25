@@ -27,9 +27,7 @@ const DemoDashboard = () => {
         }}
       >
         <h3>✅ Setup hoàn thành!</h3>
-        <p>
-          Ứng dụng React Google Integration đã được triển khai thành công với:
-        </p>
+        <p>Ứng dụng React Google Integration đã được triển khai thành công với:</p>
         <ul>
           <li>✅ Google Sheets API integration</li>
           <li>✅ Google Drive API integration</li>
@@ -93,8 +91,8 @@ const DemoDashboard = () => {
       >
         <h3>⚠️ Lưu ý quan trọng:</h3>
         <p>
-          Hiện tại ứng dụng chưa có file <code>.env</code> nên sẽ hiển thị lỗi
-          configuration. Để test đầy đủ các tính năng, bạn cần:
+          Hiện tại ứng dụng chưa có file <code>.env</code> nên sẽ hiển thị lỗi configuration. Để
+          test đầy đủ các tính năng, bạn cần:
         </p>
         <ul>
           <li>
@@ -124,11 +122,7 @@ const DemoDashboard = () => {
           </li>
           <li>
             🔗{" "}
-            <a
-              href="https://console.cloud.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer">
               Google Cloud Console
             </a>
           </li>
@@ -157,13 +151,9 @@ const DemoDashboard = () => {
 
       <div style={{ textAlign: "center", marginTop: "30px" }}>
         <p style={{ fontSize: "18px", color: "#666" }}>
-          <strong>
-            🎉 Chúc mừng! Ứng dụng React Google Integration đã sẵn sàng!
-          </strong>
+          <strong>🎉 Chúc mừng! Ứng dụng React Google Integration đã sẵn sàng!</strong>
         </p>
-        <p style={{ color: "#888" }}>
-          Làm theo hướng dẫn trong SETUP_GUIDE.md để bắt đầu sử dụng
-        </p>
+        <p style={{ color: "#888" }}>Làm theo hướng dẫn trong SETUP_GUIDE.md để bắt đầu sử dụng</p>
       </div>
     </div>
   );
@@ -171,9 +161,7 @@ const DemoDashboard = () => {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#f9f9f9" }}>
       <div style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto" }}>
-        <h1 style={{ textAlign: "center", color: "#333" }}>
-          Google Services Integration Demo
-        </h1>
+        <h1 style={{ textAlign: "center", color: "#333" }}>Google Services Integration Demo</h1>
 
         <p style={{ textAlign: "center", color: "#666", marginBottom: "30px" }}>
           Demo ứng dụng React tích hợp Google Sheets và Google Drive
@@ -181,10 +169,7 @@ const DemoDashboard = () => {
 
         {/* Tab navigation */}
         <div style={{ marginBottom: "20px", borderBottom: "1px solid #ddd" }}>
-          <button
-            style={tabStyle(activeTab === "demo")}
-            onClick={() => setActiveTab("demo")}
-          >
+          <button style={tabStyle(activeTab === "demo")} onClick={() => setActiveTab("demo")}>
             🎯 Demo & Setup
           </button>
         </div>
