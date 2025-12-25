@@ -1,0 +1,920 @@
+{
+  "timestamp": "2025-12-25T04:12:18.850Z",
+  "logDir": "logs",
+  "files": [
+    {
+      "file": "ai-service.log",
+      "totalLines": 5,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "INFO:     Started server process [21083]"
+        },
+        {
+          "line": 2,
+          "content": "INFO:     Waiting for application startup."
+        },
+        {
+          "line": 3,
+          "content": "INFO:     Application startup complete."
+        },
+        {
+          "line": 4,
+          "content": "INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)"
+        },
+        {
+          "line": 5,
+          "content": "INFO:     127.0.0.1:62792 - \"GET /health HTTP/1.1\" 200 OK"
+        }
+      ],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 5,
+      "patterns": {}
+    },
+    {
+      "file": "automation-dashboard.log",
+      "totalLines": 11,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "INFO:     Started server process [9774]"
+        },
+        {
+          "line": 2,
+          "content": "INFO:     Waiting for application startup."
+        },
+        {
+          "line": 3,
+          "content": "INFO:     Application startup complete."
+        },
+        {
+          "line": 4,
+          "content": "INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)"
+        },
+        {
+          "line": 6,
+          "content": "INFO:     127.0.0.1:56121 - \"GET / HTTP/1.1\" 200 OK"
+        },
+        {
+          "line": 7,
+          "content": "INFO:     127.0.0.1:56140 - \"GET / HTTP/1.1\" 200 OK"
+        },
+        {
+          "line": 8,
+          "content": "INFO:     Shutting down"
+        },
+        {
+          "line": 9,
+          "content": "INFO:     Waiting for application shutdown."
+        },
+        {
+          "line": 10,
+          "content": "INFO:     Application shutdown complete."
+        },
+        {
+          "line": 11,
+          "content": "INFO:     Finished server process [9774]"
+        }
+      ],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 10,
+      "patterns": {}
+    },
+    {
+      "file": "automation.log",
+      "totalLines": 15,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "INFO:     Started server process [13035]"
+        },
+        {
+          "line": 2,
+          "content": "INFO:     Waiting for application startup."
+        },
+        {
+          "line": 3,
+          "content": "2025-12-25 09:46:51,958 - main - INFO - 🚀 Starting OneAutomation System..."
+        },
+        {
+          "line": 5,
+          "content": "2025-12-25 09:46:51,958 - main - INFO - ✅ Google Sheets service initialized"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-25 09:46:51,958 - main - INFO - ✅ Email service initialized"
+        },
+        {
+          "line": 7,
+          "content": "2025-12-25 09:46:51,958 - main - INFO - ✅ Data processor initialized"
+        },
+        {
+          "line": 8,
+          "content": "2025-12-25 09:46:51,958 - main - INFO - 🎉 OneAutomation System started successfully!"
+        },
+        {
+          "line": 9,
+          "content": "INFO:     Application startup complete."
+        },
+        {
+          "line": 10,
+          "content": "INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)"
+        },
+        {
+          "line": 11,
+          "content": "INFO:     Shutting down"
+        },
+        {
+          "line": 12,
+          "content": "INFO:     Waiting for application shutdown."
+        },
+        {
+          "line": 13,
+          "content": "2025-12-25 09:48:22,890 - main - INFO - 👋 Shutting down OneAutomation System..."
+        },
+        {
+          "line": 14,
+          "content": "INFO:     Application shutdown complete."
+        },
+        {
+          "line": 15,
+          "content": "INFO:     Finished server process [13035]"
+        }
+      ],
+      "timestamps": [
+        "2025-12-25 09:46:51",
+        "2025-12-25 09:46:51",
+        "2025-12-25 09:46:51",
+        "2025-12-25 09:46:51",
+        "2025-12-25 09:46:51",
+        "2025-12-25 09:48:22"
+      ],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 14,
+      "patterns": {}
+    },
+    {
+      "file": "automation_20251219.log",
+      "totalLines": 7,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "2025-12-19 18:36:31,602 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 2,
+          "content": "2025-12-19 18:36:32,761 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 3,
+          "content": "2025-12-19 18:36:33,887 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 4,
+          "content": "2025-12-19 18:36:34,988 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 5,
+          "content": "2025-12-19 18:36:36,123 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-19 18:36:56,108 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        },
+        {
+          "line": 7,
+          "content": "2025-12-19 18:36:58,734 - GoogleSheetsConfig - INFO - ✅ Exported 2 records to sheet 'Results_20251219_1836'"
+        }
+      ],
+      "timestamps": [
+        "2025-12-19 18:36:31",
+        "2025-12-19 18:36:32",
+        "2025-12-19 18:36:33",
+        "2025-12-19 18:36:34",
+        "2025-12-19 18:36:36",
+        "2025-12-19 18:36:56",
+        "2025-12-19 18:36:58"
+      ],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 7,
+      "patterns": {}
+    },
+    {
+      "file": "automation_20251225.log",
+      "totalLines": 14,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "2025-12-25 00:52:04,527 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 2,
+          "content": "2025-12-25 00:52:05,595 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 3,
+          "content": "2025-12-25 00:52:06,697 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 4,
+          "content": "2025-12-25 00:52:07,791 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 5,
+          "content": "2025-12-25 00:52:09,087 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-25 00:52:29,160 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        },
+        {
+          "line": 7,
+          "content": "2025-12-25 00:52:32,130 - GoogleSheetsConfig - INFO - ✅ Exported 2 records to sheet 'Results_20251225_0052'"
+        },
+        {
+          "line": 8,
+          "content": "2025-12-25 00:53:48,386 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 9,
+          "content": "2025-12-25 00:53:52,145 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 10,
+          "content": "2025-12-25 00:53:53,391 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 11,
+          "content": "2025-12-25 00:53:54,564 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 12,
+          "content": "2025-12-25 00:53:55,623 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 13,
+          "content": "2025-12-25 00:54:15,211 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        },
+        {
+          "line": 14,
+          "content": "2025-12-25 00:54:18,698 - GoogleSheetsConfig - INFO - ✅ Exported 2 records to sheet 'Results_20251225_0054'"
+        }
+      ],
+      "timestamps": [
+        "2025-12-25 00:52:04",
+        "2025-12-25 00:52:05",
+        "2025-12-25 00:52:06",
+        "2025-12-25 00:52:07",
+        "2025-12-25 00:52:09",
+        "2025-12-25 00:52:29",
+        "2025-12-25 00:52:32",
+        "2025-12-25 00:53:48",
+        "2025-12-25 00:53:52",
+        "2025-12-25 00:53:53",
+        "2025-12-25 00:53:54",
+        "2025-12-25 00:53:55",
+        "2025-12-25 00:54:15",
+        "2025-12-25 00:54:18"
+      ],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 14,
+      "patterns": {}
+    },
+    {
+      "file": "backend.log",
+      "totalLines": 105,
+      "errors": [],
+      "warnings": [],
+      "info": [],
+      "timestamps": [
+        "2025-12-25T03:31:14"
+      ],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0,
+      "patterns": {
+        "connection": 1,
+        "api": 92
+      }
+    },
+    {
+      "file": "complete_automation_20251219_1835.log",
+      "totalLines": 13,
+      "errors": [
+        {
+          "line": 7,
+          "content": "2025-12-19 18:35:18,836 - GoogleSheetsConfig - ERROR - ❌ Error updating automation status: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_location': 'global', 'quota_limit_value': '60', 'quota_limit': 'ReadRequestsPerMinutePerUser', 'service': 'sheets.googleapis.com', 'quota_unit': '1/min/{project}/{user}', 'quota_metric': 'sheets.googleapis.com/read_requests', 'consumer': 'projects/128969952901'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 8,
+          "content": "2025-12-19 18:35:21,123 - GoogleSheetsConfig - ERROR - ❌ Error updating automation status: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_location': 'global', 'quota_limit_value': '60', 'quota_limit': 'ReadRequestsPerMinutePerUser', 'service': 'sheets.googleapis.com', 'quota_unit': '1/min/{project}/{user}', 'quota_metric': 'sheets.googleapis.com/read_requests', 'consumer': 'projects/128969952901'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 9,
+          "content": "2025-12-19 18:35:24,458 - GoogleSheetsConfig - ERROR - ❌ Error updating automation status: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_metric': 'sheets.googleapis.com/read_requests', 'quota_location': 'global', 'quota_unit': '1/min/{project}/{user}', 'consumer': 'projects/128969952901', 'service': 'sheets.googleapis.com', 'quota_limit_value': '60', 'quota_limit': 'ReadRequestsPerMinutePerUser'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 10,
+          "content": "2025-12-19 18:35:26,743 - GoogleSheetsConfig - ERROR - ❌ Error updating automation status: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_location': 'global', 'quota_limit_value': '60', 'quota_metric': 'sheets.googleapis.com/read_requests', 'quota_limit': 'ReadRequestsPerMinutePerUser', 'service': 'sheets.googleapis.com', 'quota_unit': '1/min/{project}/{user}', 'consumer': 'projects/128969952901'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 11,
+          "content": "2025-12-19 18:35:27,998 - GoogleSheetsConfig - ERROR - ❌ Error updating automation status: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_limit': 'ReadRequestsPerMinutePerUser', 'quota_limit_value': '60', 'quota_metric': 'sheets.googleapis.com/read_requests', 'quota_location': 'global', 'service': 'sheets.googleapis.com', 'quota_unit': '1/min/{project}/{user}', 'consumer': 'projects/128969952901'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 12,
+          "content": "2025-12-19 18:35:28,252 - GoogleSheetsConfig - ERROR - ❌ Error updating automation status: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_limit': 'ReadRequestsPerMinutePerUser', 'quota_limit_value': '60', 'quota_metric': 'sheets.googleapis.com/read_requests', 'quota_location': 'global', 'service': 'sheets.googleapis.com', 'quota_unit': '1/min/{project}/{user}', 'consumer': 'projects/128969952901'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 13,
+          "content": "2025-12-19 18:35:31,523 - GoogleSheetsConfig - ERROR - ❌ Error updating automation status: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_limit': 'ReadRequestsPerMinutePerUser', 'quota_limit_value': '60', 'quota_metric': 'sheets.googleapis.com/read_requests', 'quota_location': 'global', 'service': 'sheets.googleapis.com', 'quota_unit': '1/min/{project}/{user}', 'consumer': 'projects/128969952901'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        }
+      ],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "2025-12-19 18:35:11,205 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 2,
+          "content": "2025-12-19 18:35:12,581 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 3,
+          "content": "2025-12-19 18:35:13,681 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 4,
+          "content": "2025-12-19 18:35:14,832 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 5,
+          "content": "2025-12-19 18:35:16,006 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-19 18:35:17,060 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        }
+      ],
+      "timestamps": [
+        "2025-12-19 18:35:11",
+        "2025-12-19 18:35:12",
+        "2025-12-19 18:35:13",
+        "2025-12-19 18:35:14",
+        "2025-12-19 18:35:16",
+        "2025-12-19 18:35:17",
+        "2025-12-19 18:35:18",
+        "2025-12-19 18:35:21",
+        "2025-12-19 18:35:24",
+        "2025-12-19 18:35:26",
+        "2025-12-19 18:35:27",
+        "2025-12-19 18:35:28",
+        "2025-12-19 18:35:31"
+      ],
+      "errorCount": 7,
+      "warningCount": 0,
+      "infoCount": 6,
+      "patterns": {
+        "api": 7
+      }
+    },
+    {
+      "file": "complete_automation_20251219_1837.log",
+      "totalLines": 9,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "2025-12-19 18:37:02,152 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 2,
+          "content": "2025-12-19 18:37:03,368 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 3,
+          "content": "2025-12-19 18:37:04,632 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 4,
+          "content": "2025-12-19 18:37:05,866 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 5,
+          "content": "2025-12-19 18:37:07,015 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-19 18:37:08,090 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 7,
+          "content": "2025-12-19 18:38:02,904 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        },
+        {
+          "line": 8,
+          "content": "2025-12-19 18:38:05,773 - GoogleSheetsConfig - INFO - ✅ Exported 1 records to sheet 'Complete_Results_20251219_1837'"
+        },
+        {
+          "line": 9,
+          "content": "2025-12-19 18:38:05,774 - CompleteAutomation - INFO - Automation completed successfully"
+        }
+      ],
+      "timestamps": [
+        "2025-12-19 18:37:02",
+        "2025-12-19 18:37:03",
+        "2025-12-19 18:37:04",
+        "2025-12-19 18:37:05",
+        "2025-12-19 18:37:07",
+        "2025-12-19 18:37:08",
+        "2025-12-19 18:38:02",
+        "2025-12-19 18:38:05",
+        "2025-12-19 18:38:05"
+      ],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 9,
+      "patterns": {}
+    },
+    {
+      "file": "complete_automation_20251225_0048.log",
+      "totalLines": 9,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "2025-12-25 00:49:04,771 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 2,
+          "content": "2025-12-25 00:49:06,099 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 3,
+          "content": "2025-12-25 00:49:07,329 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 4,
+          "content": "2025-12-25 00:49:08,762 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 5,
+          "content": "2025-12-25 00:49:09,991 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-25 00:49:11,057 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 7,
+          "content": "2025-12-25 00:50:08,462 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        },
+        {
+          "line": 8,
+          "content": "2025-12-25 00:50:11,124 - GoogleSheetsConfig - INFO - ✅ Exported 1 records to sheet 'Complete_Results_20251225_0048'"
+        },
+        {
+          "line": 9,
+          "content": "2025-12-25 00:50:11,124 - CompleteAutomation - INFO - Automation completed successfully"
+        }
+      ],
+      "timestamps": [
+        "2025-12-25 00:49:04",
+        "2025-12-25 00:49:06",
+        "2025-12-25 00:49:07",
+        "2025-12-25 00:49:08",
+        "2025-12-25 00:49:09",
+        "2025-12-25 00:49:11",
+        "2025-12-25 00:50:08",
+        "2025-12-25 00:50:11",
+        "2025-12-25 00:50:11"
+      ],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 9,
+      "patterns": {}
+    },
+    {
+      "file": "complete_automation_20251225_0054.log",
+      "totalLines": 9,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "2025-12-25 00:54:22,251 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 2,
+          "content": "2025-12-25 00:54:23,544 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 3,
+          "content": "2025-12-25 00:54:24,900 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 4,
+          "content": "2025-12-25 00:54:26,305 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 5,
+          "content": "2025-12-25 00:54:27,817 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-25 00:54:28,963 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 7,
+          "content": "2025-12-25 00:55:24,777 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        },
+        {
+          "line": 8,
+          "content": "2025-12-25 00:55:27,541 - GoogleSheetsConfig - INFO - ✅ Exported 1 records to sheet 'Complete_Results_20251225_0054'"
+        },
+        {
+          "line": 9,
+          "content": "2025-12-25 00:55:27,542 - CompleteAutomation - INFO - Automation completed successfully"
+        }
+      ],
+      "timestamps": [
+        "2025-12-25 00:54:22",
+        "2025-12-25 00:54:23",
+        "2025-12-25 00:54:24",
+        "2025-12-25 00:54:26",
+        "2025-12-25 00:54:27",
+        "2025-12-25 00:54:28",
+        "2025-12-25 00:55:24",
+        "2025-12-25 00:55:27",
+        "2025-12-25 00:55:27"
+      ],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 9,
+      "patterns": {}
+    },
+    {
+      "file": "frontend.log",
+      "totalLines": 27,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": " INFO  Accepting connections at http://localhost:8080"
+        }
+      ],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 1,
+      "patterns": {
+        "connection": 1
+      }
+    },
+    {
+      "file": "google-backend.log",
+      "totalLines": 5,
+      "errors": [],
+      "warnings": [],
+      "info": [],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0,
+      "patterns": {}
+    },
+    {
+      "file": "google-frontend.log",
+      "totalLines": 4,
+      "errors": [],
+      "warnings": [],
+      "info": [],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0,
+      "patterns": {}
+    },
+    {
+      "file": "google-sheets-backend.log",
+      "totalLines": 5,
+      "errors": [],
+      "warnings": [],
+      "info": [],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 0,
+      "infoCount": 0,
+      "patterns": {}
+    },
+    {
+      "file": "google-sheets-frontend.log",
+      "totalLines": 14,
+      "errors": [],
+      "warnings": [
+        {
+          "line": 4,
+          "content": "(node:80049) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 5,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 6,
+          "content": "(node:80049) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        }
+      ],
+      "info": [],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 3,
+      "infoCount": 0,
+      "patterns": {}
+    },
+    {
+      "file": "main-frontend.log",
+      "totalLines": 14,
+      "errors": [],
+      "warnings": [
+        {
+          "line": 4,
+          "content": "(node:98838) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 5,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 6,
+          "content": "(node:98838) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        }
+      ],
+      "info": [],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 3,
+      "infoCount": 0,
+      "patterns": {}
+    },
+    {
+      "file": "mia-frontend.log",
+      "totalLines": 21,
+      "errors": [],
+      "warnings": [
+        {
+          "line": 3,
+          "content": "(node:9814) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+        },
+        {
+          "line": 4,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 5,
+          "content": "(node:9814) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 6,
+          "content": "(node:9814) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        }
+      ],
+      "info": [],
+      "timestamps": [],
+      "errorCount": 0,
+      "warningCount": 4,
+      "infoCount": 0,
+      "patterns": {}
+    },
+    {
+      "file": "sheets_verification_20251225.log",
+      "totalLines": 37,
+      "errors": [
+        {
+          "line": 15,
+          "content": "2025-12-25 01:00:25,768 - GoogleSheetsConfig - ERROR - ❌ Error creating dashboard: {'code': 400, 'message': 'Invalid requests[0].addSheet: A sheet with the name \"Dashboard\" already exists. Please enter another name.', 'status': 'INVALID_ARGUMENT'}"
+        },
+        {
+          "line": 31,
+          "content": "2025-12-25 01:00:52,084 - GoogleSheetsConfig - ERROR - ❌ Error updating config: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_limit': 'ReadRequestsPerMinutePerUser', 'quota_limit_value': '60', 'quota_location': 'global', 'consumer': 'projects/128969952901', 'quota_unit': '1/min/{project}/{user}', 'service': 'sheets.googleapis.com', 'quota_metric': 'sheets.googleapis.com/read_requests'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 32,
+          "content": "2025-12-25 01:00:52,494 - GoogleSheetsConfig - ERROR - ❌ Error creating worksheet: {'code': 400, 'message': 'Invalid requests[0].addSheet: A sheet with the name \"Verification_20251225_0100\" already exists. Please enter another name.', 'status': 'INVALID_ARGUMENT'}"
+        },
+        {
+          "line": 33,
+          "content": "2025-12-25 01:00:54,016 - GoogleSheetsConfig - ERROR - ❌ Failed to initialize Google Sheets client: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_metric': 'sheets.googleapis.com/read_requests', 'service': 'sheets.googleapis.com', 'quota_unit': '1/min/{project}/{user}', 'quota_limit_value': '60', 'quota_location': 'global', 'consumer': 'projects/128969952901', 'quota_limit': 'ReadRequestsPerMinutePerUser'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 34,
+          "content": "2025-12-25 01:00:54,639 - GoogleSheetsConfig - ERROR - ❌ Failed to initialize Google Sheets client: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_limit': 'ReadRequestsPerMinutePerUser', 'service': 'sheets.googleapis.com', 'consumer': 'projects/128969952901', 'quota_metric': 'sheets.googleapis.com/read_requests', 'quota_limit_value': '60', 'quota_unit': '1/min/{project}/{user}', 'quota_location': 'global'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 35,
+          "content": "2025-12-25 01:00:54,640 - GoogleSheetsConfig - ERROR - ❌ Error updating config sheet: 'NoneType' object has no attribute 'worksheet'"
+        },
+        {
+          "line": 36,
+          "content": "2025-12-25 01:00:55,283 - GoogleSheetsConfig - ERROR - ❌ Failed to initialize Google Sheets client: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_limit': 'ReadRequestsPerMinutePerUser', 'service': 'sheets.googleapis.com', 'consumer': 'projects/128969952901', 'quota_metric': 'sheets.googleapis.com/read_requests', 'quota_limit_value': '60', 'quota_unit': '1/min/{project}/{user}', 'quota_location': 'global'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        },
+        {
+          "line": 37,
+          "content": "2025-12-25 01:00:56,079 - GoogleSheetsConfig - ERROR - ❌ Failed to initialize Google Sheets client: {'code': 429, 'message': \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:128969952901'.\", 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'RATE_LIMIT_EXCEEDED', 'domain': 'googleapis.com', 'metadata': {'quota_location': 'global', 'consumer': 'projects/128969952901', 'quota_limit': 'ReadRequestsPerMinutePerUser', 'quota_metric': 'sheets.googleapis.com/read_requests', 'quota_unit': '1/min/{project}/{user}', 'quota_limit_value': '60', 'service': 'sheets.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Request a higher quota limit.', 'url': 'https://cloud.google.com/docs/quotas/help/request_increase'}]}]}"
+        }
+      ],
+      "warnings": [],
+      "info": [
+        {
+          "line": 1,
+          "content": "2025-12-25 01:00:09,193 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 2,
+          "content": "2025-12-25 01:00:10,237 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 3,
+          "content": "2025-12-25 01:00:11,322 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 4,
+          "content": "2025-12-25 01:00:12,662 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 5,
+          "content": "2025-12-25 01:00:13,992 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 6,
+          "content": "2025-12-25 01:00:15,238 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 7,
+          "content": "2025-12-25 01:00:16,347 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 8,
+          "content": "2025-12-25 01:00:17,575 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 9,
+          "content": "2025-12-25 01:00:18,396 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 10,
+          "content": "2025-12-25 01:00:20,750 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        },
+        {
+          "line": 11,
+          "content": "2025-12-25 01:00:22,389 - GoogleSheetsConfig - INFO - ✅ Updated config: verification.last_test = 2025-12-25T01:00:20.750699"
+        },
+        {
+          "line": 12,
+          "content": "2025-12-25 01:00:23,570 - GoogleSheetsConfig - INFO - ✅ Exported 3 records to sheet 'Verification_20251225_0100'"
+        },
+        {
+          "line": 13,
+          "content": "2025-12-25 01:00:24,277 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 14,
+          "content": "2025-12-25 01:00:25,413 - GoogleSheetsConfig - INFO - ✅ Sample sheets created successfully"
+        },
+        {
+          "line": 16,
+          "content": "2025-12-25 01:00:26,588 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 17,
+          "content": "2025-12-25 01:00:28,121 - GoogleSheetsConfig - INFO - ✅ Backed up 17 config entries to sheets"
+        },
+        {
+          "line": 18,
+          "content": "2025-12-25 01:00:28,835 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 19,
+          "content": "2025-12-25 01:00:30,889 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 20,
+          "content": "2025-12-25 01:00:31,809 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        },
+        {
+          "line": 21,
+          "content": "2025-12-25 01:00:40,519 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 22,
+          "content": "2025-12-25 01:00:41,625 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 23,
+          "content": "2025-12-25 01:00:42,766 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 24,
+          "content": "2025-12-25 01:00:43,941 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 25,
+          "content": "2025-12-25 01:00:45,121 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 26,
+          "content": "2025-12-25 01:00:46,453 - GoogleSheetsConfig - INFO - ✅ Loaded SLA rules: 3 platforms"
+        },
+        {
+          "line": 27,
+          "content": "2025-12-25 01:00:47,638 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 28,
+          "content": "2025-12-25 01:00:48,809 - GoogleSheetsConfig - INFO - ✅ Loaded config from Google Sheets: 17 entries"
+        },
+        {
+          "line": 29,
+          "content": "2025-12-25 01:00:49,541 - GoogleSheetsConfig - INFO - ✅ Google Sheets client initialized successfully"
+        },
+        {
+          "line": 30,
+          "content": "2025-12-25 01:00:51,777 - GoogleSheetsConfig - INFO - ✅ Automation run logged to Google Sheets"
+        }
+      ],
+      "timestamps": [
+        "2025-12-25 01:00:09",
+        "2025-12-25 01:00:10",
+        "2025-12-25 01:00:11",
+        "2025-12-25 01:00:12",
+        "2025-12-25 01:00:13",
+        "2025-12-25 01:00:15",
+        "2025-12-25 01:00:16",
+        "2025-12-25 01:00:17",
+        "2025-12-25 01:00:18",
+        "2025-12-25 01:00:20",
+        "2025-12-25 01:00:22",
+        "2025-12-25 01:00:23",
+        "2025-12-25 01:00:24",
+        "2025-12-25 01:00:25",
+        "2025-12-25 01:00:25",
+        "2025-12-25 01:00:26",
+        "2025-12-25 01:00:28",
+        "2025-12-25 01:00:28",
+        "2025-12-25 01:00:30",
+        "2025-12-25 01:00:31",
+        "2025-12-25 01:00:40",
+        "2025-12-25 01:00:41",
+        "2025-12-25 01:00:42",
+        "2025-12-25 01:00:43",
+        "2025-12-25 01:00:45",
+        "2025-12-25 01:00:46",
+        "2025-12-25 01:00:47",
+        "2025-12-25 01:00:48",
+        "2025-12-25 01:00:49",
+        "2025-12-25 01:00:51",
+        "2025-12-25 01:00:52",
+        "2025-12-25 01:00:52",
+        "2025-12-25 01:00:54",
+        "2025-12-25 01:00:54",
+        "2025-12-25 01:00:54",
+        "2025-12-25 01:00:55",
+        "2025-12-25 01:00:56"
+      ],
+      "errorCount": 8,
+      "warningCount": 0,
+      "infoCount": 29,
+      "patterns": {
+        "api": 5,
+        "failed": 4
+      }
+    }
+  ],
+  "summary": {
+    "totalFiles": 18,
+    "totalLines": 324,
+    "totalErrors": 15,
+    "totalWarnings": 10
+  }
+}
