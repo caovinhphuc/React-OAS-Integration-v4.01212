@@ -3,3 +3,12 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 INFO:     127.0.0.1:64354 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57098 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57128 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57829 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51509 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51647 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51785 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51923 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52061 - "GET / HTTP/1.1" 200 OK
