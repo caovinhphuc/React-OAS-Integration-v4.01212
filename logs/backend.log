@@ -10,13 +10,5 @@
 🚀 Backend server running on port 3001
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
-::1 - - [25/Dec/2025:06:21:08 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
-::1 - - [25/Dec/2025:06:25:39 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
-Client connected: SVYan51CxG66iXO2AAAB
-Data request received: { type: 'dashboard', timestamp: '2025-12-25T06:25:39.808Z' }
-AI analysis request: { data: [ 1, 2, 3, 4, 5 ], model: 'test' }
-Client disconnected: SVYan51CxG66iXO2AAAB
-::1 - - [25/Dec/2025:06:25:56 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
-::1 - - [25/Dec/2025:06:25:56 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
-::1 - - [25/Dec/2025:06:26:08 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
-[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+SIGTERM received, shutting down gracefully
+Process terminated
