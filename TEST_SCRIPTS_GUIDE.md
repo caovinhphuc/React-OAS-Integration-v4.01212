@@ -1,5 +1,8 @@
 # 🧪 Test Scripts Guide - React OAS Integration v4.0
 
+> **Hướng dẫn chi tiết về test scripts**  
+> **Ngày cập nhật**: 2025-01-27
+
 ## 📋 Tổng quan
 
 Hướng dẫn sử dụng các test scripts trong dự án để kiểm tra các chức năng và tích hợp của hệ thống.
@@ -14,6 +17,10 @@ npm run test:complete
 npm run test:api
 npm run test:automation
 npm run test:google-sheets
+
+# Integration tests (scripts/tests/)
+node scripts/tests/complete_system_test.js
+node scripts/tests/end_to_end_test.js
 ```
 
 ## 📦 Test Scripts
@@ -59,7 +66,6 @@ node scripts/test-api-endpoints.js
 **Test các endpoints:**
 
 - Backend API:
-
   - `/health` - Health check
   - `/api/status` - API status
   - `/api/orders` - Get orders
@@ -194,32 +200,90 @@ node scripts/health-check.cjs
 
 ---
 
-## 🔧 Root Test Files
+## 🔧 Integration Test Files (scripts/tests/)
 
-Các test files ở root directory (có thể chạy trực tiếp):
+**Lưu ý:** Các test files đã được di chuyển vào `scripts/tests/` để tổ chức tốt hơn.
 
-### 1. Complete System Test (`complete_system_test.js`)
+### 1. Complete System Test (`scripts/tests/complete_system_test.js`)
+
+Chạy tất cả test suites và tạo comprehensive report.
 
 ```bash
-node complete_system_test.js
+node scripts/tests/complete_system_test.js
 ```
 
-### 2. End-to-End Test (`end_to_end_test.js`)
+**Tính năng:**
+
+- Runs all test suites
+- Generates comprehensive report
+- Overall system score
+
+### 2. End-to-End Test (`scripts/tests/end_to_end_test.js`)
+
+Simulates user workflows và complete system integration.
 
 ```bash
-node end_to_end_test.js
+node scripts/tests/end_to_end_test.js
 ```
 
-### 3. Integration Test (`integration_test.js`)
+**Tính năng:**
+
+- User dashboard visit simulation
+- Frontend-backend communication
+- WebSocket real-time updates
+- Complete user journeys
+
+### 3. Integration Test (`scripts/tests/integration_test.js`)
+
+Tests communication giữa AI Service, Backend API, và Automation Service.
 
 ```bash
-node integration_test.js
+node scripts/tests/integration_test.js
 ```
 
-### 4. Frontend Connection Test (`frontend_connection_test.js`)
+**Tính năng:**
+
+- Service health checks
+- API communication
+- Data flow validation
+
+### 4. Advanced Integration Test (`scripts/tests/advanced_integration_test.js`)
+
+Advanced integration tests với complex scenarios.
 
 ```bash
-node frontend_connection_test.js
+node scripts/tests/advanced_integration_test.js
+```
+
+### 5. Frontend Connection Test (`scripts/tests/frontend_connection_test.js`)
+
+Frontend connection validation và CORS checks.
+
+```bash
+node scripts/tests/frontend_connection_test.js
+```
+
+**Tính năng:**
+
+- Frontend connectivity
+- CORS configuration
+- WebSocket connection
+- React components check
+
+### 6. Google Sheets Test (`scripts/tests/test_google_sheets.js`)
+
+Google Sheets integration tests.
+
+```bash
+node scripts/tests/test_google_sheets.js
+```
+
+### 7. WebSocket Test (`scripts/tests/ws-test.js`)
+
+WebSocket connection và real-time communication test.
+
+```bash
+node scripts/tests/ws-test.js
 ```
 
 ---

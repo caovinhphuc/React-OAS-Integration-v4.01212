@@ -1,12 +1,17 @@
-# 🧪 TESTING GUIDE - MIA.vn Google Integration
+# 🧪 TESTING GUIDE - React OAS Integration v4.0
+
+> **Hướng dẫn testing đầy đủ và chi tiết**  
+> **Ngày cập nhật**: 2025-01-27
 
 ## 📋 Tổng Quan
 
-Hướng dẫn testing cho toàn bộ hệ thống MIA.vn Google Integration, bao gồm:
+Hướng dẫn testing cho toàn bộ hệ thống React OAS Integration v4.0, bao gồm:
 
 - **Frontend React** (Jest + React Testing Library)
-- **Backend Python** (unittest + pytest)
+- **Backend Node.js** (API endpoints)
+- **AI Service** (FastAPI/Python)
 - **Integration Tests** (API, Google Services, Automation)
+- **End-to-End Tests** (Complete workflows)
 - **Health Checks** (System status, Dependencies)
 
 ---
@@ -97,23 +102,29 @@ npm run health-check
 npm run health:full
 ```
 
-### Complete System Tests (Root Level)
+### Complete System Tests (scripts/tests/)
 
 ```bash
 # Complete system test (end-to-end)
-node complete_system_test.js
+node scripts/tests/complete_system_test.js
 
 # End-to-end test
-node end_to_end_test.js
+node scripts/tests/end_to_end_test.js
 
 # Integration test
-node integration_test.js
+node scripts/tests/integration_test.js
+
+# Advanced integration test
+node scripts/tests/advanced_integration_test.js
 
 # Frontend connection test
-node frontend_connection_test.js
+node scripts/tests/frontend_connection_test.js
+
+# Google Sheets test
+node scripts/tests/test_google_sheets.js
 
 # WebSocket test
-node ws-test.js
+node scripts/tests/ws-test.js
 ```
 
 ### All Tests Summary
@@ -178,16 +189,28 @@ scripts/
 └── test-api-key.sh                 ✅ API key validation script
 ```
 
-### Root Level Test Files
+### Root Level Test Files (Đã di chuyển)
+
+**Lưu ý:** Các test files đã được di chuyển vào `scripts/tests/` để tổ chức tốt hơn.
 
 ```
-(root)/
+scripts/tests/
 ├── complete_system_test.js         ✅ Complete system end-to-end test
 ├── end_to_end_test.js              ✅ End-to-end integration test
 ├── integration_test.js             ✅ System integration test
+├── advanced_integration_test.js    ✅ Advanced integration tests
 ├── frontend_connection_test.js     ✅ Frontend connection validation
-├── ws-test.js                      ✅ WebSocket test utility
-└── test_google_sheets.js           ✅ Google Sheets standalone test
+├── test_google_sheets.js           ✅ Google Sheets standalone test
+└── ws-test.js                      ✅ WebSocket test utility
+```
+
+**Cách chạy:**
+
+```bash
+# Từ root directory
+node scripts/tests/complete_system_test.js
+node scripts/tests/end_to_end_test.js
+node scripts/tests/integration_test.js
 ```
 
 ### Coverage Thresholds
@@ -3239,14 +3262,12 @@ describe("Slice", () => {
 **Để team bắt đầu nhanh:**
 
 1. **Xem video tutorials:**
-
    - Jest & React Testing Library basics
    - Testing Redux with React
    - API mocking strategies
    - E2E testing với Cypress
 
 2. **Đọc documentation:**
-
    - [Jest Documentation](https://jestjs.io/docs/getting-started)
    - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
    - [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices)

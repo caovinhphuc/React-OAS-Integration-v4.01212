@@ -5,3 +5,33 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 INFO:     127.0.0.1:51312 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:51415 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:51540 - "POST /api/ml/predict HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52605 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET /api/sheets/metadata HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52605 - "GET /api/sheets/read?range=A1:A1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52605 - "GET /api/drive/files?pageSize=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52609 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52609 - "GET /api/sheets/metadata HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52609 - "GET /api/sheets/read?range=A1:A1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52609 - "GET /api/drive/files?pageSize=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52638 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/predictions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52638 - "GET /api/analytics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53070 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54136 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54215 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54215 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54215 - "GET /api/predictions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54215 - "GET /api/analytics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54309 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54309 - "GET /api/sheets/metadata HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54309 - "GET /api/sheets/read?range=A1:A1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54309 - "GET /api/drive/files?pageSize=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54460 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54460 - "GET /api/sheets/metadata HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54460 - "GET /api/sheets/read?range=A1:A1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54460 - "GET /api/drive/files?pageSize=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54479 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54479 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54479 - "GET /api/predictions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54479 - "GET /api/analytics HTTP/1.1" 404 Not Found
