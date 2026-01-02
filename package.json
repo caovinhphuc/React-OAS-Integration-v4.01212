@@ -67,7 +67,6 @@
     "test:complete": "node scripts/test-all.js",
     "fix:ports": "bash scripts/fix-port-conflict.sh",
     "kill:port": "bash scripts/kill-port.sh",
-    "health:full": "bash scripts/full-health-check.sh",
     "check:ports": "bash scripts/check-ports.sh",
     "check:backend": "bash scripts/check-backend.sh",
     "verify:setup": "bash scripts/verify-setup.sh",
