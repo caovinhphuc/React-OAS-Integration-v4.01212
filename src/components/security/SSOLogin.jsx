@@ -57,13 +57,10 @@ const SSOLogin = () => {
   // Handle SSO callback from URL params
   useEffect(() => {
     if (typeof window !== "undefined" && window.location) {
-      const urlParams = new (window.URLSearchParams || URLSearchParams)(
-        window.location.search,
-      );
+      const urlParams = new (window.URLSearchParams || URLSearchParams)(window.location.search);
       const code = urlParams.get("code");
       const state = urlParams.get("state");
-      const provider =
-        urlParams.get("provider") || (state ? state.split("_")[0] : null);
+      const provider = urlParams.get("provider") || (state ? state.split("_")[0] : null);
 
       if (code && provider) {
         handleSSOCallback(provider, code, state);
@@ -74,11 +71,7 @@ const SSOLogin = () => {
   const handleSSOCallback = async (provider, code, state) => {
     setLoading(provider);
     try {
-      const userData = await securityService.handleSSOCallback(
-        provider,
-        code,
-        state,
-      );
+      const userData = await securityService.handleSSOCallback(provider, code, state);
 
       if (userData?.token) {
         message.success(`Đăng nhập ${provider} thành công!`);
@@ -132,8 +125,7 @@ const SSOLogin = () => {
                 style={{
                   width: "100%",
                   height: "50px",
-                  backgroundColor:
-                    loading === provider.id ? "#d9d9d9" : provider.color,
+                  backgroundColor: loading === provider.id ? "#d9d9d9" : provider.color,
                   borderColor: provider.color,
                   display: "flex",
                   alignItems: "center",
@@ -152,8 +144,7 @@ const SSOLogin = () => {
 
         <div style={{ textAlign: "center", color: "#666" }}>
           <p>
-            Bạn có thể sử dụng email và mật khẩu để đăng nhập{" "}
-            <a href="/login">tại đây</a>
+            Bạn có thể sử dụng email và mật khẩu để đăng nhập <a href="/login">tại đây</a>
           </p>
         </div>
 

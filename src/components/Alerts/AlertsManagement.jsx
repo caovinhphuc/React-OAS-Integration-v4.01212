@@ -35,9 +35,7 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL ||
-  process.env.VITE_API_URL ||
-  "http://localhost:3001";
+  process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
 
 const AlertsManagement = () => {
   const [alerts, setAlerts] = useState([]);
@@ -64,9 +62,7 @@ const AlertsManagement = () => {
       const data = await response.json();
 
       if (data.success) {
-        setAlerts(
-          (data.data || []).map((alert) => ({ ...alert, key: alert.id })),
-        );
+        setAlerts((data.data || []).map((alert) => ({ ...alert, key: alert.id })));
       }
     } catch (error) {
       console.error("Error fetching alerts:", error);
@@ -264,10 +260,7 @@ const AlertsManagement = () => {
                 }}
               />
             </Tooltip>
-            <Button
-              icon={<SendOutlined />}
-              onClick={() => handleTestAlert("all")}
-            >
+            <Button icon={<SendOutlined />} onClick={() => handleTestAlert("all")}>
               Test Alerts
             </Button>
             <Button
@@ -286,11 +279,7 @@ const AlertsManagement = () => {
         {/* Statistics */}
         <Row gutter={16}>
           <Col xs={12} sm={6}>
-            <Statistic
-              title="Tổng số"
-              value={statistics.total}
-              prefix={<BellOutlined />}
-            />
+            <Statistic title="Tổng số" value={statistics.total} prefix={<BellOutlined />} />
           </Col>
           <Col xs={12} sm={6}>
             <Statistic

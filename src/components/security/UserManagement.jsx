@@ -139,9 +139,7 @@ const UserManagement = () => {
       dataIndex: "role",
       key: "role",
       render: (role) => (
-        <Tag color={ROLE_COLORS[role] || "default"}>
-          {ROLE_LABELS[role] || role}
-        </Tag>
+        <Tag color={ROLE_COLORS[role] || "default"}>{ROLE_LABELS[role] || role}</Tag>
       ),
       filters: Object.keys(ROLE_LABELS).map((role) => ({
         text: ROLE_LABELS[role],
@@ -154,9 +152,7 @@ const UserManagement = () => {
       dataIndex: "mfaEnabled",
       key: "mfaEnabled",
       render: (enabled) => (
-        <Tag color={enabled ? "green" : "default"}>
-          {enabled ? "Đã bật" : "Chưa bật"}
-        </Tag>
+        <Tag color={enabled ? "green" : "default"}>{enabled ? "Đã bật" : "Chưa bật"}</Tag>
       ),
       filters: [
         { text: "Đã bật", value: true },
@@ -177,9 +173,7 @@ const UserManagement = () => {
                 {perm}
               </Tag>
             ))}
-            {permissions.length > 3 && (
-              <Tag color="default">+{permissions.length - 3}</Tag>
-            )}
+            {permissions.length > 3 && <Tag color="default">+{permissions.length - 3}</Tag>}
           </Space>
         );
       },
@@ -190,11 +184,7 @@ const UserManagement = () => {
       render: (_, record) => (
         <Space>
           <Tooltip title="Chỉnh sửa vai trò">
-            <Button
-              type="link"
-              icon={<EditOutlined />}
-              onClick={() => handleEditRole(record)}
-            >
+            <Button type="link" icon={<EditOutlined />} onClick={() => handleEditRole(record)}>
               Sửa
             </Button>
           </Tooltip>
@@ -242,11 +232,7 @@ const UserManagement = () => {
               style={{ width: "250px" }}
               allowClear
             />
-            <Button
-              icon={<ReloadOutlined />}
-              onClick={loadUsers}
-              loading={loading}
-            >
+            <Button icon={<ReloadOutlined />} onClick={loadUsers} loading={loading}>
               Làm mới
             </Button>
           </Space>
@@ -287,9 +273,7 @@ const UserManagement = () => {
               </p>
               <p style={{ marginTop: "16px", marginBottom: "8px" }}>
                 <strong>Vai trò hiện tại:</strong>{" "}
-                <Tag color={ROLE_COLORS[editingUser.role]}>
-                  {ROLE_LABELS[editingUser.role]}
-                </Tag>
+                <Tag color={ROLE_COLORS[editingUser.role]}>{ROLE_LABELS[editingUser.role]}</Tag>
               </p>
               <p style={{ marginTop: "16px", marginBottom: "8px" }}>
                 <strong>Vai trò mới:</strong>

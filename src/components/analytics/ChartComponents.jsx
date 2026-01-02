@@ -79,10 +79,7 @@ export const LineChartComponent = ({
     <Card>
       {title && <Title level={5}>{title}</Title>}
       <ResponsiveContainer width="100%" height={height}>
-        <LineChart
-          data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
+        <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
@@ -154,14 +151,7 @@ export const PieChartComponent = ({
   showLegend = true,
   colors = COLORS,
 }) => {
-  const renderCustomLabel = ({
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    percent,
-  }) => {
+  const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
     const RADIAN = Math.PI / 180;
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -199,10 +189,7 @@ export const PieChartComponent = ({
             nameKey={nameKey}
           >
             {data?.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={colors[index % colors.length]}
-              />
+              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
             ))}
           </Pie>
           <Tooltip />
@@ -252,10 +239,7 @@ export const AreaChartComponent = ({
     <Card>
       {title && <Title level={5}>{title}</Title>}
       <ResponsiveContainer width="100%" height={height}>
-        <AreaChart
-          data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
+        <AreaChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
@@ -347,17 +331,11 @@ export const ChartTypeSelector = ({
     <Space>
       <Text strong>Chart Type:</Text>
       <Select value={value} onChange={onChange} style={{ width: 120 }}>
-        {chartTypes.includes("line") && (
-          <Option value="line">Line Chart</Option>
-        )}
+        {chartTypes.includes("line") && <Option value="line">Line Chart</Option>}
         {chartTypes.includes("bar") && <Option value="bar">Bar Chart</Option>}
         {chartTypes.includes("pie") && <Option value="pie">Pie Chart</Option>}
-        {chartTypes.includes("area") && (
-          <Option value="area">Area Chart</Option>
-        )}
-        {chartTypes.includes("heatmap") && (
-          <Option value="heatmap">Heat Map</Option>
-        )}
+        {chartTypes.includes("area") && <Option value="area">Area Chart</Option>}
+        {chartTypes.includes("heatmap") && <Option value="heatmap">Heat Map</Option>}
       </Select>
     </Space>
   );

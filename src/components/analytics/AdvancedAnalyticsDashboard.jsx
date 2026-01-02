@@ -46,11 +46,7 @@ import {
   ChartTypeSelector,
 } from "./ChartComponents";
 import { DataFilterPanel } from "./DataFilterPanel";
-import {
-  exportToPDF,
-  exportToExcel,
-  exportToCSV,
-} from "../../utils/exportUtils";
+import { exportToPDF, exportToExcel, exportToCSV } from "../../utils/exportUtils";
 // CSS imports for react-grid-layout
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -138,10 +134,7 @@ const AdvancedAnalyticsDashboard = () => {
 
   // Filter widgets based on search and filters
   const filteredWidgets = widgets.filter((widget) => {
-    if (
-      filters.search &&
-      !widget.title.toLowerCase().includes(filters.search.toLowerCase())
-    ) {
+    if (filters.search && !widget.title.toLowerCase().includes(filters.search.toLowerCase())) {
       return false;
     }
     if (filters.chartType && widget.type !== filters.chartType) {
@@ -174,9 +167,7 @@ const AdvancedAnalyticsDashboard = () => {
 
     if (editingWidget) {
       setWidgets((prev) =>
-        prev.map((w) =>
-          w.id === editingWidget.id ? { ...w, ...newWidget } : w
-        )
+        prev.map((w) => (w.id === editingWidget.id ? { ...w, ...newWidget } : w))
       );
       message.success("Widget updated successfully!");
     } else {
@@ -283,35 +274,20 @@ const AdvancedAnalyticsDashboard = () => {
           <Row justify="space-between" align="middle">
             <Col>
               <Title level={2}>📊 Advanced Analytics Dashboard</Title>
-              <Text type="secondary">
-                Interactive charts with drag & drop customization
-              </Text>
+              <Text type="secondary">Interactive charts with drag & drop customization</Text>
             </Col>
             <Col>
               <Space>
-                <Button
-                  type="primary"
-                  icon={<PlusOutlined />}
-                  onClick={handleAddWidget}
-                >
+                <Button type="primary" icon={<PlusOutlined />} onClick={handleAddWidget}>
                   Add Widget
                 </Button>
-                <Button
-                  icon={<ExportOutlined />}
-                  onClick={() => handleExport("pdf")}
-                >
+                <Button icon={<ExportOutlined />} onClick={() => handleExport("pdf")}>
                   Export PDF
                 </Button>
-                <Button
-                  icon={<ExportOutlined />}
-                  onClick={() => handleExport("excel")}
-                >
+                <Button icon={<ExportOutlined />} onClick={() => handleExport("excel")}>
                   Export Excel
                 </Button>
-                <Button
-                  icon={<ExportOutlined />}
-                  onClick={() => handleExport("csv")}
-                >
+                <Button icon={<ExportOutlined />} onClick={() => handleExport("csv")}>
                   Export CSV
                 </Button>
               </Space>
@@ -324,9 +300,7 @@ const AdvancedAnalyticsDashboard = () => {
           <DataFilterPanel
             filters={filters}
             onFiltersChange={setFilters}
-            onSearch={(value) =>
-              setFilters((prev) => ({ ...prev, search: value }))
-            }
+            onSearch={(value) => setFilters((prev) => ({ ...prev, search: value }))}
           />
         </Card>
 

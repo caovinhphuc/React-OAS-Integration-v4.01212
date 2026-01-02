@@ -101,9 +101,7 @@ const AuditLogsViewer = () => {
     try {
       const queryFilters = {
         ...filters,
-        startDate: filters.startDate
-          ? filters.startDate.format("YYYY-MM-DD")
-          : null,
+        startDate: filters.startDate ? filters.startDate.format("YYYY-MM-DD") : null,
         endDate: filters.endDate ? filters.endDate.format("YYYY-MM-DD") : null,
       };
 
@@ -131,9 +129,7 @@ const AuditLogsViewer = () => {
   const loadStatistics = async () => {
     try {
       const stats = await securityService.getAuditStatistics({
-        startDate: filters.startDate
-          ? filters.startDate.format("YYYY-MM-DD")
-          : null,
+        startDate: filters.startDate ? filters.startDate.format("YYYY-MM-DD") : null,
         endDate: filters.endDate ? filters.endDate.format("YYYY-MM-DD") : null,
       });
       setStatistics(stats);
@@ -202,8 +198,7 @@ const AuditLogsViewer = () => {
           <span>{text || record.timestamp}</span>
         </Tooltip>
       ),
-      sorter: (a, b) =>
-        new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime(),
+      sorter: (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime(),
       width: 180,
     },
     {
@@ -223,9 +218,7 @@ const AuditLogsViewer = () => {
       dataIndex: "severity",
       key: "severity",
       render: (severity) => (
-        <Tag color={SEVERITY_COLORS[severity] || "default"}>
-          {severity?.toUpperCase()}
-        </Tag>
+        <Tag color={SEVERITY_COLORS[severity] || "default"}>{severity?.toUpperCase()}</Tag>
       ),
       filters: Object.keys(SEVERITY_COLORS).map((sev) => ({
         text: sev.toUpperCase(),
@@ -239,9 +232,7 @@ const AuditLogsViewer = () => {
       dataIndex: "status",
       key: "status",
       render: (status) => (
-        <Tag color={STATUS_COLORS[status] || "default"}>
-          {status?.toUpperCase()}
-        </Tag>
+        <Tag color={STATUS_COLORS[status] || "default"}>{status?.toUpperCase()}</Tag>
       ),
       filters: Object.keys(STATUS_COLORS).map((stat) => ({
         text: stat.toUpperCase(),
@@ -268,11 +259,7 @@ const AuditLogsViewer = () => {
       title: "Hành động",
       key: "action",
       render: (_, record) => (
-        <Button
-          type="link"
-          icon={<EyeOutlined />}
-          onClick={() => handleViewDetails(record)}
-        >
+        <Button type="link" icon={<EyeOutlined />} onClick={() => handleViewDetails(record)}>
           Chi tiết
         </Button>
       ),
@@ -295,10 +282,7 @@ const AuditLogsViewer = () => {
         {statistics && (
           <Row gutter={16} style={{ marginBottom: "24px" }}>
             <Col span={6}>
-              <Statistic
-                title="Tổng sự kiện"
-                value={statistics.totalEvents || 0}
-              />
+              <Statistic title="Tổng sự kiện" value={statistics.totalEvents || 0} />
             </Col>
             <Col span={6}>
               <Statistic
@@ -394,11 +378,7 @@ const AuditLogsViewer = () => {
               }}
             />
 
-            <Button
-              type="primary"
-              icon={<FilterOutlined />}
-              onClick={handleApplyFilters}
-            >
+            <Button type="primary" icon={<FilterOutlined />} onClick={handleApplyFilters}>
               Áp dụng
             </Button>
 
@@ -420,11 +400,7 @@ const AuditLogsViewer = () => {
           >
             Làm mới
           </Button>
-          <Button
-            icon={<ExportOutlined />}
-            onClick={handleExport}
-            disabled={logs.length === 0}
-          >
+          <Button icon={<ExportOutlined />} onClick={handleExport} disabled={logs.length === 0}>
             Xuất CSV
           </Button>
         </Space>
@@ -459,9 +435,7 @@ const AuditLogsViewer = () => {
                 {selectedLog.timestampFormatted || selectedLog.timestamp}
               </Descriptions.Item>
               <Descriptions.Item label="Loại sự kiện">
-                <Tag>
-                  {EVENT_TYPES[selectedLog.eventType] || selectedLog.eventType}
-                </Tag>
+                <Tag>{EVENT_TYPES[selectedLog.eventType] || selectedLog.eventType}</Tag>
               </Descriptions.Item>
               <Descriptions.Item label="Mức độ">
                 <Tag color={SEVERITY_COLORS[selectedLog.severity]}>
@@ -476,9 +450,7 @@ const AuditLogsViewer = () => {
               <Descriptions.Item label="Email người dùng">
                 {selectedLog.userEmail || "N/A"}
               </Descriptions.Item>
-              <Descriptions.Item label="User ID">
-                {selectedLog.userId || "N/A"}
-              </Descriptions.Item>
+              <Descriptions.Item label="User ID">{selectedLog.userId || "N/A"}</Descriptions.Item>
               <Descriptions.Item label="IP Address">
                 {selectedLog.ipAddress || "N/A"}
               </Descriptions.Item>
@@ -488,9 +460,7 @@ const AuditLogsViewer = () => {
               <Descriptions.Item label="Tài nguyên">
                 {selectedLog.resource || "N/A"}
               </Descriptions.Item>
-              <Descriptions.Item label="Hành động">
-                {selectedLog.action || "N/A"}
-              </Descriptions.Item>
+              <Descriptions.Item label="Hành động">{selectedLog.action || "N/A"}</Descriptions.Item>
               <Descriptions.Item label="Chi tiết" span={2}>
                 <pre style={{ maxHeight: "200px", overflow: "auto" }}>
                   {JSON.stringify(selectedLog.details || {}, null, 2)}

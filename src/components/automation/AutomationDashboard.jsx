@@ -178,8 +178,8 @@ const AutomationDashboard = () => {
               ...auto,
               status: auto.status === "active" ? "inactive" : "active",
             }
-          : auto,
-      ),
+          : auto
+      )
     );
   };
 
@@ -258,10 +258,7 @@ const AutomationDashboard = () => {
         </div>
 
         <div className="header-right">
-          <button
-            className="btn btn-primary"
-            onClick={() => setShowCreateModal(true)}
-          >
+          <button className="btn btn-primary" onClick={() => setShowCreateModal(true)}>
             ➕ Tạo automation mới
           </button>
         </div>
@@ -272,9 +269,7 @@ const AutomationDashboard = () => {
         <div className="automations-sidebar">
           <div className="sidebar-header">
             <h3>📋 Danh sách Automation</h3>
-            <span className="automation-count">
-              {automations.length} automations
-            </span>
+            <span className="automation-count">{automations.length} automations</span>
           </div>
 
           <div className="automations-list">
@@ -296,17 +291,13 @@ const AutomationDashboard = () => {
                       {automation.status === "active" ? "🟢" : "🔴"}
                     </span>
                   </div>
-                  <div className="automation-description">
-                    {automation.description}
-                  </div>
+                  <div className="automation-description">{automation.description}</div>
                   <div className="automation-meta">
                     <span className="automation-trigger">
-                      {getTriggerIcon(automation.trigger.type)}{" "}
-                      {automation.trigger.type}
+                      {getTriggerIcon(automation.trigger.type)} {automation.trigger.type}
                     </span>
                     <span className="automation-action">
-                      {getActionIcon(automation.action.type)}{" "}
-                      {automation.action.type}
+                      {getActionIcon(automation.action.type)} {automation.action.type}
                     </span>
                   </div>
                   <div className="automation-stats">
@@ -321,9 +312,7 @@ const AutomationDashboard = () => {
                       e.stopPropagation();
                       handleToggleAutomation(automation.id);
                     }}
-                    title={
-                      automation.status === "active" ? "Tạm dừng" : "Kích hoạt"
-                    }
+                    title={automation.status === "active" ? "Tạm dừng" : "Kích hoạt"}
                   >
                     {automation.status === "active" ? "⏸️" : "▶️"}
                   </button>
@@ -353,26 +342,18 @@ const AutomationDashboard = () => {
                   <span
                     className="status-badge"
                     style={{
-                      backgroundColor: getStatusColor(
-                        selectedAutomation.status,
-                      ),
+                      backgroundColor: getStatusColor(selectedAutomation.status),
                     }}
                   >
-                    {selectedAutomation.status === "active"
-                      ? "Hoạt động"
-                      : "Tạm dừng"}
+                    {selectedAutomation.status === "active" ? "Hoạt động" : "Tạm dừng"}
                   </span>
                 </div>
                 <div className="details-actions">
                   <button
                     className="btn btn-secondary"
-                    onClick={() =>
-                      handleToggleAutomation(selectedAutomation.id)
-                    }
+                    onClick={() => handleToggleAutomation(selectedAutomation.id)}
                   >
-                    {selectedAutomation.status === "active"
-                      ? "⏸️ Tạm dừng"
-                      : "▶️ Kích hoạt"}
+                    {selectedAutomation.status === "active" ? "⏸️ Tạm dừng" : "▶️ Kích hoạt"}
                   </button>
                 </div>
               </div>
@@ -412,8 +393,7 @@ const AutomationDashboard = () => {
                     </span>
                     {selectedAutomation.action.recipients && (
                       <span className="action-recipients">
-                        Người nhận:{" "}
-                        {selectedAutomation.action.recipients.join(", ")}
+                        Người nhận: {selectedAutomation.action.recipients.join(", ")}
                       </span>
                     )}
                     {selectedAutomation.action.chatId && (
@@ -445,15 +425,11 @@ const AutomationDashboard = () => {
                     </div>
                     <div className="stat-item">
                       <span className="stat-label">Tổng lần chạy</span>
-                      <span className="stat-value">
-                        {selectedAutomation.executions}
-                      </span>
+                      <span className="stat-value">{selectedAutomation.executions}</span>
                     </div>
                     <div className="stat-item">
                       <span className="stat-label">Tỷ lệ thành công</span>
-                      <span className="stat-value">
-                        {selectedAutomation.successRate}%
-                      </span>
+                      <span className="stat-value">{selectedAutomation.successRate}%</span>
                     </div>
                   </div>
                 </div>
@@ -463,15 +439,11 @@ const AutomationDashboard = () => {
                   <h4>📋 Nhật ký thực thi</h4>
                   <div className="logs-container">
                     {executionLogs
-                      .filter(
-                        (log) => log.automationId === selectedAutomation.id,
-                      )
+                      .filter((log) => log.automationId === selectedAutomation.id)
                       .slice(0, 10)
                       .map((log) => (
                         <div key={log.id} className="log-entry">
-                          <span className="log-time">
-                            {formatDate(log.timestamp)}
-                          </span>
+                          <span className="log-time">{formatDate(log.timestamp)}</span>
                           <span
                             className="log-status"
                             style={{ color: getLogStatusColor(log.status) }}
@@ -502,10 +474,7 @@ const AutomationDashboard = () => {
           <div className="modal">
             <div className="modal-header">
               <h3>Tạo automation mới</h3>
-              <button
-                className="close-btn"
-                onClick={() => setShowCreateModal(false)}
-              >
+              <button className="close-btn" onClick={() => setShowCreateModal(false)}>
                 ✕
               </button>
             </div>
@@ -577,10 +546,7 @@ const AutomationDashboard = () => {
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-secondary"
-                onClick={() => setShowCreateModal(false)}
-              >
+              <button className="btn btn-secondary" onClick={() => setShowCreateModal(false)}>
                 Hủy
               </button>
               <button

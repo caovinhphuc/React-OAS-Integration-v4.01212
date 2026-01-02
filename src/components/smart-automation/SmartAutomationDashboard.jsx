@@ -86,7 +86,7 @@ const SmartAutomationDashboard = () => {
       const results = await smartAutomationService.analyzePatterns(
         patternData,
         valueColumn,
-        "date",
+        "date"
       );
       setPatternResults(results);
       message.success("Phân tích patterns thành công!");
@@ -111,7 +111,7 @@ const SmartAutomationDashboard = () => {
         patternData,
         valueColumn,
         "Sample Metric",
-        70, // threshold
+        70 // threshold
       );
       setAlerts(results || []);
       message.success(`Tạo ${results?.length || 0} predictive alerts!`);
@@ -157,7 +157,7 @@ const SmartAutomationDashboard = () => {
         valueColumn,
         reportType,
         "date",
-        `Automated Report - ${new Date().toLocaleDateString("vi-VN")}`,
+        `Automated Report - ${new Date().toLocaleDateString("vi-VN")}`
       );
       setGeneratedReport(report);
       message.success("Tạo báo cáo thành công!");
@@ -220,13 +220,7 @@ const SmartAutomationDashboard = () => {
             <Panel header="Trend Analysis" key="trend">
               <Descriptions bordered column={2}>
                 <Descriptions.Item label="Trend">
-                  <Tag
-                    color={
-                      patternResults.trends?.trend === "increasing"
-                        ? "green"
-                        : "red"
-                    }
-                  >
+                  <Tag color={patternResults.trends?.trend === "increasing" ? "green" : "red"}>
                     {patternResults.trends?.trend || "N/A"}
                   </Tag>
                 </Descriptions.Item>
@@ -241,10 +235,7 @@ const SmartAutomationDashboard = () => {
                 </Descriptions.Item>
               </Descriptions>
             </Panel>
-            <Panel
-              header={`Anomalies (${patternResults.anomalies?.length || 0})`}
-              key="anomalies"
-            >
+            <Panel header={`Anomalies (${patternResults.anomalies?.length || 0})`} key="anomalies">
               {patternResults.anomalies?.length > 0 ? (
                 <Table
                   dataSource={patternResults.anomalies}
@@ -256,9 +247,7 @@ const SmartAutomationDashboard = () => {
                       title: "Severity",
                       dataIndex: "severity",
                       render: (severity) => (
-                        <Tag color={severity === "high" ? "red" : "orange"}>
-                          {severity}
-                        </Tag>
+                        <Tag color={severity === "high" ? "red" : "orange"}>{severity}</Tag>
                       ),
                     },
                   ]}
@@ -298,17 +287,12 @@ const SmartAutomationDashboard = () => {
           >
             Tạo Predictive Alerts
           </Button>
-          <Text type="secondary">
-            Phân tích trends và tạo alerts dự đoán dựa trên patterns
-          </Text>
+          <Text type="secondary">Phân tích trends và tạo alerts dự đoán dựa trên patterns</Text>
         </Space>
       </Card>
 
       {alerts.length > 0 && (
-        <Card
-          title={`Predictive Alerts (${alerts.length})`}
-          style={{ marginTop: 16 }}
-        >
+        <Card title={`Predictive Alerts (${alerts.length})`} style={{ marginTop: 16 }}>
           {alerts.map((alert, index) => (
             <Alert
               key={index}
@@ -353,17 +337,12 @@ const SmartAutomationDashboard = () => {
           >
             Phân loại dữ liệu
           </Button>
-          <Text type="secondary">
-            Tự động phân loại và gắn tags cho dữ liệu
-          </Text>
+          <Text type="secondary">Tự động phân loại và gắn tags cho dữ liệu</Text>
         </Space>
       </Card>
 
       {categorizedData.length > 0 && (
-        <Card
-          title={`Categorized Data (${categorizedData.length})`}
-          style={{ marginTop: 16 }}
-        >
+        <Card title={`Categorized Data (${categorizedData.length})`} style={{ marginTop: 16 }}>
           <Table
             dataSource={categorizedData.slice(0, 10)}
             columns={[
@@ -412,11 +391,7 @@ const SmartAutomationDashboard = () => {
         <Space direction="vertical" style={{ width: "100%" }}>
           <Space>
             <Text strong>Report Type:</Text>
-            <Select
-              value={reportType}
-              onChange={setReportType}
-              style={{ width: 200 }}
-            >
+            <Select value={reportType} onChange={setReportType} style={{ width: 200 }}>
               <Option value="summary">Summary</Option>
               <Option value="trend">Trend Analysis</Option>
               <Option value="anomaly">Anomaly Detection</Option>
@@ -436,10 +411,7 @@ const SmartAutomationDashboard = () => {
       </Card>
 
       {generatedReport && (
-        <Card
-          title={generatedReport.title || "Generated Report"}
-          style={{ marginTop: 16 }}
-        >
+        <Card title={generatedReport.title || "Generated Report"} style={{ marginTop: 16 }}>
           <Collapse>
             {generatedReport.executive_summary && (
               <Panel header="Executive Summary" key="summary">
@@ -449,18 +421,13 @@ const SmartAutomationDashboard = () => {
             {generatedReport.sections && (
               <Panel header="Sections" key="sections">
                 <Collapse>
-                  {Object.entries(generatedReport.sections).map(
-                    ([key, section]) => (
-                      <Panel
-                        header={key.replace("_", " ").toUpperCase()}
-                        key={key}
-                      >
-                        <pre style={{ whiteSpace: "pre-wrap", fontSize: 12 }}>
-                          {JSON.stringify(section, null, 2)}
-                        </pre>
-                      </Panel>
-                    ),
-                  )}
+                  {Object.entries(generatedReport.sections).map(([key, section]) => (
+                    <Panel header={key.replace("_", " ").toUpperCase()} key={key}>
+                      <pre style={{ whiteSpace: "pre-wrap", fontSize: 12 }}>
+                        {JSON.stringify(section, null, 2)}
+                      </pre>
+                    </Panel>
+                  ))}
                 </Collapse>
               </Panel>
             )}
@@ -484,8 +451,7 @@ const SmartAutomationDashboard = () => {
       <Card className="dashboard-header-card">
         <Title level={2}>🤖 Smart Automation</Title>
         <Text type="secondary">
-          AI-powered data analysis, predictive alerts, categorization, and
-          automated reports
+          AI-powered data analysis, predictive alerts, categorization, and automated reports
         </Text>
       </Card>
 
