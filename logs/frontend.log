@@ -53,3 +53,7 @@
 [2] INFO:     Application startup complete.
 [0] Something is already running on port 3001.
 [0] npm run start exited with code 0
+[2] INFO:     127.0.0.1:57325 - "GET /health HTTP/1.1" 200 OK
+[2] INFO:     127.0.0.1:57325 - "GET / HTTP/1.1" 200 OK
+[2] INFO:     127.0.0.1:57325 - "GET /api/predictions HTTP/1.1" 404 Not Found
+[2] INFO:     127.0.0.1:57325 - "GET /api/analytics HTTP/1.1" 404 Not Found
