@@ -103,14 +103,59 @@ else
     echo -e "${GREEN}${CHECK} Changes committed${NC}"
 fi
 
-# Step 5: Push to GitHub
-echo -e "${CYAN}${PACKAGE} Step 5: Pushing to GitHub...${NC}"
-git push origin main
-if [ $? -ne 0 ]; then
-    echo -e "${RED}${WARNING} Error: Push to GitHub failed${NC}"
-    exit 1
+# Step 5: Pull latest changes before pushing
+echo -e "${CYAN}${PACKAGE} Step 5: Pulling latest changes from remote...${NC}"
+CURRENT_BRANCH=$(git branch --show-current)
+if git fetch origin "$CURRENT_BRANCH" 2>/dev/null; then
+    LOCAL=$(git rev-parse @)
+    REMOTE=$(git rev-parse @{u} 2>/dev/null || echo "")
+    
+    if [ -n "$REMOTE" ] && [ "$LOCAL" != "$REMOTE" ]; then
+        echo -e "${YELLOW}${WARNING} Local branch is behind remote. Attempting to merge...${NC}"
+        
+        # Try to merge
+        if git pull --no-rebase origin "$CURRENT_BRANCH" 2>&1 | tee /tmp/git-pull.log; then
+            echo -e "${GREEN}${CHECK} Successfully merged remote changes${NC}"
+        else
+            if grep -q "CONFLICT" /tmp/git-pull.log; then
+                echo -e "${RED}${WARNING} Merge conflict detected!${NC}"
+                echo -e "${YELLOW}Please resolve conflicts manually and run:${NC}"
+                echo -e "  ${GREEN}git add .${NC}"
+                echo -e "  ${GREEN}git commit -m 'Resolve merge conflicts'${NC}"
+                echo -e "  ${GREEN}git push origin $CURRENT_BRANCH${NC}"
+                rm -f /tmp/git-pull.log
+                exit 1
+            else
+                echo -e "${YELLOW}${WARNING} Pull failed, but continuing...${NC}"
+            fi
+        fi
+        rm -f /tmp/git-pull.log
+    else
+        echo -e "${GREEN}${CHECK} Local branch is up to date${NC}"
+    fi
+else
+    echo -e "${YELLOW}${WARNING} Could not fetch from remote, continuing...${NC}"
 fi
-echo -e "${GREEN}${CHECK} Pushed to GitHub successfully${NC}"
+
+# Step 6: Push to GitHub
+echo -e "${CYAN}${PACKAGE} Step 6: Pushing to GitHub...${NC}"
+if git push origin "$CURRENT_BRANCH" 2>&1 | tee /tmp/git-push.log; then
+    echo -e "${GREEN}${CHECK} Successfully pushed to GitHub${NC}"
+    rm -f /tmp/git-push.log
+else
+    if grep -q "non-fast-forward\|rejected" /tmp/git-push.log; then
+        echo -e "${RED}${WARNING} Push rejected: Branch is behind remote${NC}"
+        echo -e "${YELLOW}Please pull and merge manually:${NC}"
+        echo -e "  ${GREEN}git pull origin $CURRENT_BRANCH${NC}"
+        echo -e "  ${GREEN}git push origin $CURRENT_BRANCH${NC}"
+        rm -f /tmp/git-push.log
+        exit 1
+    else
+        echo -e "${RED}${WARNING} Error: Push to GitHub failed${NC}"
+        rm -f /tmp/git-push.log
+        exit 1
+    fi
+fi
 
 echo ""
 echo -e "${PURPLE}${CLOUD} Deployment Status:${NC}"

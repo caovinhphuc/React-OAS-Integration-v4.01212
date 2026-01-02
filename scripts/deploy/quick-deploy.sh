@@ -81,21 +81,60 @@ fi
 CURRENT_BRANCH=$(git branch --show-current)
 print "Branch hiện tại: $CURRENT_BRANCH"
 
-# Step 3: Push to GitHub (skip if secret scanning blocks)
+# Step 3: Pull latest changes before pushing
+print "Đang pull latest changes từ remote..."
+if git fetch origin "$CURRENT_BRANCH" 2>/dev/null; then
+    LOCAL=$(git rev-parse @)
+    REMOTE=$(git rev-parse @{u} 2>/dev/null || echo "")
+    
+    if [ -n "$REMOTE" ] && [ "$LOCAL" != "$REMOTE" ]; then
+        print_warning "Local branch đang behind remote. Đang merge..."
+        
+        # Try to merge
+        if git pull --no-rebase origin "$CURRENT_BRANCH" 2>&1 | tee /tmp/git-pull.log; then
+            print_success "Đã merge remote changes thành công"
+        else
+            if grep -q "CONFLICT" /tmp/git-pull.log; then
+                print_error "Có merge conflict!"
+                print "Vui lòng resolve conflicts thủ công:"
+                echo "  git add ."
+                echo "  git commit -m 'Resolve merge conflicts'"
+                echo "  git push origin $CURRENT_BRANCH"
+                rm -f /tmp/git-pull.log
+                exit 1
+            else
+                print_warning "Pull thất bại, nhưng tiếp tục..."
+            fi
+        fi
+        rm -f /tmp/git-pull.log
+    else
+        print_success "Local branch đã up to date"
+    fi
+else
+    print_warning "Không thể fetch từ remote, tiếp tục..."
+fi
+
+# Step 4: Push to GitHub (skip if secret scanning blocks)
 print "Đang push lên GitHub..."
-if git push origin "$CURRENT_BRANCH" 2>&1 | grep -q "GH013"; then
+SKIP_PUSH=false
+if git push origin "$CURRENT_BRANCH" 2>&1 | tee /tmp/git-push.log | grep -q "GH013"; then
     print_warning "GitHub đang chặn push do secret scanning"
     print_warning "Bỏ qua push, deploy trực tiếp từ local"
     SKIP_PUSH=true
+elif grep -q "non-fast-forward\|rejected" /tmp/git-push.log; then
+    print_error "Push bị reject: Branch đang behind remote"
+    print "Vui lòng pull và merge thủ công:"
+    echo "  git pull origin $CURRENT_BRANCH"
+    echo "  git push origin $CURRENT_BRANCH"
+    rm -f /tmp/git-push.log
+    exit 1
+elif ! grep -q "Everything up-to-date\|To https" /tmp/git-push.log; then
+    print_warning "Push có thể thất bại, kiểm tra logs trên"
+    SKIP_PUSH=true
 else
-    git push origin "$CURRENT_BRANCH" || {
-        print_warning "Push thất bại, tiếp tục deploy từ local"
-        SKIP_PUSH=true
-    }
-    if [ "$SKIP_PUSH" != "true" ]; then
-        print_success "Đã push lên GitHub"
-    fi
+    print_success "Đã push lên GitHub"
 fi
+rm -f /tmp/git-push.log
 
 # Step 4: Build Frontend
 print "Build frontend..."

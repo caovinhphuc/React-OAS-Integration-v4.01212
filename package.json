@@ -52,6 +52,7 @@
     "docs:watch": "./scripts/utils/auto-update-docs.sh true",
     "test:scripts": "node scripts/test-all.js",
     "fix:scripts": "./scripts/utils/fix-script-paths.sh",
+    "fix:git-push": "./scripts/utils/fix-git-push.sh",
     "test:backend": "jest",
     "test:integration": "jest integration-tests",
     "test:e2e": "jest end-to-end-tests",
