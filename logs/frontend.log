@@ -57,3 +57,7 @@
 [2] INFO:     127.0.0.1:57325 - "GET / HTTP/1.1" 200 OK
 [2] INFO:     127.0.0.1:57325 - "GET /api/predictions HTTP/1.1" 404 Not Found
 [2] INFO:     127.0.0.1:57325 - "GET /api/analytics HTTP/1.1" 404 Not Found
+[2] INFO:     Shutting down
+[2] INFO:     Finished server process [92011]
+[2] INFO:     Stopping reloader process [92004]
+[2] npm run ai-service exited with code SIGTERM

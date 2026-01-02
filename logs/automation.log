@@ -119,3 +119,8 @@ INFO:     127.0.0.1:57327 - "GET / HTTP/1.1" 200 OK
 INFO:     127.0.0.1:57327 - "GET /api/orders HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:57327 - "GET /api/automation/status HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:57931 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-01-03 01:20:17,252 - main - INFO - 👋 Shutting down OneAutomation System...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91920]
