@@ -16,7 +16,7 @@
 [2] 
 [2] INFO:     Will watch for changes in these directories: ['/Users/phuccao/Projects/React-OAS-Integration-v4.0/ai-service']
 [2] INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-[2] INFO:     Started reloader process [92004] using StatReload
+[2] INFO:     Started reloader process [79974] using StatReload
 [1] 
 [1] > react-oas-integration-backend@1.0.0 start
 [1] > node src/server.js
@@ -48,16 +48,8 @@
 [1] 
 [1] Node.js v25.2.1
 [1] npm run backend exited with code 1
-[2] INFO:     Started server process [92011]
+[2] INFO:     Started server process [79980]
 [2] INFO:     Waiting for application startup.
 [2] INFO:     Application startup complete.
 [0] Something is already running on port 3001.
 [0] npm run start exited with code 0
-[2] INFO:     127.0.0.1:57325 - "GET /health HTTP/1.1" 200 OK
-[2] INFO:     127.0.0.1:57325 - "GET / HTTP/1.1" 200 OK
-[2] INFO:     127.0.0.1:57325 - "GET /api/predictions HTTP/1.1" 404 Not Found
-[2] INFO:     127.0.0.1:57325 - "GET /api/analytics HTTP/1.1" 404 Not Found
-[2] INFO:     Shutting down
-[2] INFO:     Finished server process [92011]
-[2] INFO:     Stopping reloader process [92004]
-[2] npm run ai-service exited with code SIGTERM

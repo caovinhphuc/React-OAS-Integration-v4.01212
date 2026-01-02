@@ -1,24 +1,24 @@
 {
-  "timestamp": "2026-01-02T17:57:22.964Z",
+  "timestamp": "2026-01-02T18:38:39.710Z",
   "overall": "unhealthy",
   "services": {
     "file-system": {
       "status": "error",
       "message": "Missing files/directories: package.json, .env, src/App.jsx, src, src/components, src/services, public",
       "details": null,
-      "timestamp": "2026-01-02T17:57:22.965Z"
+      "timestamp": "2026-01-02T18:38:39.711Z"
     },
     "dependencies": {
       "status": "error",
       "message": "Error checking dependencies: ENOENT: no such file or directory, open 'package.json'",
       "details": null,
-      "timestamp": "2026-01-02T17:57:22.966Z"
+      "timestamp": "2026-01-02T18:38:39.711Z"
     },
     "environment": {
       "status": "error",
       "message": "Missing required environment variables: REACT_APP_GOOGLE_CLIENT_EMAIL, REACT_APP_GOOGLE_PRIVATE_KEY, REACT_APP_GOOGLE_PROJECT_ID, REACT_APP_GOOGLE_SHEET_ID",
       "details": null,
-      "timestamp": "2026-01-02T17:57:22.966Z"
+      "timestamp": "2026-01-02T18:38:39.711Z"
     }
   },
   "errors": [
