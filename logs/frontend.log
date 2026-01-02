@@ -2,10 +2,6 @@
 > react-oas-integration@3.0.0 dev
 > concurrently "npm run start" "npm run backend" "npm run ai-service"
 
-[2] 
-[2] > react-oas-integration@3.0.0 ai-service
-[2] > cd ai-service && python -m uvicorn main_simple:app --host 0.0.0.0 --port 8000 --reload
-[2] 
 [1] 
 [1] > react-oas-integration@3.0.0 backend
 [1] > cd backend && npm start
@@ -14,9 +10,13 @@
 [0] > react-oas-integration@3.0.0 start
 [0] > react-scripts start
 [0] 
+[2] 
+[2] > react-oas-integration@3.0.0 ai-service
+[2] > cd ai-service && python -m uvicorn main_simple:app --host 0.0.0.0 --port 8000 --reload
+[2] 
 [2] INFO:     Will watch for changes in these directories: ['/Users/phuccao/Projects/React-OAS-Integration-v4.0/ai-service']
 [2] INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-[2] INFO:     Started reloader process [73911] using StatReload
+[2] INFO:     Started reloader process [94614] using StatReload
 [1] 
 [1] > react-oas-integration-backend@1.0.0 start
 [1] > node src/server.js
@@ -48,8 +48,56 @@
 [1] 
 [1] Node.js v25.2.1
 [1] npm run backend exited with code 1
-[2] INFO:     Started server process [73955]
+[2] INFO:     Started server process [94624]
 [2] INFO:     Waiting for application startup.
 [2] INFO:     Application startup complete.
 [0] Something is already running on port 3001.
 [0] npm run start exited with code 0
+[2] INFO:     Shutting down
+[2] INFO:     Finished server process [94624]
+[2] ERROR:    Traceback (most recent call last):
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/runners.py", line 204, in run
+[2]     return runner.run(main)
+[2]            ~~~~~~~~~~^^^^^^
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/runners.py", line 127, in run
+[2]     return self._loop.run_until_complete(task)
+[2]            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/base_events.py", line 706, in run_until_complete
+[2]     self.run_forever()
+[2]     ~~~~~~~~~~~~~~~~^^
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/base_events.py", line 677, in run_forever
+[2]     self._run_once()
+[2]     ~~~~~~~~~~~~~~^^
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/base_events.py", line 2046, in _run_once
+[2]     handle._run()
+[2]     ~~~~~~~~~~~^^
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/events.py", line 94, in _run
+[2]     self._context.run(self._callback, *self._args)
+[2]     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2]   File "/Users/phuccao/Projects/React-OAS-Integration-v4.0/ai-venv/lib/python3.14/site-packages/uvicorn/server.py", line 70, in serve
+[2]     with self.capture_signals():
+[2]          ~~~~~~~~~~~~~~~~~~~~^^
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 148, in __exit__
+[2]     next(self.gen)
+[2]     ~~~~^^^^^^^^^^
+[2]   File "/Users/phuccao/Projects/React-OAS-Integration-v4.0/ai-venv/lib/python3.14/site-packages/uvicorn/server.py", line 331, in capture_signals
+[2]     signal.raise_signal(captured_signal)
+[2]     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/runners.py", line 166, in _on_sigint
+[2]     raise KeyboardInterrupt()
+[2] KeyboardInterrupt
+[2] 
+[2] During handling of the above exception, another exception occurred:
+[2] 
+[2] Traceback (most recent call last):
+[2]   File "/Users/phuccao/Projects/React-OAS-Integration-v4.0/ai-venv/lib/python3.14/site-packages/starlette/routing.py", line 701, in lifespan
+[2]     await receive()
+[2]   File "/Users/phuccao/Projects/React-OAS-Integration-v4.0/ai-venv/lib/python3.14/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+[2]     return await self.receive_queue.get()
+[2]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2]   File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/queues.py", line 186, in get
+[2]     await getter
+[2] asyncio.exceptions.CancelledError
+[2] 
+[2] INFO:     Stopping reloader process [94614]
+[2] npm run ai-service exited with code SIGTERM

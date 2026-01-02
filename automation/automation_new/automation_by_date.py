@@ -225,21 +225,43 @@ class JuneFreshSessionWithProducts:
             print(f"❌ Error extracting order IDs: {e}")
             return []
 
-    def extract_product_details_batch(self, order_ids, driver, logger, batch_size=10):
-        """📦 Extract product details for order IDs"""
+    def extract_product_details_batch(self, order_ids, driver, logger, batch_size=50):
+        """📦 Extract product details for order IDs (với batch processing)"""
         try:
-            print(f"📦 Extracting product details for {len(order_ids)} orders...")
+            print(f"📦 Extracting product details for {len(order_ids)} orders (batch_size={batch_size})...")
 
             product_details = {}
+            
+            # Chia nhỏ thành batches để tránh URL quá dài
+            total_batches = (len(order_ids) + batch_size - 1) // batch_size
+            
+            for batch_num in range(total_batches):
+                start_idx = batch_num * batch_size
+                end_idx = min(start_idx + batch_size, len(order_ids))
+                batch_ids = order_ids[start_idx:end_idx]
+                
+                print(f"📦 Processing batch {batch_num + 1}/{total_batches}: {len(batch_ids)} orders...")
 
-            # Try direct API call first (fastest method)
-            product_details = self.fetch_json_api_direct(order_ids, driver)
+                # Try direct API call first (fastest method)
+                batch_details = self.fetch_json_api_direct(batch_ids, driver)
 
-            if not product_details:
-                print("⚠️ API direct failed, trying UI method...")
-                # Fallback to UI method if needed
-                # product_details = self.fetch_json_via_ui(order_ids, driver)
+                if not batch_details:
+                    print(f"⚠️ API direct failed for batch {batch_num + 1}, trying UI method...")
+                    # Fallback to UI method if needed
+                    batch_details = self.fetch_json_via_ui(batch_ids, driver)
 
+                # Merge results
+                product_details.update(batch_details)
+                
+                # Progress logging
+                processed = min(end_idx, len(order_ids))
+                print(f"⚡ Progress: {processed}/{len(order_ids)} orders processed ({len(product_details)} successful)")
+
+                # Small delay between batches to avoid overwhelming the server
+                if batch_num < total_batches - 1:
+                    time.sleep(0.5)
+
+            print(f"✅ Completed: Got product details for {len(product_details)}/{len(order_ids)} orders")
             return product_details
 
         except Exception as e:
@@ -262,14 +284,38 @@ class JuneFreshSessionWithProducts:
             response = requests.get(api_url, cookies=cookies, timeout=15)
 
             if response.status_code == 200:
-                data = response.json()
-                if not data.get('error', True) and data.get('data'):
-                    print(f"✅ API success: Got {len(data['data'])} orders")
-                    return self.parse_json_response(data['data'])
-                else:
-                    print(f"⚠️ API response error: {data.get('error', 'Unknown error')}")
+                # Check content-type before parsing
+                content_type = response.headers.get('Content-Type', '').lower()
+                
+                if 'application/json' not in content_type and 'text/json' not in content_type:
+                    # Response is not JSON, likely HTML (error page or login page)
+                    if response.text.strip().startswith('<!DOCTYPE') or response.text.strip().startswith('<html'):
+                        print(f"⚠️ API returned HTML instead of JSON (possible session expired or request too large)")
+                        print(f"   URL length: {len(api_url)} chars, Orders count: {len(order_ids)}")
+                        print(f"   Suggestion: Reduce batch size or check session")
+                        return {}
+                    else:
+                        print(f"⚠️ Unexpected content-type: {content_type}")
+                
+                try:
+                    data = response.json()
+                    if not data.get('error', True) and data.get('data'):
+                        print(f"✅ API success: Got {len(data['data'])} orders")
+                        return self.parse_json_response(data['data'])
+                    else:
+                        print(f"⚠️ API response error: {data.get('error', 'Unknown error')}")
+                except (ValueError, json.JSONDecodeError) as json_error:
+                    print(f"⚠️ API call failed: JSON decode error")
+                    print(f"   Response preview: {response.text[:200]}...")
+                    if len(order_ids) > 100:
+                        print(f"   ⚠️ Too many orders ({len(order_ids)}). Try reducing batch size.")
+                    return {}
             else:
                 print(f"⚠️ API status code: {response.status_code}")
+                if response.status_code == 403:
+                    print(f"   Possible: Session expired or insufficient permissions")
+                elif response.status_code == 414:
+                    print(f"   URL too long. Try reducing batch size (currently {len(order_ids)} orders)")
 
             return {}
 
@@ -341,6 +387,155 @@ class JuneFreshSessionWithProducts:
         except Exception as e:
             print(f"❌ Error parsing product detail: {e}")
             return []
+
+    def fetch_json_via_ui(self, order_ids, driver):
+        """🖱️ UI interaction fallback method"""
+        try:
+            print("🖱️ Fallback to UI interaction...")
+
+            # Step 1: Select checkboxes for order IDs
+            selected_count = self.select_order_checkboxes(order_ids, driver)
+
+            if selected_count == 0:
+                print("⚠️ No checkboxes selected")
+                return {}
+
+            # Step 2: Click "Lấy JSON" button
+            json_data = self.click_json_button(driver)
+
+            # Step 3: Parse response
+            if json_data:
+                return self.parse_json_response(json_data)
+
+            return {}
+
+        except Exception as e:
+            print(f"❌ UI method failed: {e}")
+            return {}
+
+    def select_order_checkboxes(self, order_ids, driver):
+        """☑️ Select checkboxes for given order IDs"""
+        try:
+            from selenium.webdriver.common.by import By
+            from selenium.webdriver.support.ui import WebDriverWait
+            from selenium.webdriver.support import expected_conditions as EC
+
+            selected_count = 0
+
+            for order_id in order_ids:
+                try:
+                    # Find checkbox for this order ID
+                    checkbox_selectors = [
+                        f"input[type='checkbox'][value='{order_id}']",
+                        f"//tr[td[contains(text(), '{order_id}')]]//input[@type='checkbox']"
+                    ]
+
+                    checkbox = None
+                    for selector in checkbox_selectors:
+                        try:
+                            if selector.startswith("//"):
+                                checkbox = driver.find_element(By.XPATH, selector)
+                            else:
+                                checkbox = driver.find_element(By.CSS_SELECTOR, selector)
+                            break
+                        except:
+                            continue
+
+                    if checkbox and not checkbox.is_selected():
+                        # Scroll to checkbox
+                        driver.execute_script("arguments[0].scrollIntoView();", checkbox)
+                        time.sleep(0.1)
+
+                        # Click checkbox
+                        checkbox.click()
+                        selected_count += 1
+                        print(f"✅ Selected order {order_id}")
+
+                except Exception as e:
+                    print(f"⚠️ Cannot select order {order_id}: {e}")
+                    continue
+
+            print(f"✅ Selected {selected_count}/{len(order_ids)} checkboxes")
+            return selected_count
+
+        except Exception as e:
+            print(f"❌ Error selecting checkboxes: {e}")
+            return 0
+
+    def click_json_button(self, driver):
+        """🔘 Click 'Lấy JSON' button and get response"""
+        try:
+            from selenium.webdriver.common.by import By
+            from selenium.webdriver.support.ui import WebDriverWait
+            from selenium.webdriver.support import expected_conditions as EC
+            from selenium.common.exceptions import TimeoutException
+
+            # Find "Lấy JSON" button
+            json_button_selectors = [
+                "//button[contains(text(), 'Lấy JSON')]",
+                "//a[contains(text(), 'Lấy JSON')]",
+                "button[title*='JSON']",
+                ".json-btn"
+            ]
+
+            json_button = None
+            for selector in json_button_selectors:
+                try:
+                    if selector.startswith("//"):
+                        json_button = WebDriverWait(driver, 3).until(
+                            EC.element_to_be_clickable((By.XPATH, selector))
+                        )
+                    else:
+                        json_button = WebDriverWait(driver, 3).until(
+                            EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
+                        )
+                    break
+                except TimeoutException:
+                    continue
+
+            if not json_button:
+                print("❌ Cannot find 'Lấy JSON' button")
+                return None
+
+            # Click button
+            json_button.click()
+            print("✅ Clicked 'Lấy JSON' button")
+
+            # Wait for new page/response
+            time.sleep(2)
+
+            # Check if redirected to JSON page
+            current_url = driver.current_url
+            if "invoiceJSON" in current_url:
+                # Extract JSON from page
+                try:
+                    json_text = driver.find_element(By.TAG_NAME, "pre").text
+                    json_data = json.loads(json_text)
+
+                    if not json_data.get('error', True) and json_data.get('data'):
+                        print(f"✅ Got JSON data for {len(json_data['data'])} orders")
+                        return json_data['data']
+                except Exception as e:
+                    print(f"⚠️ Error parsing JSON from page: {e}")
+
+            # Alternative: Check for JSON in response
+            try:
+                page_source = driver.page_source
+                # Try to extract JSON from page source
+                json_match = re.search(r'\{.*"data".*\}', page_source, re.DOTALL)
+                if json_match:
+                    json_text = json_match.group(0)
+                    json_data = json.loads(json_text)
+                    if json_data.get('data'):
+                        return json_data['data']
+            except Exception as e:
+                print(f"⚠️ Error extracting JSON from page source: {e}")
+
+            return None
+
+        except Exception as e:
+            print(f"❌ Error clicking JSON button: {e}")
+            return None
 
     def save_page_data(self, page_data, page_number):
         """💾 Save enhanced page data with products"""
