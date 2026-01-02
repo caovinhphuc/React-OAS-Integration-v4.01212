@@ -1,11 +1,104 @@
-# 🔧 Hướng Dẫn Cấu Hình Vercel - MIA.vn Google Integration
+# 🔧 Hướng Dẫn Cấu Hình Vercel - React OAS Integration v4.0
 
-> **Version:** 1.0.0
-> **Last Updated:** 2025-01-24
+> **Version:** 4.0.0  
+> **Last Updated:** 2025-01-27  
+> **Status:** ✅ Complete
 
 ---
 
 ## 📋 Tổng Quan
+
+Hướng dẫn chi tiết về cấu hình Vercel cho **React OAS Integration v4.0** - AI-Powered Automation Platform, bao gồm:
+
+- ✅ Environment Variables configuration
+- ✅ Build configuration (`vercel.json`)
+- ✅ Deployment scripts
+- ✅ Troubleshooting
+- ✅ Best practices
+
+---
+
+## 🎯 Quick Start
+
+### 1. Deploy Script (Recommended)
+
+```bash
+# Deploy to Vercel
+./scripts/deploy/deploy-vercel.sh
+
+# Hoặc từ root
+./deploy-vercel.sh
+```
+
+### 2. Manual Deployment
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Login
+vercel login
+
+# Deploy
+vercel --prod
+```
+
+---
+
+## ⚙️ Vercel Configuration
+
+### vercel.json
+
+File `vercel.json` đã được cấu hình sẵn:
+
+```json
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
+```
+
+### Build Command
+
+Build command trong `package.json`:
+
+```json
+{
+  "scripts": {
+    "vercel-build": "GENERATE_SOURCEMAP=false CI=false react-scripts build"
+  }
+}
+```
+
+**Lưu ý:**
+
+- `GENERATE_SOURCEMAP=false` - Tắt source maps để giảm build time
+- `CI=false` - Tắt CI mode để tránh warnings
+- Output directory: `build/`
+
+---
+
+## 🔐 Environment Variables
 
 Sau khi deploy lên Vercel, bạn cần cấu hình **Environment Variables** để ứng dụng hoạt động đúng.
 
@@ -17,7 +110,7 @@ Sau khi deploy lên Vercel, bạn cần cấu hình **Environment Variables** đ
 
 1. Mở trình duyệt và vào: **<https://vercel.com/dashboard>**
 2. Đăng nhập với tài khoản Vercel của bạn
-3. Tìm project: **`git-react/mia-vn-google-integration`**
+3. Tìm project: **`React-OAS-Integration-v4.0`** (hoặc tên project của bạn)
 4. Click vào project
 
 ### Bước 2: Vào Settings → Environment Variables
@@ -32,29 +125,36 @@ Sau khi deploy lên Vercel, bạn cần cấu hình **Environment Variables** đ
 
 Thêm các biến sau với **Environment** = **Production, Preview, Development**:
 
-| Key | Value | Mô Tả |
-|-----|-------|-------|
-| `REACT_APP_API_URL` | `https://your-backend-api.com` | URL backend API (production) |
-| `REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID` | `18B1PIhCDmBWyHZytvOcfj_1QbYBwczLf1x1Qbu0E5As` | Google Sheets ID |
-| `REACT_APP_GOOGLE_DRIVE_FOLDER_ID` | `1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms` | Google Drive Folder ID |
+| Key                                      | Value                                                  | Mô Tả                              |
+| ---------------------------------------- | ------------------------------------------------------ | ---------------------------------- |
+| `REACT_APP_API_URL`                      | `https://your-backend-api.com`                         | URL backend API (production)       |
+| `REACT_APP_AI_SERVICE_URL`               | `https://your-ai-service.com`                          | AI Service URL (nếu có)            |
+| `REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID` | `your-spreadsheet-id`                                  | Google Sheets ID                   |
+| `REACT_APP_GOOGLE_DRIVE_FOLDER_ID`       | `your-folder-id`                                       | Google Drive Folder ID             |
+| `REACT_APP_GOOGLE_CLIENT_EMAIL`          | `your-service-account@project.iam.gserviceaccount.com` | Google Service Account Email       |
+| `REACT_APP_GOOGLE_PRIVATE_KEY`           | `-----BEGIN PRIVATE KEY-----\n...`                     | Google Service Account Private Key |
 
 #### ⚙️ **TÙY CHỌN (Optional - Khuyến Nghị)**
 
-| Key | Value | Mô Tả |
-|-----|-------|-------|
-| `REACT_APP_FEATURE_GOOGLE_SHEETS` | `true` | Bật tính năng Google Sheets |
-| `REACT_APP_FEATURE_GOOGLE_DRIVE` | `true` | Bật tính năng Google Drive |
-| `REACT_APP_FEATURE_AUTOMATION` | `true` | Bật tính năng Automation |
-| `REACT_APP_LANGUAGE` | `vi` | Ngôn ngữ (vi/en) |
-| `REACT_APP_TIMEZONE` | `Asia/Ho_Chi_Minh` | Múi giờ |
-| `REACT_APP_ENVIRONMENT` | `production` | Môi trường |
+| Key                               | Value                             | Mô Tả                       |
+| --------------------------------- | --------------------------------- | --------------------------- |
+| `REACT_APP_FEATURE_GOOGLE_SHEETS` | `true`                            | Bật tính năng Google Sheets |
+| `REACT_APP_FEATURE_GOOGLE_DRIVE`  | `true`                            | Bật tính năng Google Drive  |
+| `REACT_APP_FEATURE_AUTOMATION`    | `true`                            | Bật tính năng Automation    |
+| `REACT_APP_FEATURE_ANALYTICS`     | `true`                            | Bật tính năng Analytics     |
+| `REACT_APP_WS_URL`                | `wss://your-websocket-server.com` | WebSocket URL (nếu có)      |
+| `REACT_APP_LANGUAGE`              | `vi`                              | Ngôn ngữ (vi/en)            |
+| `REACT_APP_TIMEZONE`              | `Asia/Ho_Chi_Minh`                | Múi giờ                     |
+| `REACT_APP_ENVIRONMENT`           | `production`                      | Môi trường                  |
+| `REACT_APP_API_TIMEOUT`           | `30000`                           | API timeout (ms)            |
+| `REACT_APP_API_RETRY_ATTEMPTS`    | `3`                               | API retry attempts          |
 
 #### 🔐 **BẢO MẬT (Nếu Cần)**
 
-| Key | Value | Mô Tả |
-|-----|-------|-------|
+| Key                             | Value          | Mô Tả                          |
+| ------------------------------- | -------------- | ------------------------------ |
 | `REACT_APP_GOOGLE_MAPS_API_KEY` | `your_api_key` | Google Maps API Key (nếu dùng) |
-| `REACT_APP_TELEGRAM_CHAT_ID` | `-4818209867` | Telegram Chat ID (nếu dùng) |
+| `REACT_APP_TELEGRAM_CHAT_ID`    | `-4818209867`  | Telegram Chat ID (nếu dùng)    |
 
 ### Bước 4: Lưu và Redeploy
 
@@ -69,35 +169,95 @@ Thêm các biến sau với **Environment** = **Production, Preview, Development
 
 ## 🚀 Cách 2: Cấu Hình Qua Vercel CLI
 
-### Bước 1: Tạo File `.env.production`
-
-Tạo file `.env.production` trong thư mục root:
+### Bước 1: Install Vercel CLI
 
 ```bash
-# .env.production
-REACT_APP_API_URL=https://your-backend-api.com
-REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID=18B1PIhCDmBWyHZytvOcfj_1QbYBwczLf1x1Qbu0E5As
-REACT_APP_GOOGLE_DRIVE_FOLDER_ID=1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms
-REACT_APP_FEATURE_GOOGLE_SHEETS=true
-REACT_APP_FEATURE_GOOGLE_DRIVE=true
-REACT_APP_FEATURE_AUTOMATION=true
-REACT_APP_LANGUAGE=vi
-REACT_APP_TIMEZONE=Asia/Ho_Chi_Minh
-REACT_APP_ENVIRONMENT=production
+# Install globally
+npm install -g vercel
+
+# Verify installation
+vercel --version
 ```
 
-### Bước 2: Upload Environment Variables
+### Bước 2: Login to Vercel
 
 ```bash
-# Upload từ file .env.production
-vercel env add REACT_APP_API_URL production < .env.production
+# Login
+vercel login
 
-# Hoặc thêm từng biến
+# Hoặc với token
+vercel login --token $VERCEL_TOKEN
+```
+
+### Bước 3: Link Project
+
+```bash
+# Link to existing project
+vercel link
+
+# Hoặc tạo project mới
+vercel
+```
+
+### Bước 4: Add Environment Variables
+
+```bash
+# Thêm từng biến
 vercel env add REACT_APP_API_URL production
 # Nhập value khi được hỏi
 
-# Hoặc dùng script tự động (xem bên dưới)
+# Hoặc thêm từ file .env.production
+# (Tạo file .env.production trước)
+vercel env pull .env.vercel
 ```
+
+### Bước 5: Deploy
+
+```bash
+# Deploy to production
+vercel --prod
+
+# Hoặc preview
+vercel
+```
+
+---
+
+## 📝 Script Tự Động Cấu Hình
+
+### Update Environment Variables Script
+
+```bash
+# Chạy script để update environment variables
+./scripts/update_vercel_env.sh
+
+# Hoặc
+npm run update:vercel
+```
+
+**Script này sẽ:**
+
+- Đọc từ `.env` hoặc `.env.production`
+- Upload lên Vercel
+- Verify configuration
+
+### Deploy Script
+
+```bash
+# Deploy to Vercel
+./scripts/deploy/deploy-vercel.sh
+
+# Hoặc từ root
+./deploy-vercel.sh
+```
+
+**Script này sẽ:**
+
+- Check prerequisites
+- Install Vercel CLI (nếu cần)
+- Build application
+- Deploy to Vercel
+- Verify deployment
 
 ---
 
