@@ -1,8 +1,8 @@
-# 🚀 React OAS Integration v3.0 - ONE Automation Platform
+# 🚀 React OAS Integration v4.0 - ONE Automation Platform
 
 <div align="center">
 
-[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/caovinhphuc/-React-OAS-Integration-v3.0)
+[![Version](https://img.shields.io/badge/version-4.0.0-blue.svg)](https://github.com/caovinhphuc/React-OAS-Integration-v4.0)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
@@ -20,7 +20,7 @@
 
 ## 📋 Tổng quan
 
-**React OAS Integration v3.0** là một nền tảng tự động hóa hoàn chỉnh với AI-powered analytics, tích hợp với Google Sheets và hệ thống ONE Page. Hệ thống cung cấp:
+**React OAS Integration v4.0** là một nền tảng tự động hóa hoàn chỉnh với AI-powered analytics, tích hợp với Google Sheets và hệ thống ONE Page. Hệ thống cung cấp:
 
 - 🤖 **Automation System**: Thu thập dữ liệu tự động từ ONE Page
 - 📊 **Google Sheets Integration**: Kho lưu trữ dữ liệu tập trung
@@ -62,7 +62,7 @@
 │                    ┌─────────▼──────────┐                      │
 │                    │  🎨 FRONTEND       │                      │
 │                    │  React Dashboard   │                      │
-│                    │  Port: 8080        │                      │
+│                    │  Port: 3000        │                      │
 │                    └────────────────────┘                      │
 │                                                                   │
 └─────────────────────────────────────────────────────────────────┘
@@ -115,12 +115,12 @@
 
 ### 📋 Yêu cầu hệ thống
 
-| Component | Version | Ghi chú |
-|-----------|---------|---------|
-| **Node.js** | 18+ | Runtime cho Frontend & Backend |
-| **Python** | 3.9+ | Runtime cho Automation & AI Service |
-| **npm/yarn** | Latest | Package manager |
-| **Git** | Latest | Version control |
+| Component    | Version | Ghi chú                             |
+| ------------ | ------- | ----------------------------------- |
+| **Node.js**  | 18+     | Runtime cho Frontend & Backend      |
+| **Python**   | 3.9+    | Runtime cho Automation & AI Service |
+| **npm/yarn** | Latest  | Package manager                     |
+| **Git**      | Latest  | Version control                     |
 
 ### ⚡ Khởi chạy nhanh
 
@@ -145,11 +145,11 @@ npm install
 
 # Development mode
 npm start
-# → Mở http://localhost:8080
+# → Mở http://localhost:3000
 
 # Production build
 npm run build
-npx serve -s build -l 8080
+npx serve -s build -l 3000
 ```
 
 #### **2. Backend (Node.js)**
@@ -206,15 +206,25 @@ python main.py
 
 Sau khi khởi chạy thành công, truy cập các endpoints:
 
-| Service | URL | Mô tả |
-|---------|-----|-------|
-| 🎨 **Frontend** | <http://localhost:8080> | Giao diện chính |
-| 📊 **Dashboard** | <http://localhost:8080/dashboard> | Live Dashboard |
-| 🧠 **AI Analytics** | <http://localhost:8080/ai-analytics> | AI Analytics |
-| 📋 **Google Sheets** | <http://localhost:8080/google-sheets> | Google Sheets UI |
-| 🔧 **Backend API** | <http://localhost:3001/health> | Health check |
-| 🧠 **AI Service** | <http://localhost:8000/health> | AI Service health |
-| 📚 **API Docs** | <http://localhost:8000/docs> | FastAPI Swagger UI |
+| Service                   | URL                                        | Mô tả                |
+| ------------------------- | ------------------------------------------ | -------------------- |
+| 🎨 **Frontend**           | <http://localhost:3000>                    | Giao diện chính      |
+| 📊 **Dashboard**          | <http://localhost:3000/dashboard>          | Live Dashboard       |
+| 🧠 **AI Analytics**       | <http://localhost:3000/ai-analytics>       | AI Analytics         |
+| 🛒 **Retail**             | <http://localhost:3000/retail>             | Retail Dashboard     |
+| 📋 **Google Sheets**      | <http://localhost:3000/google-sheets>      | Google Sheets UI     |
+| 📁 **Google Drive**       | <http://localhost:3000/google-drive>       | Google Drive UI      |
+| ⚙️ **Google Apps Script** | <http://localhost:3000/google-apps-script> | Google Apps Script   |
+| 💬 **Telegram**           | <http://localhost:3000/telegram>           | Telegram Integration |
+| 🤖 **Automation**         | <http://localhost:3000/automation>         | Automation Dashboard |
+| 🔔 **Alerts**             | <http://localhost:3000/alerts>             | Alerts Management    |
+| 📈 **Advanced Analytics** | <http://localhost:3000/advanced-analytics> | Advanced Analytics   |
+| 🤖 **Smart Automation**   | <http://localhost:3000/smart-automation>   | Smart Automation     |
+| 💬 **NLP**                | <http://localhost:3000/nlp>                | NLP Dashboard        |
+| 🔒 **Security**           | <http://localhost:3000/security>           | Security Dashboard   |
+| 🔧 **Backend API**        | <http://localhost:3001/health>             | Health check         |
+| 🧠 **AI Service**         | <http://localhost:8000/health>             | AI Service health    |
+| 📚 **API Docs**           | <http://localhost:8000/docs>               | FastAPI Swagger UI   |
 
 ---
 
@@ -222,24 +232,33 @@ Sau khi khởi chạy thành công, truy cập các endpoints:
 
 ### ✅ Đã hoàn thành
 
-| Feature | Status | Mô tả |
-|---------|--------|-------|
-| 🤖 **Automation System** | ✅ | Thu thập dữ liệu từ ONE Page tự động |
-| 📊 **Google Sheets Integration** | ✅ | Tích hợp đầy đủ với Google Sheets API |
-| 🧠 **AI Service** | ✅ | FastAPI service với ML capabilities |
-| 🎨 **Frontend Dashboard** | ✅ | React dashboard với real-time updates |
-| 🔧 **Backend API** | ✅ | Node.js server với WebSocket |
-| 📈 **Live Dashboard** | ✅ | Real-time charts và metrics |
+| Feature                          | Status | Mô tả                                 |
+| -------------------------------- | ------ | ------------------------------------- |
+| 🤖 **Automation System**         | ✅     | Thu thập dữ liệu từ ONE Page tự động  |
+| 📊 **Google Sheets Integration** | ✅     | Tích hợp đầy đủ với Google Sheets API |
+| 📁 **Google Drive Integration**  | ✅     | Quản lý tệp tin và thư mục            |
+| ⚙️ **Google Apps Script**        | ✅     | Tự động hóa công việc với Apps Script |
+| 🧠 **AI Service**                | ✅     | FastAPI service với ML capabilities   |
+| 🎨 **Frontend Dashboard**        | ✅     | React dashboard với real-time updates |
+| 🔧 **Backend API**               | ✅     | Node.js server với WebSocket          |
+| 📈 **Live Dashboard**            | ✅     | Real-time charts và metrics           |
+| 🛒 **Retail Dashboard**          | ✅     | Phân tích retail và sales             |
+| 🔒 **Security Dashboard**        | ✅     | MFA, SSO, RBAC, Audit Logs            |
+| 💬 **NLP Dashboard**             | ✅     | Chat, Voice, Search, Summaries        |
+| 🤖 **Smart Automation**          | ✅     | AI-powered automation                 |
+| 📈 **Advanced Analytics**        | ✅     | Phân tích nâng cao với biểu đồ        |
+| 🔔 **Alerts Management**         | ✅     | Quản lý thông báo và cảnh báo         |
+| 💬 **Telegram Integration**      | ✅     | Gửi thông báo qua Telegram            |
 
 ### ⚠️ Đang phát triển
 
-| Feature | Status | Ưu tiên |
-|---------|--------|---------|
-| 📈 **Analytics Module** | 🚧 | **RẤT CAO** - Statistics & Reports engine |
-| 💡 **Recommendations Engine** | 🚧 | **RẤT CAO** - Đề xuất giải pháp |
-| 🔄 **Data Pipeline** | 🚧 | **CAO** - Kết nối Automation → Sheets → AI |
-| ⏰ **Scheduler Service** | 🚧 | **CAO** - Cron jobs cho automation |
-| 📝 **OnePage Service** | 🚧 | **CAO** - Service lấy dữ liệu nguồn |
+| Feature                       | Status | Ưu tiên                                    |
+| ----------------------------- | ------ | ------------------------------------------ |
+| 📈 **Analytics Module**       | 🚧     | **RẤT CAO** - Statistics & Reports engine  |
+| 💡 **Recommendations Engine** | 🚧     | **RẤT CAO** - Đề xuất giải pháp            |
+| 🔄 **Data Pipeline**          | 🚧     | **CAO** - Kết nối Automation → Sheets → AI |
+| ⏰ **Scheduler Service**      | 🚧     | **CAO** - Cron jobs cho automation         |
+| 📝 **OnePage Service**        | 🚧     | **CAO** - Service lấy dữ liệu nguồn        |
 
 ---
 
@@ -250,12 +269,12 @@ Sau khi khởi chạy thành công, truy cập các endpoints:
 ```json
 {
   "framework": "React 18.2.0",
-  "routing": "React Router v6",
-  "state": "Redux Toolkit",
-  "charts": "Recharts 2.8.0",
-  "realtime": "Socket.IO Client",
-  "http": "Axios",
-  "styling": "Styled Components"
+  "routing": "React Router v7.11.0",
+  "state": "Redux Toolkit 2.11.2",
+  "ui": "Ant Design 5.29.3",
+  "charts": "Recharts 3.6.0",
+  "realtime": "Socket.IO Client 4.8.1",
+  "http": "Axios 1.13.2"
 }
 ```
 
@@ -395,33 +414,33 @@ Xem hướng dẫn chi tiết tại: [`GOOGLE_SHEETS_SETUP_GUIDE.md`](GOOGLE_SHE
 
 ### 🔧 Backend API (Port 3001)
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| `GET` | `/health` | Health check |
-| `GET` | `/api/status` | Service status |
-| `WebSocket` | `/` | Real-time data updates |
+| Method      | Endpoint      | Mô tả                  |
+| ----------- | ------------- | ---------------------- |
+| `GET`       | `/health`     | Health check           |
+| `GET`       | `/api/status` | Service status         |
+| `WebSocket` | `/`           | Real-time data updates |
 
 ### 🧠 AI Service API (Port 8000)
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| `GET` | `/health` | Health check |
-| `GET` | `/docs` | Swagger UI documentation |
-| `GET` | `/ai/predictions` | Get AI predictions |
-| `GET` | `/ai/anomalies` | Detect anomalies |
-| `POST` | `/ai/optimization/solve` | Solve optimization problem |
-| `GET` | `/ai/optimization/status` | Check optimization engine |
+| Method | Endpoint                  | Mô tả                      |
+| ------ | ------------------------- | -------------------------- |
+| `GET`  | `/health`                 | Health check               |
+| `GET`  | `/docs`                   | Swagger UI documentation   |
+| `GET`  | `/ai/predictions`         | Get AI predictions         |
+| `GET`  | `/ai/anomalies`           | Detect anomalies           |
+| `POST` | `/ai/optimization/solve`  | Solve optimization problem |
+| `GET`  | `/ai/optimization/status` | Check optimization engine  |
 
 ### 🤖 Automation API (Port 8000)
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| `GET` | `/` | Health check |
-| `GET` | `/health` | Detailed health check |
-| `POST` | `/api/automation/run` | Run automation task |
-| `GET` | `/api/google-sheets/{id}` | Get Sheets data |
-| `POST` | `/api/google-sheets/{id}` | Update Sheets data |
-| `POST` | `/api/email/send` | Send email |
+| Method | Endpoint                  | Mô tả                 |
+| ------ | ------------------------- | --------------------- |
+| `GET`  | `/`                       | Health check          |
+| `GET`  | `/health`                 | Detailed health check |
+| `POST` | `/api/automation/run`     | Run automation task   |
+| `GET`  | `/api/google-sheets/{id}` | Get Sheets data       |
+| `POST` | `/api/google-sheets/{id}` | Update Sheets data    |
+| `POST` | `/api/email/send`         | Send email            |
 
 ---
 
@@ -526,13 +545,13 @@ Kiểm tra logs trong thư mục `logs/`:
 
 ## 📚 Documentation
 
-| Document | Mô tả |
-|----------|-------|
-| [`ARCHITECTURE_GUIDE.md`](ARCHITECTURE_GUIDE.md) | 📖 Kiến trúc hệ thống chi tiết |
-| [`ROADMAP_NEXT_STEPS.md`](ROADMAP_NEXT_STEPS.md) | 🗺️ Roadmap phát triển |
+| Document                                                       | Mô tả                            |
+| -------------------------------------------------------------- | -------------------------------- |
+| [`ARCHITECTURE_GUIDE.md`](ARCHITECTURE_GUIDE.md)               | 📖 Kiến trúc hệ thống chi tiết   |
+| [`ROADMAP_NEXT_STEPS.md`](ROADMAP_NEXT_STEPS.md)               | 🗺️ Roadmap phát triển            |
 | [`GOOGLE_SHEETS_SETUP_GUIDE.md`](GOOGLE_SHEETS_SETUP_GUIDE.md) | 📊 Hướng dẫn setup Google Sheets |
-| [`PHASE_1_DETAILED_GUIDE.md`](PHASE_1_DETAILED_GUIDE.md) | 📝 Chi tiết Phase 1 |
-| [`STEP_BY_STEP_GUIDE.md`](STEP_BY_STEP_GUIDE.md) | 🔄 Hướng dẫn từng bước |
+| [`PHASE_1_DETAILED_GUIDE.md`](PHASE_1_DETAILED_GUIDE.md)       | 📝 Chi tiết Phase 1              |
+| [`STEP_BY_STEP_GUIDE.md`](STEP_BY_STEP_GUIDE.md)               | 🔄 Hướng dẫn từng bước           |
 
 ---
 
@@ -584,14 +603,17 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more informa
 
 ## 🎯 Project Status
 
-| Component | Status | Version |
-|-----------|--------|---------|
-| Frontend | ✅ Stable | 3.0.0 |
-| Backend | ✅ Stable | 3.0.0 |
-| AI Service | ✅ Stable | 4.0.0 |
-| Automation | ✅ Stable | 1.0.0 |
-| Analytics | 🚧 In Development | - |
-| Recommendations | 🚧 In Development | - |
+| Component        | Status            | Version |
+| ---------------- | ----------------- | ------- |
+| Frontend         | ✅ Stable         | 4.0.0   |
+| Backend          | ✅ Stable         | 4.0.0   |
+| AI Service       | ✅ Stable         | 4.0.0   |
+| Automation       | ✅ Stable         | 1.0.0   |
+| Security         | ✅ Stable         | 4.0.0   |
+| NLP              | ✅ Stable         | 4.0.0   |
+| Smart Automation | ✅ Stable         | 4.0.0   |
+| Analytics        | ✅ Stable         | 4.0.0   |
+| Recommendations  | 🚧 In Development | -       |
 
 ---
 
@@ -601,7 +623,6 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more informa
 
 ⭐ **Star** this repo nếu bạn thấy hữu ích!
 
-[⬆ Back to Top](#-react-oas-integration-v30---one-automation-platform)
+[⬆ Back to Top](#-react-oas-integration-v40---one-automation-platform)
 
 </div>
-# react-oas-integration-v4

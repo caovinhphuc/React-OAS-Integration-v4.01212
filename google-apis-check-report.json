@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-12-25T07:14:35.457Z",
+  "timestamp": "2026-01-02T14:46:38.193Z",
   "project": "mia-logistics-469406",
   "results": [
     {
@@ -43,9 +43,5 @@
     "https://www.googleapis.com/auth/drive",
     "https://www.googleapis.com/auth/drive.metadata.readonly"
   ],
-  "apisInCode": [
-    "script.googleapis.com",
-    "sheets.googleapis.com",
-    "drive.googleapis.com"
-  ]
+  "apisInCode": ["script.googleapis.com", "sheets.googleapis.com", "drive.googleapis.com"]
 }

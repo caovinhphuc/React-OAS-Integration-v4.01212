@@ -123,6 +123,13 @@ ai-venv/
 venv.backup.*/
 backup/
 *.backup
+backups/
+**/venv.backup.*/
+
+# Reports (keep structure, ignore old reports)
+reports/**/*.json
+!reports/.gitkeep
+!reports/**/.gitkeep
 
 # Shared directories (if containing generated files)
 shared/__pycache__/

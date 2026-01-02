@@ -1,26 +1,43 @@
 # 🏗️ KIẾN TRÚC HỆ THỐNG VÀ PHÂN CHIA TRÁCH NHIỆM
 
+> **Version**: 2025-01-27  
+> **Scope**: React OAS Integration v4.0 - Chi tiết kiến trúc và trách nhiệm từng component
+
+---
+
 ## 🎯 TỔNG QUAN HỆ THỐNG
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    ONE AUTOMATION PLATFORM                   │
+│              REACT OAS INTEGRATION v4.0                      │
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
-│  │ AUTOMATION   │───▶│ GOOGLE SHEETS│───▶│   AI SERVICE │  │
-│  │   System     │    │  (Storage)   │    │ (Analytics)  │  │
+│  │   FRONTEND   │───▶│   BACKEND    │───▶│  AI SERVICE │  │
+│  │  (React)     │    │  (Node.js)   │    │  (FastAPI)  │  │
+│  │  Port: 3000  │    │  Port: 3001  │    │  Port: 8000 │  │
 │  └──────────────┘    └──────────────┘    └──────────────┘  │
 │         │                   │                    │           │
-│         └───────────────────┼────────────────────┘           │
-│                             │                                │
-│                    ┌────────▼────────┐                      │
-│                    │  ANALYSIS &     │                      │
-│                    │  RECOMMENDATIONS│                      │
-│                    └─────────────────┘                      │
+│         │                   │                    │           │
+│  ┌──────▼──────┐    ┌───────▼────────┐   ┌───────▼──────┐  │
+│  │ AUTOMATION │───▶│ GOOGLE SHEETS  │◀──│  ANALYTICS   │  │
+│  │  (Selenium)│    │  (Storage)     │   │  (Reports)   │  │
+│  │ Port: 8001 │    │  (External)    │   │              │  │
+│  └────────────┘    └─────────────────┘   └──────────────┘  │
 │                                                               │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+### 📊 Service Inventory
+
+| Service            | Stack                               | Role                                 | Ports   | Status    |
+| ------------------ | ----------------------------------- | ------------------------------------ | ------- | --------- |
+| Main Frontend      | React 18 + Redux + Ant Design       | Main Dashboard UI                    | 3000    | ✅ Stable |
+| Main Backend       | Node.js + Express + Socket.IO       | Auth, API Aggregation, Notifications | 3001    | ✅ Stable |
+| AI Service         | Python FastAPI                      | ML inference / analytics             | 8000    | ✅ Stable |
+| Automation Service | Python + Selenium                   | Data scraping & RPA                  | 8001    | ✅ Stable |
+| Google Sheets      | External API                        | Primary structured datastore         | -       | ✅ Active |
+| Notification Layer | Nodemailer, Telegram Bot, Socket.IO | Multi-channel alerts                 | 3001/ws | ✅ Active |
 
 ---
 
@@ -75,7 +92,7 @@ class OneAutomationSystem:
 
 ---
 
-## 2️⃣ GOOGLE SHEETS - 📊 Kho Lưu Trữ Dữ Liệu
+## 3️⃣ GOOGLE SHEETS - 📊 Kho Lưu Trữ Dữ Liệu
 
 ### **Trách nhiệm chính:**
 
@@ -124,7 +141,7 @@ class OneAutomationSystem:
 
 ---
 
-## 3️⃣ AI SERVICE - 🧠 Bộ Não Phân Tích
+## 4️⃣ AI SERVICE - 🧠 Bộ Não Phân Tích
 
 ### **Trách nhiệm chính:**
 
@@ -170,7 +187,9 @@ class OneAutomationSystem:
 
 ---
 
-## 4️⃣ STATISTICS & ANALYTICS - 📈 Thống Kê và Phân Tích
+## 5️⃣ STATISTICS & ANALYTICS - 📈 Thống Kê và Phân Tích
+
+> **Status**: ✅ Implemented trong v4.0
 
 ### **Trách nhiệm chính:**
 
@@ -208,7 +227,9 @@ class OneAutomationSystem:
 
 ---
 
-## 5️⃣ RECOMMENDATIONS ENGINE - 💡 Đề Xuất Giải Pháp
+## 6️⃣ RECOMMENDATIONS ENGINE - 💡 Đề Xuất Giải Pháp
+
+> **Status**: 🚧 In Development
 
 ### **Trách nhiệm chính:**
 
@@ -271,31 +292,36 @@ class OneAutomationSystem:
 4. ✅ Complete
 ```
 
-### **Luồng 2: Phân tích và Đề xuất**
+### **Luồng 3: Phân tích và Đề xuất**
 
 ```
 1. 📊 Google Sheets (có data mới)
    ↓
-2. 🧠 AI Service
+2. 🧠 AI Service (Port 8000)
    - Read data
    - Analyze trends
    - Detect anomalies
    - Optimize
    ↓
-3. 📈 Statistics Engine
+3. 🔧 Backend nhận kết quả
+   ↓
+4. 📈 Statistics Engine
    - Calculate metrics
    - Generate reports
    ↓
-4. 💡 Recommendations Engine
+5. 📡 WebSocket emit events:
+   - ai:update
+   - metrics:update
+   - notify:alert
+   ↓
+6. 🎨 Frontend cập nhật real-time
+   ↓
+7. 💡 Recommendations Engine (🚧 In Development)
    - Generate suggestions
    - Prioritize actions
-   ↓
-5. 📧 Notifications
-   - Email alerts
-   - Dashboard update
 ```
 
-### **Luồng 3: Tối ưu hóa**
+### **Luồng 4: Tối ưu hóa**
 
 ```
 1. 🧠 AI Service nhận optimization request
@@ -317,13 +343,68 @@ class OneAutomationSystem:
 
 ## 📋 BẢNG PHÂN CÔNG TRÁCH NHIỆM
 
-| Component | Trách nhiệm | Input | Output | Trigger |
-|-----------|-------------|-------|--------|---------|
-| **🤖 Automation** | Thu thập dữ liệu từ ONE | ONE Page API | Raw data → Processed data | Schedule/Manual |
-| **📊 Google Sheets** | Lưu trữ dữ liệu | Processed data | Stored data | Real-time |
-| **🧠 AI Service** | Phân tích thông minh | Stored data | Insights & Predictions | Schedule/On-demand |
-| **📈 Statistics** | Thống kê và báo cáo | Insights | Metrics & Reports | Schedule |
-| **💡 Recommendations** | Đề xuất giải pháp | Analysis results | Actionable recommendations | Continuous |
+| Component              | Trách nhiệm                  | Input             | Output                     | Trigger            | Port |
+| ---------------------- | ---------------------------- | ----------------- | -------------------------- | ------------------ | ---- |
+| **🎨 Frontend**        | Giao diện người dùng         | User interactions | UI updates                 | User actions       | 3000 |
+| **🔧 Backend**         | API Gateway, Auth, Real-time | API requests      | Responses, Events          | HTTP/WebSocket     | 3001 |
+| **🤖 Automation**      | Thu thập dữ liệu từ ONE      | ONE Page API      | Raw data → Processed data  | Schedule/Manual    | 8001 |
+| **📊 Google Sheets**   | Lưu trữ dữ liệu              | Processed data    | Stored data                | Real-time          | -    |
+| **🧠 AI Service**      | Phân tích thông minh         | Stored data       | Insights & Predictions     | Schedule/On-demand | 8000 |
+| **📈 Statistics**      | Thống kê và báo cáo          | Insights          | Metrics & Reports          | Schedule           | -    |
+| **💡 Recommendations** | Đề xuất giải pháp            | Analysis results  | Actionable recommendations | Continuous         | 🚧   |
+
+---
+
+## 🔒 SECURITY FEATURES (v4.0)
+
+### **Đã Implement:**
+
+✅ **Authentication**
+
+- JWT access tokens
+- Session management
+- Token refresh mechanism
+
+✅ **Multi-Factor Authentication (MFA)**
+
+- TOTP-based 2FA
+- QR code setup
+- Backup codes
+
+✅ **Single Sign-On (SSO)**
+
+- OAuth 2.0 / OpenID Connect
+- Google SSO
+- GitHub SSO
+
+✅ **Role-Based Access Control (RBAC)**
+
+- User roles (admin, manager, user)
+- Permission-based access
+- Fine-grained permissions
+
+✅ **Audit Logs**
+
+- Comprehensive logging system
+- User activity tracking
+- Security event logging
+- Real-time alerting
+
+---
+
+## 📡 REAL-TIME EVENTS (WebSocket)
+
+### **Events đã implement:**
+
+| Event            | Payload                   | Producer             | Consumer                    |
+| ---------------- | ------------------------- | -------------------- | --------------------------- |
+| `ai:update`      | { jobId, status, result } | AI Service → Backend | Frontend dashboards         |
+| `sheets:refresh` | { sheet, timestamp }      | Automation / Manual  | Frontend tables             |
+| `notify:alert`   | { type, level, message }  | Backend / Jobs       | User UI notification center |
+| `job:status`     | { jobId, progress }       | Automation           | Monitoring panel            |
+| `metrics:update` | { cpu, memory, users }    | Backend              | Live Dashboard              |
+| `auth:session`   | { userId, action }        | Backend              | Security Dashboard          |
+| `nlp:response`   | { query, result }         | NLP Service          | NLP Dashboard               |
 
 ---
 
@@ -332,30 +413,46 @@ class OneAutomationSystem:
 ### **1. Kiến trúc Microservices rõ ràng**
 
 ```
-automation/          → Thu thập dữ liệu
-├── automation.py
-├── main.py
-└── services/
+src/                 → Frontend React App
+├── components/
+├── store/
+├── services/
+└── App.jsx
+
+backend/             → Node.js Backend
+├── src/
+│   └── server.js
+└── package.json
 
 ai-service/          → Phân tích và tối ưu
 ├── ai_service.py
 ├── optimization/
 └── analysis/
 
-google-sheets/       → Lưu trữ và cung cấp
-├── service.py
-└── config.py
+automation/          → Thu thập dữ liệu
+├── automation.py
+├── main.py
+└── services/
 
-analytics/           → Thống kê và báo cáo (CẦN TẠO)
+shared-services/     → Shared services
+└── google-sheets/
+
+analytics/           → Thống kê và báo cáo (✅ Implemented)
 ├── statistics.py
 ├── reports.py
-└── recommendations.py
+└── recommendations.py (🚧 In Development)
 ```
 
 ### **2. Luồng dữ liệu chuẩn**
 
 ```
-ONE Page → Automation → Google Sheets → AI Service → Analytics → Recommendations
+User → Frontend (3000) → Backend (3001) → AI Service (8000)
+                                    ↓
+                            Google Sheets
+                                    ↓
+                            Automation (8001) → ONE Page
+                                    ↓
+                            Analytics → Recommendations (🚧)
 ```
 
 ### **3. API Gateway để điều phối**
@@ -404,10 +501,10 @@ async def get_recommendations():
 
 ### **Phase 3: Xây dựng Analytics Module**
 
-- ❌ Chưa có - CẦN TẠO
-- 📊 Statistics engine
-- 📈 Reports generator
-- 💡 Recommendations engine
+- ✅ Đã có - Analytics Module
+- ✅ Statistics engine
+- ✅ Reports generator
+- 🚧 Recommendations engine (In Development)
 
 ### **Phase 4: Tích hợp và Testing**
 
@@ -419,12 +516,16 @@ async def get_recommendations():
 
 ## ✅ CHECKLIST HÀNH ĐỘNG
 
-### **Ngay lập tức:**
+### **Đã hoàn thành:**
 
-- [ ] Tạo `analytics/` module mới
-- [ ] Implement statistics functions
-- [ ] Connect AI Service với Google Sheets
-- [ ] Tạo API Gateway để điều phối
+- [x] Tạo `analytics/` module
+- [x] Implement statistics functions
+- [x] Connect AI Service với Google Sheets
+- [x] Tạo API Gateway (Backend)
+- [x] Implement Security features (MFA, SSO, RBAC)
+- [x] Implement WebSocket real-time
+- [x] Implement NLP Dashboard
+- [x] Implement Smart Automation
 
 ### **Trong tuần:**
 
@@ -444,16 +545,37 @@ async def get_recommendations():
 
 ## 📝 TÓM TẮT
 
-**🤖 Automation** = Người lao động, thu thập dữ liệu
+**🎨 Frontend** = Giao diện người dùng, hiển thị và tương tác (Port 3000)
+**🔧 Backend** = Trung tâm điều khiển, API Gateway, Auth, Real-time (Port 3001)
+**🤖 Automation** = Người lao động, thu thập dữ liệu (Port 8001)
 **📊 Google Sheets** = Kho lưu trữ, trung tâm dữ liệu
-**🧠 AI Service** = Bộ não, phân tích thông minh
-**📈 Analytics** = Thống kê, đo lường hiệu suất
-**💡 Recommendations** = Cố vấn, đề xuất giải pháp
+**🧠 AI Service** = Bộ não, phân tích thông minh (Port 8000)
+**📈 Analytics** = Thống kê, đo lường hiệu suất (✅ Implemented)
+**💡 Recommendations** = Cố vấn, đề xuất giải pháp (🚧 In Development)
 
 **Luồng hoạt động:**
 
 ```
-Automation → Google Sheets → AI Service → Analytics → Recommendations
+User → Frontend → Backend → AI Service
+                    ↓
+            Google Sheets
+                    ↓
+            Automation → ONE Page
+                    ↓
+            Analytics → Recommendations (🚧)
 ```
 
 **Mục tiêu:** Tự động hóa toàn bộ quy trình từ thu thập → phân tích → đề xuất → hành động!
+
+---
+
+## 📚 LIÊN KẾT TÀI LIỆU
+
+- [ARCHITECTURE.md](./ARCHITECTURE.md) - High-level architecture overview
+- [README.md](./README.md) - Project overview và quick start
+- [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) - Hướng dẫn deployment
+
+---
+
+**Last Updated**: 2025-01-27  
+**Version**: 4.0

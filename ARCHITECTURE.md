@@ -1,7 +1,7 @@
 # 🏗️ SYSTEM ARCHITECTURE OVERVIEW
 
-> Version: 2025-09-26
-> Scope: Main integrated platform (MIA Logistics Manager + Backend + AI + Automation + Google Sheets)
+> Version: 2025-01-27
+> Scope: React OAS Integration v4.0 - Main integrated platform (Frontend + Backend + AI + Automation + Google Sheets)
 
 ---
 
@@ -31,15 +31,14 @@
 
 ## 2. SERVICE INVENTORY
 
-| Service                | Stack                               | Role                                 | Ports       | Scaling             |
-| ---------------------- | ----------------------------------- | ------------------------------------ | ----------- | ------------------- |
-| MIA Logistics Manager  | React + TS + MUI                    | Logistics UI ("One Page")            | 3000/Custom | Horizontal (static) |
-| Google Sheets Frontend | React                               | Sheets Ops & AI UI                   | 3002        | Horizontal          |
-| Main Backend           | Node.js + Express + Socket.IO       | Auth, API Aggregation, Notifications | 3001        | Horizontal          |
-| AI Service             | Python FastAPI                      | ML inference / analytics             | 8000        | CPU/Memory scale    |
-| Automation Service     | Python + Selenium + Streamlit       | Data scraping & RPA                  | Dynamic     | Worker scaling      |
-| Google Sheets          | External API                        | Primary structured datastore         | -           | Google infra        |
-| Notification Layer     | Nodemailer, Telegram Bot, Socket.IO | Multi-channel alerts                 | 3001/ws     | Shared              |
+| Service            | Stack                               | Role                                 | Ports   | Scaling          |
+| ------------------ | ----------------------------------- | ------------------------------------ | ------- | ---------------- |
+| Main Frontend      | React 18 + Redux + Ant Design       | Main Dashboard UI                    | 3000    | Horizontal       |
+| Main Backend       | Node.js + Express + Socket.IO       | Auth, API Aggregation, Notifications | 3001    | Horizontal       |
+| AI Service         | Python FastAPI                      | ML inference / analytics             | 8000    | CPU/Memory scale |
+| Automation Service | Python + Selenium                   | Data scraping & RPA                  | 8001    | Worker scaling   |
+| Google Sheets      | External API                        | Primary structured datastore         | -       | Google infra     |
+| Notification Layer | Nodemailer, Telegram Bot, Socket.IO | Multi-channel alerts                 | 3001/ws | Shared           |
 
 ---
 
@@ -88,13 +87,16 @@ Sheets → Backend cache refresh → WebSocket broadcast → UI refresh
 | Layer              | Mechanism                          | Status                      | Planned Improvement                         |
 | ------------------ | ---------------------------------- | --------------------------- | ------------------------------------------- |
 | Transport          | HTTPS (deployment target)          | Pending local dev uses HTTP | Add cert automation (Caddy / Let's Encrypt) |
-| Auth               | JWT access tokens                  | Implemented                 | Add refresh + rotation + token blacklist    |
-| Authorization      | Role-based checks                  | Present in MIA              | Centralize policy module                    |
-| Rate Limiting      | Express middleware (not confirmed) | To verify                   | Implement configurable limiter per route    |
-| Input Validation   | Basic (likely)                     | Partial                     | Add zod/envalid schemas shared              |
-| Secrets            | .env files                         | Scattered                   | Unify ENV_GUIDE + validation                |
-| Logging            | Console/loggers (loguru, rich)     | Fragmented                  | JSON structured logs + trace IDs            |
-| Dependency Hygiene | Requirements + package.json pinned | Good                        | Add automated audit (npm audit, pip-audit)  |
+| Auth               | JWT access tokens                  | ✅ Implemented              | Add refresh + rotation + token blacklist    |
+| MFA                | TOTP-based 2FA                     | ✅ Implemented              | SMS/Email backup codes                      |
+| SSO                | OAuth 2.0 / OpenID Connect         | ✅ Implemented              | Multiple provider support                   |
+| Authorization      | RBAC (Role-Based Access Control)   | ✅ Implemented              | Fine-grained permissions                    |
+| Audit Logs         | Comprehensive logging system       | ✅ Implemented              | Real-time alerting                          |
+| Rate Limiting      | Express middleware                 | ⚠️ To verify                | Implement configurable limiter per route    |
+| Input Validation   | Form validation + API validation   | ✅ Implemented              | Add zod/envalid schemas shared              |
+| Secrets            | .env files + secure storage        | ✅ Implemented              | Unify ENV_GUIDE + validation                |
+| Logging            | Structured logging                 | ✅ Implemented              | JSON structured logs + trace IDs            |
+| Dependency Hygiene | Requirements + package.json pinned | ✅ Good                     | Add automated audit (npm audit, pip-audit)  |
 
 ---
 
@@ -121,6 +123,9 @@ Events delivered via Socket.IO from Backend:
 | sheets:refresh | { sheet, timestamp }      | Automation / Manual  | Frontend tables             |
 | notify:alert   | { type, level, message }  | Backend / Jobs       | User UI notification center |
 | job:status     | { jobId, progress }       | Automation           | Monitoring panel            |
+| metrics:update | { cpu, memory, users }    | Backend              | Live Dashboard              |
+| auth:session   | { userId, action }        | Backend              | Security Dashboard          |
+| nlp:response   | { query, result }         | NLP Service          | NLP Dashboard               |
 
 Planned additions:
 
