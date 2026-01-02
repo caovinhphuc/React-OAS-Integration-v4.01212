@@ -139,3 +139,4 @@ Client disconnected: FsbQmel_xFro9kuyAAAd
 ::1 - - [02/Jan/2026:18:13:26 +0000] "GET /api/orders HTTP/1.1" 404 71 "-" "-"
 ::1 - - [02/Jan/2026:18:13:26 +0000] "GET /api/analytics HTTP/1.1" 404 74 "-" "-"
 ::1 - - [02/Jan/2026:18:13:26 +0000] "GET /api/statistics HTTP/1.1" 404 75 "-" "-"
+::1 - - [02/Jan/2026:18:18:26 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
