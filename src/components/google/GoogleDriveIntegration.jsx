@@ -523,6 +523,57 @@ const GoogleDriveIntegration = () => {
                             }}
                           />
                         </Tooltip>
+                        <Tooltip title="Xóa">
+                          <Button
+                            type="text"
+                            danger
+                            icon={<DeleteOutlined />}
+                            onClick={async (e) => {
+                              e.stopPropagation();
+                              console.log(
+                                "🗑️ Delete button clicked for folder:",
+                                folder.id,
+                                folder.name
+                              );
+
+                              Modal.confirm({
+                                title: `Xóa "${folder.name}"?`,
+                                content: "Thao tác này không thể hoàn tác.",
+                                okText: "Xóa",
+                                cancelText: "Hủy",
+                                okType: "danger",
+                                onOk: async () => {
+                                  console.log(
+                                    "🗑️ Delete confirmed for folder:",
+                                    folder.id,
+                                    folder.name
+                                  );
+                                  try {
+                                    console.log("📤 Calling deleteFile API...");
+                                    const result = await googleDriveApiService.deleteFile(
+                                      folder.id
+                                    );
+                                    console.log("✅ Delete API response:", result);
+                                    message.success("Đã xóa thành công!");
+                                    await loadFiles();
+                                  } catch (err) {
+                                    console.error("❌ Failed to delete folder:", err);
+                                    console.error(
+                                      "❌ Error details:",
+                                      err.response?.data || err.message
+                                    );
+                                    message.error(
+                                      `Lỗi xóa: ${err.message || "Không thể xóa folder"}`
+                                    );
+                                  }
+                                },
+                                onCancel: () => {
+                                  console.log("❌ Delete cancelled");
+                                },
+                              });
+                            }}
+                          />
+                        </Tooltip>
                       </Space>
                     </div>
                   </div>
@@ -602,6 +653,47 @@ const GoogleDriveIntegration = () => {
                               setSelectedItemForAction(file);
                               setRenameValue(file.name);
                               setShowRenameModal(true);
+                            }}
+                          />
+                        </Tooltip>
+                        <Tooltip title="Xóa">
+                          <Button
+                            type="text"
+                            danger
+                            icon={<DeleteOutlined />}
+                            onClick={async (e) => {
+                              e.stopPropagation();
+                              console.log("🗑️ Delete button clicked for file:", file.id, file.name);
+
+                              Modal.confirm({
+                                title: `Xóa "${file.name}"?`,
+                                content: "Thao tác này không thể hoàn tác.",
+                                okText: "Xóa",
+                                cancelText: "Hủy",
+                                okType: "danger",
+                                onOk: async () => {
+                                  console.log("🗑️ Delete confirmed for file:", file.id, file.name);
+                                  try {
+                                    console.log("📤 Calling deleteFile API...");
+                                    const result = await googleDriveApiService.deleteFile(file.id);
+                                    console.log("✅ Delete API response:", result);
+                                    message.success("Đã xóa thành công!");
+                                    await loadFiles();
+                                  } catch (err) {
+                                    console.error("❌ Failed to delete file:", err);
+                                    console.error(
+                                      "❌ Error details:",
+                                      err.response?.data || err.message
+                                    );
+                                    message.error(
+                                      `Lỗi xóa: ${err.message || "Không thể xóa file"}`
+                                    );
+                                  }
+                                },
+                                onCancel: () => {
+                                  console.log("❌ Delete cancelled");
+                                },
+                              });
                             }}
                           />
                         </Tooltip>

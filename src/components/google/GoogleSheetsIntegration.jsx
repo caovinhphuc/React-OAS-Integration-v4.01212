@@ -372,16 +372,21 @@ const GoogleSheetsIntegration = () => {
                           Google Sheets - {sheet.rowCount} hàng × {sheet.columnCount} cột
                         </div>
                         <div className="sheet-meta">
-                          <span className="sheet-trigger">📊 sheets</span>
-                          <span className="sheet-action">📅 sync</span>
+                          <span key="trigger" className="sheet-trigger">
+                            📊 sheets
+                          </span>
+                          <span key="action" className="sheet-action">
+                            📅 sync
+                          </span>
                         </div>
                         <div className="sheet-stats">
-                          <span>{sheet.rowCount} bản ghi</span>
-                          <span>100% hoàn thành</span>
+                          <span key="records">{sheet.rowCount} bản ghi</span>
+                          <span key="progress">100% hoàn thành</span>
                         </div>
                       </div>
                       <div className="sheet-actions">
                         <button
+                          key="open-link"
                           className="action-btn"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -392,6 +397,7 @@ const GoogleSheetsIntegration = () => {
                           🔗
                         </button>
                         <button
+                          key="add-column"
                           className="action-btn"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -402,6 +408,7 @@ const GoogleSheetsIntegration = () => {
                           ➕
                         </button>
                         <button
+                          key="add-row"
                           className="action-btn"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -412,6 +419,7 @@ const GoogleSheetsIntegration = () => {
                           📝
                         </button>
                         <button
+                          key="delete-empty"
                           className="action-btn"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -422,6 +430,7 @@ const GoogleSheetsIntegration = () => {
                           🗑️
                         </button>
                         <button
+                          key="view-id"
                           className="action-btn"
                           onClick={(e) => {
                             e.stopPropagation();

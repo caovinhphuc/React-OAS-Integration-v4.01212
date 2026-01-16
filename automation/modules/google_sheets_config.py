@@ -445,47 +445,107 @@ class GoogleSheetsConfigService:
             self.logger.error(f"❌ Error creating sample sheets: {e}")
             return False
 
-    def export_data_to_sheets(self, data: List[Dict[str, Any]], sheet_name: str = None) -> bool:
-        """Export dữ liệu automation ra Google Sheets"""
+    def export_data_to_sheets(self, data: List[Dict[str, Any]], sheet_name: str = None, 
+                               reuse_existing: bool = True, append_mode: bool = False) -> bool:
+        """
+        Export dữ liệu automation ra Google Sheets
+        
+        Args:
+            data: List of dictionaries to export
+            sheet_name: Name of the sheet (default: Automation_Data_YYYYMMDD_HHMMSS)
+            reuse_existing: If True, reuse existing sheet instead of creating new one
+            append_mode: If True, append data to existing sheet (requires reuse_existing=True)
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
         try:
             if not self.client or not self.spreadsheet:
-                return False
-
-            # Generate sheet name
-            if not sheet_name:
-                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-                sheet_name = f'Automation_Data_{timestamp}'
-
-            # Create new worksheet
-            try:
-                worksheet = self.spreadsheet.add_worksheet(
-                    title=sheet_name, rows=len(data) + 10, cols=20
-                )
-            except Exception as e:
-                self.logger.error(f"❌ Error creating worksheet: {e}")
                 return False
 
             if not data:
                 self.logger.warning("⚠️ No data to export")
                 return False
 
+            # Generate sheet name
+            if not sheet_name:
+                if reuse_existing and not append_mode:
+                    # Use fixed name for reusable sheets
+                    sheet_name = 'Automation_Data_Export'
+                else:
+                    # Use timestamp for one-time exports
+                    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                    sheet_name = f'Automation_Data_{timestamp}'
+
             # Prepare headers từ first row
             headers = list(data[0].keys())
 
             # Prepare data rows
-            rows = [headers]
+            rows = []
             for item in data:
                 row = [str(item.get(header, '')) for header in headers]
                 rows.append(row)
 
-            # Update sheet với data
-            worksheet.update(f'A1:{chr(65 + len(headers) - 1)}{len(rows)}', rows)
+            # Check if sheet exists
+            worksheet = None
+            sheet_exists = False
+            
+            try:
+                worksheet = self.spreadsheet.worksheet(sheet_name)
+                sheet_exists = True
+                self.logger.info(f"📋 Reusing existing sheet: '{sheet_name}'")
+            except gspread.WorksheetNotFound:
+                sheet_exists = False
 
-            # Format headers
-            worksheet.format('A1:' + chr(65 + len(headers) - 1) + '1', {
-                'backgroundColor': {'red': 0.2, 'green': 0.6, 'blue': 1.0},
-                'textFormat': {'bold': True, 'foregroundColor': {'red': 1, 'green': 1, 'blue': 1}}
-            })
+            # Create new worksheet if needed
+            if not sheet_exists or (not reuse_existing and sheet_exists):
+                if sheet_exists and not reuse_existing:
+                    # Sheet exists but we want new one - add timestamp
+                    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                    sheet_name = f'{sheet_name}_{timestamp}'
+                
+                try:
+                    worksheet = self.spreadsheet.add_worksheet(
+                        title=sheet_name, rows=len(data) + 10, cols=20
+                    )
+                    self.logger.info(f"✅ Created new sheet: '{sheet_name}'")
+                except Exception as e:
+                    self.logger.error(f"❌ Error creating worksheet: {e}")
+                    return False
+                
+                # Add headers for new sheet
+                worksheet.update('A1:' + chr(65 + len(headers) - 1) + '1', [headers])
+                
+                # Format headers
+                worksheet.format('A1:' + chr(65 + len(headers) - 1) + '1', {
+                    'backgroundColor': {'red': 0.2, 'green': 0.6, 'blue': 1.0},
+                    'textFormat': {'bold': True, 'foregroundColor': {'red': 1, 'green': 1, 'blue': 1}}
+                })
+                
+                # Append data rows
+                if rows:
+                    worksheet.append_rows(rows)
+            else:
+                # Sheet exists and reuse_existing=True
+                if append_mode:
+                    # Append data to existing sheet
+                    if rows:
+                        worksheet.append_rows(rows)
+                    self.logger.info(f"✅ Appended {len(rows)} records to sheet '{sheet_name}'")
+                else:
+                    # Clear and replace data
+                    worksheet.clear()
+                    # Add headers
+                    worksheet.update('A1:' + chr(65 + len(headers) - 1) + '1', [headers])
+                    # Format headers
+                    worksheet.format('A1:' + chr(65 + len(headers) - 1) + '1', {
+                        'backgroundColor': {'red': 0.2, 'green': 0.6, 'blue': 1.0},
+                        'textFormat': {'bold': True, 'foregroundColor': {'red': 1, 'green': 1, 'blue': 1}}
+                    })
+                    # Add data rows
+                    if rows:
+                        worksheet.append_rows(rows)
+                    self.logger.info(f"✅ Replaced data in sheet '{sheet_name}' ({len(rows)} records)")
 
             self.logger.info(f"✅ Exported {len(data)} records to sheet '{sheet_name}'")
             return True
@@ -747,7 +807,8 @@ def test_google_sheets_integration():
             {'order_id': '12345', 'customer': 'Test Customer', 'amount': '100000', 'status': 'completed'},
             {'order_id': '12346', 'customer': 'Test Customer 2', 'amount': '200000', 'status': 'pending'}
         ]
-        success = sheets_service.export_data_to_sheets(sample_data, 'Test_Export')
+        # Use fixed sheet name and reuse mode to avoid creating new sheets
+        success = sheets_service.export_data_to_sheets(sample_data, 'Test_Export', reuse_existing=True, append_mode=False)
         print(f"✅ Data export: {success}")
 
         # Test 8: Dashboard creation

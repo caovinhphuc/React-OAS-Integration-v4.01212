@@ -90,10 +90,24 @@ class GoogleDriveApiService {
    */
   async deleteFile(fileId) {
     try {
+      console.log(`🗑️ [googleDriveApiService] deleteFile called with fileId: ${fileId}`);
+      console.log(`📡 [googleDriveApiService] API URL: ${API_BASE_URL}/drive/files/${fileId}`);
+
       const response = await axios.delete(`${API_BASE_URL}/drive/files/${fileId}`);
-      return response.data.data;
+
+      console.log(`✅ [googleDriveApiService] Delete response:`, response.data);
+
+      // Backend returns {success: true, message, fileId} - not {data: {...}}
+      const result = response.data.success
+        ? { fileId: response.data.fileId || fileId, success: true }
+        : response.data;
+
+      console.log(`✅ [googleDriveApiService] Delete result:`, result);
+      return result;
     } catch (error) {
-      console.error("Error deleting file:", error);
+      console.error("❌ [googleDriveApiService] Error deleting file:", error);
+      console.error("❌ [googleDriveApiService] Error response:", error.response?.data);
+      console.error("❌ [googleDriveApiService] Error status:", error.response?.status);
       throw new Error(error.response?.data?.error || `Failed to delete file: ${error.message}`);
     }
   }

@@ -92,9 +92,10 @@ def main():
                 'notes': 'Verification test successful'
             }
         ]
-        sheet_name = f'Verification_{datetime.now().strftime("%Y%m%d_%H%M")}'
-        result = sheets_service.export_data_to_sheets(sample_data, sheet_name)
-        print(f"✅ Data export: {'Success' if result else 'Failed'}")
+        # Use fixed sheet name and append mode to avoid creating new sheets
+        sheet_name = 'Verification_Logs'
+        result = sheets_service.export_data_to_sheets(sample_data, sheet_name, reuse_existing=True, append_mode=True)
+        print(f"✅ Data export to '{sheet_name}': {'Success' if result else 'Failed'}")
 
         # Test 7: Create sample sheets
         print("\n🏗️ Testing sample sheets creation...")

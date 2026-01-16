@@ -1,11 +1,11 @@
 INFO:     Will watch for changes in these directories: ['/Users/phuccao/Projects/React-OAS-Integration-v4.0/ai-service']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [72606] using WatchFiles
-INFO:     Started server process [72609]
+INFO:     Started reloader process [25094] using WatchFiles
+INFO:     Started server process [25097]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [72609]
-INFO:     Stopping reloader process [72606]
+INFO:     Finished server process [25097]
+INFO:     Stopping reloader process [25094]

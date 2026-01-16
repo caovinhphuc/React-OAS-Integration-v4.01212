@@ -175,8 +175,9 @@ def test_logging_functions():
             }
         ]
 
-        sheet_name = f'Verification_{datetime.now().strftime("%Y%m%d_%H%M")}'
-        success = sheets_service.export_data_to_sheets(sample_data, sheet_name)
+        # Use fixed sheet name and append mode to avoid creating new sheets
+        sheet_name = 'Verification_Logs'
+        success = sheets_service.export_data_to_sheets(sample_data, sheet_name, reuse_existing=True, append_mode=True)
         print(f"✅ Data export to '{sheet_name}': {'Success' if success else 'Failed'}")
 
         return True

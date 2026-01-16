@@ -171,8 +171,9 @@ def run_automation_with_sheets_logging():
                 }
             ]
 
-            sheet_name = f'Results_{datetime.now().strftime("%Y%m%d_%H%M")}'
-            sheets_service.export_data_to_sheets(sample_results, sheet_name)
+            # Use fixed sheet name and append mode to avoid creating new sheets
+            sheet_name = 'Automation_Results'
+            sheets_service.export_data_to_sheets(sample_results, sheet_name, reuse_existing=True, append_mode=True)
             print(f"📤 Results exported to sheet: {sheet_name}")
 
         print("\n" + "=" * 70)

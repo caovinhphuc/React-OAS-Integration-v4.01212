@@ -236,8 +236,9 @@ def run_complete_automation():
                 }
             ]
 
-            result_sheet = f'Complete_Results_{start_time.strftime("%Y%m%d_%H%M")}'
-            sheets_service.export_data_to_sheets(detailed_results, result_sheet)
+            # Use fixed sheet name and append mode to avoid creating new sheets
+            result_sheet = 'Automation_Results'
+            sheets_service.export_data_to_sheets(detailed_results, result_sheet, reuse_existing=True, append_mode=True)
             print(f"📊 Detailed results exported to: {result_sheet}")
 
         # Display final summary
