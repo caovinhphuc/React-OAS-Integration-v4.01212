@@ -160,7 +160,7 @@ start_frontend() {
     cd "$(dirname "$0")"
 
     # Start React development server
-    npm run dev > logs/frontend.log 2>&1 &
+    PORT=3000 BROWSER=none npm run start > logs/frontend.log 2>&1 &
     FRONTEND_PID=$!
 
     print_success "Frontend started with PID: $FRONTEND_PID"
