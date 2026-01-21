@@ -11,7 +11,7 @@
     "cargo:info": "Detailed cargo information with location",
     "tools:check": "Check all development tools (node, npm, cargo, rustc, python, pip)",
     "analyze:all": "Complete analysis including cargo status",
-    
+
     "build:optimized": "Optimized production build with post-processing",
     "analyze:full": "Complete bundle analysis with stats",
     "analyze:auto": "Auto-analysis with optimization suggestions",
@@ -52,6 +52,7 @@ npm run cargo:check
 ```
 
 **Output**:
+
 ```
 cargo 1.92.0 (Homebrew)
 ```
@@ -63,6 +64,7 @@ npm run cargo:info
 ```
 
 **Output**:
+
 ```
 🦀 Cargo Status:
 
@@ -77,12 +79,13 @@ npm run tools:check
 ```
 
 **Output**:
+
 ```
 🔧 Development Tools Check:
 
 ✅ node       - JavaScript Runtime
    v24.13.0
-✅ npm        - Package Manager  
+✅ npm        - Package Manager
    11.6.2
 ⚪ cargo      - Rust Package Manager (Optional)
    1.92.0 (optional)
@@ -103,6 +106,7 @@ npm run analyze:full
 ```
 
 Runs:
+
 1. `build:stats` - Generate webpack stats
 2. `analyze:bundle` - Analyze JavaScript chunks
 3. `analyze:deps` - Check dependencies
@@ -115,6 +119,7 @@ npm run analyze:auto
 ```
 
 Automatically:
+
 1. Runs full analysis
 2. Generates optimization suggestions
 3. Creates `OPTIMIZATION_SUGGESTIONS.md`
@@ -126,6 +131,7 @@ npm run build:optimized
 ```
 
 Features:
+
 1. Production build without source maps
 2. Post-build optimization
 3. File compression
