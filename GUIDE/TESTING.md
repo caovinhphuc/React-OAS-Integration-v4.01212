@@ -3302,7 +3302,988 @@ Week | Coverage | Tests | Pass Rate | Avg Time | Issues Found
 
 ---
 
-**Last Updated:** December 19, 2025
+## 🎬 Getting Started with Testing (Bắt Đầu Ngay)
+
+### Quick Start Guide
+
+**1. Kiểm tra hệ thống:**
+
+```bash
+# Run health check
+npm run health-check
+
+# Verify test setup
+npm test -- --version
+```
+
+**2. Chạy existing tests:**
+
+```bash
+# Frontend tests
+npm test
+
+# Integration tests
+npm run test:complete
+
+# Backend tests
+cd automation/one_automation_system
+python run_tests.py
+```
+
+**3. Bắt đầu viết tests:**
+
+```bash
+# Tạo test file mới
+touch src/components/YourComponent.test.js
+
+# Copy từ template
+cp src/components/__tests__/Component.test.js.template src/components/YourComponent.test.js
+
+# Edit và run
+npm test -- YourComponent.test.js
+```
+
+### Test Writing Workflow
+
+**Step 1: Identify Test Target**
+
+- Chọn component/service cần test
+- Xác định critical paths
+- List ra test cases
+
+**Step 2: Write Test**
+
+- Setup test file
+- Write first test (render/basic)
+- Add interaction tests
+- Add error handling tests
+
+**Step 3: Run & Verify**
+
+- Run test: `npm test -- YourComponent.test.js`
+- Check coverage: `npm run test:coverage`
+- Fix any failures
+- Refactor if needed
+
+**Step 4: Integrate & Commit**
+
+- Run full test suite: `npm test`
+- Verify no regressions
+- Commit with meaningful message
+- Create PR with test coverage
+
+### Example: Complete Test Flow
+
+```bash
+# 1. Create component test
+touch src/components/UserProfile/UserProfile.test.js
+
+# 2. Write basic test
+cat > src/components/UserProfile/UserProfile.test.js << 'EOF'
+import { render, screen } from '@testing-library/react';
+import UserProfile from './UserProfile';
+
+describe('UserProfile', () => {
+  test('renders user name', () => {
+    render(<UserProfile name="John Doe" />);
+    expect(screen.getByText('John Doe')).toBeInTheDocument();
+  });
+});
+EOF
+
+# 3. Run test
+npm test -- UserProfile.test.js
+
+# 4. Check coverage
+npm run test:coverage -- UserProfile.test.js
+
+# 5. Commit
+git add src/components/UserProfile/UserProfile.test.js
+git commit -m "test: add UserProfile component tests"
+```
+
+---
+
+## 🔄 Continuous Testing Strategy
+
+### Development Workflow
+
+**Pre-commit:**
+
+```bash
+# Run tests before commit
+npm test -- --coverage --watchAll=false
+
+# Or use git hooks (husky)
+# Automatically runs tests on git commit
+```
+
+**During Development:**
+
+```bash
+# Watch mode for fast feedback
+npm test
+
+# Run only changed files
+npm test -- --onlyChanged
+
+# Run specific test file
+npm test -- ComponentName.test.js
+```
+
+**Pre-deployment:**
+
+```bash
+# Run complete test suite
+npm run test:all
+
+# Run integration tests
+npm run test:complete
+
+# Run health checks
+npm run health:full
+
+# Build and test production bundle
+npm run build && npm run test:ci
+```
+
+### CI/CD Integration
+
+**GitHub Actions Example:**
+
+```yaml
+# .github/workflows/test.yml
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - run: npm ci
+      - run: npm test -- --coverage --watchAll=false
+      - run: npm run build
+
+  test-integration:
+    runs-on: ubuntu-latest
+    needs: test-frontend
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm ci
+      - run: npm run test:complete
+
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: |
+          cd automation/one_automation_system
+          pip install -r requirements.txt
+          python run_tests.py
+```
+
+### Testing in Different Environments
+
+**Local Development:**
+
+```bash
+# Use .env.development
+npm test
+
+# Fast feedback, mock external services
+```
+
+**Staging:**
+
+```bash
+# Use .env.staging
+npm run test:integration
+
+# Test with staging APIs
+```
+
+**Production:**
+
+```bash
+# Use .env.production
+npm run test:e2e
+
+# Smoke tests only, real data
+```
+
+---
+
+## 📊 Test Coverage Analysis
+
+### Understanding Coverage Metrics
+
+**Statement Coverage:**
+
+- Percentage of code statements executed
+- Goal: 70%+ for most code, 85%+ for critical
+
+**Branch Coverage:**
+
+- Percentage of conditional branches tested
+- Important for if/else, switch cases
+- Goal: 70%+
+
+**Function Coverage:**
+
+- Percentage of functions called
+- Goal: 70%+
+
+**Line Coverage:**
+
+- Percentage of code lines executed
+- Similar to statement coverage
+- Goal: 70%+
+
+### Analyzing Coverage Reports
+
+```bash
+# Generate coverage report
+npm run test:coverage
+
+# Open HTML report
+open coverage/lcov-report/index.html
+
+# View in terminal
+cat coverage/coverage-summary.json | jq
+```
+
+**Reading Coverage Report:**
+
+```
+File                   | % Stmts | % Branch | % Funcs | % Lines |
+-----------------------|---------|----------|---------|---------|
+All files              |   65.5  |   58.2   |   70.1  |   65.8  |
+ src/                  |   72.3  |   65.4   |   78.9  |   72.5  |
+  auth/                |   85.2  |   78.3   |   90.1  |   85.4  |
+   Login.jsx           |   92.5  |   87.5   |   100   |   93.2  | ✅ Excellent
+   ProtectedRoute.jsx  |   78.3  |   70.0   |   80.0  |   77.9  | ✅ Good
+  components/          |   45.2  |   38.7   |   52.3  |   44.8  | ⚠️ Needs work
+```
+
+**Coverage Improvement Strategy:**
+
+1. **Identify gaps:** Find files with < 50% coverage
+2. **Prioritize:** Focus on critical/frequently used
+3. **Write tests:** Add tests for uncovered branches
+4. **Refactor:** Sometimes improve testability
+5. **Review:** Check if 100% coverage is necessary
+
+### Coverage Goals by Phase
+
+**Phase 1 (Foundation):**
+
+- Overall: 15-20%
+- Critical files: 80%+
+- Auth components: 90%+
+
+**Phase 2 (High-Value):**
+
+- Overall: 45-50%
+- Core features: 70%+
+- Services: 75%+
+
+**Phase 3 (Backend & Integration):**
+
+- Overall: 65-70%
+- Integration tests: 60%+
+- Backend: 70%+
+
+**Phase 4 (E2E & Polish):**
+
+- Overall: 80%+
+- E2E flows: 85%+
+- Production-ready
+
+---
+
+## 🐛 Debugging Tests
+
+### Common Test Failures & Solutions
+
+**1. Test Timeout**
+
+```javascript
+// Problem: Async test doesn't complete
+test("async test", async () => {
+  await fetchData(); // Times out
+});
+
+// Solution 1: Increase timeout
+test("async test", async () => {
+  await fetchData();
+}, 10000); // 10 seconds
+
+// Solution 2: Use waitFor
+test("async test", async () => {
+  render(<Component />);
+  await waitFor(
+    () => {
+      expect(screen.getByText("Data loaded")).toBeInTheDocument();
+    },
+    { timeout: 5000 }
+  );
+});
+```
+
+**2. Element Not Found**
+
+```javascript
+// Problem: Element not in document
+test("finds element", () => {
+  render(<Component />);
+  expect(screen.getByText("Hello")).toBeInTheDocument(); // ❌ Not found
+});
+
+// Solution 1: Check if async
+test("finds element", async () => {
+  render(<Component />);
+  expect(await screen.findByText("Hello")).toBeInTheDocument(); // ✅
+});
+
+// Solution 2: Check actual output
+test("debug output", () => {
+  render(<Component />);
+  screen.debug(); // Print actual DOM
+});
+
+// Solution 3: Use query variant
+test("check if not exists", () => {
+  render(<Component />);
+  expect(screen.queryByText("Hello")).not.toBeInTheDocument(); // ✅
+});
+```
+
+**3. Mock Not Working**
+
+```javascript
+// Problem: Mock not applied
+jest.mock("./api");
+import { fetchData } from "./api";
+
+test("mock test", async () => {
+  fetchData.mockResolvedValue({ data: [] }); // ❌ Not a function
+});
+
+// Solution: Import after mock
+jest.mock("./api", () => ({
+  fetchData: jest.fn(),
+}));
+
+test("mock test", async () => {
+  const { fetchData } = require("./api");
+  fetchData.mockResolvedValue({ data: [] }); // ✅
+});
+```
+
+**4. Redux State Issues**
+
+```javascript
+// Problem: Redux state not updating
+test("redux test", () => {
+  const { getByRole } = render(
+    <Provider store={store}>
+      <Component />
+    </Provider>
+  );
+  fireEvent.click(getByRole("button"));
+  // State not updated
+});
+
+// Solution: Create fresh store for each test
+import { configureStore } from "@reduxjs/toolkit";
+
+test("redux test", () => {
+  const store = configureStore({
+    reducer: { auth: authReducer },
+  });
+
+  const { getByRole } = render(
+    <Provider store={store}>
+      <Component />
+    </Provider>
+  );
+
+  fireEvent.click(getByRole("button"));
+  expect(store.getState().auth.value).toBe(1); // ✅
+});
+```
+
+**5. Flaky Tests**
+
+```javascript
+// Problem: Test fails intermittently
+test("flaky test", () => {
+  render(<Component />);
+  const button = screen.getByRole("button");
+  fireEvent.click(button);
+  expect(screen.getByText("Clicked")).toBeInTheDocument(); // Sometimes fails
+});
+
+// Solution: Use waitFor for async updates
+test("stable test", async () => {
+  render(<Component />);
+  const button = screen.getByRole("button");
+  fireEvent.click(button);
+
+  await waitFor(() => {
+    expect(screen.getByText("Clicked")).toBeInTheDocument();
+  });
+});
+```
+
+### Debugging Tools
+
+**1. React Testing Library Debug:**
+
+```javascript
+test("debug test", () => {
+  const { debug, container } = render(<Component />);
+
+  // Print entire DOM
+  debug();
+
+  // Print specific element
+  debug(container.firstChild);
+
+  // Pretty print
+  console.log(prettyDOM(container));
+});
+```
+
+**2. Jest Debug:**
+
+```bash
+# Run with Node debugger
+node --inspect-brk node_modules/.bin/jest --runInBand
+
+# Open chrome://inspect in Chrome
+# Set breakpoints in test file
+```
+
+**3. VS Code Debugging:**
+
+```json
+// .vscode/launch.json
+{
+  "type": "node",
+  "request": "launch",
+  "name": "Jest Debug",
+  "program": "${workspaceFolder}/node_modules/.bin/jest",
+  "args": ["--runInBand", "--no-cache", "${file}"],
+  "console": "integratedTerminal",
+  "internalConsoleOptions": "neverOpen"
+}
+```
+
+---
+
+## 📖 Testing Patterns & Examples
+
+### Pattern 1: Testing Forms
+
+```javascript
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import LoginForm from "./LoginForm";
+
+describe("LoginForm", () => {
+  test("submits form with valid data", async () => {
+    const onSubmit = jest.fn();
+    render(<LoginForm onSubmit={onSubmit} />);
+
+    // Type in inputs
+    await userEvent.type(screen.getByLabelText("Email"), "user@example.com");
+    await userEvent.type(screen.getByLabelText("Password"), "password123");
+
+    // Submit form
+    fireEvent.click(screen.getByRole("button", { name: /login/i }));
+
+    // Wait for submission
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({
+        email: "user@example.com",
+        password: "password123",
+      });
+    });
+  });
+
+  test("shows validation errors", async () => {
+    render(<LoginForm />);
+
+    // Submit without filling
+    fireEvent.click(screen.getByRole("button", { name: /login/i }));
+
+    // Check errors
+    expect(await screen.findByText("Email is required")).toBeInTheDocument();
+    expect(screen.getByText("Password is required")).toBeInTheDocument();
+  });
+});
+```
+
+### Pattern 2: Testing API Calls
+
+```javascript
+import axios from "axios";
+import { render, screen, waitFor } from "@testing-library/react";
+import UserList from "./UserList";
+
+jest.mock("axios");
+
+describe("UserList", () => {
+  test("loads and displays users", async () => {
+    const users = [
+      { id: 1, name: "John Doe" },
+      { id: 2, name: "Jane Smith" },
+    ];
+
+    axios.get.mockResolvedValue({ data: users });
+
+    render(<UserList />);
+
+    // Loading state
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+
+    // Wait for data
+    await waitFor(() => {
+      expect(screen.getByText("John Doe")).toBeInTheDocument();
+      expect(screen.getByText("Jane Smith")).toBeInTheDocument();
+    });
+
+    // Verify API called
+    expect(axios.get).toHaveBeenCalledWith("/api/users");
+  });
+
+  test("handles API error", async () => {
+    axios.get.mockRejectedValue(new Error("Network error"));
+
+    render(<UserList />);
+
+    await waitFor(() => {
+      expect(screen.getByText("Error: Network error")).toBeInTheDocument();
+    });
+  });
+});
+```
+
+### Pattern 3: Testing Redux Connected Components
+
+```javascript
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import Counter from "./Counter";
+import counterReducer from "./counterSlice";
+
+describe("Counter with Redux", () => {
+  let store;
+
+  beforeEach(() => {
+    store = configureStore({
+      reducer: { counter: counterReducer },
+    });
+  });
+
+  test("increments counter", () => {
+    render(
+      <Provider store={store}>
+        <Counter />
+      </Provider>
+    );
+
+    const button = screen.getByRole("button", { name: /increment/i });
+    const count = screen.getByTestId("count");
+
+    expect(count).toHaveTextContent("0");
+
+    fireEvent.click(button);
+    expect(count).toHaveTextContent("1");
+
+    fireEvent.click(button);
+    expect(count).toHaveTextContent("2");
+  });
+
+  test("dispatches correct actions", () => {
+    const initialState = { counter: { value: 0 } };
+    const mockStore = configureStore({
+      reducer: { counter: counterReducer },
+      preloadedState: initialState,
+    });
+
+    render(
+      <Provider store={mockStore}>
+        <Counter />
+      </Provider>
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /increment/i }));
+
+    const state = mockStore.getState();
+    expect(state.counter.value).toBe(1);
+  });
+});
+```
+
+### Pattern 4: Testing Routing
+
+```javascript
+import { render, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./Navigation";
+import Home from "./Home";
+import About from "./About";
+
+describe("Navigation", () => {
+  test("navigates to different pages", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    // Initially on Home
+    expect(screen.getByText("Home Page")).toBeInTheDocument();
+
+    // Navigate to About
+    fireEvent.click(screen.getByRole("link", { name: /about/i }));
+    expect(screen.getByText("About Page")).toBeInTheDocument();
+  });
+
+  test("redirects to login for protected routes", () => {
+    render(
+      <MemoryRouter initialEntries={["/dashboard"]}>
+        <Routes>
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    // Should redirect to login
+    expect(screen.getByText("Login Page")).toBeInTheDocument();
+  });
+});
+```
+
+### Pattern 5: Testing Hooks
+
+```javascript
+import { renderHook, act } from "@testing-library/react";
+import { useCounter } from "./useCounter";
+
+describe("useCounter", () => {
+  test("increments counter", () => {
+    const { result } = renderHook(() => useCounter());
+
+    expect(result.current.count).toBe(0);
+
+    act(() => {
+      result.current.increment();
+    });
+
+    expect(result.current.count).toBe(1);
+  });
+
+  test("decrements counter", () => {
+    const { result } = renderHook(() => useCounter(10));
+
+    expect(result.current.count).toBe(10);
+
+    act(() => {
+      result.current.decrement();
+    });
+
+    expect(result.current.count).toBe(9);
+  });
+
+  test("resets counter", () => {
+    const { result } = renderHook(() => useCounter());
+
+    act(() => {
+      result.current.increment();
+      result.current.increment();
+    });
+
+    expect(result.current.count).toBe(2);
+
+    act(() => {
+      result.current.reset();
+    });
+
+    expect(result.current.count).toBe(0);
+  });
+});
+```
+
+---
+
+## 🎓 Advanced Testing Topics
+
+### Testing WebSocket Connections
+
+```javascript
+import { renderHook } from "@testing-library/react";
+import { useWebSocket } from "./useWebSocket";
+import { io } from "socket.io-client";
+
+jest.mock("socket.io-client");
+
+describe("useWebSocket", () => {
+  let mockSocket;
+
+  beforeEach(() => {
+    mockSocket = {
+      on: jest.fn(),
+      emit: jest.fn(),
+      disconnect: jest.fn(),
+      connected: true,
+    };
+
+    io.mockReturnValue(mockSocket);
+  });
+
+  test("connects to WebSocket", () => {
+    const { result } = renderHook(() => useWebSocket("http://localhost:3001"));
+
+    expect(io).toHaveBeenCalledWith("http://localhost:3001");
+    expect(mockSocket.on).toHaveBeenCalledWith("connect", expect.any(Function));
+  });
+
+  test("handles messages", () => {
+    const onMessage = jest.fn();
+    renderHook(() => useWebSocket("http://localhost:3001", { onMessage }));
+
+    const messageHandler = mockSocket.on.mock.calls.find((call) => call[0] === "message")[1];
+
+    messageHandler({ data: "test" });
+    expect(onMessage).toHaveBeenCalledWith({ data: "test" });
+  });
+});
+```
+
+### Testing Performance
+
+```javascript
+import { render } from "@testing-library/react";
+import { performance } from "perf_hooks";
+import HeavyComponent from "./HeavyComponent";
+
+describe("HeavyComponent Performance", () => {
+  test("renders within performance budget", () => {
+    const start = performance.now();
+
+    render(<HeavyComponent data={largeDataset} />);
+
+    const end = performance.now();
+    const renderTime = end - start;
+
+    expect(renderTime).toBeLessThan(100); // 100ms budget
+  });
+});
+```
+
+### Testing Accessibility
+
+```javascript
+import { render } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
+import Button from "./Button";
+
+expect.extend(toHaveNoViolations);
+
+describe("Button Accessibility", () => {
+  test("has no accessibility violations", async () => {
+    const { container } = render(<Button>Click me</Button>);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  test("is keyboard navigable", () => {
+    const { getByRole } = render(<Button>Click me</Button>);
+    const button = getByRole("button");
+
+    button.focus();
+    expect(button).toHaveFocus();
+  });
+
+  test("has proper ARIA attributes", () => {
+    const { getByRole } = render(<Button aria-label="Submit form">Submit</Button>);
+
+    expect(getByRole("button")).toHaveAttribute("aria-label", "Submit form");
+  });
+});
+```
+
+---
+
+## 📚 Additional Testing Resources
+
+### Recommended Reading
+
+**Books:**
+
+- "Testing JavaScript Applications" - Lucas da Costa
+- "The Art of Unit Testing" - Roy Osherove
+- "Test-Driven Development with React" - Trevor Burnham
+
+**Articles:**
+
+- [Testing Library Best Practices](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
+- [React Testing Library Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet)
+- [Jest Cheat Sheet](https://github.com/sapegin/jest-cheat-sheet)
+
+**Video Courses:**
+
+- Kent C. Dodds - Testing JavaScript
+- Testing React with Jest and React Testing Library
+- Advanced React Testing Patterns
+
+### Community & Support
+
+**Forums:**
+
+- [Testing Library Discord](https://discord.gg/testing-library)
+- [Jest Community](https://jestjs.io/community)
+- [React Testing Library Discussions](https://github.com/testing-library/react-testing-library/discussions)
+
+**Stack Overflow Tags:**
+
+- [jest](https://stackoverflow.com/questions/tagged/jest)
+- [react-testing-library](https://stackoverflow.com/questions/tagged/react-testing-library)
+- [testing](https://stackoverflow.com/questions/tagged/testing)
+
+---
+
+## 🏆 Testing Success Stories
+
+### Before Testing:
+
+- ❌ Bugs found in production
+- ❌ Fear of refactoring
+- ❌ Slow development feedback
+- ❌ Manual testing overhead
+- ❌ Low confidence in deployments
+
+### After Testing (80% Coverage):
+
+- ✅ Bugs caught before production
+- ✅ Safe refactoring
+- ✅ Fast feedback loop
+- ✅ Automated regression testing
+- ✅ Confident deployments
+- ✅ Reduced debugging time
+- ✅ Better code documentation
+- ✅ Team productivity increased
+
+### ROI of Testing
+
+**Investment:**
+
+- ~2-3 weeks setup (Phase 1-2)
+- ~20-30% development time for tests
+
+**Returns:**
+
+- 60-80% reduction in production bugs
+- 50% faster debugging
+- 40% faster onboarding (tests as docs)
+- 90% confidence in deployments
+- Saved thousands of hours in manual testing
+
+---
+
+## 🎯 Final Checklist - Production Ready
+
+### Pre-Production Testing Checklist
+
+**✅ Unit Tests:**
+
+- [ ] All critical components tested
+- [ ] All services tested
+- [ ] All utilities tested
+- [ ] Coverage >= 70%
+
+**✅ Integration Tests:**
+
+- [ ] Redux store tested
+- [ ] API integration tested
+- [ ] Routing tested
+- [ ] WebSocket tested
+
+**✅ E2E Tests:**
+
+- [ ] Critical user flows tested
+- [ ] Error scenarios tested
+- [ ] Cross-browser tested
+
+**✅ Performance Tests:**
+
+- [ ] Load time tested
+- [ ] API response time tested
+- [ ] Memory usage verified
+
+**✅ Security Tests:**
+
+- [ ] Authentication tested
+- [ ] Authorization tested
+- [ ] Input validation tested
+- [ ] XSS prevention verified
+
+**✅ Accessibility Tests:**
+
+- [ ] Keyboard navigation tested
+- [ ] Screen reader compatibility
+- [ ] ARIA labels verified
+
+**✅ CI/CD:**
+
+- [ ] Tests run on every PR
+- [ ] Tests run before deployment
+- [ ] Coverage reports generated
+- [ ] Test failures block deployment
+
+**✅ Documentation:**
+
+- [ ] Test strategy documented
+- [ ] Test cases documented
+- [ ] Coverage requirements defined
+- [ ] Team trained on testing
+
+---
+
+**Last Updated:** January 19, 2026
 **Version:** 4.0.0
-**Status:** ✅ Complete and Up-to-Date
+**Status:** ✅ Complete and Production-Ready
 **Maintained by:** Development Team
+
+**Changelog:**
+
+- **v4.0.0 (Jan 19, 2026):** Complete testing guide with implementation roadmap
+- **v3.5.0 (Dec 19, 2025):** Added E2E testing phase
+- **v3.0.0 (Dec 15, 2025):** Added backend testing section
+- **v2.0.0 (Dec 10, 2025):** Added integration testing
+- **v1.0.0 (Dec 5, 2025):** Initial testing setup
