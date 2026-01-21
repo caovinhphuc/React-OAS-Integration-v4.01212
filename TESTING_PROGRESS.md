@@ -1,113 +1,185 @@
-# 🧪 Testing Progress Update
+# 🧪 Testing Progress - Updated Status
 
-## ✅ Fixed Issues
+## 📊 Current Test Infrastructure
 
-### 1. MatchMedia Mock Fixed ✅
-
-- **Problem**: Ant Design responsiveObserver was failing with "Cannot destructure property 'matches'"
-- **Solution**: Created proper MediaQueryList mock in `setupTests.js`
-- **Status**: ✅ RESOLVED - Tests can now render Ant Design components
-
-### 2. Test Scripts Added ✅
-
-- Added `test:coverage` script to package.json
-- Added `test:ci` script for CI/CD
-- **Status**: ✅ COMPLETE
-
-## 📊 Current Test Status
-
-**Login Component Tests:**
-
-- ✅ **20 tests passing** (100%) 🎉
-- ❌ **0 tests failing** (0%)
-- **Total**: 20 tests
-
-**All Tests Passing:**
-
-1. ✅ should render login form
-2. ✅ should show register form when switching to register
-3. ✅ should show SSO login buttons
-4. ✅ should show error when email is empty
-5. ✅ should show error when password is empty
-6. ✅ should show error for invalid email format
-7. ✅ should show error for password too short
-8. ✅ should call loginUser with correct credentials
-9. ✅ should store token in localStorage on successful login
-10. ✅ should update Redux store on successful login
-11. ✅ should show error message on login failure
-12. ✅ should redirect to MFA page when MFA is required
-13. ✅ should call registerUser when submitting registration form
-14. ✅ should show error when passwords do not match
-15. ✅ should show info message when clicking SSO button
-16. ✅ should redirect to home if already authenticated
-17. ✅ should redirect to returnUrl if provided
-18. ✅ should show loading state when submitting
-19. ✅ should display error message from API
-20. ✅ should allow closing error message
-
-**Fixed Issues:**
-
-- ✅ Fixed multiple button selector issue (using helper function `getLoginSubmitButton`)
-- ✅ Fixed router hooks mocking (useNavigate, useSearchParams)
-- ✅ Fixed Ant Design message API mocking
-- ✅ Fixed password input selectors (using array index for multiple inputs)
-
-## 🔧 Next Steps
-
-### Immediate Fixes Needed:
-
-1. **Update test selectors** - Use more specific queries to avoid multiple element matches
-2. **Mock router hooks properly** - Ensure useNavigate and useSearchParams are mocked correctly
-3. **Fix remaining test assertions** - Adjust tests based on actual component behavior
-
-### Example Fix for Button Selector:
-
-```javascript
-// Instead of:
-screen.getByRole("button", { name: /đăng nhập/i });
-
-// Use:
-screen.getAllByRole("button").find((btn) => btn.textContent.includes("Đăng nhập"));
-// Or use data-testid attributes
-```
-
-## 📈 Infrastructure Status
-
-### ✅ Completed:
+### ✅ Completed Infrastructure:
 
 - [x] Test utilities (`src/utils/test-utils.js`)
-- [x] Login component test file (`src/components/auth/__tests__/Login.test.jsx`)
+- [x] Test setup configuration (`src/setupTests.js`)
+- [x] MatchMedia mock for Ant Design
 - [x] API mocking infrastructure (`src/__mocks__/`)
 - [x] Test fixtures (`src/__fixtures__/`)
-- [x] MatchMedia mock fix
-- [x] SetupTests configuration
 - [x] Test scripts in package.json
+  - `npm test` - Interactive test runner
+  - `npm run test:ci` - CI mode with coverage
+  - `npm run test:coverage` - Coverage report
 
-### ✅ Completed Recently:
+### ⚠️ Current Status:
 
-- [x] Fix test selectors for multiple elements ✅
-- [x] Verify all 20 Login tests pass ✅
-- [ ] Add ProtectedRoute component tests (Next)
-- [ ] Add ErrorBoundary component tests (Next)
+**Test Suites:** 3 test files found
 
-## 🎯 Coverage Goals
+- `src/App.test.js`
+- `src/components/auth/__tests__/Login.test.jsx`
+- `src/components/auth/__tests__/ProtectedRoute.test.jsx`
 
-**Week 1 Target:** 15-20% coverage
-**Current Status:** ~5% (20 passing tests for Login component, infrastructure complete)
+**Issue:** Tests are failing due to module resolution for `react-router-dom`
 
-**Next Milestones:**
+```
+Cannot find module 'react-router-dom'
+```
 
-- Complete Login component tests (20 tests) → ~5% coverage
-- Add ProtectedRoute tests → ~6% coverage
-- Add ErrorBoundary tests → ~7% coverage
+**Root Cause:** The module is in package.json dependencies but Jest cannot resolve it properly.
 
-## 💡 Key Learnings
+## ✅ Test Coverage Report
 
-1. **Ant Design Testing**: Requires proper matchMedia mock setup
-2. **Test Selectors**: Need to be specific when components have multiple similar elements
-3. **Router Mocking**: React Router hooks need careful mocking in tests
+### Current Coverage: ~0% (Infrastructure ready, tests not executing)
+
+**Coverage by Category:**
+
+| Category       | Coverage | Lines  | Status                 |
+| -------------- | -------- | ------ | ---------------------- |
+| **Statements** | 0%       | 0/4133 | ⚠️ Tests not executing |
+| **Branches**   | 0%       | 0/1242 | ⚠️ Tests not executing |
+| **Functions**  | 0%       | 0/563  | ⚠️ Tests not executing |
+| **Lines**      | 0%       | 0/3985 | ⚠️ Tests not executing |
+
+### Files Ready for Testing:
+
+**Source Files:** 3985 lines of code across multiple components
+
+- Auth components
+- Dashboard components
+- Common components
+- Services (API, WebSocket, Google integrations)
+- Redux store (actions, reducers, slices)
+- Utilities
+- Hooks
+
+## 🔧 Next Steps to Complete Testing
+
+### Immediate Actions Required:
+
+1. **Fix Module Resolution Issue**
+
+   ```bash
+   # Verify react-router-dom installation
+   npm list react-router-dom
+
+   # Reinstall if needed
+   npm install react-router-dom
+
+   # Or clean install
+   rm -rf node_modules package-lock.json
+   npm install
+   ```
+
+2. **Update Jest Configuration**
+   - Check `moduleNameMapper` in jest config
+   - Ensure proper module resolution paths
+   - Verify babel configuration for tests
+
+3. **Run Tests Again**
+   ```bash
+   npm run test:ci
+   ```
+
+### Phase 1: Auth Components Testing (Target: Week 1)
+
+- [ ] Fix module resolution issues
+- [ ] Login component (20 tests planned)
+- [ ] ProtectedRoute component (10 tests planned)
+- [ ] MFA component (5 tests planned)
+- **Target Coverage:** 15-20%
+
+### Phase 2: Dashboard Components (Target: Week 2)
+
+- [ ] Dashboard main component
+- [ ] LiveDashboard with WebSocket
+- [ ] MetricCard components
+- [ ] Chart components
+- **Target Coverage:** 30-40%
+
+### Phase 3: Integration Tests (Target: Week 3)
+
+- [ ] API integration tests
+- [ ] WebSocket connection tests ✅ (Already passing)
+- [ ] Redux store tests
+- [ ] End-to-end user flows
+- **Target Coverage:** 50-60%
+
+## 🎯 Test Scripts Available
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests in CI mode (non-interactive)
+npm run test:ci
+
+# Run specific test file
+npm test Login.test.jsx
+
+# Run WebSocket integration test (Working ✅)
+npm run test:websocket
+```
+
+## ✅ Working Tests
+
+### WebSocket Integration Test ✅
+
+```bash
+npm run test:websocket
+```
+
+**Results:**
+
+- ✅ Connection: PASSED
+- ✅ Welcome Message: PASSED
+- ✅ Data Update: PASSED
+- ✅ AI Result: PASSED
+
+**Status:** 4/4 tests passing (100%)
+
+## 💡 Infrastructure Highlights
+
+### Test Utilities Created:
+
+1. **Custom Render Function** - Wraps components with Redux & Router
+2. **Mock Data** - Fixtures for users, orders, products
+3. **API Mocks** - Mock implementations for all services
+4. **Setup Tests** - Proper Ant Design & browser API mocks
+
+### Mock Implementations:
+
+- ✅ Window.matchMedia (for responsive design)
+- ✅ LocalStorage
+- ✅ SessionStorage
+- ✅ Google APIs
+- ✅ WebSocket client
+- ✅ Ant Design message API
+
+## 📈 Progress Tracking
+
+### Week 1 Status:
+
+- [x] Test infrastructure setup ✅
+- [x] Mock implementations ✅
+- [x] WebSocket tests ✅
+- [ ] Auth component tests (Blocked by module resolution)
+- [ ] Initial coverage report
+
+### Blockers:
+
+1. **Module Resolution:** `react-router-dom` cannot be resolved by Jest
+   - **Impact:** All component tests failing
+   - **Priority:** HIGH - Must fix to proceed
+   - **Solution:** Reinstall dependencies or update Jest config
 
 ---
 
-**Last Updated:** December 19, 2025  
-**Status:** ✅ Login Component Tests Complete (20/20 passing) - Ready for next components
+**Last Updated:** January 21, 2026
+**Status:** ⚠️ Infrastructure Complete | Tests Ready | Blocked by Module Resolution Issue
+**Next Action:** Fix `react-router-dom` module resolution to enable test execution
