@@ -58,7 +58,10 @@ Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-ware
 🌐 WebSocket server ready for connections
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 <<<<<<< HEAD
@@ -109,6 +112,9 @@ Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-ware
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -126,6 +132,9 @@ Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-ware
 >>>>>>> 5ba8ed73f46a5c253278a98da9077d5be919aa96
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
