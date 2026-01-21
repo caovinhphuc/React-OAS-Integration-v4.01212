@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-01-21T13:51:15.755Z",
+  "buildSize": 2549074,
+  "files": {
+    "html": 3,
+    "css": 14,
+    "js": 40,
+    "images": 0
+  },
+  "optimization": {
+    "sourceMaps": false,
+    "minification": true,
+    "compression": true,
+    "securityHeaders": true
+  }
+}
