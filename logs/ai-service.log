@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 INFO:     Started server process [77680]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
@@ -6,3 +7,6 @@ INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
 INFO:     Finished server process [77680]
+=======
+nohup: uvicorn: No such file or directory
+>>>>>>> Stashed changes

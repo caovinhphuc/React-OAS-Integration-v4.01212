@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "timestamp": "2026-01-21T12:08:43.761Z",
   "bundle": {
     "jsFiles": [
@@ -6,6 +7,15 @@
         "name": "main.2db6fd45.js",
         "path": "build/static/js/main.2db6fd45.js",
         "size": 711249
+=======
+  "timestamp": "2026-01-17T17:01:10.836Z",
+  "bundle": {
+    "jsFiles": [
+      {
+        "name": "main.f86b3927.js",
+        "path": "build/static/js/main.f86b3927.js",
+        "size": 712517
+>>>>>>> Stashed changes
       },
       {
         "name": "259.bae255cf.chunk.js",
@@ -58,9 +68,15 @@
         "size": 39644
       },
       {
+<<<<<<< Updated upstream
         "name": "302.179e70f8.chunk.js",
         "path": "build/static/js/302.179e70f8.chunk.js",
         "size": 36079
+=======
+        "name": "302.3ab3c197.chunk.js",
+        "path": "build/static/js/302.3ab3c197.chunk.js",
+        "size": 36481
+>>>>>>> Stashed changes
       },
       {
         "name": "218.5550effc.chunk.js",
@@ -98,9 +114,9 @@
         "size": 19469
       },
       {
-        "name": "408.6c13460d.chunk.js",
-        "path": "build/static/js/408.6c13460d.chunk.js",
-        "size": 17058
+        "name": "408.f6f5de79.chunk.js",
+        "path": "build/static/js/408.f6f5de79.chunk.js",
+        "size": 17823
       },
       {
         "name": "165.d4ad9523.chunk.js",
@@ -133,11 +149,24 @@
         "size": 14729
       },
       {
+        "name": "593.43d46083.chunk.js",
+        "path": "build/static/js/593.43d46083.chunk.js",
+        "size": 14044
+      },
+      {
         "name": "238.dec156a5.chunk.js",
         "path": "build/static/js/238.dec156a5.chunk.js",
         "size": 13458
       },
       {
+<<<<<<< Updated upstream
+=======
+        "name": "795.8e81f01f.chunk.js",
+        "path": "build/static/js/795.8e81f01f.chunk.js",
+        "size": 13204
+      },
+      {
+>>>>>>> Stashed changes
         "name": "878.9a3a071a.chunk.js",
         "path": "build/static/js/878.9a3a071a.chunk.js",
         "size": 12880
@@ -148,6 +177,7 @@
         "size": 12315
       },
       {
+<<<<<<< Updated upstream
         "name": "795.96236ea4.chunk.js",
         "path": "build/static/js/795.96236ea4.chunk.js",
         "size": 12228
@@ -155,6 +185,15 @@
       {
         "name": "668.506a28ee.chunk.js",
         "path": "build/static/js/668.506a28ee.chunk.js",
+=======
+        "name": "668.e9d85dbe.chunk.js",
+        "path": "build/static/js/668.e9d85dbe.chunk.js",
+        "size": 12084
+      },
+      {
+        "name": "928.7543e378.chunk.js",
+        "path": "build/static/js/928.7543e378.chunk.js",
+>>>>>>> Stashed changes
         "size": 11319
       },
       {
@@ -173,6 +212,7 @@
         "size": 10292
       },
       {
+<<<<<<< Updated upstream
         "name": "928.147e4f0b.chunk.js",
         "path": "build/static/js/928.147e4f0b.chunk.js",
         "size": 10152
@@ -181,16 +221,21 @@
         "name": "699.af535e04.chunk.js",
         "path": "build/static/js/699.af535e04.chunk.js",
         "size": 10135
+=======
+        "name": "699.af535e04.chunk.js",
+        "path": "build/static/js/699.af535e04.chunk.js",
+        "size": 10135
+      },
+      {
+        "name": "65.f1efc91f.chunk.js",
+        "path": "build/static/js/65.f1efc91f.chunk.js",
+        "size": 10094
+>>>>>>> Stashed changes
       },
       {
         "name": "470.14df0fbc.chunk.js",
         "path": "build/static/js/470.14df0fbc.chunk.js",
         "size": 9719
-      },
-      {
-        "name": "65.86f93335.chunk.js",
-        "path": "build/static/js/65.86f93335.chunk.js",
-        "size": 9329
       },
       {
         "name": "362.171d3776.chunk.js",
@@ -270,9 +315,15 @@
         "size": 144
       }
     ],
+<<<<<<< Updated upstream
     "totalJsSize": 2393152,
     "totalCssSize": 82442,
     "totalSize": 2475594
+=======
+    "totalJsSize": 2397288,
+    "totalCssSize": 82442,
+    "totalSize": 2479730
+>>>>>>> Stashed changes
   },
   "dependencies": {
     "deps": {

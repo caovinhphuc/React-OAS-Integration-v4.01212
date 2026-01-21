@@ -2,10 +2,23 @@
 > react-oas-integration@3.0.0 start
 > react-scripts start
 
+<<<<<<< Updated upstream
 (node:98332) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
 (Use `node --trace-deprecation ...` to show where the warning was created)
 (node:98332) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (node:98332) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+=======
+<<<<<<< HEAD
+(node:99308) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:99308) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:99308) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+=======
+(node:10367) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:10367) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+>>>>>>> 5ba8ed73f46a5c253278a98da9077d5be919aa96
+>>>>>>> Stashed changes
 Starting the development server...
 
 Failed to compile.
@@ -23,6 +36,7 @@ Require stack:
 
 (@/Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/react-grid-layout/css/styles.css)
 
+<<<<<<< Updated upstream
 ERROR in ./node_modules/react-resizable/css/styles.css (./node_modules/react-scripts/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/react-scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/react-scripts/node_modules/source-map-loader/dist/cjs.js!./node_modules/react-resizable/css/styles.css)
 Module Error (from ./node_modules/react-scripts/node_modules/postcss-loader/dist/cjs.js):
 Loading PostCSS "postcss-normalize" plugin failed: Cannot find module '@csstools/normalize.css'
@@ -224,3 +238,10 @@ Require stack:
 (@/Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/src/styles/typography.css)
 
 webpack compiled with 26 errors
+=======
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+The build failed because the process exited too early. This probably means the system ran out of memory or someone called `kill -9` on the process.
+>>>>>>> Stashed changes

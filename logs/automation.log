@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 INFO:     Started server process [98333]
+=======
+<<<<<<< HEAD
+INFO:     Started server process [97260]
+>>>>>>> Stashed changes
 INFO:     Waiting for application startup.
 2026-01-21 18:57:49,903 - main - INFO - 🚀 Starting OneAutomation System...
 Credentials file not found: config/service_account.json
@@ -12,4 +17,11 @@ INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 2026-01-21 18:58:12,148 - main - INFO - 👋 Shutting down OneAutomation System...
 INFO:     Application shutdown complete.
+<<<<<<< Updated upstream
 INFO:     Finished server process [98333]
+=======
+INFO:     Finished server process [97260]
+=======
+./start_dev_servers.sh: line 216: python: command not found
+>>>>>>> 5ba8ed73f46a5c253278a98da9077d5be919aa96
+>>>>>>> Stashed changes
