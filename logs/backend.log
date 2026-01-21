@@ -57,7 +57,10 @@ Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-ware
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 =======
 ::1 - - [19/Jan/2026:04:29:19 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
@@ -105,6 +108,9 @@ Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-ware
 🚀 Backend server running on port 3001
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 ::1 - - [19/Jan/2026:04:35:23 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 ::1 - - [19/Jan/2026:04:35:23 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
@@ -119,6 +125,9 @@ Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-ware
 [31m[nodemon] app crashed - waiting for file changes before starting...[39m
 >>>>>>> 5ba8ed73f46a5c253278a98da9077d5be919aa96
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
