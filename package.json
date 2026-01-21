@@ -52,13 +52,10 @@
     "analyze": "source-map-explorer build/static/js/main.*js",
     "analyze:maps": "GENERATE_SOURCEMAP=true react-scripts build && source-map-explorer build/static/js/main.*js",
     "analyze:maps:only": "GENERATE_SOURCEMAP=true react-scripts build && source-map-explorer --only-mapped 'build/static/js/*.js'",
-<<<<<<< Updated upstream
     "analyze:bundle": "node scripts/bundle-analyzer.js",
     "analyze:deps": "node scripts/analyze-bundle-deps.js",
     "analyze:full": "npm run build:stats && npm run analyze:bundle && npm run analyze:deps && npm run perf:bundle",
     "analyze:auto": "npm run analyze:full && npm run optimize:suggestions",
-=======
->>>>>>> Stashed changes
     "vercel-build": "GENERATE_SOURCEMAP=false CI=false react-scripts build",
     "bundle:stats": "node scripts/generate-bundle-stats.js",
     "perf:bundle": "node scripts/perf-bundle-analyzer.js",
@@ -67,7 +64,6 @@
     "perf:deps": "npx depcheck",
     "perf:size": "npx size-limit",
     "perf:size:local": "PUPPETEER_EXECUTABLE_PATH=/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome npx size-limit",
-<<<<<<< Updated upstream
     "optimize:bundle": "node scripts/optimize-bundle.js",
     "optimize:post-build": "node scripts/build-optimize.js",
     "optimize:suggestions": "node scripts/optimize-bundle.js > OPTIMIZATION_SUGGESTIONS.md",
@@ -75,11 +71,6 @@
     "cargo:info": "node scripts/cargo-info.js",
     "tools:check": "node scripts/check-tools.js",
     "analyze:all": "npm run bundle:stats && npm run perf:bundle && npm run perf:deps && npm run cargo:info",
-=======
-    "check:cargo": "cargo --version || echo 'Cargo not found. Install Rust: https://rustup.rs/'",
-    "check:tools": "node -e \"const {execSync} = require('child_process'); ['node', 'npm', 'cargo', 'rustc'].forEach(t => { try { execSync(t + ' --version', {stdio: 'ignore'}); console.log('✅', t); } catch(e) { console.log('❌', t, '(not found)'); }});\"",
-    "analyze:all": "npm run bundle:stats && npm run perf:bundle && npm run perf:deps",
->>>>>>> Stashed changes
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "lint:check": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings=0 || echo 'Lint warnings found'",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
@@ -198,11 +189,7 @@
     "lint-staged": "^15.5.2",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
-<<<<<<< Updated upstream
     "prettier": "^3.8.0",
-=======
-    "prettier": "^3.7.4",
->>>>>>> Stashed changes
     "puppeteer": "^24.35.0",
     "querystring-es3": "^0.2.1",
     "serve": "^14.2.5",
