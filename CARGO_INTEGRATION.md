@@ -1,87 +1,137 @@
 # 🦀 Cargo Integration - Package.json Scripts
 
-## ✅ Đã Thêm
+## ✅ Enhanced Integration v2.0
 
-### 1. Scripts Mới trong `package.json`
+### 1. Updated Scripts in `package.json`
 
 ```json
 {
   "scripts": {
-    "check:cargo": "cargo --version || echo 'Cargo not found. Install Rust: https://rustup.rs/'",
-    "check:tools": "node -e \"const {execSync} = require('child_process'); ['node', 'npm', 'cargo', 'rustc'].forEach(t => { try { execSync(t + ' --version', {stdio: 'ignore'}); console.log('✅', t); } catch(e) { console.log('❌', t, '(not found)'); }});\"",
-    "analyze:all": "npm run bundle:stats && npm run perf:bundle && npm run perf:deps"
+    "cargo:check": "cargo --version || echo 'Cargo not found'",
+    "cargo:info": "Detailed cargo information with location",
+    "tools:check": "Check all development tools (node, npm, cargo, rustc, python, pip)",
+    "analyze:all": "Complete analysis including cargo status",
+    
+    "build:optimized": "Optimized production build with post-processing",
+    "analyze:full": "Complete bundle analysis with stats",
+    "analyze:auto": "Auto-analysis with optimization suggestions",
+    "optimize:bundle": "Run bundle optimization analysis",
+    "optimize:suggestions": "Generate optimization suggestions markdown"
   }
 }
 ```
 
-### 2. Optional Tools Documentation
+### 2. Enhanced Metadata
 
 ```json
 {
-  "_optionalTools": {
-    "cargo": "Rust package manager (optional, for future Rust/WebAssembly integration)",
-    "rustc": "Rust compiler (optional, for future Rust/WebAssembly integration)"
+  "_cargoIntegration": {
+    "status": "available",
+    "version": "check with: npm run cargo:info",
+    "futureUse": "WebAssembly modules for performance-critical operations",
+    "scripts": [
+      "cargo:check - Check if cargo is installed",
+      "cargo:info - Show detailed cargo information",
+      "tools:check - Check all development tools"
+    ]
+  },
+  "_performanceBudget": {
+    "javascript": "250KB (current: ~2.3MB - needs optimization)",
+    "css": "50KB (current: ~80KB - acceptable)",
+    "total": "1MB (current: ~2.4MB - exceeds budget)"
   }
 }
 ```
 
 ## 🚀 Usage
 
-### Check Cargo Version
+### Check Cargo Status
 
 ```bash
-npm run check:cargo
+npm run cargo:check
 ```
 
-**Output** (✅ Verified working):
-
+**Output**:
 ```
 cargo 1.92.0 (Homebrew)
 ```
 
-### Check All Tools
+### Get Detailed Cargo Information
 
 ```bash
-npm run check:tools
+npm run cargo:info
 ```
 
-**Output** (✅ Verified working):
-
+**Output**:
 ```
-✅ node
-✅ npm
-✅ cargo
-✅ rustc
+🦀 Cargo Status:
+
+✅ Installed: cargo 1.92.0
+📦 Location: /opt/homebrew/bin/cargo
 ```
 
-### Run All Analysis
+### Check All Development Tools
 
 ```bash
-npm run analyze:all
+npm run tools:check
 ```
 
-**Runs**:
+**Output**:
+```
+🔧 Development Tools Check:
 
-1. `bundle:stats` - Generate bundle stats
-2. `perf:bundle` - Performance bundle analyzer
-3. `perf:deps` - Check unused dependencies
-
-## 🔧 Integration với Bundle Stats Script
-
-Script `generate-bundle-stats.js` đã được cập nhật để kiểm tra cargo:
-
-```javascript
-// Check optional system tools
-log("🔧 Checking optional system tools...", "cyan");
-try {
-  execSync("cargo --version", { stdio: "ignore" });
-  log(`✅ cargo - installed (Rust package manager)`, "green");
-} catch (e) {
-  log(`⚠️  cargo - not installed (optional, for Rust/WebAssembly)`, "dim");
-}
+✅ node       - JavaScript Runtime
+   v24.13.0
+✅ npm        - Package Manager  
+   11.6.2
+⚪ cargo      - Rust Package Manager (Optional)
+   1.92.0 (optional)
+⚪ rustc      - Rust Compiler (Optional)
+   rustc 1.92.0 (optional)
+✅ python     - Python Runtime
+   Python 3.11.5
+✅ pip        - Python Package Manager
+   pip 24.3.1
 ```
 
-## 📋 Future Rust/WebAssembly Integration
+## 📊 Bundle Optimization Workflows
+
+### Complete Analysis
+
+```bash
+npm run analyze:full
+```
+
+Runs:
+1. `build:stats` - Generate webpack stats
+2. `analyze:bundle` - Analyze JavaScript chunks
+3. `analyze:deps` - Check dependencies
+4. `perf:bundle` - Performance analysis
+
+### Auto-Optimization
+
+```bash
+npm run analyze:auto
+```
+
+Automatically:
+1. Runs full analysis
+2. Generates optimization suggestions
+3. Creates `OPTIMIZATION_SUGGESTIONS.md`
+
+### Build Optimized
+
+```bash
+npm run build:optimized
+```
+
+Features:
+1. Production build without source maps
+2. Post-build optimization
+3. File compression
+4. Security headers
+
+## 🎯 Future Rust/WebAssembly Integration
 
 Nếu trong tương lai cần tích hợp Rust/WebAssembly, có thể thêm các scripts sau:
 

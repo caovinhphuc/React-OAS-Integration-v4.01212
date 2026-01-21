@@ -1,62 +1,42 @@
 {
-  "timestamp": "2026-01-21T09:39:45.337Z",
+  "timestamp": "2026-01-21T13:49:24.128Z",
   "logDir": "logs",
   "files": [
     {
       "file": "ai-service.log",
-      "totalLines": 11,
+      "totalLines": 22,
       "errors": [],
       "warnings": [],
       "info": [
         {
-          "line": 1,
+          "line": 5,
           "content": "INFO:     Will watch for changes in these directories: ['/Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/ai-service']"
         },
         {
-          "line": 2,
+          "line": 6,
           "content": "INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)"
         },
         {
-          "line": 3,
-          "content": "INFO:     Started reloader process [5957] using WatchFiles"
-        },
-        {
-          "line": 4,
-          "content": "INFO:     Started server process [5960]"
-        },
-        {
-          "line": 5,
-          "content": "INFO:     Waiting for application startup."
-        },
-        {
-          "line": 6,
-          "content": "INFO:     Application startup complete."
-        },
-        {
           "line": 7,
-          "content": "INFO:     Shutting down"
+          "content": "INFO:     Started reloader process [29420] using WatchFiles"
         },
         {
           "line": 8,
-          "content": "INFO:     Waiting for application shutdown."
+          "content": "INFO:     Started server process [29424]"
         },
         {
           "line": 9,
-          "content": "INFO:     Application shutdown complete."
+          "content": "INFO:     Waiting for application startup."
         },
         {
           "line": 10,
-          "content": "INFO:     Finished server process [5960]"
-        },
-        {
-          "line": 11,
-          "content": "INFO:     Stopping reloader process [5957]"
+          "content": "INFO:     Application startup complete."
         }
       ],
       "timestamps": [],
       "errorCount": 0,
       "warningCount": 0,
-      "infoCount": 11,
+      "infoCount": 6,
       "patterns": {}
     },
     {
@@ -114,78 +94,82 @@
     },
     {
       "file": "automation.log",
-      "totalLines": 15,
+      "totalLines": 44,
       "errors": [],
       "warnings": [],
       "info": [
         {
-          "line": 1,
-          "content": "INFO:     Started server process [5980]"
-        },
-        {
-          "line": 2,
-          "content": "INFO:     Waiting for application startup."
-        },
-        {
-          "line": 3,
-          "content": "2026-01-21 16:22:09,535 - main - INFO - 🚀 Starting OneAutomation System..."
-        },
-        {
           "line": 5,
-          "content": "2026-01-21 16:22:09,535 - main - INFO - ✅ Google Sheets service initialized"
-        },
-        {
-          "line": 6,
-          "content": "2026-01-21 16:22:09,535 - main - INFO - ✅ Email service initialized"
-        },
-        {
-          "line": 7,
-          "content": "2026-01-21 16:22:09,535 - main - INFO - ✅ Data processor initialized"
-        },
-        {
-          "line": 8,
-          "content": "2026-01-21 16:22:09,535 - main - INFO - 🎉 OneAutomation System started successfully!"
-        },
-        {
-          "line": 9,
-          "content": "INFO:     Application startup complete."
-        },
-        {
-          "line": 10,
-          "content": "INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)"
-        },
-        {
-          "line": 11,
-          "content": "INFO:     Shutting down"
-        },
-        {
-          "line": 12,
-          "content": "INFO:     Waiting for application shutdown."
-        },
-        {
-          "line": 13,
-          "content": "2026-01-21 16:22:45,560 - main - INFO - 👋 Shutting down OneAutomation System..."
+          "content": "INFO:     Started server process [29436]"
         },
         {
           "line": 14,
+          "content": "INFO:     Started server process [97260]"
+        },
+        {
+          "line": 16,
+          "content": "INFO:     Waiting for application startup."
+        },
+        {
+          "line": 17,
+          "content": "2026-01-21 19:59:17,494 - main - INFO - 🚀 Starting OneAutomation System..."
+        },
+        {
+          "line": 19,
+          "content": "2026-01-21 19:59:17,494 - main - INFO - ✅ Google Sheets service initialized"
+        },
+        {
+          "line": 20,
+          "content": "2026-01-21 19:59:17,494 - main - INFO - ✅ Email service initialized"
+        },
+        {
+          "line": 21,
+          "content": "2026-01-21 19:59:17,494 - main - INFO - ✅ Data processor initialized"
+        },
+        {
+          "line": 22,
+          "content": "2026-01-21 19:59:17,494 - main - INFO - 🎉 OneAutomation System started successfully!"
+        },
+        {
+          "line": 23,
+          "content": "INFO:     Application startup complete."
+        },
+        {
+          "line": 24,
+          "content": "INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)"
+        },
+        {
+          "line": 27,
+          "content": "INFO:     Shutting down"
+        },
+        {
+          "line": 28,
+          "content": "INFO:     Waiting for application shutdown."
+        },
+        {
+          "line": 29,
+          "content": "2026-01-21 11:46:00,051 - main - INFO - 👋 Shutting down OneAutomation System..."
+        },
+        {
+          "line": 30,
           "content": "INFO:     Application shutdown complete."
         },
         {
-          "line": 15,
-          "content": "INFO:     Finished server process [5980]"
+          "line": 31,
+          "content": "INFO:     Finished server process [97260]"
         }
       ],
       "timestamps": [
-        "2026-01-21 16:22:09",
-        "2026-01-21 16:22:09",
-        "2026-01-21 16:22:09",
-        "2026-01-21 16:22:09",
-        "2026-01-21 16:22:09",
-        "2026-01-21 16:22:45"
+        "2026-01-21 19:59:17",
+        "2026-01-21 19:59:17",
+        "2026-01-21 19:59:17",
+        "2026-01-21 19:59:17",
+        "2026-01-21 19:59:17",
+        "2026-01-21 11:46:00"
       ],
       "errorCount": 0,
       "warningCount": 0,
-      "infoCount": 14,
+      "infoCount": 15,
       "patterns": {}
     },
     {
@@ -960,18 +944,117 @@
       "patterns": {}
     },
     {
-      "file": "backend.log",
-      "totalLines": 7,
-      "errors": [],
+      "file": "backend-test.log",
+      "totalLines": 17,
+      "errors": [
+        {
+          "line": 4,
+          "content": "Error: Cannot find module '/Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/backend/server.cjs'"
+        }
+      ],
       "warnings": [],
       "info": [],
       "timestamps": [],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 0,
       "infoCount": 0,
+      "patterns": {}
+    },
+    {
+      "file": "backend.log",
+      "totalLines": 140,
+      "errors": [
+        {
+          "line": 30,
+          "content": "Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-warehouse-management-v2/React-OAS-Integration-v4.0/backend/build/index.html'"
+        },
+        {
+          "line": 32,
+          "content": "Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-warehouse-management-v2/React-OAS-Integration-v4.0/backend/build/index.html'"
+        },
+        {
+          "line": 85,
+          "content": "Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-warehouse-management-v2/React-OAS-Integration-v4.0/backend/build/index.html'"
+        },
+        {
+          "line": 87,
+          "content": "Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/mia-warehouse-management-v2/React-OAS-Integration-v4.0/backend/build/index.html'"
+        }
+      ],
+      "warnings": [
+        {
+          "line": 23,
+          "content": "⚠️ No Google Sheets credentials file found, will use mock data"
+        },
+        {
+          "line": 24,
+          "content": "⚠️ Using mock metadata - Google Sheets API not available"
+        },
+        {
+          "line": 26,
+          "content": "⚠️ No Google Sheets credentials file found, will use mock data"
+        },
+        {
+          "line": 27,
+          "content": "⚠️ Using mock metadata - Google Sheets API not available"
+        },
+        {
+          "line": 33,
+          "content": "⚠️ No Google Drive credentials file found, will use mock data"
+        },
+        {
+          "line": 34,
+          "content": "⚠️ Using mock data - Google Drive API not available"
+        },
+        {
+          "line": 37,
+          "content": "⚠️ No Google Drive credentials file found, will use mock data"
+        },
+        {
+          "line": 38,
+          "content": "⚠️ Using mock data - Google Drive API not available"
+        },
+        {
+          "line": 78,
+          "content": "⚠️ No Google Sheets credentials file found, will use mock data"
+        },
+        {
+          "line": 79,
+          "content": "⚠️ Using mock metadata - Google Sheets API not available"
+        },
+        {
+          "line": 81,
+          "content": "⚠️ No Google Sheets credentials file found, will use mock data"
+        },
+        {
+          "line": 82,
+          "content": "⚠️ Using mock metadata - Google Sheets API not available"
+        },
+        {
+          "line": 88,
+          "content": "⚠️ No Google Drive credentials file found, will use mock data"
+        },
+        {
+          "line": 89,
+          "content": "⚠️ Using mock data - Google Drive API not available"
+        },
+        {
+          "line": 92,
+          "content": "⚠️ No Google Drive credentials file found, will use mock data"
+        },
+        {
+          "line": 93,
+          "content": "⚠️ Using mock data - Google Drive API not available"
+        }
+      ],
+      "info": [],
+      "timestamps": [],
+      "errorCount": 4,
+      "warningCount": 16,
+      "infoCount": 0,
       "patterns": {
-        "connection": 1,
-        "api": 2
+        "connection": 3,
+        "api": 76
       }
     },
     {
@@ -1739,32 +1822,62 @@
     },
     {
       "file": "frontend.log",
-      "totalLines": 14,
+      "totalLines": 49,
       "errors": [],
       "warnings": [
         {
-          "line": 3,
-          "content": "(node:5806) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+          "line": 7,
+          "content": "(node:29306) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
         },
         {
-          "line": 4,
+          "line": 8,
           "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
         },
         {
-          "line": 5,
-          "content": "(node:5806) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+          "line": 9,
+          "content": "(node:29306) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
         },
         {
-          "line": 6,
-          "content": "(node:5806) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+          "line": 10,
+          "content": "(node:29306) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 19,
+          "content": "(node:99308) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+        },
+        {
+          "line": 20,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 21,
+          "content": "(node:99308) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 22,
+          "content": "(node:99308) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 24,
+          "content": "(node:10367) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 25,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 26,
+          "content": "(node:10367) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
         }
       ],
       "info": [],
       "timestamps": [],
       "errorCount": 0,
-      "warningCount": 4,
+      "warningCount": 11,
       "infoCount": 0,
-      "patterns": {}
+      "patterns": {
+        "failed": 1
+      }
     },
     {
       "file": "google-backend.log",
@@ -1792,7 +1905,7 @@
     },
     {
       "file": "google-sheets-backend.log",
-      "totalLines": 5,
+      "totalLines": 25,
       "errors": [],
       "warnings": [],
       "info": [],
@@ -1804,69 +1917,112 @@
     },
     {
       "file": "google-sheets-frontend.log",
-      "totalLines": 71,
-      "errors": [
-        {
-          "line": 17,
-          "content": "Search for the keywords to learn more about each error."
-        },
-        {
-          "line": 62,
-          "content": "ERROR in [eslint] "
-        },
-        {
-          "line": 69,
-          "content": "Search for the keywords to learn more about each error."
-        },
-        {
-          "line": 70,
-          "content": "webpack compiled with 1 error and 1 warning"
-        }
-      ],
+      "totalLines": 50,
+      "errors": [],
       "warnings": [
         {
-          "line": 4,
-          "content": "(node:62608) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+          "line": 9,
+          "content": "(node:93159) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
         },
         {
-          "line": 5,
+          "line": 10,
           "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
         },
         {
-          "line": 6,
-          "content": "(node:62608) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+          "line": 11,
+          "content": "(node:93159) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
         },
         {
-          "line": 7,
-          "content": "(node:62608) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+          "line": 12,
+          "content": "(node:93159) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
         },
         {
-          "line": 36,
-          "content": "WARNING in [eslint] "
-        }
-      ],
-      "info": [
+          "line": 14,
+          "content": "(node:1561) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+        },
+        {
+          "line": 15,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 16,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 17,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 20,
+          "content": "(node:1561) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+        },
         {
           "line": 21,
-          "content": "<w> More info: https://sass-lang.com/d/legacy-js-api"
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 22,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 23,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
         },
         {
           "line": 26,
-          "content": "<w> More info and automated migrator: https://sass-lang.com/d/import"
+          "content": "(node:1561) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+        },
+        {
+          "line": 27,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 28,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 29,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
         },
         {
           "line": 32,
-          "content": "<w> More info and automated migrator: https://sass-lang.com/d/import"
+          "content": "(node:1561) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+        },
+        {
+          "line": 33,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 34,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 35,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 38,
+          "content": "(node:1561) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+        },
+        {
+          "line": 39,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 40,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 41,
+          "content": "(node:1561) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
         }
       ],
+      "info": [],
       "timestamps": [],
-      "errorCount": 4,
-      "warningCount": 5,
-      "infoCount": 3,
-      "patterns": {
-        "failed": 2,
-        "api": 2
-      }
+      "errorCount": 0,
+      "warningCount": 24,
+      "infoCount": 0,
+      "patterns": {}
     },
     {
       "file": "main-frontend.log",
@@ -2344,9 +2500,9 @@
     }
   ],
   "summary": {
-    "totalFiles": 30,
-    "totalLines": 532,
-    "totalErrors": 31,
-    "totalWarnings": 22
+    "totalFiles": 31,
+    "totalLines": 756,
+    "totalErrors": 32,
+    "totalWarnings": 64
   }
 }

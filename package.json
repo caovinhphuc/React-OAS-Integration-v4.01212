@@ -9,7 +9,26 @@
   },
   "_optionalTools": {
     "cargo": "Rust package manager (optional, for future Rust/WebAssembly integration)",
-    "rustc": "Rust compiler (optional, for future Rust/WebAssembly integration)"
+    "rustc": "Rust compiler (optional, for future Rust/WebAssembly integration)",
+    "python": "Python runtime (required for AI service and automation)",
+    "pip": "Python package manager (required for AI service dependencies)"
+  },
+  "_performanceBudget": {
+    "javascript": "250KB (current: ~2.3MB - needs optimization)",
+    "css": "50KB (current: ~80KB - acceptable)",
+    "images": "500KB (current: 0KB)",
+    "fonts": "100KB (current: 0KB)",
+    "total": "1MB (current: ~2.4MB - exceeds budget)"
+  },
+  "_cargoIntegration": {
+    "status": "available",
+    "version": "check with: npm run cargo:info",
+    "futureUse": "WebAssembly modules for performance-critical operations",
+    "scripts": [
+      "cargo:check - Check if cargo is installed",
+      "cargo:info - Show detailed cargo information",
+      "tools:check - Check all development tools"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,7 +36,9 @@
     "install:source-map-explorer": "npm install --save source-map-explorer",
     "test": "react-scripts test",
     "build:prod": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build:optimized": "GENERATE_SOURCEMAP=false NODE_ENV=production npm run build && npm run optimize:post-build",
     "build:analyze": "GENERATE_SOURCEMAP=true react-scripts build && npm run analyze",
+    "build:stats": "GENERATE_SOURCEMAP=false react-scripts build --stats && node scripts/save-webpack-stats.js",
     "serve:build": "npx serve -s build -p 3000",
     "serve:deployed": "bash serve-build.sh 3000",
     "eject": "react-scripts eject",
@@ -31,16 +52,25 @@
     "analyze": "source-map-explorer build/static/js/main.*js",
     "analyze:maps": "GENERATE_SOURCEMAP=true react-scripts build && source-map-explorer build/static/js/main.*js",
     "analyze:maps:only": "GENERATE_SOURCEMAP=true react-scripts build && source-map-explorer --only-mapped 'build/static/js/*.js'",
+    "analyze:bundle": "node scripts/bundle-analyzer.js",
+    "analyze:deps": "node scripts/analyze-bundle-deps.js",
+    "analyze:full": "npm run build:stats && npm run analyze:bundle && npm run analyze:deps && npm run perf:bundle",
+    "analyze:auto": "npm run analyze:full && npm run optimize:suggestions",
     "vercel-build": "GENERATE_SOURCEMAP=false CI=false react-scripts build",
-    "analyze-deps": "node scripts/analyze-bundle-deps.js",
     "bundle:stats": "node scripts/generate-bundle-stats.js",
     "perf:bundle": "node scripts/perf-bundle-analyzer.js",
+    "perf:budget": "node scripts/performance-budget.js",
+    "perf:check": "npm run perf:budget && npm run perf:bundle",
     "perf:deps": "npx depcheck",
     "perf:size": "npx size-limit",
     "perf:size:local": "PUPPETEER_EXECUTABLE_PATH=/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome npx size-limit",
-    "check:cargo": "cargo --version || echo 'Cargo not found. Install Rust: https://rustup.rs/'",
-    "check:tools": "node -e \"const {execSync} = require('child_process'); ['node', 'npm', 'cargo', 'rustc'].forEach(t => { try { execSync(t + ' --version', {stdio: 'ignore'}); console.log('✅', t); } catch(e) { console.log('❌', t, '(not found)'); }});\"",
-    "analyze:all": "npm run bundle:stats && npm run perf:bundle && npm run perf:deps",
+    "optimize:bundle": "node scripts/optimize-bundle.js",
+    "optimize:post-build": "node scripts/build-optimize.js",
+    "optimize:suggestions": "node scripts/optimize-bundle.js > OPTIMIZATION_SUGGESTIONS.md",
+    "cargo:check": "cargo --version || echo '⚠️  Cargo not found. Install Rust: https://rustup.rs/'",
+    "cargo:info": "node -e \"console.log('\\n🦀 Cargo Status:\\n'); const {execSync} = require('child_process'); try { const v = execSync('cargo --version', {encoding: 'utf8'}); console.log('✅ Installed:', v.trim()); console.log('📦 Location:', execSync('which cargo', {encoding: 'utf8'}).trim()); } catch(e) { console.log('❌ Not installed\\n💡 Install: https://rustup.rs/'); }\"",
+    "tools:check": "node -e \"const {execSync} = require('child_process'); const tools = {node: 'JavaScript Runtime', npm: 'Package Manager', cargo: 'Rust Package Manager (Optional)', rustc: 'Rust Compiler (Optional)', python: 'Python Runtime', pip: 'Python Package Manager'}; console.log('\\n🔧 Development Tools Check:\\n'); Object.entries(tools).forEach(([t, desc]) => { try { const v = execSync(t + ' --version', {encoding: 'utf8'}).split('\\n')[0]; console.log(`✅ ${t.padEnd(10)} - ${desc}\\n   ${v}`); } catch(e) { console.log(`${t === 'cargo' || t === 'rustc' ? '⚪' : '❌'} ${t.padEnd(10)} - ${desc}\\n   Not found ${t === 'cargo' || t === 'rustc' ? '(optional)' : ''}\\n`); }});\"",
+    "analyze:all": "npm run bundle:stats && npm run perf:bundle && npm run perf:deps && npm run cargo:info",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "lint:check": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings=0 || echo 'Lint warnings found'",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",

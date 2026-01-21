@@ -1,44 +1,21 @@
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  "timestamp": "2026-01-21T09:41:05.449Z",
-=======
-  "timestamp": "2026-01-18T18:58:40.775Z",
->>>>>>> Stashed changes
-=======
-  "timestamp": "2026-01-18T18:58:40.775Z",
->>>>>>> Stashed changes
-=======
-  "timestamp": "2026-01-18T18:58:40.775Z",
->>>>>>> Stashed changes
-=======
-  "timestamp": "2026-01-18T18:58:40.775Z",
->>>>>>> Stashed changes
-=======
-  "timestamp": "2026-01-18T18:58:40.775Z",
->>>>>>> Stashed changes
+  "timestamp": "2026-01-21T13:49:58.313Z",
   "project": "mia-logistics-469406",
   "results": [
     {
       "api": "Google Sheets API",
-      "status": "unknown",
-      "required": true,
-      "error": "error:1E08010C:DECODER routines::unsupported"
+      "status": "not_checked",
+      "required": true
     },
     {
       "api": "Google Drive API",
-      "status": "unknown",
-      "required": true,
-      "error": "error:1E08010C:DECODER routines::unsupported"
+      "status": "not_checked",
+      "required": true
     },
     {
       "api": "Google Apps Script API",
-      "status": "unknown",
-      "required": true,
-      "error": "error:1E08010C:DECODER routines::unsupported"
+      "status": "not_checked",
+      "required": true
     },
     {
       "api": "Google Maps API",
