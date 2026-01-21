@@ -55,7 +55,7 @@ echo -e "${BLUE}----------------------------------------------------------------
 while IFS= read -r -d '' file; do
     TOTAL_SH=$((TOTAL_SH + 1))
     filename=$(basename "$file")
-    
+
     # Check syntax
     if bash -n "$file" 2>/dev/null; then
         # Check if executable
@@ -78,12 +78,12 @@ echo ""
 
 # Test Python Scripts
 echo -e "${BLUE}🐍 Testing Python Scripts (.py)${NC}"
-echo -e "${BLUE}${'-'*80}${NC}"
+echo -e "${BLUE}$(printf '%*s' 80 '' | tr ' ' '-')${NC}"
 
 while IFS= read -r -d '' file; do
     TOTAL_PY=$((TOTAL_PY + 1))
     filename=$(basename "$file")
-    
+
     # Check syntax
     if python3 -m py_compile "$file" 2>/dev/null; then
         print_success "$filename - Syntax OK"
