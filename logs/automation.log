@@ -1,6 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 INFO:     Started server process [29436]
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 INFO:     Started server process [97260]
 >>>>>>> Stashed changes
@@ -23,4 +26,7 @@ INFO:     Finished server process [97260]
 =======
 ./start_dev_servers.sh: line 216: python: command not found
 >>>>>>> 5ba8ed73f46a5c253278a98da9077d5be919aa96
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
