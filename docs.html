@@ -975,6 +975,27 @@ npm run serve:deployed
 <p><strong>Sử dụng:</strong>
 <pre><code class="language-bash">./deploy-vercel.sh</code></pre></p>
 <hr>
+<h3>Git Deployment Workflow</h3>
+<p><strong>Mục đích:</strong> Commit và push code lên GitHub</p>
+<p><strong>Tính năng:</strong>
+<li>✅ Auto-format và lint trước khi commit (Husky)</li>
+<li>✅ Pull latest changes trước khi push</li>
+<li>✅ Resolve merge conflicts</li>
+<li>✅ Push to GitHub</li></p>
+<p><strong>Sử dụng:</strong>
+<pre><code class="language-bash"># Add và commit changes
+git add .
+git commit -m &quot;Your commit message&quot;
+<h1>Pre-commit hook sẽ tự động chạy lint-staged</h1></p>
+<h1>Pull latest changes</h1>
+git pull origin main --no-rebase
+<h1>Resolve conflicts nếu có, rồi commit</h1>
+git add .
+git commit -m &quot;Merge: Resolve conflicts&quot;
+<h1>Push to GitHub</h1>
+git push origin main</code></pre>
+<p><strong>Note:</strong> Pre-commit hook đã được cấu hình với Husky và lint-staged để tự động format và lint code.</p>
+<hr>
 <h3><code>serve-build.sh</code> - Serve Production Build</h3>
 <p><strong>Mục đích:</strong> Serve production build locally</p>
 <p><strong>Tính năng:</strong>
@@ -1052,6 +1073,22 @@ cat logs/backend.log
 cat logs/ai-service.log
 <h1>Verify setup</h1>
 npm run verify:setup</code></pre>
+<h3>Git Issues</h3>
+<p><strong>Issue: Git Remote Not Found</strong>
+<pre><code class="language-bash"># Add remote origin
+git remote add origin https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git</p>
+<h1>Verify</h1>
+git remote -v</code></pre>
+<p><strong>Issue: Non-Fast-Forward Push</strong>
+<pre><code class="language-bash"># Pull latest changes first
+git pull origin main --no-rebase</p>
+<h1>Resolve conflicts if any</h1>
+git add .
+git commit -m &quot;Merge: Resolve conflicts&quot;
+<h1>Push again</h1>
+git push origin main</code></pre>
+<p><strong>Issue: Prettier EACCES Error (Pre-commit Hook)</strong>
+<li>✅ Đã fix: Cấu hình <code>.lintstagedrc.json</code> sử dụng <code>npx prettier</code> thay vì <code>prettier</code></li></p>
 <hr>
 <h2>📝 Environment Variables</h2>
 <h3>Frontend (.env)</h3>
@@ -1076,7 +1113,14 @@ NODE_ENV=development</code></pre>
 <li>Test at http://localhost:3000</li>
 <h3>Deploy to Cloud</h3>
 <li>Test locally first</li>
-<li>Commit changes: <code>git add . && git commit -m "message"</code></li>
+<li>Commit changes:</li>
+   <pre><code class="language-bash">git add .
+   git commit -m &quot;message&quot;
+   # Pre-commit hook tự động chạy lint-staged</code></pre>
+<li>Pull latest:</li>
+   <pre><code class="language-bash">git pull origin main --no-rebase</code></pre>
+<li>Push to GitHub:</li>
+   <pre><code class="language-bash">git push origin main</code></pre>
 <li>Deploy: <code>./quick-deploy.sh "Deploy message"</code></li>
 <hr>
 <h2>📚 Additional Resources</h2>
@@ -1090,10 +1134,16 @@ NODE_ENV=development</code></pre>
 <li>Logs trong thư mục <code>logs/</code></li>
 <li>Port conflicts với <code>npm run check:ports</code></li>
 <li>Backend health với <code>npm run check:backend</code></li>
-<li>Environment variables trong <code>.env</code></li></ul></p>
+<li>Environment variables trong <code>.env</code></li></p>
 <hr>
-<p><strong>Last Updated:</strong> December 11, 2025
-<strong>Version:</strong> 4.0</p>
+<p><strong>Last Updated:</strong> January 21, 2026
+<strong>Version:</strong> 4.0
+<strong>Status:</strong> ✅ <strong>Complete & Verified</strong>
+<strong>Recent Updates:</strong>
+<li>✅ Git remote origin configured</li>
+<li>✅ Pre-commit hooks with Husky & lint-staged</li>
+<li>✅ Prettier EACCES error fixed</li>
+<li>✅ Git deployment workflow added</li></ul></p>
                 </div>
                 <div class="section-footer">
                     <small>📄 Source: <code>DEPLOYMENT_GUIDE.md</code></small>
@@ -2650,7 +2700,7 @@ import Card from &#039;./components/ui/Card&#039;;</code></pre></p>
             </div>
 
             <div class="last-updated">
-                <p><strong>📅 Last Updated:</strong> lúc 22:43 17 tháng 1, 2026</p>
+                <p><strong>📅 Last Updated:</strong> lúc 17:04 21 tháng 1, 2026</p>
                 <p>🔄 <strong>Auto-generated</strong> from Markdown documentation files</p>
                 <p>📝 <strong>Regenerate:</strong> <code>node scripts/utils/generate-complete-docs.js</code></p>
             </div>

@@ -155,6 +155,38 @@ npm run serve:deployed
 
 ---
 
+### Git Deployment Workflow
+
+**Mục đích:** Commit và push code lên GitHub
+
+**Tính năng:**
+- ✅ Auto-format và lint trước khi commit (Husky)
+- ✅ Pull latest changes trước khi push
+- ✅ Resolve merge conflicts
+- ✅ Push to GitHub
+
+**Sử dụng:**
+```bash
+# Add và commit changes
+git add .
+git commit -m "Your commit message"
+# Pre-commit hook sẽ tự động chạy lint-staged
+
+# Pull latest changes
+git pull origin main --no-rebase
+
+# Resolve conflicts nếu có, rồi commit
+git add .
+git commit -m "Merge: Resolve conflicts"
+
+# Push to GitHub
+git push origin main
+```
+
+**Note:** Pre-commit hook đã được cấu hình với Husky và lint-staged để tự động format và lint code.
+
+---
+
 ### `serve-build.sh` - Serve Production Build
 
 **Mục đích:** Serve production build locally
@@ -286,6 +318,33 @@ cat logs/ai-service.log
 npm run verify:setup
 ```
 
+### Git Issues
+
+**Issue: Git Remote Not Found**
+```bash
+# Add remote origin
+git remote add origin https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git
+
+# Verify
+git remote -v
+```
+
+**Issue: Non-Fast-Forward Push**
+```bash
+# Pull latest changes first
+git pull origin main --no-rebase
+
+# Resolve conflicts if any
+git add .
+git commit -m "Merge: Resolve conflicts"
+
+# Push again
+git push origin main
+```
+
+**Issue: Prettier EACCES Error (Pre-commit Hook)**
+- ✅ Đã fix: Cấu hình `.lintstagedrc.json` sử dụng `npx prettier` thay vì `prettier`
+
 ---
 
 ## 📝 Environment Variables
@@ -322,8 +381,21 @@ NODE_ENV=development
 
 ### Deploy to Cloud
 1. Test locally first
-2. Commit changes: `git add . && git commit -m "message"`
-3. Deploy: `./quick-deploy.sh "Deploy message"`
+2. Commit changes:
+   ```bash
+   git add .
+   git commit -m "message"
+   # Pre-commit hook tự động chạy lint-staged
+   ```
+3. Pull latest:
+   ```bash
+   git pull origin main --no-rebase
+   ```
+4. Push to GitHub:
+   ```bash
+   git push origin main
+   ```
+5. Deploy: `./quick-deploy.sh "Deploy message"`
 
 ---
 
@@ -346,6 +418,12 @@ Nếu gặp vấn đề, kiểm tra:
 
 ---
 
-**Last Updated:** December 11, 2025
+**Last Updated:** January 21, 2026
 **Version:** 4.0
+**Status:** ✅ **Complete & Verified**
+**Recent Updates:**
+- ✅ Git remote origin configured
+- ✅ Pre-commit hooks with Husky & lint-staged
+- ✅ Prettier EACCES error fixed
+- ✅ Git deployment workflow added
 

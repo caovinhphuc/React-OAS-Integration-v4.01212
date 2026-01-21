@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-01-17T17:01:10.836Z",
+  "timestamp": "2026-01-21T09:33:26.798Z",
   "bundle": {
     "jsFiles": [
       {
-        "name": "main.f86b3927.js",
-        "path": "build/static/js/main.f86b3927.js",
-        "size": 712517
+        "name": "main.25f7f1a5.js",
+        "path": "build/static/js/main.25f7f1a5.js",
+        "size": 711757
       },
       {
         "name": "259.bae255cf.chunk.js",
@@ -58,9 +58,9 @@
         "size": 39644
       },
       {
-        "name": "302.3ab3c197.chunk.js",
-        "path": "build/static/js/302.3ab3c197.chunk.js",
-        "size": 36481
+        "name": "302.5ef12722.chunk.js",
+        "path": "build/static/js/302.5ef12722.chunk.js",
+        "size": 36291
       },
       {
         "name": "218.5550effc.chunk.js",
@@ -93,14 +93,14 @@
         "size": 23384
       },
       {
-        "name": "125.c674033e.chunk.js",
-        "path": "build/static/js/125.c674033e.chunk.js",
-        "size": 19092
+        "name": "125.3f80229b.chunk.js",
+        "path": "build/static/js/125.3f80229b.chunk.js",
+        "size": 19681
       },
       {
-        "name": "408.f6f5de79.chunk.js",
-        "path": "build/static/js/408.f6f5de79.chunk.js",
-        "size": 17823
+        "name": "408.0998aa41.chunk.js",
+        "path": "build/static/js/408.0998aa41.chunk.js",
+        "size": 17633
       },
       {
         "name": "165.d4ad9523.chunk.js",
@@ -123,14 +123,14 @@
         "size": 15684
       },
       {
-        "name": "870.dcd5532b.chunk.js",
-        "path": "build/static/js/870.dcd5532b.chunk.js",
-        "size": 14352
+        "name": "870.b52fe821.chunk.js",
+        "path": "build/static/js/870.b52fe821.chunk.js",
+        "size": 14941
       },
       {
-        "name": "593.43d46083.chunk.js",
-        "path": "build/static/js/593.43d46083.chunk.js",
-        "size": 14044
+        "name": "593.e6841310.chunk.js",
+        "path": "build/static/js/593.e6841310.chunk.js",
+        "size": 13854
       },
       {
         "name": "238.dec156a5.chunk.js",
@@ -138,9 +138,9 @@
         "size": 13458
       },
       {
-        "name": "795.8e81f01f.chunk.js",
-        "path": "build/static/js/795.8e81f01f.chunk.js",
-        "size": 13204
+        "name": "795.5c2d5725.chunk.js",
+        "path": "build/static/js/795.5c2d5725.chunk.js",
+        "size": 12919
       },
       {
         "name": "878.9a3a071a.chunk.js",
@@ -153,19 +153,19 @@
         "size": 12315
       },
       {
-        "name": "668.e9d85dbe.chunk.js",
-        "path": "build/static/js/668.e9d85dbe.chunk.js",
-        "size": 12084
-      },
-      {
-        "name": "928.7543e378.chunk.js",
-        "path": "build/static/js/928.7543e378.chunk.js",
-        "size": 11319
+        "name": "668.91f5ace7.chunk.js",
+        "path": "build/static/js/668.91f5ace7.chunk.js",
+        "size": 11894
       },
       {
         "name": "955.864668b8.chunk.js",
         "path": "build/static/js/955.864668b8.chunk.js",
         "size": 11246
+      },
+      {
+        "name": "928.30a75b57.chunk.js",
+        "path": "build/static/js/928.30a75b57.chunk.js",
+        "size": 10939
       },
       {
         "name": "591.bbffd521.chunk.js",
@@ -183,9 +183,9 @@
         "size": 10135
       },
       {
-        "name": "65.f1efc91f.chunk.js",
-        "path": "build/static/js/65.f1efc91f.chunk.js",
-        "size": 10094
+        "name": "65.b6294d98.chunk.js",
+        "path": "build/static/js/65.b6294d98.chunk.js",
+        "size": 9904
       },
       {
         "name": "470.14df0fbc.chunk.js",
@@ -270,9 +270,9 @@
         "size": 144
       }
     ],
-    "totalJsSize": 2397288,
+    "totalJsSize": 2396091,
     "totalCssSize": 82442,
-    "totalSize": 2479730
+    "totalSize": 2478533
   },
   "dependencies": {
     "deps": {
@@ -283,15 +283,13 @@
       "autoprefixer": "^10.4.23",
       "axios": "^1.13.2",
       "compression-webpack-plugin": "^11.1.0",
-      "cors": "^2.8.5",
       "css-loader": "^7.1.2",
       "cssnano": "^7.1.2",
       "dayjs": "^1.11.19",
       "dotenv": "^17.2.3",
-      "express": "^5.2.1",
       "form-data": "^4.0.5",
       "google-auth-library": "^10.5.0",
-      "googleapis": "^169.0.0",
+      "googleapis": "^170.1.0",
       "handlebars": "^4.7.8",
       "http-proxy-middleware": "^3.0.5",
       "mjml": "^4.18.0",
@@ -299,12 +297,11 @@
       "node-telegram-bot-api": "^0.67.0",
       "nodemailer": "^7.0.12",
       "postcss-loader": "^8.2.0",
-      "pyyaml": "^0.0.1",
       "react": "^18.2.0",
       "react-dnd": "^16.0.1",
       "react-dnd-html5-backend": "^16.0.1",
       "react-dom": "^18.3.1",
-      "react-grid-layout": "^2.1.1",
+      "react-grid-layout": "^2.2.2",
       "react-is": "^18.3.1",
       "react-redux": "^9.2.0",
       "react-resizable": "^3.0.5",
@@ -320,8 +317,10 @@
       "ws": "^8.18.3"
     },
     "devDeps": {
+      "@babel/plugin-transform-runtime": "^7.28.5",
       "@babel/preset-env": "^7.28.5",
       "@babel/preset-react": "^7.28.5",
+      "@babel/runtime": "^7.28.6",
       "@size-limit/preset-app": "^12.0.0",
       "@size-limit/preset-big-lib": "^12.0.0",
       "@size-limit/preset-small-lib": "^12.0.0",
@@ -333,7 +332,7 @@
       "babel-loader": "^10.0.0",
       "browserify-zlib": "^0.2.0",
       "concurrently": "^8.2.2",
-      "crypto-browserify": "^3.12.1",
+      "crypto-browserify": "^3.5.1",
       "depcheck": "^1.4.7",
       "eslint": "^8.57.1",
       "eslint-config-prettier": "^9.1.2",
@@ -349,6 +348,7 @@
       "os-browserify": "^0.3.0",
       "path-browserify": "^1.0.1",
       "prettier": "^3.7.4",
+      "puppeteer": "^24.35.0",
       "querystring-es3": "^0.2.1",
       "serve": "^14.2.1",
       "sharp": "^0.34.5",

@@ -94,9 +94,20 @@ build_application() {
         log_info "Cleaned previous build"
     fi
 
+    # Clean node_modules cache if exists
+    if [[ -d "node_modules/.cache" ]]; then
+        rm -rf node_modules/.cache
+        log_info "Cleaned node_modules cache"
+    fi
+
     # Install dependencies
     log_info "Installing dependencies..."
-    npm ci
+    if [[ -f "package-lock.json" ]]; then
+        npm ci
+    else
+        log_warn "package-lock.json not found. Running npm install..."
+        npm install
+    fi
 
     # Build for production
     log_info "Building for production..."

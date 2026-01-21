@@ -1,24 +1,24 @@
 {
-  "timestamp": "2026-01-21T05:19:37.835Z",
+  "timestamp": "2026-01-21T10:11:35.237Z",
   "overall": "unhealthy",
   "services": {
     "file-system": {
       "status": "healthy",
       "message": "All required files and directories present",
       "details": null,
-      "timestamp": "2026-01-21T05:19:37.836Z"
+      "timestamp": "2026-01-21T10:11:35.244Z"
     },
     "dependencies": {
       "status": "healthy",
       "message": "All critical dependencies present",
       "details": null,
-      "timestamp": "2026-01-21T05:19:37.836Z"
+      "timestamp": "2026-01-21T10:11:35.244Z"
     },
     "environment": {
       "status": "warning",
       "message": "Missing optional environment variables: SMTP_USER, SMTP_PASS",
       "details": null,
-      "timestamp": "2026-01-21T05:19:37.836Z"
+      "timestamp": "2026-01-21T10:11:35.244Z"
     },
     "google-sheets": {
       "status": "error",
@@ -27,7 +27,7 @@
         "error": "error:1E08010C:DECODER routines::unsupported",
         "code": "ERR_OSSL_UNSUPPORTED"
       },
-      "timestamp": "2026-01-21T05:19:38.412Z"
+      "timestamp": "2026-01-21T10:11:36.020Z"
     },
     "google-drive": {
       "status": "error",
@@ -36,7 +36,7 @@
         "error": "error:1E08010C:DECODER routines::unsupported",
         "code": "ERR_OSSL_UNSUPPORTED"
       },
-      "timestamp": "2026-01-21T05:19:38.413Z"
+      "timestamp": "2026-01-21T10:11:36.021Z"
     },
     "email-service": {
       "status": "warning",
@@ -45,15 +45,15 @@
         "sendgrid_configured": true,
         "smtp_configured": false
       },
-      "timestamp": "2026-01-21T05:19:39.019Z"
+      "timestamp": "2026-01-21T10:11:36.807Z"
     },
     "telegram-service": {
       "status": "error",
-      "message": "Telegram service connection failed: Request failed with status code 401",
+      "message": "Telegram service connection failed: Request failed with status code 404",
       "details": {
-        "error": "Request failed with status code 401"
+        "error": "Request failed with status code 404"
       },
-      "timestamp": "2026-01-21T05:19:41.880Z"
+      "timestamp": "2026-01-21T10:11:37.522Z"
     }
   },
   "errors": [
@@ -75,9 +75,9 @@
     },
     {
       "service": "telegram-service",
-      "message": "Telegram service connection failed: Request failed with status code 401",
+      "message": "Telegram service connection failed: Request failed with status code 404",
       "details": {
-        "error": "Request failed with status code 401"
+        "error": "Request failed with status code 404"
       }
     }
   ],

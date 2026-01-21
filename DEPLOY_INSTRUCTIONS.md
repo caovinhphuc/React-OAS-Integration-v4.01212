@@ -5,6 +5,10 @@
 - ✅ **Build thành công**: Production build đã được tạo
 - ✅ **Vercel config**: `vercel.json` đã được cấu hình
 - ✅ **Scripts**: Scripts deployment đã sẵn sàng
+- ✅ **Development tools**: Husky, lint-staged, Prettier đã setup
+- ✅ **Git configuration**: Remote origin đã configured
+- ✅ **Pre-commit hooks**: Đã tested và working
+- ✅ **Code quality**: Auto-format và lint trước mỗi commit
 
 ## 🎯 Các phương thức Deploy
 
@@ -85,14 +89,27 @@ Sau khi đã kết nối repository trong Vercel Dashboard:
 1. **Commit và push code**:
 
    ```bash
+   # Pre-commit hooks sẽ tự động chạy khi commit
    git add .
    git commit -m "feat: ready for production"
+   # Husky sẽ tự động lint và format code trước khi commit
+
+   # Pull latest changes trước khi push
+   git pull origin main --no-rebase
+
+   # Push to GitHub
    git push origin main
    ```
 
 2. **Vercel tự động deploy**:
    - Mỗi push lên `main` branch → Auto deploy production
    - Mỗi push lên branch khác → Auto deploy preview
+
+**Note**: Pre-commit hooks đã được cấu hình với Husky và lint-staged để tự động:
+
+- ✅ Chạy ESLint và auto-fix lỗi
+- ✅ Format code với Prettier
+- ✅ Đảm bảo code quality trước khi commit
 
 ---
 
@@ -101,9 +118,12 @@ Sau khi đã kết nối repository trong Vercel Dashboard:
 - [x] ✅ Build thành công (`npm run build`)
 - [x] ✅ Dependencies đã được cài đặt
 - [x] ✅ Vercel config (`vercel.json`) đã có
+- [x] ✅ Development tools (Husky, lint-staged, Prettier) đã setup
+- [x] ✅ Git remote origin đã configured
+- [x] ✅ Pre-commit hooks đã tested
+- [x] ✅ Code đã được pushed lên GitHub
 - [ ] ⚠️ Environment variables đã được cấu hình trong Vercel Dashboard
-- [ ] ⚠️ GitHub repository đã được push code mới nhất
-- [ ] ⚠️ Đã test các chức năng chính
+- [ ] ⚠️ Đã test các chức năng chính trên local
 
 ---
 
@@ -143,6 +163,45 @@ Sau khi đã kết nối repository trong Vercel Dashboard:
 - Kiểm tra `vercel.json` rewrites configuration
 - Đảm bảo routing đúng (React Router)
 
+### Git Issues
+
+**Problem: Git remote not found**
+
+```bash
+# Solution: Add remote origin
+git remote add origin https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git
+git remote -v  # Verify
+```
+
+**Problem: Non-fast-forward push**
+
+```bash
+# Solution: Pull first, then push
+git pull origin main --no-rebase
+# Resolve conflicts if any
+git add .
+git commit -m "Merge: Resolve conflicts"
+git push origin main
+```
+
+**Problem: Prettier EACCES error in pre-commit hook**
+
+- ✅ Đã fix: `.lintstagedrc.json` đã được cấu hình với `npx prettier`
+- Pre-commit hooks sẽ chạy mượt mà
+
+**Problem: Pre-commit hook fails**
+
+```bash
+# Skip hook temporarily (not recommended)
+git commit --no-verify -m "message"
+
+# Better: Fix linting/formatting issues
+npm run lint:fix
+npm run format
+git add .
+git commit -m "message"
+```
+
 ---
 
 ## 📚 Tài liệu tham khảo
@@ -160,6 +219,49 @@ Sau khi đã kết nối repository trong Vercel Dashboard:
 3. ✅ Cấu hình custom domain (nếu cần)
 4. ✅ Setup monitoring và analytics
 5. ✅ Thông báo team về deployment
+
+---
+
+## 🔄 Workflow Khuyến Nghị
+
+### Development → Production
+
+1. **Develop locally**:
+
+   ```bash
+   npm start  # Development server
+   ```
+
+2. **Commit changes**:
+
+   ```bash
+   git add .
+   git commit -m "feat: your feature"
+   # Pre-commit hooks tự động chạy
+   ```
+
+3. **Pull latest**:
+
+   ```bash
+   git pull origin main --no-rebase
+   ```
+
+4. **Push to GitHub**:
+
+   ```bash
+   git push origin main
+   # Vercel tự động deploy
+   ```
+
+5. **Verify deployment**:
+   - Check Vercel dashboard
+   - Test production URL
+
+---
+
+**Last Updated**: January 21, 2026
+**Status**: ✅ Ready for deployment
+**Git Repository**: https://github.com/caovinhphuc/React-OAS-Integration-v4.0
 
 ---
 

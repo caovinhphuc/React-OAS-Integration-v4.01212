@@ -1,22 +1,62 @@
 {
-  "timestamp": "2026-01-21T07:00:32.996Z",
+  "timestamp": "2026-01-21T09:39:45.337Z",
   "logDir": "logs",
   "files": [
     {
       "file": "ai-service.log",
-      "totalLines": 1,
-      "errors": [
+      "totalLines": 11,
+      "errors": [],
+      "warnings": [],
+      "info": [
         {
           "line": 1,
-          "content": "ERROR:    Error loading ASGI app. Could not import module \"ai_service.main\"."
+          "content": "INFO:     Will watch for changes in these directories: ['/Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/ai-service']"
+        },
+        {
+          "line": 2,
+          "content": "INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)"
+        },
+        {
+          "line": 3,
+          "content": "INFO:     Started reloader process [5957] using WatchFiles"
+        },
+        {
+          "line": 4,
+          "content": "INFO:     Started server process [5960]"
+        },
+        {
+          "line": 5,
+          "content": "INFO:     Waiting for application startup."
+        },
+        {
+          "line": 6,
+          "content": "INFO:     Application startup complete."
+        },
+        {
+          "line": 7,
+          "content": "INFO:     Shutting down"
+        },
+        {
+          "line": 8,
+          "content": "INFO:     Waiting for application shutdown."
+        },
+        {
+          "line": 9,
+          "content": "INFO:     Application shutdown complete."
+        },
+        {
+          "line": 10,
+          "content": "INFO:     Finished server process [5960]"
+        },
+        {
+          "line": 11,
+          "content": "INFO:     Stopping reloader process [5957]"
         }
       ],
-      "warnings": [],
-      "info": [],
       "timestamps": [],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 0,
-      "infoCount": 0,
+      "infoCount": 11,
       "patterns": {}
     },
     {
@@ -74,13 +114,13 @@
     },
     {
       "file": "automation.log",
-      "totalLines": 10,
+      "totalLines": 15,
       "errors": [],
       "warnings": [],
       "info": [
         {
           "line": 1,
-          "content": "INFO:     Started server process [86595]"
+          "content": "INFO:     Started server process [5980]"
         },
         {
           "line": 2,
@@ -88,23 +128,23 @@
         },
         {
           "line": 3,
-          "content": "2026-01-21 13:13:12,462 - main - INFO - 🚀 Starting OneAutomation System..."
+          "content": "2026-01-21 16:22:09,535 - main - INFO - 🚀 Starting OneAutomation System..."
         },
         {
           "line": 5,
-          "content": "2026-01-21 13:13:12,463 - main - INFO - ✅ Google Sheets service initialized"
+          "content": "2026-01-21 16:22:09,535 - main - INFO - ✅ Google Sheets service initialized"
         },
         {
           "line": 6,
-          "content": "2026-01-21 13:13:12,463 - main - INFO - ✅ Email service initialized"
+          "content": "2026-01-21 16:22:09,535 - main - INFO - ✅ Email service initialized"
         },
         {
           "line": 7,
-          "content": "2026-01-21 13:13:12,463 - main - INFO - ✅ Data processor initialized"
+          "content": "2026-01-21 16:22:09,535 - main - INFO - ✅ Data processor initialized"
         },
         {
           "line": 8,
-          "content": "2026-01-21 13:13:12,463 - main - INFO - 🎉 OneAutomation System started successfully!"
+          "content": "2026-01-21 16:22:09,535 - main - INFO - 🎉 OneAutomation System started successfully!"
         },
         {
           "line": 9,
@@ -113,18 +153,39 @@
         {
           "line": 10,
           "content": "INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)"
+        },
+        {
+          "line": 11,
+          "content": "INFO:     Shutting down"
+        },
+        {
+          "line": 12,
+          "content": "INFO:     Waiting for application shutdown."
+        },
+        {
+          "line": 13,
+          "content": "2026-01-21 16:22:45,560 - main - INFO - 👋 Shutting down OneAutomation System..."
+        },
+        {
+          "line": 14,
+          "content": "INFO:     Application shutdown complete."
+        },
+        {
+          "line": 15,
+          "content": "INFO:     Finished server process [5980]"
         }
       ],
       "timestamps": [
-        "2026-01-21 13:13:12",
-        "2026-01-21 13:13:12",
-        "2026-01-21 13:13:12",
-        "2026-01-21 13:13:12",
-        "2026-01-21 13:13:12"
+        "2026-01-21 16:22:09",
+        "2026-01-21 16:22:09",
+        "2026-01-21 16:22:09",
+        "2026-01-21 16:22:09",
+        "2026-01-21 16:22:09",
+        "2026-01-21 16:22:45"
       ],
       "errorCount": 0,
       "warningCount": 0,
-      "infoCount": 9,
+      "infoCount": 14,
       "patterns": {}
     },
     {
@@ -900,16 +961,17 @@
     },
     {
       "file": "backend.log",
-      "totalLines": 13,
+      "totalLines": 7,
       "errors": [],
       "warnings": [],
       "info": [],
-      "timestamps": ["2026-01-21T06:55:57"],
+      "timestamps": [],
       "errorCount": 0,
       "warningCount": 0,
       "infoCount": 0,
       "patterns": {
-        "connection": 1
+        "connection": 1,
+        "api": 2
       }
     },
     {
@@ -1182,7 +1244,9 @@
           "content": "2025-12-25 11:46:01,786 - CompleteAutomation - INFO - Automation completed successfully"
         }
       ],
-      "timestamps": ["2025-12-25 11:46:01"],
+      "timestamps": [
+        "2025-12-25 11:46:01"
+      ],
       "errorCount": 0,
       "warningCount": 0,
       "infoCount": 1,
@@ -1675,13 +1739,30 @@
     },
     {
       "file": "frontend.log",
-      "totalLines": 3,
+      "totalLines": 14,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "line": 3,
+          "content": "(node:5806) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+        },
+        {
+          "line": 4,
+          "content": "(Use `node --trace-deprecation ...` to show where the warning was created)"
+        },
+        {
+          "line": 5,
+          "content": "(node:5806) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 6,
+          "content": "(node:5806) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        }
+      ],
       "info": [],
       "timestamps": [],
       "errorCount": 0,
-      "warningCount": 0,
+      "warningCount": 4,
       "infoCount": 0,
       "patterns": {}
     },
@@ -1723,12 +1804,29 @@
     },
     {
       "file": "google-sheets-frontend.log",
-      "totalLines": 16,
-      "errors": [],
+      "totalLines": 71,
+      "errors": [
+        {
+          "line": 17,
+          "content": "Search for the keywords to learn more about each error."
+        },
+        {
+          "line": 62,
+          "content": "ERROR in [eslint] "
+        },
+        {
+          "line": 69,
+          "content": "Search for the keywords to learn more about each error."
+        },
+        {
+          "line": 70,
+          "content": "webpack compiled with 1 error and 1 warning"
+        }
+      ],
       "warnings": [
         {
           "line": 4,
-          "content": "(node:84799) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
+          "content": "(node:62608) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead"
         },
         {
           "line": 5,
@@ -1736,20 +1834,38 @@
         },
         {
           "line": 6,
-          "content": "(node:84799) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+          "content": "(node:62608) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
         },
         {
           "line": 7,
-          "content": "(node:84799) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+          "content": "(node:62608) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option."
+        },
+        {
+          "line": 36,
+          "content": "WARNING in [eslint] "
         }
       ],
-      "info": [],
+      "info": [
+        {
+          "line": 21,
+          "content": "<w> More info: https://sass-lang.com/d/legacy-js-api"
+        },
+        {
+          "line": 26,
+          "content": "<w> More info and automated migrator: https://sass-lang.com/d/import"
+        },
+        {
+          "line": 32,
+          "content": "<w> More info and automated migrator: https://sass-lang.com/d/import"
+        }
+      ],
       "timestamps": [],
-      "errorCount": 0,
-      "warningCount": 4,
-      "infoCount": 0,
+      "errorCount": 4,
+      "warningCount": 5,
+      "infoCount": 3,
       "patterns": {
-        "failed": 1
+        "failed": 2,
+        "api": 2
       }
     },
     {
@@ -2229,8 +2345,8 @@
   ],
   "summary": {
     "totalFiles": 30,
-    "totalLines": 457,
-    "totalErrors": 28,
-    "totalWarnings": 17
+    "totalLines": 532,
+    "totalErrors": 31,
+    "totalWarnings": 22
   }
 }

@@ -96,12 +96,19 @@ Khi commit code, Husky sẽ tự động:
 2. Format code với Prettier
 3. Chỉ commit files đã được lint và format
 
-**Setup Husky** (one-time):
+**Setup Husky** (already completed):
 
 ```bash
-npm run prepare
-# hoặc
-npx husky init
+npm run prepare  # ✅ Đã chạy
+```
+
+**Verify Hook hoạt động**:
+
+```bash
+# Test pre-commit hook
+git add .
+git commit -m "Test commit"
+# Hook sẽ tự động chạy lint-staged
 ```
 
 ## 📝 Configuration
@@ -125,10 +132,12 @@ npx husky init
 
 ```json
 {
-  "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
-  "*.{json,css,scss,md}": ["prettier --write"]
+  "*.{js,jsx,ts,tsx}": ["eslint --fix", "npx prettier --write"],
+  "*.{json,css,scss,md}": ["npx prettier --write"]
 }
 ```
+
+**Note**: Sử dụng `npx prettier` thay vì `prettier` để tránh lỗi EACCES permission.
 
 ### `.prettierignore`
 
@@ -146,12 +155,14 @@ package-lock.json
 
 - [x] ESLint configured
 - [x] Prettier configured
-- [x] Husky installed
-- [x] lint-staged configured
+- [x] Husky installed and configured
+- [x] lint-staged configured with npx prettier
 - [x] Type definitions added
 - [x] Scripts added to package.json
 - [x] Configuration files created
-- [ ] Husky pre-commit hook setup (run `npm run prepare`)
+- [x] Husky pre-commit hook tested and verified
+- [x] Git remote origin configured
+- [x] Successfully pushed to GitHub
 
 ## 📚 Quick Reference
 
@@ -165,7 +176,39 @@ package-lock.json
 | `npm run validate`      | Full validation    |
 | `npm run validate:full` | Validation + build |
 
+## 🔧 Troubleshooting
+
+### Issue: Prettier EACCES Error
+
+**Problem**: `prettier --write failed without output (EACCES)`
+
+**Solution**: Cập nhật `.lintstagedrc.json` để sử dụng `npx prettier` thay vì `prettier`
+
+### Issue: Git Remote Not Found
+
+**Problem**: `fatal: 'origin' does not appear to be a git repository`
+
+**Solution**:
+```bash
+git remote add origin https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git
+git remote -v  # Verify
+```
+
+### Issue: Non-Fast-Forward Push
+
+**Problem**: `Updates were rejected because the tip of your current branch is behind`
+
+**Solution**:
+```bash
+git pull origin main --no-rebase
+# Resolve conflicts if any
+git add .
+git commit -m "Merge: Resolve conflicts"
+git push origin main
+```
+
 ---
 
-**Date**: December 25, 2025  
-**Status**: ✅ **Complete** (Husky hook setup pending)
+**Date**: January 21, 2026
+**Status**: ✅ **Complete & Verified**
+**Last Updated**: Fixed prettier permissions, configured git remote, successfully tested pre-commit hooks

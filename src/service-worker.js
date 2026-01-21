@@ -4,6 +4,10 @@
  * Provides offline support and caching strategies
  */
 
+// This is required by Workbox InjectManifest plugin
+// eslint-disable-next-line no-undef
+const precacheManifest = self.__WB_MANIFEST || [];
+
 const CACHE_NAME = "react-oas-v4.0.0";
 const DATA_CACHE_NAME = "react-oas-data-v4.0.0";
 
@@ -28,7 +32,16 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log("[ServiceWorker] Pre-caching offline page");
-      return cache.addAll(FILES_TO_CACHE).catch((err) => {
+
+      // Precache files from Workbox manifest
+      const urlsToPrecache = precacheManifest.map((entry) =>
+        typeof entry === "string" ? entry : entry.url
+      );
+
+      // Add additional files to cache
+      const allFilesToCache = [...urlsToPrecache, ...FILES_TO_CACHE];
+
+      return cache.addAll(allFilesToCache).catch((err) => {
         console.warn("[ServiceWorker] Cache addAll failed:", err);
         // Continue even if some files fail to cache
         return Promise.resolve();

@@ -103,13 +103,11 @@
     "googleapis": "^170.1.0",
     "handlebars": "^4.7.8",
     "http-proxy-middleware": "^3.0.5",
-    "lodash-es": "^4.17.22",
     "mjml": "^4.18.0",
     "node-cron": "^4.2.1",
     "node-telegram-bot-api": "^0.67.0",
     "nodemailer": "^7.0.12",
     "postcss-loader": "^8.2.0",
-    "pyyaml": "^0.0.1",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
@@ -130,8 +128,10 @@
     "ws": "^8.18.3"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
+    "@babel/runtime": "^7.28.6",
     "@size-limit/preset-app": "^12.0.0",
     "@size-limit/preset-big-lib": "^12.0.0",
     "@size-limit/preset-small-lib": "^12.0.0",
@@ -143,7 +143,7 @@
     "babel-loader": "^10.0.0",
     "browserify-zlib": "^0.2.0",
     "concurrently": "^8.2.2",
-    "crypto-browserify": "^3.12.1",
+    "crypto-browserify": "^3.5.1",
     "depcheck": "^1.4.7",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.2",
@@ -171,7 +171,7 @@
     "terser-webpack-plugin": "^5.3.16",
     "vm-browserify": "^1.1.2",
     "webpack": "^5.104.1",
-    "webpack-bundle-analyzer": "^5.1.0"
+    "webpack-bundle-analyzer": "^5.1.1"
   },
   "browserslist": {
     "production": [
@@ -193,5 +193,6 @@
     "dashboard"
   ],
   "author": "React OAS Team",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "pnpm@10.28.1+sha512.7d7dbbca9e99447b7c3bf7a73286afaaf6be99251eb9498baefa7d406892f67b879adb3a1d7e687fc4ccc1a388c7175fbaae567a26ab44d1067b54fcb0d6a316"
 }
