@@ -6,7 +6,6 @@
 import { render } from "@testing-library/react";
 import { ConfigProvider } from "antd";
 import viVN from "antd/locale/vi_VN";
-import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { store } from "../store/store";
@@ -79,12 +78,20 @@ export const renderWithProviders = (
     route = "/",
     initialEntries = [route],
     initialState = {},
-    store: customStore = store,
+    store: customStore,
     ...renderOptions
   } = {}
 ) => {
+  // Create store with initialState if provided and no custom store
+  let testStore = customStore;
+  if (!testStore && Object.keys(initialState).length > 0) {
+    testStore = createMockStore(initialState);
+  } else if (!testStore) {
+    testStore = store;
+  }
+
   const Wrapper = ({ children }) => (
-    <Provider store={customStore}>
+    <Provider store={testStore}>
       <MemoryRouter initialEntries={initialEntries}>
         <ConfigProvider locale={viVN} componentSize="middle">
           {children}
@@ -94,7 +101,7 @@ export const renderWithProviders = (
   );
 
   return {
-    store: customStore,
+    store: testStore,
     ...render(ui, { wrapper: Wrapper, ...renderOptions }),
   };
 };
@@ -124,23 +131,42 @@ export const renderWithBrowserRouter = (ui, { route = "/", ...renderOptions } = 
  * Create mock store for testing
  */
 export const createMockStore = (initialState = {}) => {
-  // Simple mock store - in real tests, use actual store or configureStore
+  let state = {
+    auth: {
+      isAuthenticated: false,
+      user: null,
+      loading: false,
+      error: null,
+      sessionId: null,
+      ...initialState.auth,
+    },
+    sheets: initialState.sheets || {},
+    drive: initialState.drive || {},
+    dashboard: initialState.dashboard || {},
+    alerts: initialState.alerts || {},
+  };
+
+  const listeners = [];
+
   return {
-    getState: () => ({
-      auth: {
-        isAuthenticated: false,
-        user: null,
-        loading: false,
-        error: null,
-        ...initialState.auth,
-      },
-      sheets: initialState.sheets || {},
-      drive: initialState.drive || {},
-      dashboard: initialState.dashboard || {},
-      alerts: initialState.alerts || {},
+    getState: () => state,
+    dispatch: jest.fn((action) => {
+      // Simple reducer for testing
+      if (typeof action === "function") {
+        // Handle thunk
+        return action(mockStore.dispatch, mockStore.getState);
+      }
+      // Notify listeners
+      listeners.forEach((listener) => listener());
+      return action;
     }),
-    dispatch: jest.fn(),
-    subscribe: jest.fn(),
+    subscribe: jest.fn((listener) => {
+      listeners.push(listener);
+      return () => {
+        const index = listeners.indexOf(listener);
+        if (index > -1) listeners.splice(index, 1);
+      };
+    }),
     replaceReducer: jest.fn(),
   };
 };

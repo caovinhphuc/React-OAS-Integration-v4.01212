@@ -3,6 +3,11 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
+import { TextDecoder, TextEncoder } from "util";
+
+// Polyfill for TextEncoder/TextDecoder (required by react-router v7)
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 
 // Mock window.matchMedia - Required for Ant Design responsive features
 // Ant Design's responsiveObserver stores MediaQueryList objects and expects them to have specific properties

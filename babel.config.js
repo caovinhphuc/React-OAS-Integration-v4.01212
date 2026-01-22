@@ -13,7 +13,7 @@ module.exports = {
       {
         useBuiltIns: "entry",
         corejs: 3,
-        modules: false, // Let webpack handle modules
+        modules: process.env.NODE_ENV === "test" ? "commonjs" : false, // Use commonjs for Jest
         debug: false,
       },
     ],
