@@ -1,4 +1,0 @@
-npm run check:backend
-
-# Or manually
-curl http://localhost:3001/health
