@@ -1,26 +1,30 @@
 {
-  "timestamp": "2026-01-02T18:35:40.584Z",
+  "timestamp": "2026-01-22T17:27:21.093Z",
   "project": "mia-logistics-469406",
   "results": [
     {
       "api": "Google Sheets API",
-      "status": "not_checked",
-      "required": true
+      "status": "unknown",
+      "required": true,
+      "error": "error:1E08010C:DECODER routines::unsupported"
     },
     {
       "api": "Google Drive API",
-      "status": "not_checked",
-      "required": true
+      "status": "unknown",
+      "required": true,
+      "error": "error:1E08010C:DECODER routines::unsupported"
     },
     {
       "api": "Google Apps Script API",
-      "status": "not_checked",
-      "required": true
+      "status": "unknown",
+      "required": true,
+      "error": "error:1E08010C:DECODER routines::unsupported"
     },
     {
       "api": "Google Maps API",
-      "status": "not_used",
-      "required": false
+      "status": "unknown",
+      "required": false,
+      "error": "error:1E08010C:DECODER routines::unsupported"
     },
     {
       "api": "Drive Activity API",
@@ -40,5 +44,10 @@
     "https://www.googleapis.com/auth/drive",
     "https://www.googleapis.com/auth/drive.metadata.readonly"
   ],
-  "apisInCode": ["script.googleapis.com", "sheets.googleapis.com", "drive.googleapis.com"]
+  "apisInCode": [
+    "script.googleapis.com",
+    "sheets.googleapis.com",
+    "drive.googleapis.com",
+    "maps.googleapis.com"
+  ]
 }

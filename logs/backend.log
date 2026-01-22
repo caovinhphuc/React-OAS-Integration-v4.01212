@@ -10,6 +10,76 @@
 🚀 Backend server running on port 3001
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
-::1 - - [18/Jan/2026:08:10:47 +0000] "GET /api/auth/verify HTTP/1.1" 200 58 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
-::1 - - [18/Jan/2026:08:10:47 +0000] "GET /api/auth/verify HTTP/1.1" 200 58 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
-::1 - - [18/Jan/2026:08:11:04 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+::1 - - [22/Jan/2026:17:36:15 +0000] "GET /login?returnUrl=%2Fgoogle-apps-script HTTP/1.1" 404 271 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/__ARCHIVE__/React-OAS-Integration-v4.0/backend/build/index.html'
+::1 - - [22/Jan/2026:17:42:52 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+Client connected: zKnQ4GVPAQj3NrZWAAAB
+Data request received: { type: 'dashboard', timestamp: '2026-01-22T17:42:52.825Z' }
+AI analysis request: { data: [ 1, 2, 3, 4, 5 ], model: 'test' }
+Client disconnected: zKnQ4GVPAQj3NrZWAAAB
+::1 - - [22/Jan/2026:17:42:55 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+::1 - - [22/Jan/2026:17:42:55 +0000] "GET /api/status HTTP/1.1" 200 93 "-" "-"
+::1 - - [22/Jan/2026:17:42:55 +0000] "GET /api/orders HTTP/1.1" 404 71 "-" "-"
+::1 - - [22/Jan/2026:17:42:55 +0000] "GET /api/analytics HTTP/1.1" 404 74 "-" "-"
+::1 - - [22/Jan/2026:17:42:55 +0000] "GET /api/statistics HTTP/1.1" 404 75 "-" "-"
+::1 - - [22/Jan/2026:17:43:11 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+Client connected: Te772ADhnziOvZt5AAAD
+Data request received: { type: 'dashboard', timestamp: '2026-01-22T17:43:12.319Z' }
+AI analysis request: { data: [ 1, 2, 3, 4, 5 ], model: 'test' }
+Client disconnected: Te772ADhnziOvZt5AAAD
+::1 - - [22/Jan/2026:17:43:18 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+::1 - - [22/Jan/2026:17:43:18 +0000] "GET /api/status HTTP/1.1" 200 93 "-" "-"
+::1 - - [22/Jan/2026:17:43:18 +0000] "GET /api/orders HTTP/1.1" 404 71 "-" "-"
+::1 - - [22/Jan/2026:17:43:18 +0000] "GET /api/analytics HTTP/1.1" 404 74 "-" "-"
+::1 - - [22/Jan/2026:17:43:18 +0000] "GET /api/statistics HTTP/1.1" 404 75 "-" "-"
+::1 - - [22/Jan/2026:17:44:07 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+::1 - - [22/Jan/2026:17:44:07 +0000] "GET /api/status HTTP/1.1" 200 93 "-" "-"
+::1 - - [22/Jan/2026:17:44:07 +0000] "GET /api/orders HTTP/1.1" 404 71 "-" "-"
+::1 - - [22/Jan/2026:17:44:07 +0000] "GET /api/analytics HTTP/1.1" 404 74 "-" "-"
+::1 - - [22/Jan/2026:17:44:07 +0000] "GET /api/statistics HTTP/1.1" 404 75 "-" "-"
+::1 - - [22/Jan/2026:17:44:10 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+::1 - - [22/Jan/2026:17:44:10 +0000] "GET /api/status HTTP/1.1" 200 93 "-" "-"
+::1 - - [22/Jan/2026:17:44:10 +0000] "GET /api/orders HTTP/1.1" 404 71 "-" "-"
+::1 - - [22/Jan/2026:17:44:10 +0000] "GET /api/analytics HTTP/1.1" 404 74 "-" "-"
+::1 - - [22/Jan/2026:17:44:10 +0000] "GET /api/statistics HTTP/1.1" 404 75 "-" "-"
+::1 - - [22/Jan/2026:17:44:15 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+Client connected: 6tPRNJSrNarIQguSAAAF
+Data request received: { type: 'dashboard', timestamp: '2026-01-22T17:44:15.743Z' }
+AI analysis request: { data: [ 1, 2, 3, 4, 5 ], model: 'test' }
+Client disconnected: 6tPRNJSrNarIQguSAAAF
+::1 - - [22/Jan/2026:17:44:19 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+Client connected: zPimbrPcokCHMWjwAAAH
+Data request received: { type: 'dashboard', timestamp: '2026-01-22T17:44:19.658Z' }
+AI analysis request: { data: [ 1, 2, 3, 4, 5 ], model: 'test' }
+Client disconnected: zPimbrPcokCHMWjwAAAH
+::1 - - [22/Jan/2026:17:44:55 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
+::1 - - [22/Jan/2026:17:45:13 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+Client connected: HYlrPydmqDhx36fZAAAJ
+Data request received: { type: 'dashboard', timestamp: '2026-01-22T17:45:13.980Z' }
+AI analysis request: { data: [ 1, 2, 3, 4, 5 ], model: 'test' }
+Client disconnected: HYlrPydmqDhx36fZAAAJ
+::1 - - [22/Jan/2026:17:45:18 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+::1 - - [22/Jan/2026:17:45:18 +0000] "GET /api/status HTTP/1.1" 200 93 "-" "-"
+::1 - - [22/Jan/2026:17:45:18 +0000] "GET /api/orders HTTP/1.1" 404 71 "-" "-"
+::1 - - [22/Jan/2026:17:45:18 +0000] "GET /api/analytics HTTP/1.1" 404 74 "-" "-"
+::1 - - [22/Jan/2026:17:45:18 +0000] "GET /api/statistics HTTP/1.1" 404 75 "-" "-"
+::1 - - [22/Jan/2026:17:46:49 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
+::1 - - [22/Jan/2026:17:46:54 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
+::1 - - [22/Jan/2026:17:47:46 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+Client connected: G7bXT6_fSr4En0QoAAAL
+Data request received: { type: 'dashboard', timestamp: '2026-01-22T17:47:47.192Z' }
+AI analysis request: { data: [ 1, 2, 3, 4, 5 ], model: 'test' }
+Client disconnected: G7bXT6_fSr4En0QoAAAL
+::1 - - [22/Jan/2026:17:47:49 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+::1 - - [22/Jan/2026:17:47:49 +0000] "GET /api/status HTTP/1.1" 200 92 "-" "-"
+::1 - - [22/Jan/2026:17:47:49 +0000] "GET /api/orders HTTP/1.1" 404 71 "-" "-"
+::1 - - [22/Jan/2026:17:47:49 +0000] "GET /api/analytics HTTP/1.1" 404 74 "-" "-"
+::1 - - [22/Jan/2026:17:47:49 +0000] "GET /api/statistics HTTP/1.1" 404 75 "-" "-"
+::1 - - [22/Jan/2026:17:47:50 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
+Client connected: wH5Lh01DfM2eEz8IAAAN
+Data request received: { type: 'dashboard', timestamp: '2026-01-22T17:47:51.221Z' }
+AI analysis request: { data: [ 1, 2, 3, 4, 5 ], model: 'test' }
+Client disconnected: wH5Lh01DfM2eEz8IAAAN
+::1 - - [22/Jan/2026:17:47:58 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
+::1 - - [22/Jan/2026:17:47:58 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
+::1 - - [22/Jan/2026:17:49:02 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
