@@ -75,7 +75,7 @@ git add ROADMAP_NEXT_STEPS.md
 
 ```bash
 # Commit với message rõ ràng
-git commit -m "feat: Initial commit - React OAS Integration v3.0
+git commit -m "feat: Initial commit - React OAS Integration v4.0
 
 - Complete architecture guide
 - Updated README with full documentation
@@ -282,10 +282,10 @@ git status
 git add .
 
 # 4. Commit
-git commit -m "feat: Initial commit - React OAS Integration v3.0"
+git commit -m "feat: Initial commit - React OAS Integration v4.0"
 
 # 5. Thêm remote (nếu repo mới)
-git remote add origin https://github.com/USERNAME/REPO_NAME.git
+git remote add origin https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git
 
 # 6. Push
 git push -u origin main
