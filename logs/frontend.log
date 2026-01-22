@@ -2,19 +2,13 @@
 > react-oas-integration@3.0.0 start
 > react-scripts start
 
-(node:80877) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:80877) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
-Starting the development server...
-
-Compiled successfully!
-
-You can now view react-oas-integration in the browser.
-
-  Local:            http://localhost:3000
-  On Your Network:  http://192.168.10.158:3000
-
-Note that the development build is not optimized.
-To create a production build, use npm run build.
-
-webpack compiled successfully
+Cannot find module 'ajv/dist/compile/codegen'
+Require stack:
+- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/ajv-keywords/dist/definitions/typeof.js
+- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/ajv-keywords/dist/keywords/typeof.js
+- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/ajv-keywords/dist/keywords/index.js
+- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/ajv-keywords/dist/index.js
+- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/schema-utils/dist/validate.js
+- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/schema-utils/dist/index.js
+- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/webpack-dev-server/lib/Server.js
+- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/react-scripts/scripts/start.js
