@@ -1,5 +1,2 @@
-INFO:     Started server process [98771]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:52290 - "GET /health HTTP/1.1" 200 OK
+INFO:     Will watch for changes in these directories: ['/Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/ai-service']
+ERROR:    [Errno 48] Address already in use

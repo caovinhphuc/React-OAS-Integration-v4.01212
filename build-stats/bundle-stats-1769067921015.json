@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-22T07:55:00.408Z",
+  "timestamp": "2026-01-22T07:45:21.014Z",
   "bundle": {
     "jsFiles": [
       {
@@ -294,7 +294,7 @@
       "googleapis": "^170.1.0",
       "handlebars": "^4.7.8",
       "http-proxy-middleware": "^3.0.5",
-      "lodash-es": "^4.17.23",
+      "lodash-es": "^4.17.22",
       "mjml": "^4.18.0",
       "node-cron": "^4.2.1",
       "node-telegram-bot-api": "^0.67.0",
