@@ -1,14 +1,3 @@
+ INFO  Accepting connections at http://localhost:8080
 
-> react-oas-integration@3.0.0 start
-> react-scripts start
-
-Cannot find module 'ajv/dist/compile/codegen'
-Require stack:
-- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/ajv-keywords/dist/definitions/typeof.js
-- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/ajv-keywords/dist/keywords/typeof.js
-- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/ajv-keywords/dist/keywords/index.js
-- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/ajv-keywords/dist/index.js
-- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/schema-utils/dist/validate.js
-- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/schema-utils/dist/index.js
-- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/webpack-dev-server/lib/Server.js
-- /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/node_modules/react-scripts/scripts/start.js
+ INFO  Gracefully shutting down. Please wait...

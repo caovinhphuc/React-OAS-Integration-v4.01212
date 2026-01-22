@@ -85,35 +85,55 @@
 
 **Time**: 2-3 hours
 **Expected Savings**: -200 to -300 KB
+**Status**: 🔄 **IN PROGRESS** (Jan 22, 2026)
 
 **Implementation**:
 
 ```javascript
-// src/App.jsx - Update existing lazy imports
-const Dashboard = React.lazy(() => import("./pages/Dashboard"));
-const Analytics = React.lazy(() => import("./pages/Analytics"));
-const Reports = React.lazy(() => import("./pages/Reports"));
-const Settings = React.lazy(() => import("./pages/Settings"));
-const GoogleSheets = React.lazy(() => import("./pages/GoogleSheets"));
+// ✅ COMPLETED - src/App.jsx updated with named chunks
+// Each route now loads as a separate chunk to reduce main bundle
 
-// Wrap routes in Suspense
-<Suspense fallback={<LoadingSpinner />}>
-  <Routes>
-    <Route path="/dashboard" element={<Dashboard />} />
-    <Route path="/analytics" element={<Analytics />} />
-    <Route path="/reports" element={<Reports />} />
-    <Route path="/settings" element={<Settings />} />
-    <Route path="/google-sheets" element={<GoogleSheets />} />
-  </Routes>
-</Suspense>;
+// Authentication
+const Login = lazy(() => import("./components/auth/Login"));
+
+// Core Dashboard (chunk: "dashboard")
+const LiveDashboard = lazy(
+  () => import(/* webpackChunkName: "dashboard" */ "./components/Dashboard/LiveDashboard")
+);
+
+// AI & Analytics Group (separate chunks)
+const AIDashboard = lazy(
+  () => import(/* webpackChunkName: "ai-analytics" */ "./components/ai/AIDashboard")
+);
+const AdvancedAnalyticsDashboard = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "advanced-analytics" */ "./components/analytics/AdvancedAnalyticsDashboard"
+    )
+);
+
+// Google Integration Group (separate chunks)
+const GoogleSheetsIntegration = lazy(
+  () =>
+    import(/* webpackChunkName: "google-sheets" */ "./components/google/GoogleSheetsIntegration")
+);
+
+// ... and more grouped by feature
 ```
+
+**Changes Made**:
+
+- ✅ Added `webpackChunkName` comments to all lazy imports
+- ✅ Grouped routes by feature (AI, Google, Automation, Security)
+- ✅ Each group loads as separate chunk only when needed
+- ✅ Main bundle now excludes all route components
+- 🔄 Building production to measure actual savings...
 
 **Verification**:
 
 ```bash
 npm run build
-# Check that new route chunks are created
-# Expected: dashboard.chunk.js, analytics.chunk.js, etc.
+# Check that named chunks are created: dashboard.chunk.js, ai-analytics.chunk.js, etc.
 ```
 
 ---
@@ -243,16 +263,33 @@ const date = dayjs().format("YYYY-MM-DD");
 
 ## 📊 Progress Tracking
 
-| Date              | Phase | Action                       | Before      | After       | Savings     | Status     |
-| ----------------- | ----- | ---------------------------- | ----------- | ----------- | ----------- | ---------- |
-| Jan 22            | 0     | Remove unused deps           | 2.39 MB     | 2.36 MB     | -30 KB      | ✅ Done    |
-| Week 1            | 1.1   | Route splitting              | 2.36 MB     | ~2.06 MB    | -300 KB     | ⏳ Next    |
-| Week 1            | 1.2   | Ant Design tree-shaking      | ~2.06 MB    | ~1.86 MB    | -200 KB     | ⏳ Next    |
-| Week 1            | 1.3   | Dynamic charts               | ~1.86 MB    | ~1.76 MB    | -100 KB     | ⏳ Next    |
-| Week 1            | 1.4   | Remove moment                | ~1.76 MB    | ~1.66 MB    | -100 KB     | ⏳ Next    |
-| **Week 1 Target** |       |                              | **2.36 MB** | **1.66 MB** | **-700 KB** | ⏳         |
-| Week 2            | 2     | Backend proxy + vendor split | 1.66 MB     | 1.16 MB     | -500 KB     | ⏳ Planned |
-| Week 3            | 3     | Compression + tree-shaking   | 1.16 MB     | <1 MB       | -300 KB     | ⏳ Planned |
+| Date              | Phase | Action                       | Before      | After       | Savings     | Status        |
+| ----------------- | ----- | ---------------------------- | ----------- | ----------- | ----------- | ------------- |
+| Jan 22            | 0     | Remove unused deps           | 2.39 MB     | 2.36 MB     | -30 KB      | ✅ Done       |
+| Jan 22 15:44      | 1.1   | Route code splitting         | 2.36 MB     | Building... | TBD         | 🔄 In Progress |
+| Week 1            | 1.2   | Ant Design tree-shaking      | ~2.06 MB    | ~1.86 MB    | -200 KB     | ⏳ Next       |
+| Week 1            | 1.3   | Dynamic charts               | ~1.86 MB    | ~1.76 MB    | -100 KB     | ⏳ Next       |
+| Week 1            | 1.4   | Remove moment                | ~1.76 MB    | ~1.66 MB    | -100 KB     | ⏳ Next       |
+| **Week 1 Target** |       |                              | **2.36 MB** | **1.66 MB** | **-700 KB** | ⏳            |
+| Week 2            | 2     | Backend proxy + vendor split | 1.66 MB     | 1.16 MB     | -500 KB     | ⏳ Planned    |
+| Week 3            | 3     | Compression + tree-shaking   | 1.16 MB     | <1 MB       | -300 KB     | ⏳ Planned    |
+
+**Phase 1.1 Update (Jan 22, 15:44)**:
+- ✅ Added `webpackChunkName` comments to all route lazy imports
+- ✅ Created 12 named chunks by feature group:
+  - dashboard.fdcd21e5.chunk.js
+  - ai-analytics.b8da8308.chunk.js  
+  - advanced-analytics.3ab84c36.chunk.js
+  - google-sheets.20330e0e.chunk.js
+  - google-drive.a4630747.chunk.js
+  - google-apps-script.10162d83.chunk.js
+  - telegram.a1486bf1.chunk.js
+  - automation.1a509931.chunk.js
+  - smart-automation.49cfcec2.chunk.js
+  - retail.7bb8f624.chunk.js
+  - nlp.37728e7d.chunk.js
+  - security.a358596b.chunk.js
+- 🔄 Running full production build to measure total bundle size reduction...
 
 ---
 

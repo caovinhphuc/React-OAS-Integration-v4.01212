@@ -38,15 +38,15 @@ module.exports = {
         regenerator: true,
       },
     ],
-    // Ant Design tree-shaking (install: npm i babel-plugin-import -D)
-    // [
-    //   "import",
-    //   {
-    //     libraryName: "antd",
-    //     libraryDirectory: "es",
-    //     style: "css", // or 'css' for CSS imports
-    //   },
-    // ],
+    // Ant Design tree-shaking - Enabled for bundle optimization
+    [
+      "import",
+      {
+        libraryName: "antd",
+        libraryDirectory: "es",
+        style: true, // Import less files for better tree-shaking
+      },
+    ],
   ],
   env: {
     development: {
