@@ -1,3 +1,5 @@
- INFO  Accepting connections at http://localhost:8080
-
- INFO  Gracefully shutting down. Please wait...
+npm error code EJSONPARSE
+npm error JSON.parse Invalid package.json: JSONParseError: Expected double-quoted property name in JSON at position 2668 while parsing near "...d/static/js/*.js'\",\n<<<<<<< Updated upst..."
+npm error JSON.parse Failed to parse JSON data.
+npm error JSON.parse Note: package.json must be actual JSON, not just JavaScript.
+npm error A complete log of this run can be found in: /Users/phuccao/.npm/_logs/2026-01-22T09_13_16_505Z-debug-0.log
