@@ -1,5 +1,21 @@
-npm error code EJSONPARSE
-npm error JSON.parse Invalid package.json: JSONParseError: Expected double-quoted property name in JSON at position 2668 while parsing near "...d/static/js/*.js'\",\n<<<<<<< Updated upst..."
-npm error JSON.parse Failed to parse JSON data.
-npm error JSON.parse Note: package.json must be actual JSON, not just JavaScript.
-npm error A complete log of this run can be found in: /Users/phuccao/.npm/_logs/2026-01-22T09_13_16_505Z-debug-0.log
+
+> react-oas-integration@3.0.0 start
+> react-scripts start
+
+(node:65732) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:65732) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view react-oas-integration in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.10.158:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+The build failed because the process exited too early. This probably means the system ran out of memory or someone called `kill -9` on the process.

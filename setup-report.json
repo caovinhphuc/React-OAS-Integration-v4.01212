@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
   "timestamp": "2026-01-22T08:03:20.965Z",
-=======
-  "timestamp": "2026-01-18T18:58:22.935Z",
->>>>>>> Stashed changes
   "envFile": "✅ Exists",
   "dependencies": "✅ Installed",
   "build": "✅ Built",
@@ -12,8 +8,4 @@
     "email": "⚠️  Check API key",
     "telegram": "⚠️  Check token"
   }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
