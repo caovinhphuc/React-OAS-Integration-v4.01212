@@ -1,0 +1,5 @@
+# .github/workflows/lighthouse.yml
+- name: Lighthouse CI
+  run: |
+    npm install -g @lhci/cli
+    lhci autorun --collect.url=https://your-app.vercel.app
