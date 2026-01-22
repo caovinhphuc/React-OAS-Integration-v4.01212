@@ -13,7 +13,7 @@ module.exports = {
       {
         useBuiltIns: "entry",
         corejs: 3,
-        modules: false, // Let webpack handle modules
+        modules: process.env.NODE_ENV === "test" ? "commonjs" : false, // Use commonjs for Jest
         debug: false,
       },
     ],
@@ -38,6 +38,15 @@ module.exports = {
         regenerator: true,
       },
     ],
+    // Ant Design tree-shaking - Commented out (install babel-plugin-import if needed)
+    // [
+    //   "import",
+    //   {
+    //     libraryName: "antd",
+    //     libraryDirectory: "es",
+    //     style: true, // Import less files for better tree-shaking
+    //   },
+    // ],
   ],
   env: {
     development: {

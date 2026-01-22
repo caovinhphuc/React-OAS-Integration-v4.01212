@@ -1,6 +1,10 @@
 {
   "title": "Telegram Integration Test Report",
+<<<<<<< HEAD
   "timestamp": "2026-01-22T17:47:45.516Z",
+=======
+  "timestamp": "2026-01-22T08:02:09.216Z",
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
   "summary": {
     "total_tests": 1,
     "passed": 0,
@@ -29,7 +33,14 @@
           }
         ]
       },
+<<<<<<< HEAD
       "timestamp": "2026-01-22T17:47:45.515Z"
     }
   ]
 }
+=======
+      "timestamp": "2026-01-22T08:02:09.215Z"
+    }
+  ]
+}
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1

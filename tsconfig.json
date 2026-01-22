@@ -1,0 +1,78 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
+
+    /* Modules */
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@components/*": ["components/*"],
+      "@shared/*": ["shared/*"],
+      "@pages/*": ["pages/*"],
+      "@features/*": ["features/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
+      "@context/*": ["context/*"],
+      "@contexts/*": ["context/*"],
+      "@services/*": ["services/*"],
+      "@types/*": ["types/*"],
+      "@assets/*": ["assets/*"],
+      "@styles/*": ["styles/*"],
+      "@config/*": ["config/*"],
+      "@store/*": ["store/*"],
+      "@constants/*": ["constants/*"]
+    },
+
+    /* JavaScript Support */
+    "allowJs": true,
+    "checkJs": false,
+
+    /* Emit */
+    "noEmit": true,
+    "sourceMap": true,
+    "removeComments": true,
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+
+    /* Type Checking */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "public",
+    "backend",
+    "ai-service",
+    "scripts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx"
+  ]
+}

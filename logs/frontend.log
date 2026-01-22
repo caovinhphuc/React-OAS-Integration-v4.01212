@@ -2,6 +2,7 @@
 > react-oas-integration@3.0.0 start
 > react-scripts start
 
+<<<<<<< HEAD
 (node:76749) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 (node:76749) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
@@ -18,3 +19,6 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 
 webpack compiled successfully
+=======
+sh: react-scripts: command not found
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1

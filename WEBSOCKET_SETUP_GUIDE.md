@@ -32,39 +32,39 @@ Backend server sẽ chạy tại: `http://localhost:3001`
 ### 2. Kết nối từ Frontend
 
 ```javascript
-import io from 'socket.io-client';
+import io from "socket.io-client";
 
 // Kết nối đến backend
-const socket = io('http://localhost:3001', {
-  transports: ['websocket', 'polling']
+const socket = io("http://localhost:3001", {
+  transports: ["websocket", "polling"],
 });
 
 // Lắng nghe welcome message
-socket.on('welcome', (data) => {
-  console.log('Welcome:', data.message);
-  console.log('Timestamp:', data.timestamp);
+socket.on("welcome", (data) => {
+  console.log("Welcome:", data.message);
+  console.log("Timestamp:", data.timestamp);
 });
 
 // Yêu cầu real-time data
-socket.emit('request_data', {
-  type: 'dashboard',
-  timestamp: new Date().toISOString()
+socket.emit("request_data", {
+  type: "dashboard",
+  timestamp: new Date().toISOString(),
 });
 
 // Lắng nghe data updates
-socket.on('data_update', (data) => {
-  console.log('Data update:', data);
+socket.on("data_update", (data) => {
+  console.log("Data update:", data);
 });
 
 // Yêu cầu AI analysis
-socket.emit('ai_analysis', {
+socket.emit("ai_analysis", {
   data: [1, 2, 3, 4, 5],
-  model: 'test'
+  model: "test",
 });
 
 // Lắng nghe AI results
-socket.on('ai_result', (result) => {
-  console.log('AI result:', result);
+socket.on("ai_result", (result) => {
+  console.log("AI result:", result);
 });
 ```
 
@@ -77,9 +77,9 @@ socket.on('ai_result', (result) => {
 Yêu cầu real-time data từ server.
 
 ```javascript
-socket.emit('request_data', {
-  type: 'dashboard', // hoặc 'analytics', 'orders', etc.
-  timestamp: new Date().toISOString()
+socket.emit("request_data", {
+  type: "dashboard", // hoặc 'analytics', 'orders', etc.
+  timestamp: new Date().toISOString(),
 });
 ```
 
@@ -88,9 +88,9 @@ socket.emit('request_data', {
 Yêu cầu AI analysis.
 
 ```javascript
-socket.emit('ai_analysis', {
+socket.emit("ai_analysis", {
   data: [1, 2, 3, 4, 5],
-  model: 'prediction' // hoặc 'classification', 'clustering', etc.
+  model: "prediction", // hoặc 'classification', 'clustering', etc.
 });
 ```
 
@@ -101,7 +101,7 @@ socket.emit('ai_analysis', {
 Message chào mừng khi client kết nối.
 
 ```javascript
-socket.on('welcome', (data) => {
+socket.on("welcome", (data) => {
   // data.message: "Connected to React OAS Backend"
   // data.timestamp: ISO timestamp
 });
@@ -112,7 +112,7 @@ socket.on('welcome', (data) => {
 Real-time data update từ server.
 
 ```javascript
-socket.on('data_update', (data) => {
+socket.on("data_update", (data) => {
   // data.id: unique ID
   // data.timestamp: ISO timestamp
   // data.value: data value
@@ -125,7 +125,7 @@ socket.on('data_update', (data) => {
 AI analysis result từ server.
 
 ```javascript
-socket.on('ai_result', (result) => {
+socket.on("ai_result", (result) => {
   // result.id: unique ID
   // result.prediction: prediction value
   // result.confidence: confidence score (0-1)
@@ -199,8 +199,8 @@ Backend server tự động cấu hình WebSocket với:
 const io = socketIo(server, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"]
-  }
+    methods: ["GET", "POST"],
+  },
 });
 ```
 
@@ -208,11 +208,11 @@ const io = socketIo(server, {
 
 ```javascript
 const socket = io(API_URL, {
-  transports: ['websocket', 'polling'], // Fallback to polling nếu WebSocket fail
+  transports: ["websocket", "polling"], // Fallback to polling nếu WebSocket fail
   timeout: 5000,
   reconnection: true,
   reconnectionAttempts: 5,
-  reconnectionDelay: 1000
+  reconnectionDelay: 1000,
 });
 ```
 
@@ -222,8 +222,8 @@ const socket = io(API_URL, {
 
 ```javascript
 // hooks/useWebSocket.js
-import { useEffect, useState } from 'react';
-import io from 'socket.io-client';
+import { useEffect, useState } from "react";
+import io from "socket.io-client";
 
 export function useWebSocket(url) {
   const [socket, setSocket] = useState(null);
@@ -232,20 +232,20 @@ export function useWebSocket(url) {
 
   useEffect(() => {
     const newSocket = io(url, {
-      transports: ['websocket', 'polling']
+      transports: ["websocket", "polling"],
     });
 
-    newSocket.on('connect', () => {
+    newSocket.on("connect", () => {
       setConnected(true);
-      console.log('Connected to WebSocket');
+      console.log("Connected to WebSocket");
     });
 
-    newSocket.on('disconnect', () => {
+    newSocket.on("disconnect", () => {
       setConnected(false);
-      console.log('Disconnected from WebSocket');
+      console.log("Disconnected from WebSocket");
     });
 
-    newSocket.on('data_update', (newData) => {
+    newSocket.on("data_update", (newData) => {
       setData(newData);
     });
 
@@ -264,16 +264,16 @@ export function useWebSocket(url) {
 
 ```javascript
 // components/Dashboard.jsx
-import { useWebSocket } from '../hooks/useWebSocket';
+import { useWebSocket } from "../hooks/useWebSocket";
 
 function Dashboard() {
-  const { socket, connected, data } = useWebSocket('http://localhost:3001');
+  const { socket, connected, data } = useWebSocket("http://localhost:3001");
 
   useEffect(() => {
     if (socket && connected) {
       // Request data khi component mount
-      socket.emit('request_data', {
-        type: 'dashboard'
+      socket.emit("request_data", {
+        type: "dashboard",
       });
     }
   }, [socket, connected]);
@@ -281,7 +281,7 @@ function Dashboard() {
   return (
     <div>
       <h1>Dashboard</h1>
-      <p>Status: {connected ? '✅ Connected' : '❌ Disconnected'}</p>
+      <p>Status: {connected ? "✅ Connected" : "❌ Disconnected"}</p>
       {data && (
         <div>
           <p>Value: {data.value}</p>
@@ -321,7 +321,7 @@ function Dashboard() {
 2. Kiểm tra socket connection status:
 
    ```javascript
-   console.log('Socket connected:', socket.connected);
+   console.log("Socket connected:", socket.connected);
    ```
 
 3. Kiểm tra server logs để xem có emit message không
@@ -336,7 +336,7 @@ function Dashboard() {
 
    ```javascript
    const socket = io(url, {
-     timeout: 10000 // 10 seconds
+     timeout: 10000, // 10 seconds
    });
    ```
 
@@ -346,7 +346,7 @@ function Dashboard() {
 
    ```javascript
    const socket = io(url, {
-     transports: ['polling'] // Force polling
+     transports: ["polling"], // Force polling
    });
    ```
 

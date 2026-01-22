@@ -5,7 +5,7 @@
 
 # Get script directory and change to project root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 cd "$PROJECT_ROOT"
 
 # Colors
@@ -38,12 +38,12 @@ if [ $? -eq 0 ]; then
     echo "📄 File: docs.html"
     echo "🌐 Open in browser to view"
     echo ""
-    
+
     if [ "$WATCH_MODE" = "true" ]; then
         print_status "Watching for changes..."
         echo "Press Ctrl+C to stop"
         echo ""
-        
+
         # Watch for changes in markdown files
         fswatch -o . -e ".*" -i "\\.md$" | while read f; do
             print_status "Change detected, regenerating..."

@@ -53,7 +53,7 @@ OTHER_FILES=()
 for file in $JS_FILES; do
     filename=$(basename "$file")
     size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
-    
+
     # Check if it's a test file
     if [[ "$filename" == *"test"* ]] || [[ "$filename" == *"Test"* ]]; then
         TEST_FILES+=("$file|$size")
@@ -70,7 +70,7 @@ print_category "Test Files (should move to scripts/tests/)"
 for item in "${TEST_FILES[@]}"; do
     IFS='|' read -r file size <<< "$item"
     filename=$(basename "$file")
-    
+
     # Get description from first few lines
     desc=$(head -5 "$file" 2>/dev/null | grep -E "^//|^/\*|^#" | head -1 | sed 's/^[\/\*\# ]*//' | cut -c1-60)
     print_file "$filename" "$size" "$desc"
@@ -100,7 +100,7 @@ fi
 
 # Recommendations
 echo -e "${YELLOW}💡 RECOMMENDATIONS:${NC}"
-echo -e "${YELLOW}${'-'*80}${NC}"
+echo -e "${YELLOW}$(printf '%.0s-' {1..80})${NC}"
 echo ""
 echo "1. Test Files → Move to scripts/tests/"
 echo "   - end_to_end_test.js"

@@ -1,10 +1,17 @@
 {
-  "extends": ["react-app", "react-app/jest"],
+  "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "rules": {
     "no-unused-vars": "warn",
     "no-console": "off",
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "overrides": [
     {

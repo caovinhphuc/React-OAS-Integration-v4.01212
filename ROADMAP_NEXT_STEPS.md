@@ -15,19 +15,19 @@
 
 ### 🚧 ĐANG THIẾT KẾ / CHƯA CÓ
 
-| Hạng mục                 | Mô tả thiếu                                     | Ưu tiên    |
-| ------------------------ | ----------------------------------------------- | ---------- |
-| **Analytics Module**     | ❌ Chưa có - Cần tạo statistics & reports engine| **RẤT CAO** |
-| **Recommendations Engine**| ❌ Chưa có - Đề xuất giải pháp từ AI analysis   | **RẤT CAO** |
-| **Data Pipeline**        | Chưa có luồng Automation → Sheets → AI → Analytics | **CAO** |
-| OnePage Service          | Chưa có service + route để lấy dữ liệu nguồn    | Cao        |
-| Scheduler (cron)         | Chưa có job tự động hóa data pipeline           | Cao        |
-| Env Validation           | Chưa kiểm tra biến môi trường startup           | Cao        |
-| Test Coverage Backend    | Chưa có Jest + Supertest                        | Cao        |
-| AI Model Lifecycle       | Chưa có lưu version model / registry            | Trung bình |
-| Metrics & Monitoring     | Chưa có Prometheus / health metrics             | Trung bình |
-| Caching Layer            | Chưa có (Redis) cho Sheets/API heavy calls      | Trung bình |
-| React Query Integration  | Chưa dùng cache client-side                     | Thấp       |
+| Hạng mục                   | Mô tả thiếu                                        | Ưu tiên     |
+| -------------------------- | -------------------------------------------------- | ----------- |
+| **Analytics Module**       | ❌ Chưa có - Cần tạo statistics & reports engine   | **RẤT CAO** |
+| **Recommendations Engine** | ❌ Chưa có - Đề xuất giải pháp từ AI analysis      | **RẤT CAO** |
+| **Data Pipeline**          | Chưa có luồng Automation → Sheets → AI → Analytics | **CAO**     |
+| OnePage Service            | Chưa có service + route để lấy dữ liệu nguồn       | Cao         |
+| Scheduler (cron)           | Chưa có job tự động hóa data pipeline              | Cao         |
+| Env Validation             | Chưa kiểm tra biến môi trường startup              | Cao         |
+| Test Coverage Backend      | Chưa có Jest + Supertest                           | Cao         |
+| AI Model Lifecycle         | Chưa có lưu version model / registry               | Trung bình  |
+| Metrics & Monitoring       | Chưa có Prometheus / health metrics                | Trung bình  |
+| Caching Layer              | Chưa có (Redis) cho Sheets/API heavy calls         | Trung bình  |
+| React Query Integration    | Chưa dùng cache client-side                        | Thấp        |
 
 ### 🎯 ƯU TIÊN NGẮN HẠN (Sprint 1 – 5 ngày) - THEO KIẾN TRÚC MỚI
 

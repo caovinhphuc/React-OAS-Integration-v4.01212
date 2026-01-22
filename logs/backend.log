@@ -10,6 +10,7 @@
 🚀 Backend server running on port 3001
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
+<<<<<<< HEAD
 ::1 - - [22/Jan/2026:17:36:15 +0000] "GET /login?returnUrl=%2Fgoogle-apps-script HTTP/1.1" 404 271 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/__ARCHIVE__/React-OAS-Integration-v4.0/backend/build/index.html'
 ::1 - - [22/Jan/2026:17:42:52 +0000] "GET /health HTTP/1.1" 200 104 "-" "-"
@@ -83,3 +84,8 @@ Client disconnected: wH5Lh01DfM2eEz8IAAAN
 ::1 - - [22/Jan/2026:17:47:58 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
 ::1 - - [22/Jan/2026:17:47:58 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
 ::1 - - [22/Jan/2026:17:49:02 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
+=======
+::1 - - [22/Jan/2026:15:42:28 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
+::1 - - [22/Jan/2026:15:42:28 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1

@@ -1,4 +1,4 @@
-#!/bin/bash
+y#!/bin/bash
 
 # 🔍 Port Configuration Verification Script
 # Verifies that the actual port configuration matches documentation

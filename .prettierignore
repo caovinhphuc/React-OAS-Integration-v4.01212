@@ -1,16 +1,44 @@
+# Dependencies
 node_modules
+
+# Build outputs
 build
 coverage
 dist
 .next
+build-stats
+
+# Editor
 .vscode
 .idea
+.cursor
+
+# Logs
 *.log
+logs
+
+# Lock files
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# OS
 .DS_Store
+
+# Minified
 *.min.js
 *.min.css
-build-stats
+
+# Generated reports
+*-report*.json
+test-report-*.json
+health-report-*.json
+
+# Backups
+backup*
+*.backup*
+
+# Cache
+.cache
+*.cache
 

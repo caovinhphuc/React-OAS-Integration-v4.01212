@@ -11,28 +11,74 @@ import { BRAND_CONFIG } from "./config/brand";
 import "./global.css"; /* ✅ Import global styles first */
 import { store } from "./store/store";
 
-// Enhanced lazy loading with preloading strategy
+// Enhanced lazy loading with route-based code splitting
+// Each lazy import creates a separate chunk, reducing main bundle size
 
-const LiveDashboard = lazy(() => import("./components/Dashboard/LiveDashboard"));
-const AIDashboard = lazy(() => import("./components/ai/AIDashboard"));
-const GoogleSheetsIntegration = lazy(() => import("./components/google/GoogleSheetsIntegration"));
-const GoogleDriveIntegration = lazy(() => import("./components/google/GoogleDriveIntegration"));
-const GoogleAppsScriptIntegration = lazy(
-  () => import("./components/google/GoogleAppsScriptIntegration")
+// Authentication (load immediately)
+const Login = lazy(() => import("./components/auth/Login"));
+
+// Core Dashboard (high priority - preload)
+const LiveDashboard = lazy(
+  () => import(/* webpackChunkName: "dashboard" */ "./components/Dashboard/LiveDashboard")
 );
-const TelegramIntegration = lazy(() => import("./components/telegram/TelegramIntegration"));
-const AutomationDashboard = lazy(() => import("./components/automation/AutomationDashboard"));
-const MIARetailDashboard = lazy(() => import("./components/custom/MIARetailDashboard"));
-const AlertsManagement = lazy(() => import("./components/Alerts/AlertsManagement"));
+
+// AI & Analytics Group (separate chunk)
+const AIDashboard = lazy(
+  () => import(/* webpackChunkName: "ai-analytics" */ "./components/ai/AIDashboard")
+);
 const AdvancedAnalyticsDashboard = lazy(
-  () => import("./components/analytics/AdvancedAnalyticsDashboard")
+  () =>
+    import(
+      /* webpackChunkName: "advanced-analytics" */ "./components/analytics/AdvancedAnalyticsDashboard"
+    )
+);
+const NLPDashboard = lazy(
+  () => import(/* webpackChunkName: "nlp" */ "./components/nlp/NLPDashboard")
+);
+
+// Google Integration Group (separate chunk)
+const GoogleSheetsIntegration = lazy(
+  () =>
+    import(/* webpackChunkName: "google-sheets" */ "./components/google/GoogleSheetsIntegration")
+);
+const GoogleDriveIntegration = lazy(
+  () => import(/* webpackChunkName: "google-drive" */ "./components/google/GoogleDriveIntegration")
+);
+const GoogleAppsScriptIntegration = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "google-apps-script" */ "./components/google/GoogleAppsScriptIntegration"
+    )
+);
+
+// Communication Group (separate chunk)
+const TelegramIntegration = lazy(
+  () => import(/* webpackChunkName: "telegram" */ "./components/telegram/TelegramIntegration")
+);
+
+// Automation Group (separate chunk)
+const AutomationDashboard = lazy(
+  () => import(/* webpackChunkName: "automation" */ "./components/automation/AutomationDashboard")
 );
 const SmartAutomationDashboard = lazy(
-  () => import("./components/smart-automation/SmartAutomationDashboard")
+  () =>
+    import(
+      /* webpackChunkName: "smart-automation" */ "./components/smart-automation/SmartAutomationDashboard"
+    )
 );
-const NLPDashboard = lazy(() => import("./components/nlp/NLPDashboard"));
-const SecurityDashboard = lazy(() => import("./components/security/SecurityDashboard"));
-const Login = lazy(() => import("./components/auth/Login"));
+
+// Business Features Group (separate chunk)
+const MIARetailDashboard = lazy(
+  () => import(/* webpackChunkName: "retail" */ "./components/custom/MIARetailDashboard")
+);
+const AlertsManagement = lazy(
+  () => import(/* webpackChunkName: "alerts" */ "./components/Alerts/AlertsManagement")
+);
+
+// Security Group (separate chunk)
+const SecurityDashboard = lazy(
+  () => import(/* webpackChunkName: "security" */ "./components/security/SecurityDashboard")
+);
 
 // Preload critical components
 const preloadComponent = (componentLoader) => {

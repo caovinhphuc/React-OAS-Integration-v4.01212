@@ -1,24 +1,40 @@
 {
+<<<<<<< HEAD
   "timestamp": "2026-01-22T17:47:55.907Z",
+=======
+  "timestamp": "2026-01-22T08:18:16.023Z",
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
   "overall": "unhealthy",
   "services": {
     "file-system": {
       "status": "healthy",
       "message": "All required files and directories present",
       "details": null,
+<<<<<<< HEAD
       "timestamp": "2026-01-22T17:47:55.908Z"
+=======
+      "timestamp": "2026-01-22T08:18:16.024Z"
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
     },
     "dependencies": {
       "status": "healthy",
       "message": "All critical dependencies present",
       "details": null,
+<<<<<<< HEAD
       "timestamp": "2026-01-22T17:47:55.908Z"
+=======
+      "timestamp": "2026-01-22T08:18:16.024Z"
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
     },
     "environment": {
       "status": "warning",
       "message": "Missing optional environment variables: SMTP_USER, SMTP_PASS",
       "details": null,
+<<<<<<< HEAD
       "timestamp": "2026-01-22T17:47:55.908Z"
+=======
+      "timestamp": "2026-01-22T08:18:16.024Z"
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
     },
     "google-sheets": {
       "status": "error",
@@ -27,7 +43,11 @@
         "error": "error:1E08010C:DECODER routines::unsupported",
         "code": "ERR_OSSL_UNSUPPORTED"
       },
+<<<<<<< HEAD
       "timestamp": "2026-01-22T17:47:56.229Z"
+=======
+      "timestamp": "2026-01-22T08:18:16.655Z"
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
     },
     "google-drive": {
       "status": "error",
@@ -36,7 +56,11 @@
         "error": "error:1E08010C:DECODER routines::unsupported",
         "code": "ERR_OSSL_UNSUPPORTED"
       },
+<<<<<<< HEAD
       "timestamp": "2026-01-22T17:47:56.230Z"
+=======
+      "timestamp": "2026-01-22T08:18:16.656Z"
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
     },
     "email-service": {
       "status": "warning",
@@ -45,6 +69,7 @@
         "sendgrid_configured": true,
         "smtp_configured": false
       },
+<<<<<<< HEAD
       "timestamp": "2026-01-22T17:47:56.908Z"
     },
     "telegram-service": {
@@ -54,6 +79,17 @@
         "error": "Request failed with status code 401"
       },
       "timestamp": "2026-01-22T17:47:57.602Z"
+=======
+      "timestamp": "2026-01-22T08:18:17.317Z"
+    },
+    "telegram-service": {
+      "status": "error",
+      "message": "Telegram service connection failed: Request failed with status code 404",
+      "details": {
+        "error": "Request failed with status code 404"
+      },
+      "timestamp": "2026-01-22T08:18:18.132Z"
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
     }
   },
   "errors": [
@@ -75,9 +111,15 @@
     },
     {
       "service": "telegram-service",
+<<<<<<< HEAD
       "message": "Telegram service connection failed: Request failed with status code 401",
       "details": {
         "error": "Request failed with status code 401"
+=======
+      "message": "Telegram service connection failed: Request failed with status code 404",
+      "details": {
+        "error": "Request failed with status code 404"
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
       }
     }
   ],
@@ -103,4 +145,8 @@
       }
     }
   ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d51d89a947d33681cac8af9437ded7ec6ffa01e1
