@@ -30,6 +30,7 @@ const unsubscribeMetrics = subscribe("metrics-update", (data) => {
 ```
 
 **Root cause**: `useWebSocket` hook chỉ trả về:
+
 - `client`
 - `connected`
 - `lastMessage`
@@ -45,6 +46,7 @@ Thêm `subscribe` và `unsubscribe` methods vào return object của `useWebSock
 ### File: `src/hooks/useWebSocket.js`
 
 **Before**:
+
 ```javascript
 return {
   client,
@@ -59,6 +61,7 @@ return {
 ```
 
 **After**:
+
 ```javascript
 return {
   client,
@@ -91,11 +94,12 @@ return {
 - **Input**: `event` (string), `callback` (function)
 - **Output**: Unsubscribe function
 - **Usage**:
+
   ```javascript
   const unsubscribe = subscribe("metrics-update", (data) => {
     console.log("Metrics updated:", data);
   });
-  
+
   // Later, to unsubscribe:
   unsubscribe();
   ```
@@ -105,10 +109,11 @@ return {
 - **Input**: `event` (string), `callback` (function)
 - **Output**: None
 - **Usage**:
+
   ```javascript
   const handler = (data) => { ... };
   subscribe("metrics-update", handler);
-  
+
   // Later, to unsubscribe:
   unsubscribe("metrics-update", handler);
   ```
@@ -158,7 +163,6 @@ const LiveDashboard = () => {
 
 ---
 
-**Date**: December 25, 2025  
-**Status**: ✅ **Fixed**  
+**Date**: December 25, 2025
+**Status**: ✅ **Fixed**
 **Error**: `subscribe is not a function` - **RESOLVED**
-

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
@@ -140,8 +140,7 @@
       }
 
       function checkToken() {
-        const token =
-          localStorage.getItem("authToken") || localStorage.getItem("token");
+        const token = localStorage.getItem("authToken") || localStorage.getItem("token");
         const resultDiv = document.getElementById("result");
 
         if (token) {

@@ -2,6 +2,8 @@
 
 # 🚀 Script Cài đặt IDE cho React-OAS-Integration-v4.0
 # Hỗ trợ VS Code và Cursor trên Mac
+# Updated: 2026-01-22
+# Includes: Tailwind v3, Prettier, Babel, TypeScript, Coding Conventions
 
 set -e
 
@@ -10,10 +12,13 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 RED='\033[0;31m'
+CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🚀 Cài đặt Cấu hình IDE cho React-OAS-Integration-v4.0${NC}"
-echo "=================================================="
+echo -e "${CYAN}╔════════════════════════════════════════════════════════╗${NC}"
+echo -e "${CYAN}║  🚀 React-OAS-Integration-v4.0 IDE Setup             ║${NC}"
+echo -e "${CYAN}║  📦 Tailwind v3 + Prettier + Babel + TypeScript      ║${NC}"
+echo -e "${CYAN}╚════════════════════════════════════════════════════════╝${NC}"
 echo ""
 
 # Kiểm tra VS Code
@@ -47,22 +52,33 @@ if command -v code &> /dev/null; then
     echo -e "${BLUE}📦 Cài đặt VS Code Extensions...${NC}"
 
     EXTENSIONS=(
-        "esbenp.prettier-vscode"
-        "dbaeumer.vscode-eslint"
-        "eamodio.gitlens"
-        "ms-vscode.vscode-typescript-next"
-        "bradlc.vscode-tailwindcss"
-        "ms-python.python"
-        "ms-toolsai.jupyter"
-        "Prisma.prisma"
-        "GraphQL.vscode-graphql"
-        "pkief.material-icon-theme"
-        "styled-components.vscode-styled-components"
-        "csstools.postcss"
-        "formulahendry.code-runner"
-        "ms-python.black-formatter"
-        "ms-python.flake8"
-        "ms-python.isort"
+        # Essential
+        "esbenp.prettier-vscode"           # Code formatter
+        "dbaeumer.vscode-eslint"           # JavaScript linter
+        "bradlc.vscode-tailwindcss"        # Tailwind CSS IntelliSense
+
+        # JavaScript/TypeScript
+        "ms-vscode.vscode-typescript-next" # TypeScript support
+
+        # Git & Version Control
+        "eamodio.gitlens"                  # Git supercharged
+
+        # Python (for AI service)
+        "ms-python.python"                 # Python support
+        "ms-python.black-formatter"        # Python formatter
+        "ms-python.flake8"                 # Python linter
+        "ms-python.isort"                  # Import sorter
+        "ms-toolsai.jupyter"               # Jupyter notebooks
+
+        # Database & API
+        "Prisma.prisma"                    # Prisma ORM
+        "GraphQL.vscode-graphql"           # GraphQL
+
+        # Utilities
+        "csstools.postcss"                 # PostCSS support
+        "formulahendry.code-runner"        # Run code snippets
+        "pkief.material-icon-theme"        # File icons
+        "styled-components.vscode-styled-components" # Styled components
     )
 
     INSTALLED=0
@@ -134,36 +150,140 @@ fi
 
 echo ""
 
-# Kiểm tra cấu trúc thư mục
-echo -e "${BLUE}📁 Kiểm tra Cấu trúc Thư mục...${NC}"
+# Kiểm tra Dependencies
+echo -e "${BLUE}📦 Kiểm tra Project Dependencies...${NC}"
 
-REQUIRED_DIRS=(
-    ".vscode"
-    ".cursor"
-)
+if [ -f "package.json" ]; then
+    echo -e "${GREEN}✅ package.json${NC}"
 
-for dir in "${REQUIRED_DIRS[@]}"; do
-    if [ -d "$dir" ]; then
-        echo -e "${GREEN}✅ $dir/${NC}"
+    # Check key packages
+    KEY_PACKAGES=(
+        "tailwindcss:Tailwind CSS v3"
+        "prettier:Code Formatter"
+        "@babel/preset-env:Babel ES6+"
+        "@babel/preset-react:Babel React/JSX"
+        "typescript:TypeScript Support"
+        "@types/react:React Type Definitions"
+    )
+
+    for pkg_info in "${KEY_PACKAGES[@]}"; do
+        pkg="${pkg_info%%:*}"
+        label="${pkg_info##*:}"
+        if grep -q "\"$pkg\"" package.json; then
+            echo -e "   ${GREEN}✓${NC} $label"
+        else
+            echo -e "   ${YELLOW}⚠${NC} $label (chưa cài)"
+        fi
+    done
+else
+    echo -e "${RED}✗ package.json (thiếu)${NC}"
+fi
+
+echo ""
+
+# Kiểm tra Config Files
+echo -e "${BLUE}⚙️  Kiểm tra Configuration Files...${NC}"
+
+
+# Verify Tailwind & Prettier
+echo -e "${BLUE}🎨 Kiểm tra Tailwind & Prettier...${NC}"
+
+if command -v npx &> /dev/null; then
+    # Check Tailwind
+    if [ -f "node_modules/.bin/tailwindcss" ]; then
+        TAILWIND_VERSION=$(npx tailwindcss --help 2>&1 | grep "tailwindcss v" | head -1)
+        if [ ! -z "$TAILWIND_VERSION" ]; then
+            echo -e "${GREEN}✅ $TAILWIND_VERSION${NC}"
+        else
+            echo -e "${GREEN}✅ Tailwind CSS installed${NC}"
+        fi
     else
-        echo -e "${RED}✗ $dir/ (thiếu)${NC}"
+        echo -e "${YELLOW}⚠️  Tailwind CSS chưa cài (chạy: npm install)${NC}"
     fi
-done
 
-REQUIRED_FILES=(
-    ".vscode/settings.json"
-    ".vscode/extensions.json"
-    ".cursor/settings.json"
-    ".cursor/extensions.json"
-    ".editorconfig"
-    "React-OAS-Integration-v4.0.code-workspace"
+    # Check Prettier
+    if [ -f "node_modules/.bin/prettier" ]; then
+        PRETTIER_VERSION=$(npx prettier --version 2>&1)
+        echo -e "${GREEN}✅ Prettier $PRETTIER_VERSION${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Prettier chưa cài (chạy: npm install)${NC}"
+    fi
+else
+    echo -e "${YELLOW}⚠️  npx không có (cài Node.js)${NC}"
+fi
+
+echo ""
+echo -e "${CYAN}════════════════════════════════════════════════════════${NC}"
+echo ""
+
+# Quick Commands
+echo -e "${GREEN}🎯 Quick Commands:${NC}"
+echo ""
+echo -e "${BLUE}Development:${NC}"
+echo "  npm start              # Start dev server"
+echo "  npm run dev:simple     # Frontend + Backend"
+echo "  npm run build          # Production build"
+echo ""
+echo -e "${BLUE}Code Quality:${NC}"
+echo "  npm run lint           # Check linting"
+echo "  npm run lint:fix       # Auto fix lint issues"
+echo "  npm run format         # Format with Prettier"
+echo "  npm run format:check   # Check formatting"
+echo ""
+echo -e "${BLUE}Type Checking:${NC}"
+echo "  npm run type:check     # TypeScript check"
+echo "  npx tsc --noEmit       # Full type check"
+echo ""
+echo -e "${BLUE}Open IDE:${NC}"
+
+if command -v code &> /dev/null; then
+    echo "  code .                 # Open in VS Code"
+fi
+
+if command -v cursor &> /dev/null; then
+    echo "  cursor .               # Open in Cursor"
+fi
+
+echo ""
+echo -e "${CYAN}════════════════════════════════════════════════════════${NC}"
+echo ""
+
+# Coding Conventions
+echo -e "${GREEN}📝 Coding Conventions:${NC}"
+echo ""
+echo "  📄 Xem chi tiết: .vscode/CODE_CONVENTIONS.md"
+echo ""
+echo "  ✅ Files có JSX       → .jsx"
+echo "  ✅ Files không có JSX → .js"
+echo "  ✅ Sử dụng path aliases (@components, @utils, etc.)"
+echo "  ✅ Format on save enabled"
+echo ""
+
+echo -e "${CYAN}════════════════════════════════════════════════════════${NC}"
+echo -e "${GREEN}✨ Setup Complete!${NC}"
+echo ""
+echo "📚 Documentation:"
+echo "   • Coding Conventions: .vscode/CODE_CONVENTIONS.md"
+echo "   • Tailwind Setup:     TAILWIND_SETUP_GUIDE.md"
+echo "   • Project Setup:      README_SETUP.md"
+echo ""
+echo -e "${CYAN}════════════════════════════════════════════════════════${NC}${NC}"
+
+IDE_FILES=(
+    ".vscode/settings.json:VSCode Settings"
+    ".vscode/extensions.json:VSCode Extensions"
+    ".vscode/CODE_CONVENTIONS.md:Coding Conventions"
+    ".editorconfig:Editor Config"
+    "React-OAS-Integration-v4.0.code-workspace:Workspace File"
 )
 
-for file in "${REQUIRED_FILES[@]}"; do
+for file_info in "${IDE_FILES[@]}"; do
+    file="${file_info%%:*}"
+    label="${file_info##*:}"
     if [ -f "$file" ]; then
-        echo -e "${GREEN}✅ $file${NC}"
+        echo -e "${GREEN}✅ $label${NC}"
     else
-        echo -e "${RED}✗ $file (thiếu)${NC}"
+        echo -e "${RED}✗ $label (thiếu)${NC}"
     fi
 done
 

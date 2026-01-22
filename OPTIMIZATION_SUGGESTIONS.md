@@ -4,29 +4,29 @@
 
 [34m📦 Kích Thước Bundle:[0m
 
-[31m❌ JAVASCRIPT:    2.34 MB /     250 KB (959.1%)[0m
-[31m❌ CSS       :   80.51 KB /      50 KB (161.0%)[0m
+[31m❌ JAVASCRIPT:    2.34 MB /     250 KB (957.2%)[0m
+[31m❌ CSS       :    92.7 KB /      50 KB (185.4%)[0m
 [32m✅ IMAGES    :    0 Bytes /     500 KB (0.0%)[0m
 [32m✅ FONTS     :    0 Bytes /     100 KB (0.0%)[0m
-[31m❌ TOTAL     :    2.42 MB /       1 MB (242.0%)[0m
+[31m❌ TOTAL     :    2.43 MB /       1 MB (242.7%)[0m
 
 [34m📁 Top Files Lớn Nhất:[0m
 
-[36m   1. bundle-stats.json                                   123.51 MB[0m
-[36m   2. static/js/main.92a25138.js                          694.58 KB[0m
-[36m   3. static/js/714.d25ea931.chunk.js                     359.75 KB[0m
-[36m   4. static/js/849.762801d3.chunk.js                     165.46 KB[0m
-[36m   5. static/js/856.089d1f99.chunk.js                     118.94 KB[0m
-[36m   6. static/js/255.ba2dfe53.chunk.js                     116.84 KB[0m
-[36m   7. static/js/200.638002f1.chunk.js                      99.69 KB[0m
-[36m   8. static/js/589.9ed18ca6.chunk.js                      96.34 KB[0m
-[36m   9. static/js/253.4a8c41d6.chunk.js                      86.09 KB[0m
-[36m  10. static/js/719.95940084.chunk.js                       50.1 KB[0m
-[36m  11. static/js/701.b1f1f83a.chunk.js                      39.78 KB[0m
-[36m  12. static/js/396.37f96171.chunk.js                      38.71 KB[0m
-[36m  13. static/js/302.179e70f8.chunk.js                      35.23 KB[0m
-[36m  14. static/js/218.5550effc.chunk.js                      33.46 KB[0m
-[36m  15. static/js/581.bef538dd.chunk.js                      32.93 KB[0m
+[36m   1. static/js/main.28e2c468.js                          694.14 KB[0m
+[36m   2. static/js/440.b4f9bdd7.chunk.js                      359.7 KB[0m
+[36m   3. static/js/872.3a1e871f.chunk.js                     165.46 KB[0m
+[36m   4. static/js/395.895eeca7.chunk.js                     118.93 KB[0m
+[36m   5. static/js/756.72d7582f.chunk.js                     116.84 KB[0m
+[36m   6. static/js/488.4df62caa.chunk.js                      99.69 KB[0m
+[36m   7. static/js/975.e097e5d1.chunk.js                      96.34 KB[0m
+[36m   8. static/js/96.3759d42f.chunk.js                       86.09 KB[0m
+[36m   9. static/js/403.1679420e.chunk.js                      50.09 KB[0m
+[36m  10. static/css/main.8268259e.css                         40.67 KB[0m
+[36m  11. static/js/776.778f2b93.chunk.js                      39.77 KB[0m
+[36m  12. static/js/287.94941bef.chunk.js                      38.72 KB[0m
+[36m  13. static/js/google-drive.fdb29443.chunk.js                34 KB[0m
+[36m  14. static/js/security.ffafa47f.chunk.js                 33.42 KB[0m
+[36m  15. static/js/9.c6bba87b.chunk.js                        32.92 KB[0m
 
 [33m💡 Đề Xuất Tối Ưu Hóa:[0m
 

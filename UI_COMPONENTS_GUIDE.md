@@ -109,7 +109,7 @@ Hệ thống thông báo hiện đại với nhiều variants.
 #### Setup
 
 ```jsx
-import { ToastProvider } from './components/ui';
+import { ToastProvider } from "./components/ui";
 
 // Wrap app với ToastProvider
 function App() {
@@ -124,35 +124,35 @@ function App() {
 #### Cách Sử Dụng
 
 ```jsx
-import { useToast } from './components/ui';
+import { useToast } from "./components/ui";
 
 function MyComponent() {
   const toast = useToast();
 
   const handleSuccess = () => {
-    toast.success('Thành công!', {
+    toast.success("Thành công!", {
       duration: 3000,
       closable: true,
     });
   };
 
   const handleError = () => {
-    toast.error('Có lỗi xảy ra!');
+    toast.error("Có lỗi xảy ra!");
   };
 
   const handleWarning = () => {
-    toast.warning('Cảnh báo!');
+    toast.warning("Cảnh báo!");
   };
 
   const handleInfo = () => {
-    toast.info('Thông tin');
+    toast.info("Thông tin");
   };
 
   const handleWithAction = () => {
-    toast.success('File đã lưu', {
+    toast.success("File đã lưu", {
       action: {
-        label: 'Xem',
-        onClick: () => console.log('View file'),
+        label: "Xem",
+        onClick: () => console.log("View file"),
       },
     });
   };
@@ -461,10 +461,10 @@ Tất cả components tuân thủ WCAG 2.1 guidelines:
 
 ```jsx
 // ✅ Good - Named imports
-import { Card, Button, Toast } from './components/ui';
+import { Card, Button, Toast } from "./components/ui";
 
 // ❌ Bad - Default imports
-import Card from './components/ui/Card';
+import Card from "./components/ui/Card";
 ```
 
 ### 2. Use Design Tokens
@@ -503,17 +503,18 @@ import Card from './components/ui/Card';
 
 ```jsx
 // ✅ Good - Show empty state
-{data.length === 0 ? (
-  <Empty
-    title="No data"
-    action={<Button>Add data</Button>}
-  />
-) : (
-  <DataList data={data} />
-)}
+{
+  data.length === 0 ? (
+    <Empty title="No data" action={<Button>Add data</Button>} />
+  ) : (
+    <DataList data={data} />
+  );
+}
 
 // ❌ Bad - No empty state
-{data.map(item => <Item key={item.id} />)}
+{
+  data.map((item) => <Item key={item.id} />);
+}
 ```
 
 ---
@@ -538,11 +539,9 @@ import Card from './components/ui/Card';
 
 ```jsx
 // Create custom component
-import { Button } from './components/ui';
+import { Button } from "./components/ui";
 
-export const IconButton = ({ icon, ...props }) => (
-  <Button icon={icon} {...props} />
-);
+export const IconButton = ({ icon, ...props }) => <Button icon={icon} {...props} />;
 ```
 
 ---
@@ -565,7 +564,9 @@ export const IconButton = ({ icon, ...props }) => (
     </div>
   </Card.Body>
   <Card.Footer>
-    <Button variant="outline" size="sm">View Details</Button>
+    <Button variant="outline" size="sm">
+      View Details
+    </Button>
   </Card.Footer>
 </Card>
 ```
@@ -583,9 +584,9 @@ function MyForm() {
 
     try {
       await submitForm();
-      toast.success('Form submitted successfully!');
+      toast.success("Form submitted successfully!");
     } catch (error) {
-      toast.error('Failed to submit form');
+      toast.error("Failed to submit form");
     } finally {
       setLoading(false);
     }
@@ -623,7 +624,7 @@ function DataList({ data, loading }) {
 
   return (
     <div>
-      {data.map(item => (
+      {data.map((item) => (
         <Card key={item.id} hoverable>
           <Card.Body>{item.name}</Card.Body>
         </Card>
@@ -660,4 +661,3 @@ Thư viện UI Components này cung cấp:
 **Version**: 4.0.3
 **Last Updated**: Dec 11, 2025
 **Status**: ✅ Phase 2 Complete
-

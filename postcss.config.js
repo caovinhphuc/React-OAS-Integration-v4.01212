@@ -2,19 +2,15 @@
  * =============================================================================
  * 🎨 PostCSS Configuration - MIA.vn Google Integration Platform
  * =============================================================================
- * PostCSS configuration for CSS processing
+ * PostCSS configuration for CSS processing with Tailwind CSS v3
  * =============================================================================
  */
 
 module.exports = {
   plugins: [
+    require("tailwindcss"),
     require("autoprefixer")({
-      overrideBrowserslist: [
-        ">0.2%",
-        "not dead",
-        "not op_mini all",
-        "not ie <= 11",
-      ],
+      overrideBrowserslist: [">0.2%", "not dead", "not op_mini all", "not ie <= 11"],
     }),
     // cssnano will be added in production builds
     ...(process.env.NODE_ENV === "production"

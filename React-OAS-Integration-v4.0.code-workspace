@@ -11,6 +11,9 @@
     {
       "name": "Fullstack Projects",
       "path": "fullstack"
+    },
+    {
+      "path": "."
     }
   ],
   "settings": {
