@@ -1,1 +1,4 @@
-npm run fix:scripts
+npm run check:backend
+
+# Or manually
+curl http://localhost:3001/health
