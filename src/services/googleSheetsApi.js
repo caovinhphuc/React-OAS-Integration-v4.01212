@@ -1,6 +1,12 @@
 /**
  * Google Sheets API Service - Frontend
- * Calls backend API instead of direct Google APIs
+ * Calls backend proxy instead of direct Google APIs
+ *
+ * Benefits:
+ * - Frontend never needs googleapis library (saves 170KB)
+ * - All API calls go through backend proxy
+ * - Consistent error handling
+ * - Easy to add caching/rate limiting
  */
 
 import axios from "axios";
@@ -14,106 +20,129 @@ class GoogleSheetsApiService {
   /**
    * Read data from sheet
    */
-  async readSheet(range = "A1:Z1000", sheetId) {
+  async readSheet(range = "A1:Z1000", spreadsheetId) {
     try {
-      const params = { range };
-      if (sheetId) params.sheetId = sheetId;
-
-      const response = await axios.get(`${API_BASE_URL}/sheets/read`, {
-        params,
+      const response = await axios.post(`${API_BASE_URL}/google/sheets/read`, {
+        spreadsheetId,
+        range,
       });
-      return {
-        data: response.data.data,
-        range: response.data.range,
-        majorDimension: response.data.majorDimension,
-      };
+
+      if (response.data.success) {
+        return {
+          data: response.data.data.values || [],
+          range: response.data.data.range,
+          majorDimension: response.data.data.majorDimension || "ROWS",
+        };
+      } else {
+        throw new Error(response.data.error || "Failed to read sheet");
+      }
     } catch (error) {
-      console.error("Error reading sheet:", error);
-      throw new Error(error.response?.data?.error || `Failed to read sheet: ${error.message}`);
+      console.error("❌ readSheet error:", error.message);
+      throw error;
     }
   }
 
   /**
    * Write data to sheet
    */
-  async writeSheet(range, values, sheetId) {
+  async writeSheet(range, values, spreadsheetId) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/sheets/write`, {
+      const response = await axios.post(`${API_BASE_URL}/google/sheets/write`, {
+        spreadsheetId,
         range,
         values,
-        sheetId,
       });
-      return response.data.data;
+
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to write sheet");
+      }
     } catch (error) {
-      console.error("Error writing to sheet:", error);
-      throw new Error(error.response?.data?.error || `Failed to write to sheet: ${error.message}`);
+      console.error("❌ writeSheet error:", error.message);
+      throw error;
     }
   }
 
   /**
    * Append data to sheet
    */
-  async appendToSheet(range, values, sheetId) {
+  async appendToSheet(range, values, spreadsheetId) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/sheets/append`, {
+      const response = await axios.post(`${API_BASE_URL}/google/sheets/append`, {
+        spreadsheetId,
         range,
         values,
-        sheetId,
       });
-      return response.data.data;
+
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to append to sheet");
+      }
     } catch (error) {
-      console.error("Error appending to sheet:", error);
-      throw new Error(error.response?.data?.error || `Failed to append to sheet: ${error.message}`);
+      console.error("❌ appendToSheet error:", error.message);
+      throw error;
     }
   }
 
   /**
    * Get sheet metadata
    */
-  async getSheetMetadata(sheetId) {
+  async getSheetMetadata(spreadsheetId) {
     try {
-      const url = sheetId
-        ? `${API_BASE_URL}/sheets/metadata/${sheetId}`
-        : `${API_BASE_URL}/sheets/metadata`;
+      const response = await axios.get(`${API_BASE_URL}/google/sheets/metadata/${spreadsheetId}`);
 
-      const response = await axios.get(url);
-      return response.data.data;
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to get metadata");
+      }
     } catch (error) {
-      console.error("Error getting sheet metadata:", error);
-      throw new Error(
-        error.response?.data?.error || `Failed to get sheet metadata: ${error.message}`
-      );
+      console.error("❌ getSheetMetadata error:", error.message);
+      throw error;
     }
   }
 
   /**
    * Clear sheet data
    */
-  async clearSheet(range, sheetId) {
+  async clearSheet(range, spreadsheetId) {
     try {
-      const response = await axios.delete(`${API_BASE_URL}/sheets/clear`, {
-        data: { range, sheetId },
+      const response = await axios.post(`${API_BASE_URL}/google/sheets/clear`, {
+        spreadsheetId,
+        range,
       });
-      return response.data.data;
+
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to clear sheet");
+      }
     } catch (error) {
-      console.error("Error clearing sheet:", error);
-      throw new Error(error.response?.data?.error || `Failed to clear sheet: ${error.message}`);
+      console.error("❌ clearSheet error:", error.message);
+      throw error;
     }
   }
 
   /**
-   * Add new worksheet (sheet) to spreadsheet
+   * Batch get multiple ranges
    */
-  async addSheet(sheetName, sheetId) {
+  async batchGetValues(spreadsheetId, ranges) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/sheets/add-sheet`, {
-        sheetName,
-        sheetId,
+      const response = await axios.post(`${API_BASE_URL}/google/sheets/batch-get`, {
+        spreadsheetId,
+        ranges,
       });
-      return response.data.data;
+
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to batch get");
+      }
     } catch (error) {
-      console.error("Error adding sheet:", error);
-      throw new Error(error.response?.data?.error || `Failed to add sheet: ${error.message}`);
+      console.error("❌ batchGetValues error:", error.message);
+      throw error;
     }
   }
 }

@@ -1,7 +1,13 @@
 /* eslint-disable */
 /**
  * Google Drive API Service - Frontend
- * Calls backend API instead of direct Google APIs
+ * Calls backend proxy instead of direct Google APIs
+ *
+ * Benefits:
+ * - Frontend never needs googleapis library (saves 170KB)
+ * - All API calls go through backend proxy
+ * - Consistent error handling
+ * - Easy to add caching/rate limiting
  */
 
 import axios from "axios";
@@ -15,21 +21,22 @@ class GoogleDriveApiService {
   /**
    * List files in folder
    */
-  async listFiles(folderId, pageSize = 10) {
+  async listFiles(folderId) {
     try {
-      const params = { pageSize };
-      if (folderId) params.folderId = folderId;
-
-      const response = await axios.get(`${API_BASE_URL}/drive/files`, {
-        params,
+      const response = await axios.post(`${API_BASE_URL}/google/drive/list`, {
+        folderId,
       });
-      return {
-        files: response.data.data || [],
-        nextPageToken: response.data.nextPageToken,
-      };
+
+      if (response.data.success) {
+        return {
+          files: response.data.files || [],
+        };
+      } else {
+        throw new Error(response.data.error || "Failed to list files");
+      }
     } catch (error) {
-      console.error("Error listing files:", error);
-      throw new Error(error.response?.data?.error || `Failed to list files: ${error.message}`);
+      console.error("❌ listFiles error:", error.message);
+      throw error;
     }
   }
 
@@ -38,149 +45,103 @@ class GoogleDriveApiService {
    */
   async getFileMetadata(fileId) {
     try {
-      const response = await axios.get(`${API_BASE_URL}/drive/files/${fileId}`);
-      return response.data.data;
+      const response = await axios.get(`${API_BASE_URL}/google/drive/metadata/${fileId}`);
+
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to get file metadata");
+      }
     } catch (error) {
-      console.error("Error getting file metadata:", error);
-      throw new Error(
-        error.response?.data?.error || `Failed to get file metadata: ${error.message}`
-      );
+      console.error("❌ getFileMetadata error:", error.message);
+      throw error;
     }
   }
 
   /**
-   * Upload file to Drive
-   */
-  async uploadFile(file, fileName, mimeType, folderId) {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      if (folderId) formData.append("folderId", folderId);
-
-      const response = await axios.post(`${API_BASE_URL}/drive/upload`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      return response.data.data;
-    } catch (error) {
-      console.error("Error uploading file:", error);
-      throw new Error(error.response?.data?.error || `Failed to upload file: ${error.message}`);
-    }
-  }
-
-  /**
-   * Create folder
-   */
-  async createFolder(folderName, parentFolderId) {
-    try {
-      const response = await axios.post(`${API_BASE_URL}/drive/folders`, {
-        folderName,
-        parentFolderId,
-      });
-      return response.data.data;
-    } catch (error) {
-      console.error("Error creating folder:", error);
-      throw new Error(error.response?.data?.error || `Failed to create folder: ${error.message}`);
-    }
-  }
-
-  /**
-   * Delete file
+   * Delete a file
    */
   async deleteFile(fileId) {
     try {
-      console.log(`🗑️ [googleDriveApiService] deleteFile called with fileId: ${fileId}`);
-      console.log(`📡 [googleDriveApiService] API URL: ${API_BASE_URL}/drive/files/${fileId}`);
+      const response = await axios.post(`${API_BASE_URL}/google/drive/delete/${fileId}`);
 
-      const response = await axios.delete(`${API_BASE_URL}/drive/files/${fileId}`);
-
-      console.log(`✅ [googleDriveApiService] Delete response:`, response.data);
-
-      // Backend returns {success: true, message, fileId} - not {data: {...}}
-      const result = response.data.success
-        ? { fileId: response.data.fileId || fileId, success: true }
-        : response.data;
-
-      console.log(`✅ [googleDriveApiService] Delete result:`, result);
-      return result;
+      if (response.data.success) {
+        return { success: true };
+      } else {
+        throw new Error(response.data.error || "Failed to delete file");
+      }
     } catch (error) {
-      console.error("❌ [googleDriveApiService] Error deleting file:", error);
-      console.error("❌ [googleDriveApiService] Error response:", error.response?.data);
-      console.error("❌ [googleDriveApiService] Error status:", error.response?.status);
-      throw new Error(error.response?.data?.error || `Failed to delete file: ${error.message}`);
+      console.error("❌ deleteFile error:", error.message);
+      throw error;
     }
   }
 
   /**
-   * Share file/folder with email
+   * Share a file
    */
-  async shareFile(fileId, email, role = "writer") {
+  async shareFile(fileId, email, role = "reader") {
     try {
-      const response = await axios.post(`${API_BASE_URL}/drive/files/${fileId}/share`, {
+      const response = await axios.post(`${API_BASE_URL}/google/drive/share`, {
+        fileId,
         email,
         role,
       });
-      return response.data.data;
+
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to share file");
+      }
     } catch (error) {
-      console.error("Error sharing file:", error);
-      throw new Error(error.response?.data?.error || `Failed to share file: ${error.message}`);
+      console.error("❌ shareFile error:", error.message);
+      throw error;
     }
   }
 
   /**
-   * Rename file/folder
+   * Rename a file
    */
   async renameFile(fileId, newName) {
     try {
-      const response = await axios.put(`${API_BASE_URL}/drive/files/${fileId}/rename`, {
-        name: newName,
+      const response = await axios.post(`${API_BASE_URL}/google/drive/rename`, {
+        fileId,
+        newName,
       });
-      return response.data.data;
+
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to rename file");
+      }
     } catch (error) {
-      console.error("Error renaming file:", error);
-      throw new Error(error.response?.data?.error || `Failed to rename file: ${error.message}`);
+      console.error("❌ renameFile error:", error.message);
+      throw error;
     }
   }
 
   /**
-   * Download file
+   * Create a folder
    */
-  async downloadFile(fileId) {
+  async createFolder(folderName, parentFolderId) {
     try {
-      const response = await axios.get(`${API_BASE_URL}/drive/files/${fileId}/download`, {
-        responseType: "blob",
+      const response = await axios.post(`${API_BASE_URL}/google/drive/create-folder`, {
+        folderName,
+        parentFolderId,
       });
 
-      // Create download link
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-
-      // Get filename from Content-Disposition header
-      const contentDisposition = response.headers["content-disposition"];
-      let fileName = "download";
-      if (contentDisposition) {
-        const fileNameMatch = contentDisposition.match(/filename="(.+)"/);
-        if (fileNameMatch) {
-          fileName = fileNameMatch[1];
-        }
+      if (response.data.success) {
+        return response.data.data;
+      } else {
+        throw new Error(response.data.error || "Failed to create folder");
       }
-
-      link.setAttribute("download", fileName);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.URL.revokeObjectURL(url);
-
-      return { success: true, fileName };
     } catch (error) {
-      console.error("Error downloading file:", error);
-      throw new Error(error.response?.data?.error || `Failed to download file: ${error.message}`);
+      console.error("❌ createFolder error:", error.message);
+      throw error;
     }
   }
 }
 
 // Export singleton instance
 export const googleDriveApiService = new GoogleDriveApiService();
+export default googleDriveApiService;
 export default googleDriveApiService;

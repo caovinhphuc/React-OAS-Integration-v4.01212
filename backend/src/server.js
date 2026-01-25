@@ -5,7 +5,9 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
-const { google } = require("googleapis");
+
+// Import Google APIs proxy router (lazy loads googleapis only when needed)
+const googleApisRouter = require("./routes/googleApis");
 
 const app = express();
 const server = http.createServer(app);
@@ -157,6 +159,9 @@ app.get("/api/status", (req, res) => {
     uptime: process.uptime(),
   });
 });
+
+// Register Google APIs proxy routes
+app.use("/api/google", googleApisRouter);
 
 // ============================================
 // Authentication Endpoints
