@@ -1,33 +1,41 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import io from "socket.io-client";
+import { lazyLoadSocketIO } from "../../utils/lazySocketIO";
 
-// Async thunk để kết nối WebSocket
+// Async thunk để kết nối WebSocket (lazy-loads socket.io-client)
 export const connectWebSocket = createAsyncThunk(
   "dashboard/connectWebSocket",
   async (_, { dispatch }) => {
-    const socket = io(window.location.origin, {
-      path: "/ws",
-    });
+    try {
+      // Lazy load socket.io-client only when connection needed
+      const { io } = await lazyLoadSocketIO();
 
-    socket.on("connect", () => {
-      dispatch(setConnectionStatus("connected"));
-      console.log("WebSocket connected");
-    });
+      const socket = io(window.location.origin, {
+        path: "/ws",
+      });
 
-    socket.on("disconnect", () => {
-      dispatch(setConnectionStatus("disconnected"));
-      console.log("WebSocket disconnected");
-    });
+      socket.on("connect", () => {
+        dispatch(setConnectionStatus("connected"));
+        console.log("WebSocket connected");
+      });
 
-    socket.on("data_update", (data) => {
-      dispatch(updateRealTimeData(data));
-    });
+      socket.on("disconnect", () => {
+        dispatch(setConnectionStatus("disconnected"));
+        console.log("WebSocket disconnected");
+      });
 
-    socket.on("welcome", (message) => {
-      dispatch(setWelcomeMessage(message));
-    });
+      socket.on("data_update", (data) => {
+        dispatch(updateRealTimeData(data));
+      });
 
-    return socket;
+      socket.on("welcome", (message) => {
+        dispatch(setWelcomeMessage(message));
+      });
+
+      return socket;
+    } catch (error) {
+      console.error("❌ Failed to load socket.io:", error);
+      throw error;
+    }
   }
 );
 

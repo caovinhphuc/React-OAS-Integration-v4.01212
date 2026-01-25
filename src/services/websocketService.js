@@ -2,9 +2,10 @@
 /**
  * WebSocket Service - Frontend Socket.io Client
  * Manages real-time connections and events
+ * Socket.io library is lazy-loaded (deferred until first connection needed)
  */
 
-import { io } from "socket.io-client";
+import { getSocketInstance, lazyLoadSocketIO } from "../utils/lazySocketIO";
 
 const API_BASE_URL =
   process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
@@ -20,16 +21,20 @@ class WebSocketService {
   }
 
   /**
-   * Connect to WebSocket server
+   * Connect to WebSocket server (lazy-loads socket.io on first call)
    */
-  connect(userId = null) {
+  async connect(userId = null) {
     if (this.socket && this.connected) {
       console.log("⚠️ Already connected to WebSocket");
       return this.socket;
     }
 
     try {
-      this.socket = io(API_BASE_URL, {
+      // Lazy load socket.io-client only when first connection is needed
+      await lazyLoadSocketIO();
+
+      // Get or create socket instance
+      this.socket = await getSocketInstance(API_BASE_URL, {
         transports: ["websocket", "polling"],
         reconnection: true,
         reconnectionAttempts: this.maxReconnectAttempts,
