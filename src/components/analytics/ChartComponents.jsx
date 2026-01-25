@@ -2,27 +2,14 @@
 /**
  * Chart Components - Interactive Charts
  * Line, Bar, Pie, Heat maps using Chart.js and Recharts
+ *
+ * NOTE: Recharts is lazy-loaded to reduce initial bundle (100-150KB)
+ * First render will trigger async load, use Suspense or loading state
  */
 
-import React, { useMemo } from "react";
-import { Card, Typography, Space, Select, Button } from "antd";
-import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  Area,
-  AreaChart,
-} from "recharts";
+import { Card, Select, Space, Spin, Typography } from "antd";
+import { useMemo } from "react";
+import { useLazyRecharts } from "../../utils/lazyRecharts";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -39,6 +26,15 @@ const COLORS = [
   "#84cc16",
 ];
 
+// Helper component for loading state
+const ChartLoadingFallback = ({ height = 300 }) => (
+  <Card>
+    <div style={{ height, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Spin tip="Loading chart..." />
+    </div>
+  </Card>
+);
+
 // Line Chart Component
 export const LineChartComponent = ({
   data,
@@ -48,6 +44,15 @@ export const LineChartComponent = ({
   showLegend = true,
   strokeColors = COLORS,
 }) => {
+  const { charts, isLoading, error } = useLazyRecharts();
+
+  if (isLoading) return <ChartLoadingFallback height={height} />;
+  if (error) return <Card>Error loading chart library</Card>;
+  if (!charts) return null;
+
+  const { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } =
+    charts;
+
   const lines = useMemo(() => {
     if (!data || !Array.isArray(data)) return [];
     if (Array.isArray(dataKey)) {
@@ -102,6 +107,15 @@ export const BarChartComponent = ({
   colors = COLORS,
   orientation = "vertical",
 }) => {
+  const { charts, isLoading, error } = useLazyRecharts();
+
+  if (isLoading) return <ChartLoadingFallback height={height} />;
+  if (error) return <Card>Error loading chart library</Card>;
+  if (!charts) return null;
+
+  const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } =
+    charts;
+
   const bars = useMemo(() => {
     if (!data || !Array.isArray(data)) return [];
     if (Array.isArray(dataKey)) {
@@ -111,8 +125,6 @@ export const BarChartComponent = ({
     }
     return <Bar dataKey={dataKey} fill={colors[0]} />;
   }, [data, dataKey, colors]);
-
-  const Chart = orientation === "horizontal" ? BarChart : BarChart;
 
   return (
     <Card>
@@ -151,6 +163,14 @@ export const PieChartComponent = ({
   showLegend = true,
   colors = COLORS,
 }) => {
+  const { charts, isLoading, error } = useLazyRecharts();
+
+  if (isLoading) return <ChartLoadingFallback height={height} />;
+  if (error) return <Card>Error loading chart library</Card>;
+  if (!charts) return null;
+
+  const { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } = charts;
+
   const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
     const RADIAN = Math.PI / 180;
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -210,6 +230,15 @@ export const AreaChartComponent = ({
   strokeColors = COLORS,
   fillColors = COLORS,
 }) => {
+  const { charts, isLoading, error } = useLazyRecharts();
+
+  if (isLoading) return <ChartLoadingFallback height={height} />;
+  if (error) return <Card>Error loading chart library</Card>;
+  if (!charts) return null;
+
+  const { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } =
+    charts;
+
   const areas = useMemo(() => {
     if (!data || !Array.isArray(data)) return [];
     if (Array.isArray(dataKey)) {
