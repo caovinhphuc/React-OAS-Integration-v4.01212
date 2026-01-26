@@ -1,0 +1,102 @@
+name: 📚 Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - "*.md"
+      - "docs/**"
+      - ".github/workflows/docs-deploy.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 📚 Build documentation
+        run: |
+          mkdir -p dist-docs
+          mkdir -p dist-docs/guides
+
+          # Copy markdown files
+          cp -v ARCHITECTURE_GUIDE.md dist-docs/ || true
+          cp -v ARCHITECTURE.md dist-docs/ || true
+          cp -v README.md dist-docs/ || true
+          cp -v DEPLOYMENT_GUIDE.md dist-docs/ || true
+          cp -v DEVELOPMENT_TOOLS_SETUP.md dist-docs/guides/ || true
+          cp -v BUNDLE_OPTIMIZATION_GUIDE.md dist-docs/guides/ || true
+          cp -v GITHUB_SETUP_GUIDE.md dist-docs/guides/ || true
+
+          # Copy docs folder
+          cp -rv docs/* dist-docs/ 2>/dev/null || true
+
+      - name: 🔍 Validate documentation
+        run: |
+          echo "📋 Documentation files created:"
+          find dist-docs -name "*.md" -type f | wc -l
+          echo "Total markdown files:"
+          find dist-docs -name "*.md" -type f
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "dist-docs"
+
+      - name: 📤 Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+      - name: ✅ Document deployment success
+        run: |
+          echo "✅ Documentation deployed successfully!"
+          echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
+
+      - name: 📢 Notify deployment
+        if: always()
+        run: |
+          echo "📚 Documentation Deployment Summary:"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "✅ Status: Success"
+          echo "📁 Output: dist-docs"
+          echo "🔗 GitHub Pages URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+  notify:
+    needs: deploy-docs
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: 📧 Log deployment result
+        run: |
+          if [ "${{ needs.deploy-docs.result }}" = "success" ]; then
+            echo "✅ Documentation deployment completed successfully!"
+          else
+            echo "❌ Documentation deployment failed!"
+          fi

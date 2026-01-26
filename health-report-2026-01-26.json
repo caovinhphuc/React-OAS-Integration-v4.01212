@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-01-26T03:23:54.800Z",
+  "overall": "unhealthy",
+  "services": {
+    "file-system": {
+      "status": "healthy",
+      "message": "All required files and directories present",
+      "details": null,
+      "timestamp": "2026-01-26T03:23:54.801Z"
+    },
+    "dependencies": {
+      "status": "warning",
+      "message": "Missing critical dependencies: googleapis, google-auth-library",
+      "details": null,
+      "timestamp": "2026-01-26T03:23:54.801Z"
+    },
+    "environment": {
+      "status": "error",
+      "message": "Missing required environment variables: GOOGLE_SERVICE_ACCOUNT_EMAIL, REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID",
+      "details": null,
+      "timestamp": "2026-01-26T03:23:54.801Z"
+    }
+  },
+  "errors": [
+    {
+      "service": "environment",
+      "message": "Missing required environment variables: GOOGLE_SERVICE_ACCOUNT_EMAIL, REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID",
+      "details": null
+    }
+  ],
+  "warnings": [
+    {
+      "service": "dependencies",
+      "message": "Missing critical dependencies: googleapis, google-auth-library",
+      "details": null
+    }
+  ]
+}

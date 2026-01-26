@@ -1,0 +1,34 @@
+# GitHub Pages Configuration
+title: React OAS Integration Documentation
+description: Complete documentation for React OAS Integration v4.0
+author: Development Team
+url: https://phuccao.github.io/React-OAS-Integration-v4.01212
+baseurl: /React-OAS-Integration-v4.01212
+
+# Theme
+theme: jekyll-theme-slate
+markdown: kramdown
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Architecture
+    url: /ARCHITECTURE_GUIDE.md
+  - title: Deployment
+    url: /DEPLOYMENT_GUIDE.md
+  - title: Guides
+    url: /guides
+
+# Build settings
+exclude:
+  - .gitignore
+  - .github
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
