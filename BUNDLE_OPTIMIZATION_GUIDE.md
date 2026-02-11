@@ -35,6 +35,15 @@ npm run perf:size
 npm run check:tools
 ```
 
+**Tip (source maps for analysis):** Nếu cần xem chi tiết với `source-map-explorer`, build kèm source map theo hướng dẫn từ README của source-map-explorer:
+
+```bash
+GENERATE_SOURCEMAP=true npm run build
+npx source-map-explorer 'build/static/js/*.js'
+```
+
+Tham khảo: https://github.com/danvk/source-map-explorer/blob/master/README.md#generating-source-maps
+
 **Note**: Tất cả scripts đã được verified và working (Jan 2026)
 
 ### 2. Hiểu Bundle Structure
@@ -381,6 +390,19 @@ npm run analyze:all
 - [Bundlephobia](https://bundlephobia.com/) - Check package sizes
 - [Bundle Buddy](https://bundle-buddy.com/) - Find duplicate code
 - [Webpack Visualizer](https://chrisbateman.github.io/webpack-visualizer/)
+
+### Google APIs Health Checks
+
+```bash
+# Kiểm tra OAuth/Drive/Sheets credentials (google-auth-library)
+node scripts/check_google_apis.js
+
+# Health check tổng hợp Google APIs
+node "scripts/health-check copy.cjs"
+```
+
+- Nếu lỗi auth/scopes, tạo lại credentials và xác minh `.env` / service account.
+- Chạy các lệnh này sau tối ưu bundle để chắc chắn proxy/API vẫn ổn.
 
 ---
 

@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-01-26T04:54:47.346Z",
+  "timestamp": "2026-01-26T04:38:59.201Z",
   "bundle": {
     "jsFiles": [
       {
-        "name": "main.b27c8735.js",
-        "path": "build/static/js/main.b27c8735.js",
-        "size": 713041
+        "name": "main.91852bdd.js",
+        "path": "build/static/js/main.91852bdd.js",
+        "size": 712640
       },
       {
         "name": "791.33ba1ce6.chunk.js",
@@ -270,9 +270,9 @@
         "size": 144
       }
     ],
-    "totalJsSize": 2457636,
+    "totalJsSize": 2457235,
     "totalCssSize": 94990,
-    "totalSize": 2552626
+    "totalSize": 2552225
   },
   "dependencies": {
     "deps": {
@@ -292,7 +292,6 @@
       "handlebars": "^4.7.8",
       "http-proxy-middleware": "^3.0.5",
       "https-browserify": "^1.0.0",
-      "lodash-es": "^4.17.23",
       "mjml": "^4.18.0",
       "node-cron": "^4.2.1",
       "node-telegram-bot-api": "^0.67.0",
@@ -330,13 +329,10 @@
       "@babel/plugin-transform-runtime": "^7.28.5",
       "@babel/preset-env": "^7.28.6",
       "@babel/preset-react": "^7.28.5",
-      "@size-limit/preset-app": "^12.0.0",
-      "@size-limit/preset-small-lib": "^12.0.0",
       "@testing-library/jest-dom": "^5.16.5",
       "@testing-library/react": "^13.4.0",
       "@testing-library/user-event": "^14.5.1",
-      "@types/react": "^18.0.0",
-      "@types/react-dom": "^18.0.0",
+      "@types/react": "^19.2.9",
       "autoprefixer": "^10.4.22",
       "babel-loader": "^9.1.3",
       "chalk": "^4.1.2",
@@ -347,8 +343,6 @@
       "postcss-loader": "^8.2.0",
       "prettier": "^3.8.1",
       "react-scripts": "^5.0.1",
-      "sharp": "^0.34.5",
-      "size-limit": "^12.0.0",
       "source-map-explorer": "^2.5.3",
       "source-map-loader": "^4.0.2",
       "style-loader": "^3.3.3",

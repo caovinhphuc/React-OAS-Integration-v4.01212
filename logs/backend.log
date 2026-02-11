@@ -1,17 +1,40 @@
 
-> react-oas-integration-backend@1.0.0 dev
-> nodemon src/server.js
+> react-oas-integration-backend@1.0.0 start
+> node src/server.js
 
-[33m[nodemon] 3.1.10[39m
-[33m[nodemon] to restart at any time, enter `rs`[39m
-[33m[nodemon] watching path(s): *.*[39m
-[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
-[32m[nodemon] starting `node src/server.js`[39m
+⚠️ No Google credentials file found
 🚀 Backend server running on port 3001
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
-::1 - - [25/Jan/2026:17:40:10 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-::1 - - [25/Jan/2026:17:40:10 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-::1 - - [25/Jan/2026:17:40:12 +0000] "GET / HTTP/1.1" 404 263 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-Error: ENOENT: no such file or directory, stat '/Users/phuccao/Projects/React-OAS-Integration-v4.01212/backend/build/index.html'
-[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+::1 - - [11/Feb/2026:19:26:55 +0000] "GET /api/auth/verify HTTP/1.1" 200 58 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:26:55 +0000] "GET /api/auth/verify HTTP/1.1" 200 58 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:26:58 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:26:58 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:26:58 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:26:59 +0000] "POST /api/google/drive/list HTTP/1.1" 503 45 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:26:59 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:26:59 +0000] "POST /api/google/drive/list HTTP/1.1" 503 45 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:00 +0000] "GET /api/auth/verify HTTP/1.1" 200 58 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:00 +0000] "GET /api/auth/verify HTTP/1.1" 200 58 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:00 +0000] "GET /api/auth/verify HTTP/1.1" 200 58 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:00 +0000] "GET /api/auth/verify HTTP/1.1" 200 58 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:01 +0000] "POST /api/google/drive/list HTTP/1.1" 503 45 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:01 +0000] "POST /api/google/drive/list HTTP/1.1" 503 45 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:07 +0000] "GET /api/google/sheets/metadata/undefined HTTP/1.1" 503 45 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:07 +0000] "GET /api/google/sheets/metadata/undefined HTTP/1.1" 503 45 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:07 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/retail/dashboard HTTP/1.1" 200 225 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/retail/customers?timeframe=30d HTTP/1.1" 200 216 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/retail/dashboard HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/retail/sales?timeframe=30d HTTP/1.1" 200 201 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/retail/inventory HTTP/1.1" 200 182 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/retail/customers?timeframe=30d HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/retail/sales?timeframe=30d HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:08 +0000] "GET /api/retail/inventory HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:10 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:11 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:13 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:16 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:16 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+::1 - - [11/Feb/2026:19:27:16 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"

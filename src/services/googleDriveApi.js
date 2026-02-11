@@ -144,4 +144,3 @@ class GoogleDriveApiService {
 // Export singleton instance
 export const googleDriveApiService = new GoogleDriveApiService();
 export default googleDriveApiService;
-export default googleDriveApiService;

@@ -7,19 +7,54 @@
 ```json
 {
   "scripts": {
-    "cargo:check": "cargo --version || echo 'Cargo not found'",
-    "cargo:info": "Detailed cargo information with location",
-    "tools:check": "Check all development tools (node, npm, cargo, rustc, python, pip)",
-    "analyze:all": "Complete analysis including cargo status",
+    "cargo:check": "cargo --version || echo '⚠️  Cargo not found. Install Rust: https://rustup.rs/'",
+    "cargo:info": "node scripts/cargo-info.js",
+    "tools:check": "node scripts/check-tools.js",
+    "analyze:all": "npm run bundle:stats && npm run perf:bundle && npm run perf:deps",
 
-    "build:optimized": "Optimized production build with post-processing",
-    "analyze:full": "Complete bundle analysis with stats",
-    "analyze:auto": "Auto-analysis with optimization suggestions",
-    "optimize:bundle": "Run bundle optimization analysis",
-    "optimize:suggestions": "Generate optimization suggestions markdown"
+    "build:optimized": "GENERATE_SOURCEMAP=false NODE_ENV=production npm run build && npm run optimize:post-build",
+    "analyze:full": "npm run build:stats && npm run analyze:bundle && npm run analyze:deps && npm run perf:bundle",
+    "analyze:auto": "npm run analyze:full && npm run optimize:suggestions",
+    "optimize:bundle": "node scripts/optimize-bundle.js",
+    "optimize:suggestions": "node scripts/optimize-bundle.js > OPTIMIZATION_SUGGESTIONS.md"
   }
 }
 ```
+
+## 🏁 Quick Commands (copy/paste)
+
+```bash
+npm run cargo:check      # Kiểm tra cargo/rustc đã cài chưa
+npm run cargo:info       # Thông tin chi tiết cargo/rustc + location
+npm run tools:check      # Kiểm tra node/npm/cargo/rustc/python/pip
+npm run analyze:all      # Bundle stats + perf:bundle + perf:deps
+npm run analyze:auto     # Phân tích full + gợi ý tối ưu (tạo OPTIMIZATION_SUGGESTIONS.md)
+npm run build:optimized  # Build production + post-build optimize
+```
+
+## 🔄 CI/CD Usage (GitHub Actions-ready)
+
+- Validate tooling: chạy `npm run cargo:check` và `npm run tools:check` ở bước setup.
+- Pre-merge/perf gate: `npm run analyze:all` để có bundle stats + perf deps.
+- Post-build artifact: `npm run analyze:auto` để tạo OPTIMIZATION_SUGGESTIONS.md (upload artifact nếu cần).
+
+## 🔧 Prerequisites (Rust/Cargo)
+
+- macOS (Homebrew):
+
+  ```bash
+  brew install rust
+  # hoặc bản chính thức: curl https://sh.rustup.rs -sSf | sh
+  ```
+
+- Kiểm tra sau khi cài:
+
+  ```bash
+  cargo --version
+  rustc --version
+  ```
+
+- Nếu thiếu, các script `cargo:check` và `cargo:info` sẽ báo hướng dẫn cài đặt.
 
 ### 2. Enhanced Metadata
 
@@ -63,7 +98,7 @@ cargo 1.92.0 (Homebrew)
 npm run cargo:info
 ```
 
-**Output** (Verified Jan 22, 2026):
+**Output** (Verified Jan 26, 2026):
 
 ```
 🦀 Cargo/Rust Status:
@@ -94,7 +129,7 @@ npm run cargo:info
 npm run tools:check
 ```
 
-**Output** (Verified Jan 22, 2026):
+**Output** (Verified Jan 26, 2026):
 
 ```
 🔧 Development Tools Check:
@@ -223,34 +258,41 @@ Nếu trong tương lai cần tích hợp Rust/WebAssembly, có thể thêm các
 
 ## ✅ Checklist
 
-- [x] Added `check:cargo` script ✅ **Verified Jan 22, 2026**
-- [x] Added `check:tools` script ✅ **Verified Jan 22, 2026**
-- [x] Added `analyze:all` script ✅ **Verified Jan 22, 2026**
+- [x] Added `check:cargo` script ✅ **Verified Jan 26, 2026**
+- [x] Added `check:tools` script ✅ **Verified Jan 26, 2026**
+- [x] Added `analyze:all` script ✅ **Verified Jan 26, 2026**
 - [x] Added `_optionalTools` documentation ✅ **Complete**
 - [x] Integrated cargo check in bundle stats script ✅ **Working**
 - [x] Verified all scripts working (Jan 2026) ✅ **All scripts operational**
 - [x] Cargo installed and operational ✅ **Version 1.92.0 (Homebrew)**
 - [x] Rust toolchain verified ✅ **rustc 1.92.0 verified**
-- [x] All npm scripts tested and working ✅ **Jan 22, 2026**
+- [x] All npm scripts tested and working ✅ **Jan 26, 2026**
 - [x] Tools check script includes all dependencies ✅ **7 tools checked**
 - [x] Bundle optimization workflow functional ✅ **OPTIMIZATION_SUGGESTIONS.md generated**
 - [ ] Future: Add Rust/WebAssembly build scripts (when needed) ⏳ **Optional**
 - [ ] Future: Add Rust test scripts (when needed) ⏳ **Optional**
 - [ ] Future: Add wasm-pack integration (when needed) ⏳ **Optional**
 
+## 🚑 Troubleshooting
+
+- **Cargo not found**: Cài Rust qua `brew install rust` hoặc `rustup`. Chạy lại `npm run cargo:check`.
+- **Path không đúng**: Đảm bảo `cargo` trong `$PATH` (`which cargo`). Nếu dùng rustup, chạy `source $HOME/.cargo/env`.
+- **Scripts báo thiếu node/npm**: Cài Node 20+ (đã yêu cầu trong engines), kiểm tra `node -v`, `npm -v`.
+- **Optimization suggestions không tạo file**: Kiểm tra quyền ghi trong repo, hoặc chạy lại `npm run analyze:auto`.
+
 ---
 
 ## ✅ Verification Status
 
-**Last Tested and Verified**: January 22, 2026
+**Last Tested and Verified**: January 26, 2026
 
 ### Script Verification:
 
-- ✅ `npm run cargo:check` - **Working** - Returns cargo version
+- ✅ `npm run cargo:check` - **Working** - Returns cargo version (rerun Jan 26, 2026)
 - ✅ `npm run cargo:info` - **Working** - Shows detailed cargo/rust info
 - ✅ `npm run tools:check` - **Working** - Checks 7 development tools
 - ✅ `npm run analyze:all` - **Working** - Complete bundle + cargo analysis
-- ✅ `npm run analyze:auto` - **Working** - Auto-generates optimization suggestions
+- ✅ `npm run analyze:auto` - **Working** - Auto-generates optimization suggestions (creates OPTIMIZATION_SUGGESTIONS.md)
 - ✅ `npm run optimize:suggestions` - **Working** - Creates OPTIMIZATION_SUGGESTIONS.md
 - ✅ `npm run build:optimized` - **Configured** - Optimized production build
 
@@ -278,7 +320,7 @@ Nếu trong tương lai cần tích hợp Rust/WebAssembly, có thể thêm các
 ## 📋 Summary
 
 **Initial Setup**: December 25, 2025
-**Last Verified**: January 22, 2026
+**Last Verified**: January 26, 2026
 **Status**: ✅ **Fully Integrated, Tested & Operational**
 **Cargo Version**: 1.92.0 (Homebrew)
 **Rust Version**: 1.92.0
