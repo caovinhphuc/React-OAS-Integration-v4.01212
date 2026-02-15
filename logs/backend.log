@@ -6,5 +6,4 @@
 🚀 Backend server running on port 3001
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
-::1 - - [11/Feb/2026:19:56:47 +0000] "GET /manifest.json HTTP/1.1" 404 276 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-Error: ENOENT: no such file or directory, stat '/Users/phuccao/Archives/old-projects/React-OAS-Integration-v4.01212/backend/build/index.html'
+::1 - - [11/Feb/2026:20:49:43 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
