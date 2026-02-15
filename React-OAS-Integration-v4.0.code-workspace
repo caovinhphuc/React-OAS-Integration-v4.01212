@@ -1,26 +1,14 @@
 {
   "folders": [
     {
-      "name": "React-OAS-Integration-v4.0",
-      "path": "React-OAS-Integration-v4.0"
+      "path": ".",
     },
-    {
-      "name": "Frontend Projects",
-      "path": "frontend"
-    },
-    {
-      "name": "Fullstack Projects",
-      "path": "fullstack"
-    },
-    {
-      "path": "."
-    }
   ],
   "settings": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
-      "source.organizeImports": "explicit"
+      "source.organizeImports": "explicit",
     },
     "files.exclude": {
       "**/.git": true,
@@ -31,7 +19,7 @@
       "**/.venv": true,
       "**/venv": true,
       "**/dist": true,
-      "**/build": true
+      "**/build": true,
     },
     "search.exclude": {
       "**/node_modules": true,
@@ -39,9 +27,9 @@
       "**/build": true,
       "**/__pycache__": true,
       "**/.venv": true,
-      "**/venv": true
+      "**/venv": true,
     },
-    "terminal.integrated.cwd": "${workspaceFolder:React-OAS-Integration-v4.0}"
+    "terminal.integrated.cwd": "${workspaceFolder:React-OAS-Integration-v4.0}",
   },
   "extensions": {
     "recommendations": [
@@ -57,7 +45,7 @@
       "pkief.material-icon-theme",
       "styled-components.vscode-styled-components",
       "csstools.postcss",
-      "formulahendry.code-runner"
-    ]
-  }
+      "formulahendry.code-runner",
+    ],
+  },
 }

@@ -1,34 +1,34 @@
 # 📊 Bundle Optimization Report
 
-**Generated:** 11:47:22 26/1/2026
+**Generated:** 06:44:13 16/2/2026
 
 ## 📦 Bundle Sizes
 
 | Type | Current | Budget | Status |
 |------|---------|--------|--------|
-| JavaScript | 2.4 MB | 250 KB | ❌ OVER |
+| JavaScript | 2.37 MB | 250 KB | ❌ OVER |
 | CSS | 92.76 KB | 50 KB | ❌ OVER |
 | Images | 0 Bytes | 500 KB | ✅ OK |
-| Total | 2.49 MB | 1 MB | ❌ OVER |
+| Total | 2.46 MB | 1 MB | ❌ OVER |
 
 ## 📁 Top Largest Files
 
 ```
-1. static/js/main.b27c8735.js - 696.33 KB
-2. static/js/791.33ba1ce6.chunk.js - 361.76 KB
-3. static/js/849.762801d3.chunk.js - 165.46 KB
-4. static/js/856.089d1f99.chunk.js - 118.94 KB
-5. static/js/255.ba2dfe53.chunk.js - 116.84 KB
-6. static/js/200.638002f1.chunk.js - 99.69 KB
-7. static/js/589.9ed18ca6.chunk.js - 96.34 KB
-8. static/js/253.4a8c41d6.chunk.js - 86.09 KB
-9. static/js/217.90511151.chunk.js - 51.49 KB
-10. static/js/934.aa0b2140.chunk.js - 42.81 KB
-11. static/css/main.8268259e.css - 40.73 KB
-12. static/js/701.b1f1f83a.chunk.js - 39.78 KB
-13. static/js/396.92abe3a3.chunk.js - 38.71 KB
-14. static/js/security.a358596b.chunk.js - 33.46 KB
-15. static/js/489.a0461e2d.chunk.js - 33.06 KB
+1. bundle-stats.json - 124.69 MB
+2. static/js/main.19784491.js - 694.85 KB
+3. static/js/980.f1b67e0a.chunk.js - 330.49 KB
+4. static/js/996.1a7ca4ef.chunk.js - 165.12 KB
+5. static/js/741.34548f57.chunk.js - 120.17 KB
+6. static/js/504.23365113.chunk.js - 117.83 KB
+7. static/js/998.39ea5fb7.chunk.js - 100.46 KB
+8. static/js/753.0f0d0ed7.chunk.js - 95.85 KB
+9. static/js/253.a90b8a2e.chunk.js - 85.96 KB
+10. static/js/451.580a8b12.chunk.js - 50.01 KB
+11. static/js/934.aa0b2140.chunk.js - 42.81 KB
+12. static/css/main.8268259e.css - 40.73 KB
+13. static/js/456.8c812cd6.chunk.js - 40.39 KB
+14. static/js/396.bacb4df1.chunk.js - 38.35 KB
+15. static/js/google-drive.63494505.chunk.js - 35.13 KB
 ```
 
 ## 💡 Recommendations

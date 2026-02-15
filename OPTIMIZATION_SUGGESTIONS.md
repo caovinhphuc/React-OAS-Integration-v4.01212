@@ -4,29 +4,29 @@
 
 [34m📦 Kích Thước Bundle:[0m
 
-[31m❌ JAVASCRIPT:    2.34 MB /     250 KB (957.2%)[0m
-[31m❌ CSS       :    92.7 KB /      50 KB (185.4%)[0m
+[31m❌ JAVASCRIPT:    2.37 MB /     250 KB (969.9%)[0m
+[31m❌ CSS       :   92.76 KB /      50 KB (185.5%)[0m
 [32m✅ IMAGES    :    0 Bytes /     500 KB (0.0%)[0m
 [32m✅ FONTS     :    0 Bytes /     100 KB (0.0%)[0m
-[31m❌ TOTAL     :    2.43 MB /       1 MB (242.7%)[0m
+[31m❌ TOTAL     :    2.46 MB /       1 MB (245.9%)[0m
 
 [34m📁 Top Files Lớn Nhất:[0m
 
-[36m   1. static/js/main.28e2c468.js                          694.14 KB[0m
-[36m   2. static/js/440.b4f9bdd7.chunk.js                      359.7 KB[0m
-[36m   3. static/js/872.3a1e871f.chunk.js                     165.46 KB[0m
-[36m   4. static/js/395.895eeca7.chunk.js                     118.93 KB[0m
-[36m   5. static/js/756.72d7582f.chunk.js                     116.84 KB[0m
-[36m   6. static/js/488.4df62caa.chunk.js                      99.69 KB[0m
-[36m   7. static/js/975.e097e5d1.chunk.js                      96.34 KB[0m
-[36m   8. static/js/96.3759d42f.chunk.js                       86.09 KB[0m
-[36m   9. static/js/403.1679420e.chunk.js                      50.09 KB[0m
-[36m  10. static/css/main.8268259e.css                         40.67 KB[0m
-[36m  11. static/js/776.778f2b93.chunk.js                      39.77 KB[0m
-[36m  12. static/js/287.94941bef.chunk.js                      38.72 KB[0m
-[36m  13. static/js/google-drive.fdb29443.chunk.js                34 KB[0m
-[36m  14. static/js/security.ffafa47f.chunk.js                 33.42 KB[0m
-[36m  15. static/js/9.c6bba87b.chunk.js                        32.92 KB[0m
+[36m   1. bundle-stats.json                                   124.69 MB[0m
+[36m   2. static/js/main.19784491.js                          694.85 KB[0m
+[36m   3. static/js/980.f1b67e0a.chunk.js                     330.49 KB[0m
+[36m   4. static/js/996.1a7ca4ef.chunk.js                     165.12 KB[0m
+[36m   5. static/js/741.34548f57.chunk.js                     120.17 KB[0m
+[36m   6. static/js/504.23365113.chunk.js                     117.83 KB[0m
+[36m   7. static/js/998.39ea5fb7.chunk.js                     100.46 KB[0m
+[36m   8. static/js/753.0f0d0ed7.chunk.js                      95.85 KB[0m
+[36m   9. static/js/253.a90b8a2e.chunk.js                      85.96 KB[0m
+[36m  10. static/js/451.580a8b12.chunk.js                      50.01 KB[0m
+[36m  11. static/js/934.aa0b2140.chunk.js                      42.81 KB[0m
+[36m  12. static/css/main.8268259e.css                         40.73 KB[0m
+[36m  13. static/js/456.8c812cd6.chunk.js                      40.39 KB[0m
+[36m  14. static/js/396.bacb4df1.chunk.js                      38.35 KB[0m
+[36m  15. static/js/google-drive.63494505.chunk.js             35.13 KB[0m
 
 [33m💡 Đề Xuất Tối Ưu Hóa:[0m
 
@@ -66,7 +66,7 @@
 [36m   • react-grid-layout         → Lazy load chỉ khi cần dashboard customization[0m
 [36m   • @ant-design/icons         → Import từng icon: import { Icon } from '@ant-design/icons'[0m
 
-[32m📄 Report đã được tạo: /Users/phuccao/Projects/__ACTIVE__/React-OAS-Integration-v4.0/BUNDLE_OPTIMIZATION_REPORT.md[0m
+[32m📄 Report đã được tạo: /Users/phuccao/Workspace/mia-vn/React-OAS-Integration-v4.01212/BUNDLE_OPTIMIZATION_REPORT.md[0m
 [32m
 ✅ Phân tích hoàn tất![0m
 [36m💡 Xem chi tiết trong: BUNDLE_OPTIMIZATION_REPORT.md[0m
