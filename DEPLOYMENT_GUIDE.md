@@ -147,6 +147,20 @@ npm run serve:deployed
 ./quick-deploy.sh "🎨 Update UI design"
 ```
 
+**First-time setup (chạy 1 lần):**
+
+```bash
+# Ensure dependencies tồn tại
+npm install
+
+# Link Vercel project (dùng tên lowercase)
+vercel link --project mia-vn-google-integration
+
+# Link Railway project
+railway login
+railway link
+```
+
 ---
 
 ### `deploy-vercel.sh` - Vercel Only

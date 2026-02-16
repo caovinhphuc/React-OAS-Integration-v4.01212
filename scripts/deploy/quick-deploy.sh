@@ -93,10 +93,10 @@ print "Đang pull latest changes từ remote..."
 if git fetch origin "$CURRENT_BRANCH" 2>/dev/null; then
     LOCAL=$(git rev-parse @)
     REMOTE=$(git rev-parse @{u} 2>/dev/null || echo "")
-    
+
     if [ -n "$REMOTE" ] && [ "$LOCAL" != "$REMOTE" ]; then
         print_warning "Local branch đang behind remote. Đang merge..."
-        
+
         # Try to merge
         if git pull --no-rebase origin "$CURRENT_BRANCH" 2>&1 | tee /tmp/git-pull.log; then
             print_success "Đã merge remote changes thành công"
@@ -145,6 +145,11 @@ rm -f /tmp/git-push.log
 
 # Step 4: Build Frontend
 print "Build frontend..."
+if [ ! -x "node_modules/.bin/react-scripts" ]; then
+    print_warning "Thiếu dependencies (react-scripts). Đang chạy npm install..."
+    npm install
+fi
+
 if npm run build > /tmp/quick-deploy-build.log 2>&1; then
     tail -20 /tmp/quick-deploy-build.log
     print_success "Frontend đã build thành công"
