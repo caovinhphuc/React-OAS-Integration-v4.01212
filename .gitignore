@@ -90,6 +90,7 @@ htmlcov/
 session_data.pkl
 automation/session_data.pkl
 *.session
+.npm-cache/
 
 # Temporary files
 tmp/

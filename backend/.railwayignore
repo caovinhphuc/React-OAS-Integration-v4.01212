@@ -1,0 +1,34 @@
+# Dependencies
+
+node_modules
+
+# Build/Test artifacts
+
+build
+coverage
+.nyc_output
+*.log
+logs
+
+# VCS / editor
+
+.git
+.gitignore
+.DS_Store
+.vscode
+
+# Env and local secrets
+
+.env
+.env.*
+
+# Local temp/cache
+
+tmp
+temp
+.cache
+.npm-cache
+
+# Optional large local artifact
+
+react-oas-integration-backend@1.0.0
