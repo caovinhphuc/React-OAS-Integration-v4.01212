@@ -36,6 +36,7 @@ STRICT_ENV_CHECK="${STRICT_ENV_CHECK:-false}"
 BUILD_OK=false
 VERCEL_OK=false
 RAILWAY_OK=false
+OVERALL_OK=true
 VERCEL_URL=""
 RAILWAY_URL=""
 
@@ -69,17 +70,21 @@ print "Kiểm tra git status..."
 if ! git diff --quiet HEAD 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
     print "Có thay đổi chưa commit"
 
-    # Add all changes
-    print "Đang add tất cả thay đổi..."
-    git add -A
+    # Add all changes except local npm cache artifacts
+    print "Đang add thay đổi (bỏ qua .npm-cache)..."
+    git add -A -- . ':(exclude).npm-cache/**'
 
-    # Commit
-    print "Đang commit với message: $COMMIT_MSG"
-    git commit -m "$COMMIT_MSG" || {
-        print_error "Commit thất bại"
-        exit 1
-    }
-    print_success "Đã commit thành công"
+    # Commit only if there are staged changes
+    if git diff --cached --quiet; then
+        print_warning "Không có thay đổi hợp lệ để commit (đã bỏ qua .npm-cache)"
+    else
+        print "Đang commit với message: $COMMIT_MSG"
+        git commit -m "$COMMIT_MSG" || {
+            print_error "Commit thất bại"
+            exit 1
+        }
+        print_success "Đã commit thành công"
+    fi
 else
     print "Không có thay đổi để commit"
 fi
@@ -187,6 +192,7 @@ if command -v vercel &> /dev/null; then
         tail -20 /tmp/quick-deploy-vercel.log || true
         print_error "Vercel deploy thất bại"
         print_warning "Kiểm tra project link. Gợi ý: vercel link --project mia-vn-google-integration"
+        OVERALL_OK=false
     fi
     rm -f /tmp/quick-deploy-vercel.log
 else
@@ -212,11 +218,13 @@ if command -v railway &> /dev/null; then
             tail -20 /tmp/quick-deploy-railway-up.log || true
             print_error "Railway deploy thất bại"
             print "Lưu ý: Nếu có nhiều services, chỉ định: railway up --service backend"
+            OVERALL_OK=false
         fi
     else
         tail -10 /tmp/quick-deploy-railway-status.log || true
         print_error "Railway chưa link project"
         print "Chạy: railway login && railway link"
+        OVERALL_OK=false
     fi
     rm -f /tmp/quick-deploy-railway-status.log /tmp/quick-deploy-railway-up.log
     cd ..
@@ -227,7 +235,11 @@ fi
 
 # Summary
 echo ""
-print_success "🎉 Hoàn tất!"
+if [ "$OVERALL_OK" = true ]; then
+    print_success "🎉 Hoàn tất!"
+else
+    print_error "Deploy chưa hoàn tất do có bước thất bại"
+fi
 echo ""
 echo "📋 Tóm tắt:"
 echo "   ✅ Đã commit: $COMMIT_MSG"
@@ -268,4 +280,8 @@ else
     echo "   Backend:  (không lấy được URL, xem log Railway)"
 fi
 echo ""
+
+if [ "$OVERALL_OK" != true ]; then
+    exit 1
+fi
 
