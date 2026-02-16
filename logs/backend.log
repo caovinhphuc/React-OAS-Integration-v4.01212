@@ -7,21 +7,7 @@
 [33m[nodemon] watching path(s): *.*[39m
 [33m[nodemon] watching extensions: js,mjs,cjs,json[39m
 [32m[nodemon] starting `node src/server.js`[39m
-⚠️ No Google credentials file found
+✅ Found credentials at: /Users/phuccao/Workspace/mia-vn/React-OAS-Integration-v4.01212/automation/automation_new/config/service_account.json
 🚀 Backend server running on port 3001
 📊 Health check: http://localhost:3001/health
 🌐 WebSocket server ready for connections
-<<<<<<< HEAD
-::1 - - [16/Feb/2026:00:19:35 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
-::1 - - [16/Feb/2026:00:19:38 +0000] "GET /api/google/health HTTP/1.1" 200 86 "-" "curl/8.7.1"
-::1 - - [16/Feb/2026:00:19:46 +0000] "POST /api/google/drive/list HTTP/1.1" 503 45 "-" "curl/8.7.1"
-::1 - - [16/Feb/2026:00:19:50 +0000] "POST /api/google/sheets/read HTTP/1.1" 503 45 "-" "curl/8.7.1"
-::1 - - [16/Feb/2026:00:20:08 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-::1 - - [16/Feb/2026:00:20:08 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-::1 - - [16/Feb/2026:00:20:08 +0000] "GET /api/google/sheets/metadata/undefined HTTP/1.1" 503 45 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-::1 - - [16/Feb/2026:00:20:09 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-::1 - - [16/Feb/2026:00:20:10 +0000] "POST /api/google/drive/list HTTP/1.1" 503 45 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-::1 - - [16/Feb/2026:00:20:10 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-=======
-::1 - - [11/Feb/2026:20:49:43 +0000] "GET /health HTTP/1.1" 200 104 "-" "curl/8.7.1"
->>>>>>> b39c56e74956566c7bd85a02eb35b5eb885b1666

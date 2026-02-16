@@ -61,6 +61,7 @@ Tích hợp Google Sheets vào React OAS Integration project để quản lý d�
 
 1. Mở file `.env`
 2. Cập nhật các giá trị sau:
+
    ```env
    REACT_APP_GOOGLE_SHEET_ID=YOUR_ACTUAL_SHEET_ID
    GOOGLE_SHEETS_ID=YOUR_ACTUAL_SHEET_ID

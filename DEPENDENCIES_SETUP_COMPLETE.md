@@ -220,6 +220,7 @@ Các dependencies sau đã được cài đặt để hỗ trợ **webpack.confi
 | Security Vulnerabilities | 68     | 99    | ⚠️ Monitor   |
 
 **Lưu ý**:
+
 - Security vulnerabilities tăng vì đã cài thêm các packages (mjml, handlebars, etc.), nhưng không ảnh hưởng production.
 - Dev dependencies đã được optimize với thêm code quality tools (Husky, lint-staged, Prettier).
 
@@ -240,6 +241,7 @@ Các dependencies sau đã được cài đặt để hỗ trợ **webpack.confi
 ## 🔄 Recent Updates (January 21, 2026)
 
 ### Development Tools
+
 - ✅ Installed Husky (v9.0.11) for git hooks
 - ✅ Installed lint-staged (v15.2.2) for staged file linting
 - ✅ Installed Prettier (v3.2.5) and ESLint integration
@@ -247,12 +249,14 @@ Các dependencies sau đã được cài đặt để hỗ trợ **webpack.confi
 - ✅ Fixed prettier EACCES error by using `npx prettier`
 
 ### Git Configuration
+
 - ✅ Configured git remote origin: `https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git`
 - ✅ Successfully resolved merge conflicts
 - ✅ Tested and verified pre-commit hooks
 - ✅ Successfully pushed to GitHub
 
 ### Configuration Files
+
 - ✅ `.lintstagedrc.json` - lint-staged configuration
 - ✅ `.prettierrc.json` - Prettier formatting rules
 - ✅ `.prettierignore` - Prettier ignore patterns
