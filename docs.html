@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="React OAS Integration v3.0 - AI-Powered Platform">
-    <title>react-oas-integration v3.0.0 - Complete Documentation</title>
+    <title>React OAS Integration v4.0 - Complete Documentation</title>
     <style>
         :root {
             --primary-color: #3498db;
@@ -23,7 +22,6 @@
             --success-color: #27ae60;
             --warning-color: #f39c12;
             --error-color: #e74c3c;
-            --info-color: #3498db;
         }
 
         [data-theme="dark"] {
@@ -46,7 +44,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -62,110 +60,73 @@
         }
 
         .sidebar {
-            width: 300px;
+            width: 280px;
             background-color: var(--sidebar-bg);
             position: fixed;
             height: 100vh;
             overflow-y: auto;
             padding: 20px 0;
-            box-shadow: 2px 0 8px var(--shadow-color);
-            z-index: 1000;
+            box-shadow: 2px 0 5px var(--shadow-color);
+            z-index: 10;
             transition: transform 0.3s ease;
-        }
-
-        .sidebar::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .sidebar::-webkit-scrollbar-track {
-            background: var(--sidebar-bg);
-        }
-
-        .sidebar::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 3px;
         }
 
         .sidebar-header {
             padding: 0 20px 20px;
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             margin-bottom: 20px;
         }
 
         .sidebar-header h2 {
             color: var(--primary-color);
             font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .sidebar-header .version {
-            font-size: 0.85em;
-            opacity: 0.7;
-            color: var(--sidebar-text);
         }
 
         .nav-links {
             list-style: none;
-            padding: 0;
         }
 
         .nav-links li {
-            margin-bottom: 2px;
+            margin-bottom: 5px;
         }
 
         .nav-links a {
             display: block;
-            padding: 12px 20px;
+            padding: 10px 20px;
             color: var(--sidebar-text);
             text-decoration: none;
             border-left: 3px solid transparent;
             transition: all 0.2s ease;
-            font-size: 0.95em;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             background-color: var(--sidebar-active);
             border-left-color: var(--primary-color);
-            padding-left: 25px;
-        }
-
-        .nav-links a.active {
-            background-color: var(--sidebar-active);
-            border-left-color: var(--primary-color);
-            font-weight: 600;
-            color: var(--primary-color);
         }
 
         .main-content {
             flex: 1;
-            margin-left: 300px;
-            padding: 0;
-            max-width: 1400px;
+            margin-left: 280px;
+            padding: 20px;
+            max-width: 1200px;
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 40px;
+            padding: 20px;
             background-color: var(--header-bg);
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px var(--shadow-color);
-            border-bottom: 1px solid var(--border-color);
+            z-index: 5;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            margin-bottom: 20px;
         }
 
         .header h1 {
             font-size: 2rem;
             margin: 0;
-            color: var(--primary-color);
-        }
-
-        .header .subtitle {
-            font-size: 0.9em;
-            opacity: 0.7;
-            margin-top: 5px;
         }
 
         .theme-toggle {
@@ -219,60 +180,28 @@
             transform: translateX(30px);
         }
 
-        .content-wrapper {
-            padding: 30px 40px;
-        }
-
         .section {
-            margin-bottom: 50px;
-            padding: 30px;
+            margin-bottom: 40px;
+            padding: 20px;
             background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px var(--shadow-color);
-            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow-color);
         }
 
-        .section-header {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .section-description {
-            font-size: 1em;
-            opacity: 0.8;
-            color: var(--text-color);
-        }
-
-        .section-content {
-            margin-top: 25px;
-        }
-
-        .section-footer {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.85em;
-            opacity: 0.6;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4 {
             margin-bottom: 15px;
             color: var(--primary-color);
         }
 
         h1 {
             font-size: 2.5rem;
+            margin-top: 20px;
         }
 
         h2 {
             font-size: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
             margin-top: 30px;
         }
 
@@ -291,7 +220,7 @@
         }
 
         ul, ol {
-            margin-left: 25px;
+            margin-left: 20px;
             margin-bottom: 15px;
         }
 
@@ -302,65 +231,49 @@
         code {
             background-color: var(--code-bg);
             color: var(--code-text);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
             font-size: 0.9em;
         }
 
         pre {
             background-color: var(--code-bg);
             color: var(--code-text);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 15px;
+            border-radius: 5px;
             overflow-x: auto;
-            margin: 20px 0;
-            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
         }
 
         pre code {
             background: none;
             padding: 0;
-            font-size: 0.9em;
-            line-height: 1.5;
         }
 
         a {
             color: var(--primary-color);
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
         }
 
         a:hover {
-            border-bottom-color: var(--primary-color);
+            text-decoration: underline;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        table th,
-        table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        table th {
-            background-color: var(--code-bg);
-            font-weight: 600;
-            color: var(--primary-color);
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
         }
 
         .badge {
             display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
             margin-right: 8px;
         }
 
@@ -379,43 +292,32 @@
             color: white;
         }
 
-        .badge-info {
-            background-color: var(--info-color);
-            color: white;
-        }
-
-        .tip, .warning, .info {
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            border-left: 4px solid;
-        }
-
         .tip {
-            background-color: rgba(52, 152, 219, 0.1);
-            border-left-color: var(--info-color);
+            background-color: #e8f4f8;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
         }
 
         .warning {
-            background-color: rgba(243, 156, 18, 0.1);
-            border-left-color: var(--warning-color);
-        }
-
-        .info {
-            background-color: rgba(39, 174, 96, 0.1);
-            border-left-color: var(--success-color);
+            background-color: #fff3cd;
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
         }
 
         .mobile-header {
             display: none;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 15px;
             background-color: var(--header-bg);
             box-shadow: 0 2px 5px var(--shadow-color);
             position: sticky;
             top: 0;
-            z-index: 1001;
+            z-index: 100;
         }
 
         .menu-toggle {
@@ -423,21 +325,7 @@
             border: none;
             cursor: pointer;
             color: var(--text-color);
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .last-updated {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-color);
-            opacity: 0.7;
-            font-size: 0.9em;
-            border-top: 2px solid var(--border-color);
-            margin-top: 50px;
-            background-color: var(--card-bg);
+            padding: 5px;
         }
 
         @media (max-width: 768px) {
@@ -457,34 +345,25 @@
                 display: flex;
             }
 
-            .header {
-                padding: 20px;
-            }
-
-            .content-wrapper {
-                padding: 20px;
-            }
-
-            .section {
-                padding: 20px;
+            .menu-toggle, .mobile-header {
+                display: block;
             }
         }
 
-        /* Print styles */
-        @media print {
-            .sidebar, .mobile-header, .theme-toggle {
-                display: none;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
+        .last-updated {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
     <div class="mobile-header">
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <button class="menu-toggle" id="menuToggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -494,7 +373,7 @@
         <div class="theme-toggle">
             <span>🌞</span>
             <label class="toggle-switch">
-                <input type="checkbox" id="mobileThemeToggle" aria-label="Toggle theme">
+                <input type="checkbox" id="mobileThemeToggle">
                 <span class="slider"></span>
             </label>
             <span>🌙</span>
@@ -505,46 +384,37 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h2>📚 Documentation</h2>
-                <div class="version">react-oas-integration v3.0.0</div>
+                <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;">React OAS Integration v4.0</p>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#overview" title="Tổng quan về dự án, tính năng chính và kiến trúc hệ thống">📋 📋 Tổng Quan</a></li>
-                <li><a href="#architecture" title="Kiến trúc hệ thống, service inventory và data flows">🏗️ 🏗️ Kiến Trúc</a></li>
-                <li><a href="#setup" title="Hướng dẫn setup, cài đặt và deployment">⚙️ ⚙️ Setup & Deployment</a></li>
-                <li><a href="#scripts" title="Hướng dẫn sử dụng các scripts trong project">🔧 🔧 Scripts Guide</a></li>
-                <li><a href="#python" title="Tổ chức và quản lý các file Python">🐍 🐍 Python Files</a></li>
-                <li><a href="#javascript" title="Tổ chức và quản lý các file JavaScript">📦 📦 JavaScript Files</a></li>
-                <li><a href="#reports" title="Quản lý reports và backups">📊 📊 Reports & Backups</a></li>
-                <li><a href="#google-sheets" title="Setup và cấu hình Google Sheets integration">📊 📊 Google Sheets</a></li>
-                <li><a href="#websocket" title="WebSocket setup và real-time communication">🔌 🔌 WebSocket</a></li>
-                <li><a href="#ui-components" title="UI Components library và hướng dẫn sử dụng">🎨 🎨 UI Components</a></li>
+                <li><a href="#overview">📋 Tổng Quan</a></li>
+                <li><a href="#architecture">🏗️ Kiến Trúc Hệ Thống</a></li>
+                <li><a href="#setup">⚙️ Setup & Deployment</a></li>
+                <li><a href="#scripts">🔧 Scripts Guide</a></li>
+                <li><a href="#python">🐍 Python Files</a></li>
+                <li><a href="#javascript">📦 JavaScript Files</a></li>
+                <li><a href="#reports">📊 Reports & Backups</a></li>
+                <li><a href="#google-sheets">📊 Google Sheets Setup</a></li>
+                <li><a href="#websocket">🔌 WebSocket Setup</a></li>
+                <li><a href="#ui">🎨 UI Components</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <header class="header">
-                <div>
-                    <h1>react-oas-integration</h1>
-                    <div class="subtitle">React OAS Integration v3.0 - AI-Powered Platform</div>
-                </div>
+                <h1>🚀 React OAS Integration v4.0</h1>
                 <div class="theme-toggle">
                     <span>🌞</span>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="themeToggle" aria-label="Toggle theme">
+                        <input type="checkbox" id="themeToggle">
                         <span class="slider"></span>
                     </label>
                     <span>🌙</span>
                 </div>
             </header>
 
-            <div class="content-wrapper">
             <section id="overview" class="section">
-                <div class="section-header">
-                    <h2>📋 📋 Tổng Quan</h2>
-                    <p class="section-description">Tổng quan về dự án, tính năng chính và kiến trúc hệ thống</p>
-                </div>
-                <div class="section-content">
-                    <h1>🚀 React OAS Integration v4.0 - ONE Automation Platform</h1>
+                <h1>🚀 React OAS Integration v4.0 - ONE Automation Platform</h1>
 <p><div align="center"></p>
 <p><a href="https://img.shields.io/badge/version-4.0.0-blue.svg" target="_blank">![Version</a>](https://github.com/caovinhphuc/React-OAS-Integration-v4.0)
 <a href="https://img.shields.io/badge/license-MIT-green.svg" target="_blank">![License</a>](LICENSE)
@@ -556,188 +426,22 @@
 <p><strong>🤖 AI-Powered Automation Platform với Tích Hợp Google Sheets</strong></p>
 <p><a href="#-documentation" target="_blank">📖 Documentation</a> • <a href="#-cài-đặt-và-khởi-chạy" target="_blank">🚀 Quick Start</a> • <a href="#️-kiến-trúc-hệ-thống" target="_blank">🏗️ Architecture</a> • <a href="#-tính-năng-chính" target="_blank">📊 Features</a></p>
 <p></div></p>
-<hr>
 <h2>📋 Tổng quan</h2>
 <p><strong>React OAS Integration v4.0</strong> là một nền tảng tự động hóa hoàn chỉnh với AI-powered analytics, tích hợp với Google Sheets và hệ thống ONE Page. Hệ thống cung cấp:</p>
 <ul><li>🤖 <strong>Automation System</strong>: Thu thập dữ liệu tự động từ ONE Page</li>
 <li>📊 <strong>Google Sheets Integration</strong>: Kho lưu trữ dữ liệu tập trung</li>
 <li>🧠 <strong>AI Service</strong>: Phân tích thông minh và dự đoán</li>
 <li>📈 <strong>Analytics & Reports</strong>: Thống kê và báo cáo tự động</li>
-<li>💡 <strong>Recommendations Engine</strong>: Đề xuất giải pháp tối ưu</li>
-<hr>
-<h2>🏗️ Kiến trúc hệ thống</h2>
-<h3>📊 Luồng dữ liệu hoàn chỉnh</h3>
-<pre><code class="language-text">┌─────────────────────────────────────────────────────────────────┐
-│              ONE AUTOMATION PLATFORM v3.0                        │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐   │
-│  │ 🤖 AUTOMATION│────▶│ 📊 GOOGLE    │────▶│ 🧠 AI SERVICE│   │
-│  │   SYSTEM     │     │   SHEETS     │     │   (FastAPI)  │   │
-│  │  (Python)    │     │  (Storage)   │     │   Port: 8000 │   │
-│  └──────────────┘     └──────────────┘     └──────────────┘   │
-│         │                    │                       │          │
-│         │                    │                       ▼          │
-│         │                    │              ┌──────────────┐   │
-│         │                    │              │ 📈 ANALYTICS │   │
-│         │                    │              │   Engine     │   │
-│         │                    │              └──────────────┘   │
-│         │                    │                       │          │
-│         │                    │                       ▼          │
-│         │                    │              ┌──────────────┐   │
-│         │                    │              │ 💡 RECOMMEND │   │
-│         │                    │              │   Engine     │   │
-│         │                    │              └──────────────┘   │
-│         │                    │                                 │
-│         └────────────────────┼─────────────────────────────────┘
-│                              │                                  │
-│                    ┌─────────▼──────────┐                      │
-│                    │  🎨 FRONTEND       │                      │
-│                    │  React Dashboard   │                      │
-│                    │  Port: 3000        │                      │
-│                    └────────────────────┘                      │
-│                                                                   │
-└─────────────────────────────────────────────────────────────────┘</code></pre>
-<h3>🔄 Chi tiết từng component</h3>
-<h4>🤖 <strong>Automation System</strong> (<code>automation/</code>)</h4>
-<li><strong>Nhiệm vụ</strong>: Thu thập dữ liệu tự động từ ONE Page</li>
-<li><strong>Công nghệ</strong>: Python, Selenium, Pandas</li>
-<li><strong>Chức năng</strong>: Login, Scrape, Process, Export to Sheets</li>
-<li><strong>Lịch trình</strong>: Cron jobs (6:00 AM daily) hoặc manual trigger</li>
-<h4>📊 <strong>Google Sheets</strong> (<code>shared-services/google-sheets/</code>)</h4>
-<li><strong>Nhiệm vụ</strong>: Kho lưu trữ dữ liệu tập trung</li>
-<li><strong>Cấu trúc</strong>: Orders, Analytics, Config, Logs</li>
-<li><strong>API</strong>: Google Sheets API v4</li>
-<h4>🧠 <strong>AI Service</strong> (<code>ai-service/</code>)</h4>
-<li><strong>Nhiệm vụ</strong>: Phân tích thông minh, dự đoán, tối ưu hóa</li>
-<li><strong>Công nghệ</strong>: FastAPI, scikit-learn, COBYQA</li>
-<li><strong>Endpoints</strong>: <code>/ai/analyze</code>, <code>/ai/predictions</code>, <code>/ai/optimization</code></li>
-<h4>📈 <strong>Analytics Module</strong> (<code>analytics/</code>) ⚠️ <strong>Đang phát triển</strong></h4>
-<li><strong>Nhiệm vụ</strong>: Thống kê, báo cáo, visualization</li>
-<li><strong>Chức năng</strong>: Metrics calculation, Reports generation</li>
-<h4>💡 <strong>Recommendations Engine</strong> ⚠️ <strong>Đang phát triển</strong></h4>
-<li><strong>Nhiệm vụ</strong>: Đề xuất giải pháp từ phân tích AI</li>
-<li><strong>Chức năng</strong>: Priority ranking, Impact analysis</li>
-<h4>🎨 <strong>Frontend</strong> (<code>src/</code>)</h4>
-<li><strong>Công nghệ</strong>: React 18, Redux Toolkit, Recharts</li>
-<li><strong>Features</strong>: Live Dashboard, AI Analytics, Google Sheets UI</li>
-<h4>🔧 <strong>Backend</strong> (<code>backend/</code>)</h4>
-<li><strong>Công nghệ</strong>: Node.js, Express, Socket.IO</li>
-<li><strong>Features</strong>: WebSocket real-time, API endpoints</li></ul>
-<hr>
-<h2>🚀 Cài đặt và khởi chạy</h2>
-<h3>📋 Yêu cầu hệ thống</h3>
-<table><tr><td>Component</td><td>Version</td><td>Ghi chú</td></tr>
-<tr><td>------------</td><td>-------</td><td>-----------------------------------</td></tr>
-<tr><td><strong>Node.js</strong></td><td>18+</td><td>Runtime cho Frontend & Backend</td></tr>
-<tr><td><strong>Python</strong></td><td>3.9+</td><td>Runtime cho Automation & AI Service</td></tr>
-<tr><td><strong>npm/yarn</strong></td><td>Latest</td><td>Package manager</td></tr>
-<tr><td><strong>Git</strong></td><td>Latest</td><td>Version control</td></tr>
-<h3>⚡ Khởi chạy nhanh</h3>
-<pre><code class="language-bash"># 1. Clone repository
-git clone https://github.com/caovinhphuc/-React-OAS-Integration-v3.0.git
-cd -React-OAS-Integration-v3.0
-<h1>2. Khởi chạy tất cả services (Recommended)</h1>
-./start_ai_platform.sh
-<h1>Hoặc khởi chạy từng service riêng lẻ:</code></pre></h1>
-<h3>🔧 Khởi chạy từng service</h3>
-<h4><strong>1. Frontend (React)</strong></h4>
-<pre><code class="language-bash"># Cài đặt dependencies
-npm install
-<h1>Development mode</h1>
-npm start
-<h1>→ Mở http://localhost:3000</h1>
-<h1>Production build</h1>
-npm run build
-npx serve -s build -l 3000</code></pre>
-<h4><strong>2. Backend (Node.js)</strong></h4>
-<pre><code class="language-bash">cd backend
-npm install
-npm start
-<h1>→ Chạy trên http://localhost:3001</code></pre></h1>
-<h4><strong>3. AI Service (FastAPI)</strong></h4>
-<pre><code class="language-bash">cd ai-service
-<h1>Tạo virtual environment</h1>
-python3 -m venv venv
-source venv/bin/activate  # Trên Windows: venv\Scripts\activate
-<h1>Cài đặt dependencies</h1>
-pip install -r requirements.txt
-<h1>Khởi chạy service</h1>
-uvicorn ai_service:app --host 0.0.0.0 --port 8000 --reload
-<h1>→ Chạy trên http://localhost:8000</h1>
-<h1>Hoặc dùng script</h1>
-./setup_venv.sh</code></pre>
-<h4><strong>4. Automation System (Python)</strong></h4>
-<pre><code class="language-bash">cd automation
-<h1>Kích hoạt virtual environment</h1>
-source venv/bin/activate  # Hoặc: . venv/bin/activate
-<h1>Cài đặt dependencies</h1>
-pip install -r requirements.txt
-<h1>Chạy automation</h1>
-python automation.py
-<h1>Hoặc chạy main API server</h1>
-python main.py
-<h1>→ Chạy trên http://localhost:8000 (nếu dùng FastAPI)</code></pre></h1>
-<hr>
-<h2>🌐 Truy cập ứng dụng</h2>
-<p>Sau khi khởi chạy thành công, truy cập các endpoints:</p>
-<p><tr><td>Service</td><td>URL</td><td>Mô tả</td></tr>
-<tr><td>-------------------------</td><td>------------------------------------------</td><td>--------------------</td></tr>
-<tr><td>🎨 <strong>Frontend</strong></td><td><http://localhost:3000></td><td>Giao diện chính</td></tr>
-<tr><td>📊 <strong>Dashboard</strong></td><td><http://localhost:3000/dashboard></td><td>Live Dashboard</td></tr>
-<tr><td>🧠 <strong>AI Analytics</strong></td><td><http://localhost:3000/ai-analytics></td><td>AI Analytics</td></tr>
-<tr><td>🛒 <strong>Retail</strong></td><td><http://localhost:3000/retail></td><td>Retail Dashboard</td></tr>
-<tr><td>📋 <strong>Google Sheets</strong></td><td><http://localhost:3000/google-sheets></td><td>Google Sheets UI</td></tr>
-<tr><td>📁 <strong>Google Drive</strong></td><td><http://localhost:3000/google-drive></td><td>Google Drive UI</td></tr>
-<tr><td>⚙️ <strong>Google Apps Script</strong></td><td><http://localhost:3000/google-apps-script></td><td>Google Apps Script</td></tr>
-<tr><td>💬 <strong>Telegram</strong></td><td><http://localhost:3000/telegram></td><td>Telegram Integration</td></tr>
-<tr><td>🤖 <strong>Automation</strong></td><td><http://localhost:3000/automation></td><td>Automation Dashboard</td></tr>
-<tr><td>🔔 <strong>Alerts</strong></td><td><http://localhost:3000/alerts></td><td>Alerts Management</td></tr>
-<tr><td>📈 <strong>Advanced Analytics</strong></td><td><http://localhost:3000/advanced-analytics></td><td>Advanced Analytics</td></tr>
-<tr><td>🤖 <strong>Smart Automation</strong></td><td><http://localhost:3000/smart-automation></td><td>Smart Automation</td></tr>
-<tr><td>💬 <strong>NLP</strong></td><td><http://localhost:3000/nlp></td><td>NLP Dashboard</td></tr>
-<tr><td>🔒 <strong>Security</strong></td><td><http://localhost:3000/security></td><td>Security Dashboard</td></tr>
-<tr><td>🔧 <strong>Backend API</strong></td><td><http://localhost:3001/health></td><td>Health check</td></tr>
-<tr><td>🧠 <strong>AI Service</strong></td><td><http://localhost:8000/health></td><td>AI Service health</td></tr>
-<tr><td>📚 <strong>API Docs</strong></td><td><http://localhost:8000/docs></td><td>FastAPI Swagger UI</td></tr></p>
-<hr>
-<h2>📊 Tính năng chính</h2>
-<h3>✅ Đã hoàn thành</h3>
-<p><tr><td>Feature</td><td>Status</td><td>Mô tả</td></tr>
-<tr><td>--------------------------------</td><td>------</td><td>-------------------------------------</td></tr>
-<tr><td>🤖 <strong>Automation System</strong></td><td>✅</td><td>Thu thập dữ liệu từ ONE Page tự động</td></tr>
-<tr><td>📊 <strong>Google Sheets Integration</strong></td><td>✅</td><td>Tích hợp đầy đủ với Google Sheets API</td></tr>
-<tr><td>📁 <strong>Google Drive Integration</strong></td><td>✅</td><td>Quản lý tệp tin và thư mục</td></tr>
-<tr><td>⚙️ <strong>Google Apps Script</strong></td><td>✅</td><td>Tự động hóa công việc với Apps Script</td></tr>
-<tr><td>🧠 <strong>AI Service</strong></td><td>✅</td><td>FastAPI service với ML capabilities</td></tr>
-<tr><td>🎨 <strong>Frontend Dashboard</strong></td><td>✅</td><td>React dashboard với real-time updates</td></tr>
-<tr><td>🔧 <strong>Backend API</strong></td><td>✅</td><td>Node.js server với WebSocket</td></tr>
-<tr><td>📈 <strong>Live Dashboard</strong></td><td>✅</td><td>Real-time charts và metrics</td></tr>
-<tr><td>🛒 <strong>Retail Dashboard</strong></td><td>✅</td><td>Phân tích retail và sales</td></tr>
-<tr><td>🔒 <strong>Security Dashboard</strong></td><td>✅</td><td>MFA, SSO, RBAC, Audit Logs</td></tr>
-<tr><td>💬 <strong>NLP Dashboard</strong></td><td>✅</td><td>Chat, Voice, Search, Summaries</td></tr>
-<tr><td>🤖 <strong>Smart Automation</strong></td><td>✅</td><td>AI-powered automation</td></tr>
-<tr><td>📈 <strong>Advanced Analytics</strong></td><td>✅</td><td>Phân tích nâng cao với biểu đồ</td></tr></table>
-| 🔔 <strong>Alerts Management</strong>   </p>
-<p>... (truncated, see full file for complete content)</p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>README.md</code></small>
-                </div>
+<li>💡 <strong>Recommendations Engine</strong>: Đề xuất giải pháp tối ưu</li></ul>
             </section>
 
-                        <section id="architecture" class="section">
-                <div class="section-header">
-                    <h2>🏗️ 🏗️ Kiến Trúc</h2>
-                    <p class="section-description">Kiến trúc hệ thống, service inventory và data flows</p>
-                </div>
-                <div class="section-content">
-                    <h1>🏗️ SYSTEM ARCHITECTURE OVERVIEW</h1>
+            <section id="architecture" class="section">
+                <h1>🏗️ SYSTEM ARCHITECTURE OVERVIEW</h1>
 <p>> Version: 2025-01-27
 > Scope: React OAS Integration v4.0 - Main integrated platform (Frontend + Backend + AI + Automation + Google Sheets)</p>
-<hr>
+<p>---</p>
 <h2>1. HIGH-LEVEL DIAGRAM</h2>
-<pre><code class="language-text">Users (Web)
+<pre><code>          Users (Web)
                │
         ┌───────┴────────┐
         │ React Frontends │ (MIA Logistics Manager, Google Sheets App, Main Dashboard)
@@ -753,355 +457,428 @@ python main.py
         └──────────┬────────────┴──────┬──────────┘
                    │  Event / Data Flow │
                    ▼                   ▼
-            Notification Channels (Email, Telegram, WebSocket)</code></pre>
-<hr>
+            Notification Channels (Email, Telegram, WebSocket)
+</code></pre>
+<p>---</p>
 <h2>2. SERVICE INVENTORY</h2>
-<table><tr><td>Service</td><td>Stack</td><td>Role</td><td>Ports</td><td>Scaling</td></tr>
-<tr><td>------------------</td><td>-----------------------------------</td><td>------------------------------------</td><td>-------</td><td>----------------</td></tr>
-<tr><td>Main Frontend</td><td>React 18 + Redux + Ant Design</td><td>Main Dashboard UI</td><td>3000</td><td>Horizontal</td></tr>
-<tr><td>Main Backend</td><td>Node.js + Express + Socket.IO</td><td>Auth, API Aggregation, Notifications</td><td>3001</td><td>Horizontal</td></tr>
-<tr><td>AI Service</td><td>Python FastAPI</td><td>ML inference / analytics</td><td>8000</td><td>CPU/Memory scale</td></tr>
-<tr><td>Automation Service</td><td>Python + Selenium</td><td>Data scraping & RPA</td><td>8001</td><td>Worker scaling</td></tr>
-<tr><td>Google Sheets</td><td>External API</td><td>Primary structured datastore</td><td>-</td><td>Google infra</td></tr>
-<tr><td>Notification Layer</td><td>Nodemailer, Telegram Bot, Socket.IO</td><td>Multi-channel alerts</td><td>3001/ws</td><td>Shared</td></tr>
-<hr>
+<p>| Service            | Stack                               | Role                                 | Ports   | Scaling          |
+| ------------------ | ----------------------------------- | ------------------------------------ | ------- | ---------------- |
+| Main Frontend      | React 18 + Redux + Ant Design       | Main Dashboard UI                    | 3000    | Horizontal       |
+| Main Backend       | Node.js + Express + Socket.IO       | Auth, API Aggregation, Notifications | 3001    | Horizontal       |
+| AI Service         | Python FastAPI                      | ML inference / analytics             | 8000    | CPU/Memory scale |
+| Automation Service | Python + Selenium                   | Data scraping & RPA                  | 8001    | Worker scaling   |
+| Google Sheets      | External API                        | Primary structured datastore         | -       | Google infra     |
+| Notification Layer | Nodemailer, Telegram Bot, Socket.IO | Multi-channel alerts                 | 3001/ws | Shared           |</p>
+<p>---</p>
 <h2>3. CORE FLOWS</h2>
 <h3>3.1 User Request → AI Insight Flow</h3>
-<pre><code class="language-text">User → Frontend → /api/analytics/request → Backend
+<pre><code>User → Frontend → /api/analytics/request → Backend
 Backend → Queue/Direct → AI Service /analyze
-AI Service → result → Backend → WebSocket emit → Frontend updates</code></pre>
+AI Service → result → Backend → WebSocket emit → Frontend updates
+</code></pre>
 <h3>3.2 OnePage (Logistics) Data Integration (Planned)</h3>
-<pre><code class="language-text">OnePage Frontend (MIA) → Backend /api/onepage/import
+<pre><code>OnePage Frontend (MIA) → Backend /api/onepage/import
 Backend → SheetsService.writeSheet()
-Sheets → (Trigger / schedule) → AI preprocess → Insights back</code></pre>
+Sheets → (Trigger / schedule) → AI preprocess → Insights back
+</code></pre>
 <h3>3.3 Automation Harvest Flow</h3>
-<pre><code class="language-text">Scheduler (cron) → Automation Script (Selenium)
+<pre><code>Scheduler (cron) → Automation Script (Selenium)
 Automation → Extracted dataset → Write Sheets
-Sheets → Backend cache refresh → WebSocket broadcast → UI refresh</code></pre>
-<hr>
+Sheets → Backend cache refresh → WebSocket broadcast → UI refresh
+</code></pre>
+<p>---</p>
 <h2>4. MODULE BOUNDARIES</h2>
-<p><tr><td>Boundary</td><td>Responsibilities</td><td>Anti-Responsibilities</td></tr>
-<tr><td>---------------------</td><td>-----------------------------------------------------------------------</td><td>--------------------------------------------------------</td></tr>
-<tr><td>Frontend (React)</td><td>Presentation, routing, client cache, form validation</td><td>Direct external API secrets, business pricing algorithms</td></tr>
-<tr><td>Backend</td><td>Auth, RBAC, rate limiting, request orchestration, notification dispatch</td><td>UI rendering, heavy ML training</td></tr>
-<tr><td>AI Service</td><td>Feature extraction, model inference, scoring, anomaly detection</td><td>Session auth, emailing</td></tr>
-<tr><td>Automation</td><td>Browser automation, scraping, scheduled workflows</td><td>User auth logic, real-time sockets</td></tr>
-<tr><td>Google Sheets Adapter</td><td>CRUD + batch operations, caching hooks</td><td>Business rules</td></tr></p>
-<hr>
+<p>| Boundary              | Responsibilities                                                        | Anti-Responsibilities                                    |
+| --------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------- |
+| Frontend (React)      | Presentation, routing, client cache, form validation                    | Direct external API secrets, business pricing algorithms |
+| Backend               | Auth, RBAC, rate limiting, request orchestration, notification dispatch | UI rendering, heavy ML training                          |
+| AI Service            | Feature extraction, model inference, scoring, anomaly detection         | Session auth, emailing                                   |
+| Automation            | Browser automation, scraping, scheduled workflows                       | User auth logic, real-time sockets                       |
+| Google Sheets Adapter | CRUD + batch operations, caching hooks                                  | Business rules                                           |</p>
+<p>---</p>
 <h2>5. SECURITY LAYERS</h2>
-<p><tr><td>Layer</td><td>Mechanism</td><td>Status</td><td>Planned Improvement</td></tr>
-<tr><td>------------------</td><td>----------------------------------</td><td>---------------------------</td><td>-------------------------------------------</td></tr>
-<tr><td>Transport</td><td>HTTPS (deployment target)</td><td>Pending local dev uses HTTP</td><td>Add cert automation (Caddy / Let's Encrypt)</td></tr>
-<tr><td>Auth</td><td>JWT access tokens</td><td>✅ Implemented</td><td>Add refresh + rotation + token blacklist</td></tr>
-<tr><td>MFA</td><td>TOTP-based 2FA</td><td>✅ Implemented</td><td>SMS/Email backup codes</td></tr>
-<tr><td>SSO</td><td>OAuth 2.0 / OpenID Connect</td><td>✅ Implemented</td><td>Multiple provider support</td></tr>
-<tr><td>Authorization</td><td>RBAC (Role-Based Access Control)</td><td>✅ Implemented</td><td>Fine-grained permissions</td></tr>
-<tr><td>Audit Logs</td><td>Comprehensive logging system</td><td>✅ Implemented</td><td>Real-time alerting</td></tr>
-<tr><td>Rate Limiting</td><td>Express middleware</td><td>⚠️ To verify</td><td>Implement configurable limiter per route</td></tr>
-<tr><td>Input Validation</td><td>Form validation + API validation</td><td>✅ Implemented</td><td>Add zod/envalid schemas shared</td></tr>
-<tr><td>Secrets</td><td>.env files + secure storage</td><td>✅ Implemented</td><td>Unify ENV_GUIDE + validation</td></tr>
-<tr><td>Logging</td><td>Structured logging</td><td>✅ Implemented</td><td>JSON structured logs + trace IDs</td></tr>
-<tr><td>Dependency Hygiene</td><td>Requirements + package.json pinned</td><td>✅ Good</td><td>Add automated audit (npm audit, pip-audit)</td></tr></p>
-<hr>
+<p>| Layer              | Mechanism                          | Status                      | Planned Improvement                         |
+| ------------------ | ---------------------------------- | --------------------------- | ------------------------------------------- |
+| Transport          | HTTPS (deployment target)          | Pending local dev uses HTTP | Add cert automation (Caddy / Let's Encrypt) |
+| Auth               | JWT access tokens                  | ✅ Implemented              | Add refresh + rotation + token blacklist    |
+| MFA                | TOTP-based 2FA                     | ✅ Implemented              | SMS/Email backup codes                      |
+| SSO                | OAuth 2.0 / OpenID Connect         | ✅ Implemented              | Multiple provider support                   |
+| Authorization      | RBAC (Role-Based Access Control)   | ✅ Implemented              | Fine-grained permissions                    |
+| Audit Logs         | Comprehensive logging system       | ✅ Implemented              | Real-time alerting                          |
+| Rate Limiting      | Express middleware                 | ⚠️ To verify                | Implement configurable limiter per route    |
+| Input Validation   | Form validation + API validation   | ✅ Implemented              | Add zod/envalid schemas shared              |
+| Secrets            | .env files + secure storage        | ✅ Implemented              | Unify ENV_GUIDE + validation                |
+| Logging            | Structured logging                 | ✅ Implemented              | JSON structured logs + trace IDs            |
+| Dependency Hygiene | Requirements + package.json pinned | ✅ Good                     | Add automated audit (npm audit, pip-audit)  |</p>
+<p>---</p>
 <h2>6. DATA MODEL (ABSTRACT)</h2>
-<p><tr><td>Entity</td><td>Source</td><td>Persisted In</td><td>Used By</td></tr>
-<tr><td>-------------</td><td>----------------</td><td>------------------</td><td>------------------------</td></tr>
-<tr><td>Orders</td><td>OnePage + Manual</td><td>Google Sheets</td><td>Dashboard, AI (forecast)</td></tr>
-<tr><td>Shipments</td><td>OnePage</td><td>Google Sheets</td><td>Tracking, Automation</td></tr>
-<tr><td>Carriers</td><td>OnePage</td><td>Google Sheets</td><td>Pricing, Optimization</td></tr>
-<tr><td>Employees</td><td>OnePage</td><td>Google Sheets</td><td>Admin Views</td></tr>
-<tr><td>Pricing Rules</td><td>Config / Service</td><td>Sheets / In-memory</td><td>Pricing Engine</td></tr>
-<tr><td>AI Features</td><td>Derived</td><td>Temp (memory)</td><td>Insight Cards</td></tr></p>
-<hr>
+<p>| Entity        | Source           | Persisted In       | Used By                  |
+| ------------- | ---------------- | ------------------ | ------------------------ |
+| Orders        | OnePage + Manual | Google Sheets      | Dashboard, AI (forecast) |
+| Shipments     | OnePage          | Google Sheets      | Tracking, Automation     |
+| Carriers      | OnePage          | Google Sheets      | Pricing, Optimization    |
+| Employees     | OnePage          | Google Sheets      | Admin Views              |
+| Pricing Rules | Config / Service | Sheets / In-memory | Pricing Engine           |
+| AI Features   | Derived          | Temp (memory)      | Insight Cards            |</p>
+<p>---</p>
 <h2>7. EVENT & REAL-TIME DESIGN</h2>
 <p>Events delivered via Socket.IO from Backend:</p>
-<p><tr><td>Event</td><td>Payload</td><td>Producer</td><td>Consumer</td></tr>
-<tr><td>--------------</td><td>-------------------------</td><td>--------------------</td><td>---------------------------</td></tr>
-<tr><td>ai:update</td><td>{ jobId, status, result }</td><td>AI Service → Backend</td><td>Frontend dashboards</td></tr>
-<tr><td>sheets:refresh</td><td>{ sheet, timestamp }</td><td>Automation / Manual</td><td>Frontend tables</td></tr>
-<tr><td>notify:alert</td><td>{ type, level, message }</td><td>Backend / Jobs</td><td>User UI notification center</td></tr>
-<tr><td>job:status</td><td>{ jobId, progress }</td><td>Automation</td><td>Monitoring panel</td></tr>
-<tr><td>metrics:update</td><td>{ cpu, memory, users }</td><td>Backend</td><td>Live Dashboard</td></tr>
-<tr><td>auth:session</td><td>{ userId, action }</td><td>Backend</td><td>Security Dashboard</td></tr>
-<tr><td>nlp:response</td><td>{ query, result }</td><td>NLP Service</td><td>NLP Dashboard</td></tr></p>
+<p>| Event          | Payload                   | Producer             | Consumer                    |
+| -------------- | ------------------------- | -------------------- | --------------------------- |
+| ai:update      | { jobId, status, result } | AI Service → Backend | Frontend dashboards         |
+| sheets:refresh | { sheet, timestamp }      | Automation / Manual  | Frontend tables             |
+| notify:alert   | { type, level, message }  | Backend / Jobs       | User UI notification center |
+| job:status     | { jobId, progress }       | Automation           | Monitoring panel            |
+| metrics:update | { cpu, memory, users }    | Backend              | Live Dashboard              |
+| auth:session   | { userId, action }        | Backend              | Security Dashboard          |
+| nlp:response   | { query, result }         | NLP Service          | NLP Dashboard               |</p>
 <p>Planned additions:</p>
 <ul><li><code>onepage:import</code> (after integrating OnePage ingestion)</li>
 <li><code>metrics:heartbeat</code></li>
-<hr>
+<p>---</p>
 <h2>8. SCHEDULING & BACKGROUND JOBS (PLANNED)</h2>
-<p><tr><td>Job</td><td>Frequency</td><td>Owner</td><td>Purpose</td></tr>
-<tr><td>---------------------</td><td>---------</td><td>-------------------</td><td>-------------------------</td></tr>
-<tr><td>importOnePageSnapshot</td><td>15m</td><td>Backend (Scheduler)</td><td>Sync core entities</td></tr>
-<tr><td>automationRun</td><td>Hourly</td><td>Automation Service</td><td>Refresh operational data</td></tr>
-<tr><td>aiRecomputeInsights</td><td>30m</td><td>AI Service</td><td>Update predictive metrics</td></tr>
-<tr><td>cleanupTempFiles</td><td>Daily</td><td>Backend</td><td>Reduce disk footprint</td></tr></p>
+<p>| Job                   | Frequency | Owner               | Purpose                   |
+| --------------------- | --------- | ------------------- | ------------------------- |
+| importOnePageSnapshot | 15m       | Backend (Scheduler) | Sync core entities        |
+| automationRun         | Hourly    | Automation Service  | Refresh operational data  |
+| aiRecomputeInsights   | 30m       | AI Service          | Update predictive metrics |
+| cleanupTempFiles      | Daily     | Backend             | Reduce disk footprint     |</p>
 <p>Queue Strategy (future): RabbitMQ or Redis Streams if cron load grows.</p>
-<hr>
+<p>---</p>
 <h2>9. CACHING STRATEGY (FUTURE)</h2>
-<p><tr><td>Layer</td><td>Approach</td><td>TTL</td><td>Notes</td></tr>
-<tr><td>------------------------</td><td>-------------------------</td><td>---------</td><td>-----------------------</td></tr>
-<tr><td>Sheets Reads</td><td>Redis key per sheet range</td><td>60s</td><td>Reduce API quota usage</td></tr>
-<tr><td>AI Results</td><td>Redis hash by jobId</td><td>10m</td><td>Quick dashboard refresh</td></tr>
-<tr><td>Auth Sessions (optional)</td><td>Redis set</td><td>Token exp</td><td>Support blacklist</td></tr></p>
-<hr>
+<p>| Layer                    | Approach                  | TTL       | Notes                   |
+| ------------------------ | ------------------------- | --------- | ----------------------- |
+| Sheets Reads             | Redis key per sheet range | 60s       | Reduce API quota usage  |
+| AI Results               | Redis hash by jobId       | 10m       | Quick dashboard refresh |
+| Auth Sessions (optional) | Redis set                 | Token exp | Support blacklist       |</p>
+<p>---</p>
 <h2>10. OBSERVABILITY ROADMAP</h2>
-<p><tr><td>Aspect</td><td>Current</td><td>Target</td></tr>
-<tr><td>-------</td><td>-----------------------</td><td>----------------------------------</td></tr>
-<tr><td>Metrics</td><td>None unified</td><td>Prometheus + /metrics endpoints</td></tr>
-<tr><td>Tracing</td><td>None</td><td>OpenTelemetry spans (Backend + AI)</td></tr>
-<tr><td>Logging</td><td>Mixed styles</td><td>JSON + correlation-id middleware</td></tr>
-<tr><td>Alerts</td><td>Telegram + Email manual</td><td>Rule-based + metrics threshold</td></tr></p>
-<hr>
+<p>| Aspect  | Current                 | Target                             |
+| ------- | ----------------------- | ---------------------------------- |
+| Metrics | None unified            | Prometheus + /metrics endpoints    |
+| Tracing | None                    | OpenTelemetry spans (Backend + AI) |
+| Logging | Mixed styles            | JSON + correlation-id middleware   |
+| Alerts  | Telegram + Email manual | Rule-based + metrics threshold     |</p>
+<p>---</p>
 <h2>11. DEPLOYMENT MODEL</h2>
 <p>Phased Approach:</p>
 <li>Dockerize all services (compose dev + prod overrides)</li>
 <li>Add CI (build, lint, test, security scan)</li>
 <li>Add staging environment (seed test data)</li>
-<li>Production rollout with health checks & blue/green upgrade</li></ul>
-<hr>
+<li>Production rollout with health checks & blue/green upgrade</li>
+<p>---</p>
 <h2>12. RISK REGISTER</h2>
-<p><tr><td>Risk</td><td>Impact</td><td>Likelihood</td><td>Mitigation</td></tr>
-<tr><td>----------------------------------</td><td>----------------</td><td>----------</td><td>-------------------------------------</td></tr>
-<tr><td>Sheets API quota exhaustion</td><td>Data stale</td><td>Medium</td><td>Introduce caching + batch</td></tr>
-<tr><td>Missing centralized env validation</td><td>Runtime failures</td><td>High</td><td>Implement ENV_GUIDE & validator early</td></tr>
-<tr><td>Duplicate code recurrence</td><td>Maintenance cost</td><td>Medium</td><td>Add code ownership doc</td></tr>
-<tr><td>Lack of tests</td><td>Regression risk</td></tr></table> High       </p>
-<p>... (truncated, see full file for complete content)</p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>ARCHITECTURE.md</code></small>
-                </div>
+<p>| Risk                               | Impact           | Likelihood | Mitigation                            |
+| ---------------------------------- | ---------------- | ---------- | ------------------------------------- |
+| Sheets API quota exhaustion        | Data stale       | Medium     | Introduce caching + batch             |
+| Missing centralized env validation | Runtime failures | High       | Implement ENV_GUIDE & validator early |
+| Duplicate code recurrence          | Maintenance cost | Medium     | Add code ownership doc                |
+| Lack of tests                      | Regression risk  | High       | Establish baseline Jest / Pytest      |
+| Selenium flakiness                 | False negatives  | Medium     | Retry harness + containerized browser |</p>
+<p>---</p>
+<h2>13. ACTIONABLE NEXT STEPS (TECH)</h2>
+<li>Implement <code>onePageService</code> + endpoint + initial test</li>
+<li>Add <code>schedulerService</code> with mock job logging</li>
+<li>Introduce env validation (<code>envalid</code>) + consolidated <code>.env.example</code></li>
+<li>Add Jest + Supertest baseline (health, onepage, sheets)</li>
+<li>Integrate React Query & central <code>apiClient</code></li>
+<li>Implement Redis caching layer (optional pilot)</li>
+<li>Attach Prometheus client & <code>/metrics</code> route</li>
+<li>Add structured logging (pino or winston + loguru JSON)</li>
+<li>Define AI inference contract (request/response schema) & version field</li>
+<li>Draft ML lifecycle plan (model registry placeholder)</li></ul>
+<p>---</p>
+<h2>14. APPENDICES</h2>
+<h3>14.1 Sequence: OnePage Import (Future)</h3>
+<pre><code>User triggers Import → Backend /api/onepage/import
+  → Fetch OnePage API (future) → Normalize Records
+  → Write to Sheets (batched) → Emit sheets:refresh
+  → Optionally trigger AI recompute → Emit ai:update
+</code></pre>
+<h3>14.2 Tech Debt Log (Rolling)</h3>
+<p>| ID    | Item                    | Status | Owner    |
+| ----- | ----------------------- | ------ | -------- |
+| TD-01 | No env validation       | Open   | Backend  |
+| TD-02 | No caching layer        | Open   | Backend  |
+| TD-03 | No test baseline        | Open   | All      |
+| TD-04 | Logging not structured  | Open   | Platform |
+| TD-05 | AI schema not versioned | Open   | AI       |</p>
+<p>---</p>
+<p>_Architecture document auto-generated baseline. Update as components evolve._
+</p>
             </section>
 
-                        <section id="setup" class="section">
-                <div class="section-header">
-                    <h2>⚙️ ⚙️ Setup & Deployment</h2>
-                    <p class="section-description">Hướng dẫn setup, cài đặt và deployment</p>
-                </div>
-                <div class="section-content">
-                    <h1>🚀 Deployment Guide - React OAS Integration v4.0</h1>
+            <section id="setup" class="section">
+                <h1>🚀 Deployment Guide - React OAS Integration v4.0</h1>
 <h2>📋 Tổng quan</h2>
 <p>Dự án có nhiều cách deployment khác nhau tùy theo môi trường và nhu cầu.</p>
-<hr>
+<p>---</p>
 <h2>🎯 Quick Start</h2>
 <h3>1️⃣ Development (Local)</h3>
-<pre><code class="language-bash"># Chạy development server
+<pre><code><h1>Chạy development server</h1>
 npm start
 <h1>Hoặc chạy full stack</h1>
-./deploy_platform.sh start</code></pre>
-<p><strong>Truy cập:</strong>
-<ul><li>Frontend: http://localhost:3000</li>
-<li>Backend: http://localhost:3001</li>
-<li>AI Service: http://localhost:8000</li></p>
-<hr>
+./deploy_platform.sh start
+</code></pre>
+<p><strong>Truy cập:</strong></p>
+<ul><li>Frontend: <http://localhost:3000></li>
+<li>Backend: <http://localhost:3001></li>
+<li>AI Service: <http://localhost:8000></li>
+<p>---</p>
 <h3>2️⃣ Production Build (Local)</h3>
-<pre><code class="language-bash"># Build và deploy local
+<pre><code><h1>Build và deploy local</h1>
 ./deploy-production.sh
 <h1>Serve build</h1>
 npm run serve:deployed
 <h1>hoặc</h1>
-./serve-build.sh 3000</code></pre>
-<p><strong>Truy cập:</strong> http://localhost:3000</p>
+./serve-build.sh 3000
+<h1>hoặc chỉ rõ thư mục deploy</h1>
+./serve-build.sh 3000 ~/Sites/mia-vn-integration
+</code></pre>
+<p><strong>Truy cập:</strong> <http://localhost:3000></p>
 <p><strong>Build location:</strong> <code>~/Sites/mia-vn-integration</code></p>
-<hr>
+<p>---</p>
 <h3>3️⃣ Cloud Deployment (Vercel + Railway)</h3>
-<pre><code class="language-bash"># Deploy lên cloud (tự động commit + push + deploy)
-./quick-deploy.sh &quot;Your commit message&quot;
+<pre><code><h1>Deploy lên cloud (tự động commit + push + deploy)</h1>
+./quick-deploy.sh "Your commit message"
 <h1>Hoặc chỉ deploy Vercel</h1>
-./deploy-vercel.sh</code></pre>
-<p><strong>Truy cập:</strong>
-<li>Frontend: https://your-app.vercel.app</li>
-<li>Backend: https://your-app.railway.app</li></p>
-<hr>
+./deploy-vercel.sh
+</code></pre>
+<p><strong>Truy cập:</strong></p>
+<li>Frontend: <https://your-app.vercel.app></li>
+<li>Backend: <https://your-app.railway.app></li>
+<p>---</p>
 <h2>📂 Deployment Scripts</h2>
 <h3><code>deploy-production.sh</code> - Production Build</h3>
 <p><strong>Mục đích:</strong> Build và deploy production-ready application</p>
-<p><strong>Tính năng:</strong>
+<p><strong>Tính năng:</strong></p>
 <li>✅ System requirements check</li>
 <li>✅ Clean install dependencies</li>
 <li>✅ Lint check (ESLint)</li>
 <li>✅ Build optimization</li>
 <li>✅ OS-aware deployment (macOS/Linux)</li>
-<li>✅ Deployment verification</li></p>
-<p><strong>Sử dụng:</strong>
-<pre><code class="language-bash">./deploy-production.sh</code></pre></p>
-<p><strong>Output (macOS):</strong>
+<li>✅ Deployment verification</li>
+<p><strong>Sử dụng:</strong></p>
+<pre><code>./deploy-production.sh
+</code></pre>
+<p><strong>Output (macOS):</strong></p>
 <li>Build directory: <code>./build</code></li>
 <li>Deploy directory: <code>~/Sites/mia-vn-integration</code></li>
-<li>Không cần sudo</li></p>
-<p><strong>Output (Linux):</strong>
+<li>Không cần sudo</li>
+<p><strong>Output (Linux):</strong></p>
 <li>Build directory: <code>./build</code></li>
 <li>Deploy directory: <code>/opt/mia-vn-integration</code></li>
 <li>Setup nginx</li>
-<li>Cần sudo</li></p>
-<hr>
+<li>Cần sudo</li>
+<p>---</p>
 <h3><code>deploy_platform.sh</code> - Local Full Stack</h3>
 <p><strong>Mục đích:</strong> Deploy tất cả services local (Frontend + Backend + AI)</p>
-<p><strong>Tính năng:</strong>
+<p><strong>Tính năng:</strong></p>
 <li>✅ Port management (3000, 3001, 8000)</li>
 <li>✅ Kill existing processes</li>
 <li>✅ Start all services</li>
-<li>✅ Health checks</li></p>
-<p><strong>Sử dụng:</strong>
-<pre><code class="language-bash"># Start all services
-./deploy_platform.sh start</p>
+<li>✅ Health checks</li>
+<p><strong>Sử dụng:</strong></p>
+<pre><code><h1>Start all services</h1>
+./deploy_platform.sh start
 <h1>Stop all services</h1>
 ./deploy_platform.sh stop
 <h1>Restart all services</h1>
-./deploy_platform.sh restart</code></pre>
-<hr>
+./deploy_platform.sh restart
+</code></pre>
+<p>---</p>
 <h3><code>quick-deploy.sh</code> - Cloud Deployment</h3>
 <p><strong>Mục đích:</strong> Commit + Deploy nhanh lên Vercel + Railway</p>
-<p><strong>Tính năng:</strong>
+<p><strong>Tính năng:</strong></p>
 <li>✅ Auto commit changes</li>
 <li>✅ Push to GitHub</li>
 <li>✅ Deploy frontend to Vercel</li>
 <li>✅ Deploy backend to Railway</li>
-<li>✅ Handle secret scanning errors</li></p>
-<p><strong>Sử dụng:</strong>
-<pre><code class="language-bash"># Deploy với commit message mặc định
-./quick-deploy.sh</p>
+<li>✅ Handle secret scanning errors</li>
+<p><strong>Sử dụng:</strong></p>
+<pre><code><h1>Deploy với commit message mặc định</h1>
+./quick-deploy.sh
 <h1>Deploy với custom commit message</h1>
-./quick-deploy.sh &quot;🎨 Update UI design&quot;</code></pre>
-<hr>
+./quick-deploy.sh "🎨 Update UI design"
+</code></pre>
+<p><strong>First-time setup (chạy 1 lần):</strong></p>
+<pre><code><h1>Ensure dependencies tồn tại</h1>
+npm install
+<h1>Link Vercel project (dùng tên lowercase)</h1>
+vercel link --project mia-vn-google-integration
+<h1>Link Railway project</h1>
+railway login
+railway link
+</code></pre>
+<p>---</p>
 <h3><code>deploy-vercel.sh</code> - Vercel Only</h3>
 <p><strong>Mục đích:</strong> Deploy chỉ frontend lên Vercel</p>
-<p><strong>Tính năng:</strong>
+<p><strong>Tính năng:</strong></p>
 <li>✅ Check prerequisites</li>
 <li>✅ Install Vercel CLI</li>
 <li>✅ Build application</li>
 <li>✅ Deploy to Vercel</li>
-<li>✅ Environment variables setup</li></p>
-<p><strong>Sử dụng:</strong>
-<pre><code class="language-bash">./deploy-vercel.sh</code></pre></p>
-<hr>
+<li>✅ Environment variables setup</li>
+<p><strong>Sử dụng:</strong></p>
+<pre><code>./deploy-vercel.sh
+</code></pre>
+<p>---</p>
 <h3>Git Deployment Workflow</h3>
 <p><strong>Mục đích:</strong> Commit và push code lên GitHub</p>
-<p><strong>Tính năng:</strong>
+<p><strong>Tính năng:</strong></p>
 <li>✅ Auto-format và lint trước khi commit (Husky)</li>
 <li>✅ Pull latest changes trước khi push</li>
 <li>✅ Resolve merge conflicts</li>
-<li>✅ Push to GitHub</li></p>
-<p><strong>Sử dụng:</strong>
-<pre><code class="language-bash"># Add và commit changes
+<li>✅ Push to GitHub</li>
+<p><strong>Sử dụng:</strong></p>
+<pre><code><h1>Add và commit changes</h1>
 git add .
-git commit -m &quot;Your commit message&quot;
-<h1>Pre-commit hook sẽ tự động chạy lint-staged</h1></p>
+git commit -m "Your commit message"
+<h1>Pre-commit hook sẽ tự động chạy lint-staged</h1>
 <h1>Pull latest changes</h1>
 git pull origin main --no-rebase
 <h1>Resolve conflicts nếu có, rồi commit</h1>
 git add .
-git commit -m &quot;Merge: Resolve conflicts&quot;
+git commit -m "Merge: Resolve conflicts"
 <h1>Push to GitHub</h1>
-git push origin main</code></pre>
+git push origin main
+</code></pre>
 <p><strong>Note:</strong> Pre-commit hook đã được cấu hình với Husky và lint-staged để tự động format và lint code.</p>
-<hr>
+<p>---</p>
 <h3><code>serve-build.sh</code> - Serve Production Build</h3>
 <p><strong>Mục đích:</strong> Serve production build locally</p>
-<p><strong>Tính năng:</strong>
+<p><strong>Tính năng:</strong></p>
 <li>✅ Auto-detect server tool (npx, Python)</li>
 <li>✅ Custom port</li>
-<li>✅ Custom build directory</li></p>
-<p><strong>Sử dụng:</strong>
-<pre><code class="language-bash"># Serve trên port 3000 (default)
-./serve-build.sh</p>
+<li>✅ Custom build directory</li>
+<li>✅ Mặc định ưu tiên <code>~/Sites/mia-vn-integration</code>, fallback <code>./build</code></li>
+<p><strong>Sử dụng:</strong></p>
+<pre><code><h1>Serve trên port 3000 (default)</h1>
+./serve-build.sh
 <h1>Serve trên port custom</h1>
 ./serve-build.sh 8080
 <h1>Serve từ directory custom</h1>
-./serve-build.sh 8080 /path/to/build</code></pre>
-<hr>
+./serve-build.sh 8080 /path/to/build
+<h1>Serve đúng thư mục deploy local production (macOS)</h1>
+./serve-build.sh 3000 ~/Sites/mia-vn-integration
+</code></pre>
+<p>---</p>
 <h2>🛠️ NPM Scripts</h2>
 <h3>Development</h3>
-<pre><code class="language-bash">npm start              # Start development server
+<pre><code>npm start              # Start development server
 npm run dev            # Start full stack (Frontend + Backend + AI)
 npm run backend        # Start backend only
-npm run ai-service     # Start AI service only</code></pre>
+npm run ai-service     # Start AI service only
+</code></pre>
 <h3>Build</h3>
-<pre><code class="language-bash">npm run build          # Build for production
-npm run build:prod     # Build for production (alias)</code></pre>
+<pre><code>npm run build          # Build for production
+npm run build:prod     # Build for production (alias)
+</code></pre>
 <h3>Serve</h3>
-<pre><code class="language-bash">npm run serve:build     # Serve ./build directory
-npm run serve:deployed  # Serve deployed build</code></pre>
+<pre><code>npm run serve:build     # Serve ./build directory
+npm run serve:deployed  # Serve deployed build
+</code></pre>
 <h3>Testing</h3>
-<pre><code class="language-bash">npm test                    # Run tests
+<pre><code>npm test                    # Run tests
 npm run lint               # Run ESLint
 npm run lint:check         # Check linting (no warnings)
 npm run lint:fix           # Auto-fix linting issues
 npm run format             # Format code with Prettier
-npm run format:check       # Check code formatting</code></pre>
+npm run format:check       # Check code formatting
+</code></pre>
 <h3>Utilities</h3>
-<pre><code class="language-bash">npm run fix:ports          # Fix port conflicts
+<pre><code>npm run fix:ports          # Fix port conflicts
 npm run kill:port          # Kill process on port
 npm run check:ports        # Check port availability
 npm run check:backend      # Check backend health
-npm run verify:setup       # Verify project setup</code></pre>
-<hr>
+npm run verify:setup       # Verify project setup
+</code></pre>
+<p>---</p>
 <h2>🌐 Deployment Targets</h2>
 <h3>Local Development</h3>
-<li><strong>Frontend:</strong> http://localhost:3000</li>
-<li><strong>Backend:</strong> http://localhost:3001</li>
-<li><strong>AI Service:</strong> http://localhost:8000</li>
+<li><strong>Frontend:</strong> <http://localhost:3000></li>
+<li><strong>Backend:</strong> <http://localhost:3001></li>
+<li><strong>AI Service:</strong> <http://localhost:8000></li>
 <h3>Local Production Build</h3>
 <li><strong>Location:</strong> <code>~/Sites/mia-vn-integration</code></li>
-<li><strong>Access:</strong> http://localhost:3000 (with serve)</li>
+<li><strong>Access:</strong> <http://localhost:3000> (with serve)</li>
 <h3>Cloud (Vercel + Railway)</h3>
-<li><strong>Frontend:</strong> https://your-app.vercel.app</li>
-<li><strong>Backend:</strong> https://your-app.railway.app</li>
+<li><strong>Frontend:</strong> <https://your-app.vercel.app></li>
+<li><strong>Backend:</strong> <https://your-app.railway.app></li>
 <h3>Production Server (VPS/Linux)</h3>
 <li><strong>Location:</strong> <code>/opt/mia-vn-integration</code></li>
 <li><strong>Nginx:</strong> Port 80</li>
-<li><strong>Access:</strong> http://your-domain.com</li>
-<hr>
+<li><strong>Access:</strong> <http://your-domain.com></li>
+<p>---</p>
 <h2>🔧 Troubleshooting</h2>
 <h3>Port Already in Use</h3>
-<pre><code class="language-bash"># Check what&#039;s using the port
+<pre><code><h1>Check what's using the port</h1>
 lsof -i :3000
 <h1>Kill process on port</h1>
 npm run kill:port 3000
 <h1>Or use the script</h1>
-./scripts/fix-port-conflict.sh</code></pre>
+./scripts/fix-port-conflict.sh
+</code></pre>
 <h3>Build Errors</h3>
-<pre><code class="language-bash"># Clean install
+<pre><code><h1>Clean install</h1>
 rm -rf node_modules package-lock.json
 npm install
 <h1>Clear cache</h1>
-npm cache clean --force</code></pre>
+npm cache clean --force
+</code></pre>
 <h3>Deployment Errors</h3>
-<pre><code class="language-bash"># Check logs
+<pre><code><h1>Check logs</h1>
 cat logs/frontend.log
 cat logs/backend.log
 cat logs/ai-service.log
 <h1>Verify setup</h1>
-npm run verify:setup</code></pre>
+npm run verify:setup
+</code></pre>
 <h3>Git Issues</h3>
-<p><strong>Issue: Git Remote Not Found</strong>
-<pre><code class="language-bash"># Add remote origin
-git remote add origin https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git</p>
+<p><strong>Issue: Git Remote Not Found</strong></p>
+<pre><code><h1>Add remote origin</h1>
+git remote add origin https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git
 <h1>Verify</h1>
-git remote -v</code></pre>
-<p><strong>Issue: Non-Fast-Forward Push</strong>
-<pre><code class="language-bash"># Pull latest changes first
-git pull origin main --no-rebase</p>
+git remote -v
+</code></pre>
+<p><strong>Issue: Non-Fast-Forward Push</strong></p>
+<pre><code><h1>Pull latest changes first</h1>
+git pull origin main --no-rebase
 <h1>Resolve conflicts if any</h1>
 git add .
-git commit -m &quot;Merge: Resolve conflicts&quot;
+git commit -m "Merge: Resolve conflicts"
 <h1>Push again</h1>
-git push origin main</code></pre>
-<p><strong>Issue: Prettier EACCES Error (Pre-commit Hook)</strong>
-<li>✅ Đã fix: Cấu hình <code>.lintstagedrc.json</code> sử dụng <code>npx prettier</code> thay vì <code>prettier</code></li></p>
-<hr>
+git push origin main
+</code></pre>
+<p><strong>Issue: Prettier EACCES Error (Pre-commit Hook)</strong></p>
+<li>✅ Đã fix: Cấu hình <code>.lintstagedrc.json</code> sử dụng <code>npx prettier</code> thay vì <code>prettier</code></li>
+<p>---</p>
 <h2>📝 Environment Variables</h2>
 <h3>Frontend (.env)</h3>
-<pre><code class="language-bash">PORT=3000
+<pre><code>PORT=3000
 REACT_APP_API_URL=http://localhost:3001
 REACT_APP_API_BASE_URL=http://localhost:3001/api
 REACT_APP_AI_SERVICE_URL=http://localhost:8000
-GOOGLE_SHEETS_ID=your_sheet_id
-GOOGLE_DRIVE_FOLDER_ID=your_folder_id</code></pre>
+REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID=your_sheet_id
+REACT_APP_GOOGLE_DRIVE_FOLDER_ID=your_folder_id
+</code></pre>
 <h3>Backend (backend/.env)</h3>
-<pre><code class="language-bash">PORT=3001
-NODE_ENV=development</code></pre>
-<hr>
+<pre><code>PORT=3001
+NODE_ENV=development
+JWT_SECRET=your_secret
+AI_SERVICE_URL=http://localhost:8000
+<h1>Preferred credentials variable</h1>
+GOOGLE_CREDENTIALS_PATH=/absolute/path/to/service_account.json
+<h1>Optional aliases (backward-compatible)</h1>
+<h1>GOOGLE_APPLICATION_CREDENTIALS=/absolute/path/to/service_account.json</h1>
+<h1>GOOGLE_SERVICE_ACCOUNT_KEY_PATH=/absolute/path/to/service_account.json</h1>
+<p>GOOGLE_SHEETS_SPREADSHEET_ID=your_sheet_id
+GOOGLE_DRIVE_FOLDER_ID=your_folder_id
+</code></pre></p>
+<h3>Production</h3>
+<li>Frontend: dùng <code>.env.production</code> (tham khảo <code>.env.production.template</code>)</li>
+<li>Backend: inject env trực tiếp từ platform (Railway/VPS/Systemd), <strong>không commit secrets</strong></li>
+<p>---</p>
 <h2>🎯 Recommended Workflow</h2>
 <h3>Development</h3>
 <li>Start services: <code>./deploy_platform.sh start</code></li>
@@ -1110,57 +887,52 @@ NODE_ENV=development</code></pre>
 <h3>Testing Production Build</h3>
 <li>Build: <code>./deploy-production.sh</code></li>
 <li>Serve: <code>npm run serve:deployed</code></li>
-<li>Test at http://localhost:3000</li>
+<li>Test at <http://localhost:3000></li>
 <h3>Deploy to Cloud</h3>
 <li>Test locally first</li>
 <li>Commit changes:</li>
-   <pre><code class="language-bash">git add .
-   git commit -m &quot;message&quot;
-   # Pre-commit hook tự động chạy lint-staged</code></pre>
+<p>   <pre><code>   git add .
+   git commit -m "message"
+   # Pre-commit hook tự động chạy lint-staged
+   </code></pre></p>
 <li>Pull latest:</li>
-   <pre><code class="language-bash">git pull origin main --no-rebase</code></pre>
+<p>   <pre><code>   git pull origin main --no-rebase
+   </code></pre></p>
 <li>Push to GitHub:</li>
-   <pre><code class="language-bash">git push origin main</code></pre>
+<p>   <pre><code>   git push origin main
+   </code></pre></p>
 <li>Deploy: <code>./quick-deploy.sh "Deploy message"</code></li>
-<hr>
+<p>---</p>
 <h2>📚 Additional Resources</h2>
 <li><a href="https://react.dev" target="_blank">React Documentation</a></li>
 <li><a href="https://vercel.com/docs" target="_blank">Vercel Deployment</a></li>
 <li><a href="https://docs.railway.app" target="_blank">Railway Deployment</a></li>
 <li><a href="https://create-react-app.dev/docs/deployment" target="_blank">Create React App Deployment</a></li>
-<hr>
+<p>---</p>
 <h2>🆘 Support</h2>
-<p>Nếu gặp vấn đề, kiểm tra:
+<p>Nếu gặp vấn đề, kiểm tra:</p>
 <li>Logs trong thư mục <code>logs/</code></li>
 <li>Port conflicts với <code>npm run check:ports</code></li>
 <li>Backend health với <code>npm run check:backend</code></li>
-<li>Environment variables trong <code>.env</code></li></p>
-<hr>
+<li>Environment variables trong <code>.env</code></li>
+<p>---</p>
 <p><strong>Last Updated:</strong> January 21, 2026
 <strong>Version:</strong> 4.0
 <strong>Status:</strong> ✅ <strong>Complete & Verified</strong>
-<strong>Recent Updates:</strong>
+<strong>Recent Updates:</strong></p>
 <li>✅ Git remote origin configured</li>
 <li>✅ Pre-commit hooks with Husky & lint-staged</li>
 <li>✅ Prettier EACCES error fixed</li>
-<li>✅ Git deployment workflow added</li></ul></p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>DEPLOYMENT_GUIDE.md</code></small>
-                </div>
+<li>✅ Git deployment workflow added</li></ul>
+
             </section>
 
-                        <section id="scripts" class="section">
-                <div class="section-header">
-                    <h2>🔧 🔧 Scripts Guide</h2>
-                    <p class="section-description">Hướng dẫn sử dụng các scripts trong project</p>
-                </div>
-                <div class="section-content">
-                    <h1>📚 HƯỚNG DẪN SỬ DỤNG SCRIPTS - React OAS Integration v4.0</h1>
+            <section id="scripts" class="section">
+                <h1>📚 HƯỚNG DẪN SỬ DỤNG SCRIPTS - React OAS Integration v4.0</h1>
 <p>> <strong>Version</strong>: 4.0  
 > <strong>Ngày cập nhật</strong>: 2025-01-27  
 > <strong>Mục đích</strong>: Hướng dẫn sử dụng các scripts trong dự án</p>
-<hr>
+<p>---</p>
 <h2>📋 MỤC LỤC</h2>
 <ul><li><a href="#1-setup-scripts" target="_blank">Setup Scripts</a></li>
 <li><a href="#2-startstop-scripts" target="_blank">Start/Stop Scripts</a></li>
@@ -1169,58 +941,65 @@ NODE_ENV=development</code></pre>
 <li><a href="#5-utility-scripts" target="_blank">Utility Scripts</a></li>
 <li><a href="#6-git-scripts" target="_blank">Git Scripts</a></li>
 <li><a href="#7-sub-projects-scripts" target="_blank">Sub-projects Scripts</a></li>
-<hr>
+<p>---</p>
 <h2>1️⃣ SETUP SCRIPTS</h2>
 <h3>🎯 Setup chính (Root level)</h3>
-<h4><code>setup.sh</code></h4>
+<p>#### <code>setup.sh</code></p>
 <p><strong>Mục đích</strong>: Setup toàn bộ hệ thống  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./setup.sh</code></pre>
+<pre><code>./setup.sh
+</code></pre>
 <p><strong>Chức năng</strong>:</p>
 <li>Kiểm tra system requirements</li>
 <li>Cài đặt dependencies</li>
 <li>Cấu hình môi trường</li>
 <li>Setup Python venv</li>
-<hr>
-<h4><code>setup_ide.sh</code></h4>
+<p>---</p>
+<p>#### <code>setup_ide.sh</code></p>
 <p><strong>Mục đích</strong>: Setup IDE (VSCode, etc.)  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./setup_ide.sh</code></pre>
-<hr>
-<h4><code>setup-https.sh</code></h4>
+<pre><code>./setup_ide.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>setup-https.sh</code></p>
 <p><strong>Mục đích</strong>: Setup HTTPS certificates  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./setup-https.sh</code></pre>
-<hr>
+<pre><code>./setup-https.sh
+</code></pre>
+<p>---</p>
 <h3>📁 Setup trong scripts/</h3>
-<h4><code>scripts/setup.sh</code></h4>
+<p>#### <code>scripts/setup.sh</code></p>
 <p><strong>Mục đích</strong>: Setup script trong scripts folder  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/setup.sh</code></pre>
-<hr>
-<h4><code>scripts/install.sh</code></h4>
+<pre><code>./scripts/setup.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/install.sh</code></p>
 <p><strong>Mục đích</strong>: Install dependencies  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/install.sh</code></pre>
-<hr>
-<h4><code>scripts/verify-setup.sh</code></h4>
+<pre><code>./scripts/install.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/verify-setup.sh</code></p>
 <p><strong>Mục đích</strong>: Verify setup đã đúng chưa  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/verify-setup.sh</code></pre>
-<hr>
+<pre><code>./scripts/verify-setup.sh
+</code></pre>
+<p>---</p>
 <h2>2️⃣ START/STOP SCRIPTS</h2>
 <h3>🚀 Start Scripts</h3>
-<h4><code>start_dev_servers.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></h4>
+<p>#### <code>start_dev_servers.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></p>
 <p><strong>Mục đích</strong>: Start tất cả development servers  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./start_dev_servers.sh</code></pre>
+<pre><code>./start_dev_servers.sh
+</code></pre>
 <p><strong>Chức năng</strong>:</p>
 <li>Start Frontend (Port 3000)</li>
 <li>Start Backend (Port 3001)</li>
@@ -1231,284 +1010,320 @@ NODE_ENV=development</code></pre>
 <li>Backend: http://localhost:3001</li>
 <li>AI Service: http://localhost:8000</li>
 <li>Automation: http://localhost:8001</li>
-<hr>
-<h4><code>deploy_platform.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></h4>
+<p>---</p>
+<p>#### <code>deploy_platform.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></p>
 <p><strong>Mục đích</strong>: Deploy platform với start/stop/restart  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash"># Start all services
+<pre><code><h1>Start all services</h1>
 ./deploy_platform.sh start
 <h1>Stop all services</h1>
 ./deploy_platform.sh stop
 <h1>Restart all services</h1>
-./deploy_platform.sh restart</code></pre>
-<hr>
-<h4><code>start_ai_platform.sh</code> ⚠️ <strong>CẦN CẬP NHẬT</strong></h4>
+./deploy_platform.sh restart
+</code></pre>
+<p>---</p>
+<p>#### <code>start_ai_platform.sh</code> ⚠️ <strong>CẦN CẬP NHẬT</strong></p>
 <p><strong>Mục đích</strong>: Start AI platform (v3.0 - cần cập nhật)  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./start_ai_platform.sh</code></pre>
+<pre><code>./start_ai_platform.sh
+</code></pre>
 <p><strong>Lưu ý</strong>: Script này vẫn nói v3.0, cần cập nhật</p>
-<hr>
-<h4><code>start_data_flow.sh</code></h4>
+<p>---</p>
+<p>#### <code>start_data_flow.sh</code></p>
 <p><strong>Mục đích</strong>: Start data flow  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./start_data_flow.sh</code></pre>
-<hr>
+<pre><code>./start_data_flow.sh
+</code></pre>
+<p>---</p>
 <h3>📁 Start trong scripts/</h3>
-<h4><code>scripts/start_all.sh</code></h4>
+<p>#### <code>scripts/start_all.sh</code></p>
 <p><strong>Mục đích</strong>: Start all services  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/start_all.sh</code></pre>
-<hr>
-<h4><code>scripts/start_backend.sh</code> hoặc <code>scripts/start-backend.sh</code></h4>
+<pre><code>./scripts/start_all.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/start_backend.sh</code> hoặc <code>scripts/start-backend.sh</code></p>
 <p><strong>Mục đích</strong>: Start backend only  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/start_backend.sh
+<pre><code>./scripts/start_backend.sh
 <h1>hoặc</h1>
-./scripts/start-backend.sh</code></pre>
+./scripts/start-backend.sh
+</code></pre>
 <p><strong>Lưu ý</strong>: Có 2 scripts tương tự, nên gộp lại</p>
-<hr>
-<h4><code>scripts/stop_all.sh</code></h4>
+<p>---</p>
+<p>#### <code>scripts/stop_all.sh</code></p>
 <p><strong>Mục đích</strong>: Stop all services  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/stop_all.sh</code></pre>
-<hr>
+<pre><code>./scripts/stop_all.sh
+</code></pre>
+<p>---</p>
 <h2>3️⃣ DEPLOYMENT SCRIPTS</h2>
 <h3>🚀 Deployment chính</h3>
-<h4><code>deploy.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></h4>
+<p>#### <code>deploy.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></p>
 <p><strong>Mục đích</strong>: Deploy lên Netlify + Render  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./deploy.sh &quot;Commit message&quot;
+<pre><code>./deploy.sh "Commit message"
 <h1>hoặc</h1>
-./deploy.sh  # Sẽ prompt cho commit message</code></pre>
+./deploy.sh  # Sẽ prompt cho commit message
+</code></pre>
 <p><strong>Chức năng</strong>:</p>
 <li>Build frontend</li>
 <li>Commit changes</li>
 <li>Push to GitHub</li>
 <li>Auto-deploy to Netlify (Frontend)</li>
 <li>Auto-deploy to Render (Backend)</li>
-<hr>
-<h4><code>deploy-production.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></h4>
+<p>---</p>
+<p>#### <code>deploy-production.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></p>
 <p><strong>Mục đích</strong>: Production deployment  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./deploy-production.sh</code></pre>
+<pre><code>./deploy-production.sh
+</code></pre>
 <p><strong>Chức năng</strong>:</p>
 <li>System requirements check</li>
 <li>Clean install</li>
 <li>Lint check</li>
 <li>Build optimization</li>
-<li>Deploy to production</li></ul>
-<hr>
-<h4><code>quick-deploy.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></h4>
+<li>Deploy to production</li>
+<p>---</p>
+<p>#### <code>quick-deploy.sh</code> ⭐ <strong>KHUYẾN NGHỊ</strong></p>
 <p><strong>Mục đích</strong>: Quick deploy lên Vercel + Railway  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./quick-deploy.sh &quot;Commit message&quot;
+<pre><code>./quick-deploy.sh "Commit message"
 <h1>hoặc</h1>
-./quick-deploy.sh  # Sẽ dùng default message</code></pre>
+./quick-deploy.sh  # Sẽ dùng default message
+</code></pre>
 <p><strong>Lưu ý</strong>: Có <code>quick_deploy.sh</code> (underscore) - nên gộp lại</p>
-<hr>
-<h4><code>deploy-vercel.sh</code> hoặc <code>deployVercel.sh</code></h4>
+<p>---</p>
+<p>#### <code>deploy-vercel.sh</code> hoặc <code>deployVercel.sh</code></p>
 <p><strong>Mục đích</strong>: Deploy chỉ lên Vercel  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./deploy-vercel.sh
+<pre><code>./deploy-vercel.sh
 <h1>hoặc</h1>
-./deployVercel.sh</code></pre>
+./deployVercel.sh
+</code></pre>
 <p><strong>Lưu ý</strong>: Có 2 scripts tương tự, nên gộp lại</p>
-<hr>
-<h4><code>deployNetlify.sh</code></h4>
+<p>---</p>
+<p>#### <code>deployNetlify.sh</code></p>
 <p><strong>Mục đích</strong>: Deploy lên Netlify  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./deployNetlify.sh</code></pre>
-<hr>
-<h4><code>deployGCP.sh</code></h4>
+<pre><code>./deployNetlify.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>deployGCP.sh</code></p>
 <p><strong>Mục đích</strong>: Deploy lên Google Cloud Platform  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./deployGCP.sh</code></pre>
-<hr>
-<h4><code>serve-build.sh</code></h4>
+<pre><code>./deployGCP.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>serve-build.sh</code></p>
 <p><strong>Mục đích</strong>: Serve production build locally  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./serve-build.sh
+<pre><code>./serve-build.sh
 <h1>hoặc</h1>
-./serve-build.sh 8080  # Custom port</code></pre>
-<hr>
+./serve-build.sh 8080  # Custom port
+</code></pre>
+<p>---</p>
 <h2>4️⃣ FIX/TROUBLESHOOTING SCRIPTS</h2>
 <h3>🔧 Fix Scripts</h3>
-<h4><code>scripts/fix-port-conflict.sh</code></h4>
+<p>#### <code>scripts/fix-port-conflict.sh</code></p>
 <p><strong>Mục đích</strong>: Fix port conflicts  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/fix-port-conflict.sh</code></pre>
-<hr>
-<h4><code>scripts/fix-chunk-errors.sh</code></h4>
+<pre><code>./scripts/fix-port-conflict.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/fix-chunk-errors.sh</code></p>
 <p><strong>Mục đích</strong>: Fix chunk errors  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/fix-chunk-errors.sh</code></pre>
-<hr>
-<h4><code>fix-chunk-error.sh</code> (Root level)</h4>
+<pre><code>./scripts/fix-chunk-errors.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>fix-chunk-error.sh</code> (Root level)</p>
 <p><strong>Mục đích</strong>: Fix chunk error (singular)  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./fix-chunk-error.sh</code></pre>
+<pre><code>./fix-chunk-error.sh
+</code></pre>
 <p><strong>Lưu ý</strong>: Có thể trùng với <code>scripts/fix-chunk-errors.sh</code></p>
-<hr>
-<h4><code>scripts/fix-api-connection.sh</code></h4>
+<p>---</p>
+<p>#### <code>scripts/fix-api-connection.sh</code></p>
 <p><strong>Mục đích</strong>: Fix API connection issues  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/fix-api-connection.sh</code></pre>
-<hr>
-<h4><code>scripts/fix-automation-path.sh</code></h4>
+<pre><code>./scripts/fix-api-connection.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/fix-automation-path.sh</code></p>
 <p><strong>Mục đích</strong>: Fix automation path issues  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/fix-automation-path.sh</code></pre>
-<hr>
-<h4><code>fix-branch-sync.sh</code></h4>
+<pre><code>./scripts/fix-automation-path.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>fix-branch-sync.sh</code></p>
 <p><strong>Mục đích</strong>: Fix branch sync issues  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./fix-branch-sync.sh</code></pre>
-<hr>
-<h4><code>fix-missing-files.sh</code></h4>
+<pre><code>./fix-branch-sync.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>fix-missing-files.sh</code></p>
 <p><strong>Mục đích</strong>: Fix missing files  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./fix-missing-files.sh</code></pre>
-<hr>
+<pre><code>./fix-missing-files.sh
+</code></pre>
+<p>---</p>
 <h2>5️⃣ UTILITY SCRIPTS</h2>
 <h3>🛠️ Utility Scripts</h3>
-<h4><code>scripts/check-ports.sh</code></h4>
+<p>#### <code>scripts/check-ports.sh</code></p>
 <p><strong>Mục đích</strong>: Check port availability  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/check-ports.sh</code></pre>
-<hr>
-<h4><code>scripts/check-env.sh</code></h4>
+<pre><code>./scripts/check-ports.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/check-env.sh</code></p>
 <p><strong>Mục đích</strong>: Check environment variables  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/check-env.sh</code></pre>
+<pre><code>./scripts/check-env.sh
+</code></pre>
 <p><strong>Lưu ý</strong>: Có <code>scripts/check-env copy.sh</code> - nên xóa</p>
-<hr>
-<h4><code>scripts/check-backend.sh</code></h4>
+<p>---</p>
+<p>#### <code>scripts/check-backend.sh</code></p>
 <p><strong>Mục đích</strong>: Check backend health  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/check-backend.sh</code></pre>
-<hr>
-<h4><code>scripts/kill-port.sh</code></h4>
+<pre><code>./scripts/check-backend.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/kill-port.sh</code></p>
 <p><strong>Mục đích</strong>: Kill process on port  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/kill-port.sh 3000</code></pre>
-<hr>
-<h4><code>verify_port_config.sh</code></h4>
+<pre><code>./scripts/kill-port.sh 3000
+</code></pre>
+<p>---</p>
+<p>#### <code>verify_port_config.sh</code></p>
 <p><strong>Mục đích</strong>: Verify port configuration  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./verify_port_config.sh</code></pre>
-<hr>
-<h4><code>securityAudit.sh</code></h4>
+<pre><code>./verify_port_config.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>securityAudit.sh</code></p>
 <p><strong>Mục đích</strong>: Security audit  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./securityAudit.sh</code></pre>
-<hr>
+<pre><code>./securityAudit.sh
+</code></pre>
+<p>---</p>
 <h2>6️⃣ GIT SCRIPTS</h2>
 <h3>📝 Git Operations</h3>
-<h4><code>sync-to-main.sh</code></h4>
+<p>#### <code>sync-to-main.sh</code></p>
 <p><strong>Mục đích</strong>: Sync branch to main  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./sync-to-main.sh</code></pre>
-<hr>
-<h4><code>create-repo-and-push.sh</code></h4>
+<pre><code>./sync-to-main.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>create-repo-and-push.sh</code></p>
 <p><strong>Mục đích</strong>: Create repo and push  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./create-repo-and-push.sh</code></pre>
-<hr>
-<h4><code>scripts/push_to_github.sh</code></h4>
+<pre><code>./create-repo-and-push.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/push_to_github.sh</code></p>
 <p><strong>Mục đích</strong>: Push to GitHub  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/push_to_github.sh</code></pre>
-<hr>
-<h4><code>scripts/prepare_github_repo.sh</code></h4>
+<pre><code>./scripts/push_to_github.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/prepare_github_repo.sh</code></p>
 <p><strong>Mục đích</strong>: Prepare GitHub repo  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/prepare_github_repo.sh</code></pre>
-<hr>
-<h4><code>scripts/setup-github.sh</code></h4>
+<pre><code>./scripts/prepare_github_repo.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>scripts/setup-github.sh</code></p>
 <p><strong>Mục đích</strong>: Setup GitHub  
 <strong>Chạy từ</strong>: Root directory  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./scripts/setup-github.sh</code></pre>
+<pre><code>./scripts/setup-github.sh
+</code></pre>
 <p><strong>Lưu ý</strong>: Có <code>scripts/setup-github copy.sh</code> - nên xóa</p>
-<hr>
+<p>---</p>
 <h2>7️⃣ SUB-PROJECTS SCRIPTS</h2>
 <h3>🤖 Automation</h3>
-<h4><code>automation/start.sh</code></h4>
+<p>#### <code>automation/start.sh</code></p>
 <p><strong>Mục đích</strong>: Start automation  
 <strong>Chạy từ</strong>: Root directory hoặc <code>automation/</code>  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./automation/start.sh
+<pre><code>./automation/start.sh
 <h1>hoặc</h1>
-cd automation &amp;&amp; ./start.sh</code></pre>
-<hr>
-<h4><code>automation/setup.sh</code></h4>
+cd automation && ./start.sh
+</code></pre>
+<p>---</p>
+<p>#### <code>automation/setup.sh</code></p>
 <p><strong>Mục đích</strong>: Setup automation  
 <strong>Chạy từ</strong>: Root directory hoặc <code>automation/</code>  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./automation/setup.sh
+<pre><code>./automation/setup.sh
 <h1>hoặc</h1>
-cd automation &amp;&amp; ./setup.sh</code></pre>
-<hr>
+cd automation && ./setup.sh
+</code></pre>
+<p>---</p>
 <h3>🧠 AI Service</h3>
-<h4><code>ai-service/setup_venv.sh</code></h4>
+<p>#### <code>ai-service/setup_venv.sh</code></p>
 <p><strong>Mục đích</strong>: Setup Python virtual environment  
 <strong>Chạy từ</strong>: Root directory hoặc <code>ai-service/</code>  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./ai-service/setup_venv.sh
+<pre><code>./ai-service/setup_venv.sh
 <h1>hoặc</h1>
-cd ai-service &amp;&amp; ./setup_venv.sh</code></pre>
-<hr>
+cd ai-service && ./setup_venv.sh
+</code></pre>
+<p>---</p>
 <h3>🛒 MIA Logistics Manager</h3>
-<h4><code>mia-logistics-manager/start-mia.sh</code></h4>
+<p>#### <code>mia-logistics-manager/start-mia.sh</code></p>
 <p><strong>Mục đích</strong>: Start MIA Logistics Manager  
 <strong>Chạy từ</strong>: Root directory hoặc <code>mia-logistics-manager/</code>  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./mia-logistics-manager/start-mia.sh
+<pre><code>./mia-logistics-manager/start-mia.sh
 <h1>hoặc</h1>
-cd mia-logistics-manager &amp;&amp; ./start-mia.sh</code></pre>
-<hr>
+cd mia-logistics-manager && ./start-mia.sh
+</code></pre>
+<p>---</p>
 <h3>📊 Google Sheets Project</h3>
-<h4><code>google-sheets-project/start.sh</code></h4>
+<p>#### <code>google-sheets-project/start.sh</code></p>
 <p><strong>Mục đích</strong>: Start Google Sheets project  
 <strong>Chạy từ</strong>: Root directory hoặc <code>google-sheets-project/</code>  
 <strong>Cách dùng</strong>:</p>
-<pre><code class="language-bash">./google-sheets-project/start.sh
+<pre><code>./google-sheets-project/start.sh
 <h1>hoặc</h1>
-cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
-<hr>
+cd google-sheets-project && ./start.sh
+</code></pre>
+<p>---</p>
 <h2>🎯 QUICK REFERENCE</h2>
 <h3>⚡ Development Workflow</h3>
-<pre><code class="language-bash"># 1. Setup lần đầu
+<pre><code><h1>1. Setup lần đầu</h1>
 ./setup.sh
 <h1>2. Start development servers</h1>
 ./start_dev_servers.sh
@@ -1517,72 +1332,127 @@ cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
 <h1>3. Stop servers</h1>
 ./deploy_platform.sh stop
 <h1>hoặc</h1>
-./scripts/stop_all.sh</code></pre>
-<hr>
+./scripts/stop_all.sh
+</code></pre>
+<p>---</p>
 <h3>🚀 Deployment Workflow</h3>
-<p>```bash
-<h1>Quick deploy (Vercel + Railway)</h1>
-./quick-deplo</p>
-<p>... (truncated, see full file for complete content)</p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>SCRIPTS_GUIDE.md</code></small>
-                </div>
+<pre><code><h1>Quick deploy (Vercel + Railway)</h1>
+./quick-deploy.sh "Your commit message"
+<h1>Production deploy</h1>
+./deploy-production.sh
+<h1>Deploy to specific platform</h1>
+./deploy-vercel.sh
+./deployNetlify.sh
+./deployGCP.sh
+</code></pre>
+<p>---</p>
+<h3>🔧 Troubleshooting</h3>
+<pre><code><h1>Check ports</h1>
+./scripts/check-ports.sh
+<h1>Fix port conflicts</h1>
+./scripts/fix-port-conflict.sh
+<h1>Check backend</h1>
+./scripts/check-backend.sh
+<h1>Verify setup</h1>
+./scripts/verify-setup.sh
+</code></pre>
+<p>---</p>
+<h2>⚠️ LƯU Ý QUAN TRỌNG</h2>
+<h3>1. Chạy từ đâu?</h3>
+<li><strong>Hầu hết scripts</strong>: Chạy từ <strong>Root directory</strong></li>
+<li><strong>Sub-projects scripts</strong>: Có thể chạy từ root hoặc trong thư mục sub-project</li>
+<h3>2. Permissions</h3>
+<p>Một số scripts cần quyền execute:</p>
+<pre><code>chmod +x script-name.sh
+</code></pre>
+<h3>3. Environment Variables</h3>
+<p>Một số scripts cần environment variables. Kiểm tra:</p>
+<pre><code>./scripts/check-env.sh
+</code></pre>
+<h3>4. Ports</h3>
+<p>Đảm bảo ports không bị conflict:</p>
+<pre><code>./scripts/check-ports.sh
+</code></pre>
+<p>---</p>
+<h2>📝 RECOMMENDATIONS</h2>
+<h3>Scripts nên sử dụng (Khuyến nghị):</h3>
+<li><strong>Setup</strong>: <code>./setup.sh</code></li>
+<li><strong>Start</strong>: <code>./start_dev_servers.sh</code> hoặc <code>./deploy_platform.sh start</code></li>
+<li><strong>Deploy</strong>: <code>./deploy.sh</code> hoặc <code>./quick-deploy.sh</code></li>
+<li><strong>Production</strong>: <code>./deploy-production.sh</code></li>
+<li><strong>Troubleshooting</strong>: <code>./scripts/check-ports.sh</code>, <code>./scripts/fix-port-conflict.sh</code></li>
+<h3>Scripts cần cập nhật:</h3>
+<li><code>start_ai_platform.sh</code> - Cần cập nhật từ v3.0 → v4.0</li>
+<li>Các scripts trùng lặp - Nên gộp lại</li>
+<h3>Scripts có thể xóa:</h3>
+<li><code>scripts/check-env copy.sh</code></li>
+<li><code>scripts/setup-github copy.sh</code></li>
+<li><code>quick_deploy.sh</code> (nếu có <code>quick-deploy.sh</code>)</li>
+<li>Các scripts duplicate khác</li>
+<p>---</p>
+<h2>🔗 LIÊN KẾT</h2>
+<li><a href="./SCRIPTS_ANALYSIS.md" target="_blank">SCRIPTS_ANALYSIS.md</a> - Phân tích chi tiết</li>
+<li><a href="./DEPLOYMENT_GUIDE.md" target="_blank">DEPLOYMENT_GUIDE.md</a> - Hướng dẫn deployment</li>
+<li><a href="./README.md" target="_blank">README.md</a> - Tổng quan dự án</li></ul>
+<p>---</p>
+<p><strong>Last Updated</strong>: 2025-01-27  
+<strong>Version</strong>: 4.0
+</p>
             </section>
 
-                        <section id="python" class="section">
-                <div class="section-header">
-                    <h2>🐍 🐍 Python Files</h2>
-                    <p class="section-description">Tổ chức và quản lý các file Python</p>
-                </div>
-                <div class="section-content">
-                    <h1>🐍 Python Files Organization Guide</h1>
+            <section id="python" class="section">
+                <h1>🐍 Python Files Organization Guide</h1>
 <p>> <strong>React OAS Integration v4.0</strong>  
 > <strong>Ngày cập nhật</strong>: 2025-01-27</p>
-<hr>
+<p>---</p>
 <h2>📊 PHÂN TÍCH KẾT QUẢ</h2>
 <h3>Thống kê</h3>
 <ul><li><strong>Tổng số file</strong>: 139 files</li>
 <li><strong>Nhóm trùng lặp</strong>: 35 nhóm</li>
 <li><strong>File tương tự (cùng tên)</strong>: 40 files</li>
 <li><strong>Categories</strong>: 26 loại</li>
-<hr>
+<p>---</p>
 <h2>🔍 CÁC FILE TRÙNG LẶP CHÍNH</h2>
 <h3>1. Auth Services (4 files giống hệt)</h3>
-<pre><code class="language-text">✅ KEEP: ./one_automation_system/api/auth_service.py
+<pre><code>✅ KEEP: ./one_automation_system/api/auth_service.py
 ❌ REMOVE:
   - ./auth_service.py
   - ./automation/auth_service.py
-  - ./automation/automation_new/auth_service.py</code></pre>
+  - ./automation/automation_new/auth_service.py
+</code></pre>
 <h3>2. Auth API Servers (4 files giống hệt)</h3>
-<pre><code class="language-text">✅ KEEP: ./one_automation_system/api/auth_api_server.py
+<pre><code>✅ KEEP: ./one_automation_system/api/auth_api_server.py
 ❌ REMOVE:
   - ./auth_api_server.py
   - ./automation/auth_api_server.py
-  - ./automation/automation_new/auth_api_server.py</code></pre>
+  - ./automation/automation_new/auth_api_server.py
+</code></pre>
 <h3>3. Automation Core (4 files - 70KB mỗi file!)</h3>
-<pre><code class="language-text">✅ KEEP: ./automation/automation.py
+<pre><code>✅ KEEP: ./automation/automation.py
 ❌ REMOVE:
   - ./automation.py (root)
   - ./automation/automation copy.py
-  - ./automation/automation_new/automation.py</code></pre>
+  - ./automation/automation_new/automation.py
+</code></pre>
 <h3>4. Automation Bridge (4 files)</h3>
-<pre><code class="language-text">✅ KEEP: ./one_automation_system/automation_bridge.py
+<pre><code>✅ KEEP: ./one_automation_system/automation_bridge.py
 ❌ REMOVE:
   - ./automation_bridge.py
   - ./automation_bridge copy.py
   - ./scripts/automation_bridge.py
-  - ./automation/automation_bridge.py</code></pre>
+  - ./automation/automation_bridge.py
+</code></pre>
 <h3>5. Google Sheets Config (4 files - 32KB mỗi file!)</h3>
-<pre><code class="language-text">✅ KEEP: ./automation/google_sheets_config.py
+<pre><code>✅ KEEP: ./automation/google_sheets_config.py
 ❌ REMOVE:
   - ./google_sheets_config.py
   - ./google_sheets_config copy.py
-  - ./automation/automation_new/google_sheets_config.py</code></pre>
-<hr>
+  - ./automation/automation_new/google_sheets_config.py
+</code></pre>
+<p>---</p>
 <h2>📁 CẤU TRÚC ĐỀ XUẤT</h2>
 <h3>Hiện tại (lộn xộn):</h3>
-<pre><code class="language-text">.
+<pre><code>.
 ├── automation.py (duplicate)
 ├── automation_bridge.py (duplicate)
 ├── auth_service.py (duplicate)
@@ -1595,9 +1465,10 @@ cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
     ├── automation.py
     └── api/
         ├── auth_service.py ✅
-        └── auth_api_server.py ✅</code></pre>
+        └── auth_api_server.py ✅
+</code></pre>
 <h3>Đề xuất (tổ chức):</h3>
-<pre><code class="language-text">python/
+<pre><code>python/
 ├── core/
 │   ├── automation.py          # Main automation (KEEP từ automation/)
 │   └── automation_bridge.py   # Bridge (KEEP từ one_automation_system/)
@@ -1625,62 +1496,67 @@ cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
 │   └── utils.py
 │
 └── tests/
-    └── ...</code></pre>
-<hr>
+    └── ...
+</code></pre>
+<p>---</p>
 <h2>🎯 MỤC ĐÍCH CÁC FILE</h2>
 <h3>Core Automation</h3>
-<table><tr><td>File</td><td>Mục đích</td><td>Location</td></tr>
-<tr><td>------------------------</td><td>-----------------------------------------------------</td><td>---------------------------</td></tr>
-<tr><td><code>automation.py</code></td><td>Main automation system - Thu thập dữ liệu từ ONE Page</td><td><code>automation/</code> ✅</td></tr>
-<tr><td><code>automation_bridge.py</code></td><td>FastAPI bridge kết nối automation với frontend</td><td><code>one_automation_system/</code> ✅</td></tr>
-<tr><td><code>automation_enhanced.py</code></td><td>Enhanced version với nhiều tính năng</td><td><code>automation/</code></td></tr>
+<p>| File                     | Mục đích                                              | Location                    |
+| ------------------------ | ----------------------------------------------------- | --------------------------- |
+| <code>automation.py</code>          | Main automation system - Thu thập dữ liệu từ ONE Page | <code>automation/</code> ✅            |
+| <code>automation_bridge.py</code>   | FastAPI bridge kết nối automation với frontend        | <code>one_automation_system/</code> ✅ |
+| <code>automation_enhanced.py</code> | Enhanced version với nhiều tính năng                  | <code>automation/</code>               |</p>
 <h3>API & Auth</h3>
-<p><tr><td>File</td><td>Mục đích</td><td>Location</td></tr>
-<tr><td>--------------------</td><td>----------------------------------</td><td>-------------------------------</td></tr>
-<tr><td><code>auth_api_server.py</code></td><td>FastAPI server cho authentication</td><td><code>one_automation_system/api/</code> ✅</td></tr>
-<tr><td><code>auth_service.py</code></td><td>Service xử lý authentication logic</td><td><code>one_automation_system/api/</code> ✅</td></tr></p>
+<p>| File                 | Mục đích                           | Location                        |
+| -------------------- | ---------------------------------- | ------------------------------- |
+| <code>auth_api_server.py</code> | FastAPI server cho authentication  | <code>one_automation_system/api/</code> ✅ |
+| <code>auth_service.py</code>    | Service xử lý authentication logic | <code>one_automation_system/api/</code> ✅ |</p>
 <h3>Services</h3>
-<p><tr><td>File</td><td>Mục đích</td><td>Location</td></tr>
-<tr><td>--------------------------</td><td>--------------------------</td><td>----------------------</td></tr>
-<tr><td><code>email_service.py</code></td><td>Gửi email notifications</td><td><code>automation/services/</code></td></tr>
-<tr><td><code>google_sheets_service.py</code></td><td>Tích hợp với Google Sheets</td><td><code>automation/services/</code></td></tr>
-<tr><td><code>data_processor.py</code></td><td>Xử lý và transform dữ liệu</td><td><code>automation/services/</code></td></tr></p>
+<p>| File                       | Mục đích                   | Location               |
+| -------------------------- | -------------------------- | ---------------------- |
+| <code>email_service.py</code>         | Gửi email notifications    | <code>automation/services/</code> |
+| <code>google_sheets_service.py</code> | Tích hợp với Google Sheets | <code>automation/services/</code> |
+| <code>data_processor.py</code>        | Xử lý và transform dữ liệu | <code>automation/services/</code> |</p>
 <h3>Scripts</h3>
-<p><tr><td>File</td><td>Mục đích</td><td>Location</td></tr>
-<tr><td>-----------------------</td><td>--------------------------------</td><td>---------------------</td></tr>
-<tr><td><code>login.py</code></td><td>Script đăng nhập vào ONE Page</td><td><code>automation/scripts/</code></td></tr>
-<tr><td><code>login_manager.py</code></td><td>Quản lý session và login state</td><td><code>automation/scripts/</code></td></tr>
-<tr><td><code>enhanced_scraper.py</code></td><td>Scraper nâng cao với retry logic</td><td><code>automation/scripts/</code></td></tr>
-<tr><td><code>pagination_handler.py</code></td><td>Xử lý phân trang</td><td><code>automation/scripts/</code></td></tr>
-<tr><td><code>date_customizer.py</code></td><td>Customize date ranges</td><td><code>automation/scripts/</code></td></tr></p>
+<p>| File                    | Mục đích                         | Location              |
+| ----------------------- | -------------------------------- | --------------------- |
+| <code>login.py</code>              | Script đăng nhập vào ONE Page    | <code>automation/scripts/</code> |
+| <code>login_manager.py</code>      | Quản lý session và login state   | <code>automation/scripts/</code> |
+| <code>enhanced_scraper.py</code>   | Scraper nâng cao với retry logic | <code>automation/scripts/</code> |
+| <code>pagination_handler.py</code> | Xử lý phân trang                 | <code>automation/scripts/</code> |
+| <code>date_customizer.py</code>    | Customize date ranges            | <code>automation/scripts/</code> |</p>
 <h3>Config & Utils</h3>
-<p><tr><td>File</td><td>Mục đích</td><td>Location</td></tr>
-<tr><td>-------------</td><td>----------------------</td><td>--------------------------------------</td></tr>
-<tr><td><code>settings.py</code></td><td>Configuration settings</td><td><code>one_automation_system/src/config/</code> ✅</td></tr>
-<tr><td><code>logger.py</code></td><td>Logging utility</td><td><code>one_automation_system/utils/</code> ✅</td></tr>
-<tr><td><code>utils.py</code></td><td>General utilities</td><td><code>one_automation_system/utils/</code></td></tr></table></p>
-<hr>
+<p>| File          | Mục đích               | Location                               |
+| ------------- | ---------------------- | -------------------------------------- |
+| <code>settings.py</code> | Configuration settings | <code>one_automation_system/src/config/</code> ✅ |
+| <code>logger.py</code>   | Logging utility        | <code>one_automation_system/utils/</code> ✅      |
+| <code>utils.py</code>    | General utilities      | <code>one_automation_system/utils/</code>         |</p>
+<p>---</p>
 <h2>🧹 CLEANUP PLAN</h2>
 <h3>Phase 1: Remove Exact Duplicates ✅</h3>
-<pre><code class="language-bash"># Dry run (xem sẽ xóa gì)
+<pre><code><h1>Dry run (xem sẽ xóa gì)</h1>
 ./scripts/utils/organize-python-files.sh true
 <h1>Thực sự xóa</h1>
-./scripts/utils/organize-python-files.sh false</code></pre>
+./scripts/utils/organize-python-files.sh false
+</code></pre>
 <h3>Phase 2: Organize by Purpose (Tùy chọn)</h3>
 <li>Di chuyển files vào cấu trúc mới</li>
 <li>Cập nhật imports</li>
 <h3>Phase 3: Update Imports (Sau cleanup)</h3>
 <li>Tìm và thay thế imports cũ</li>
 <li>Test lại các chức năng</li>
-<hr>
+<p>---</p>
 <h2>🚀 CÁCH SỬ DỤNG</h2>
 <h3>1. Phân tích files</h3>
-<pre><code class="language-bash">python3 scripts/utils/analyze-python-files.py</code></pre>
+<pre><code>python3 scripts/utils/analyze-python-files.py
+</code></pre>
 <h3>2. Xóa duplicates (dry run)</h3>
-<pre><code class="language-bash">./scripts/utils/organize-python-files.sh true</code></pre>
+<pre><code>./scripts/utils/organize-python-files.sh true
+</code></pre>
 <h3>3. Xóa duplicates (thực sự)</h3>
-<pre><code class="language-bash">./scripts/utils/organize-python-files.sh false</code></pre>
-<hr>
+<pre><code>./scripts/utils/organize-python-files.sh false
+</code></pre>
+<p>---</p>
 <h2>📝 LƯU Ý QUAN TRỌNG</h2>
 <h3>Files cần giữ lại:</h3>
 <li>✅ <code>one_automation_system/</code> - Main system</li>
@@ -1693,7 +1569,7 @@ cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
 <h3>Backup:</h3>
 <li>✅ Script tự động backup trước khi xóa</li>
 <li>✅ Backup lưu trong <code>backups/python-files-YYYYMMDD_HHMMSS/</code></li>
-<hr>
+<p>---</p>
 <h2>✅ CHECKLIST</h2>
 <li>[x] Phân tích files</li>
 <li>[x] Tạo documentation</li>
@@ -1703,33 +1579,24 @@ cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
 <li>[ ] Xóa duplicates</li>
 <li>[ ] Test lại hệ thống</li>
 <li>[ ] Cập nhật imports (nếu cần)</li>
-<hr>
+<p>---</p>
 <h2>📊 KẾT QUẢ DỰ KIẾN</h2>
 <p>Sau khi cleanup:</p>
 <li><strong>Giảm</strong>: ~50-60 duplicate files</li>
 <li><strong>Tiết kiệm</strong>: ~500KB+ disk space</li>
 <li><strong>Cải thiện</strong>: Dễ maintain và navigate hơn</li></ul>
-<hr>
+<p>---</p>
 <p><strong>Status</strong>: 📊 Analysis Complete  
 <strong>Next Step</strong>: 🧹 Cleanup (cần review trước)  
 <strong>Last Updated</strong>: 2025-01-27
 </p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>PYTHON_FILES_GUIDE.md</code></small>
-                </div>
             </section>
 
-                        <section id="javascript" class="section">
-                <div class="section-header">
-                    <h2>📦 📦 JavaScript Files</h2>
-                    <p class="section-description">Tổ chức và quản lý các file JavaScript</p>
-                </div>
-                <div class="section-content">
-                    <h1>📦 JavaScript Files Organization Guide</h1>
+            <section id="javascript" class="section">
+                <h1>📦 JavaScript Files Organization Guide</h1>
 <p>> <strong>React OAS Integration v4.0</strong>  
 > <strong>Ngày cập nhật</strong>: 2025-01-27</p>
-<hr>
+<p>---</p>
 <h2>✅ ĐÃ HOÀN THÀNH</h2>
 <h3>1. Phân tích files ✅</h3>
 <ul><li>✅ Tìm tất cả file .js ở root level</li>
@@ -1742,10 +1609,10 @@ cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
 <li>✅ <code>scripts/tests/README.md</code> - Hướng dẫn test files</li>
 <li>✅ <code>scripts/config/README.md</code> - Hướng dẫn config files</li>
 <li>✅ <code>JAVASCRIPT_FILES_GUIDE.md</code> - File này</li>
-<hr>
+<p>---</p>
 <h2>📁 CẤU TRÚC MỚI</h2>
 <h3>Trước (lộn xộn):</h3>
-<pre><code class="language-text">.
+<pre><code>.
 ├── end_to_end_test.js
 ├── integration_test.js
 ├── advanced_integration_test.js
@@ -1757,9 +1624,10 @@ cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
 ├── babel.config.js
 ├── jest.config.js
 ├── webpack.config.js
-└── ...</code></pre>
+└── ...
+</code></pre>
 <h3>Sau (tổ chức):</h3>
-<pre><code class="language-text">.
+<pre><code>.
 ├── babel.config.js          # ✅ Giữ ở root (standard)
 ├── jest.config.js            # ✅ Giữ ở root (standard)
 ├── webpack.config.js         # ✅ Giữ ở root (standard)
@@ -1775,45 +1643,48 @@ cd google-sheets-project &amp;&amp; ./start.sh</code></pre>
     │   ├── test_google_sheets.js
     │   └── ws-test.js
     └── config/               # ✅ Config scripts
-        └── env.config.js</code></pre>
-<hr>
+        └── env.config.js
+</code></pre>
+<p>---</p>
 <h2>📋 PHÂN LOẠI FILES</h2>
 <h3>Test Files (đã di chuyển)</h3>
-<table><tr><td>File</td><td>Mục đích</td><td>Location</td></tr>
-<tr><td>------------------------------</td><td>--------------------------</td><td>-------------------</td></tr>
-<tr><td><code>end_to_end_test.js</code></td><td>End-to-end testing suite</td><td><code>scripts/tests/</code> ✅</td></tr>
-<tr><td><code>integration_test.js</code></td><td>Integration tests</td><td><code>scripts/tests/</code> ✅</td></tr>
-<tr><td><code>advanced_integration_test.js</code></td><td>Advanced integration tests</td><td><code>scripts/tests/</code> ✅</td></tr>
-<tr><td><code>complete_system_test.js</code></td><td>Complete system tests</td><td><code>scripts/tests/</code> ✅</td></tr>
-<tr><td><code>frontend_connection_test.js</code></td><td>Frontend connection tests</td><td><code>scripts/tests/</code> ✅</td></tr>
-<tr><td><code>test_google_sheets.js</code></td><td>Google Sheets tests</td><td><code>scripts/tests/</code> ✅</td></tr>
-<tr><td><code>ws-test.js</code></td><td>WebSocket tests</td><td><code>scripts/tests/</code> ✅</td></tr>
+<p>| File                           | Mục đích                   | Location            |
+| ------------------------------ | -------------------------- | ------------------- |
+| <code>end_to_end_test.js</code>           | End-to-end testing suite   | <code>scripts/tests/</code> ✅ |
+| <code>integration_test.js</code>          | Integration tests          | <code>scripts/tests/</code> ✅ |
+| <code>advanced_integration_test.js</code> | Advanced integration tests | <code>scripts/tests/</code> ✅ |
+| <code>complete_system_test.js</code>      | Complete system tests      | <code>scripts/tests/</code> ✅ |
+| <code>frontend_connection_test.js</code>  | Frontend connection tests  | <code>scripts/tests/</code> ✅ |
+| <code>test_google_sheets.js</code>        | Google Sheets tests        | <code>scripts/tests/</code> ✅ |
+| <code>ws-test.js</code>                   | WebSocket tests            | <code>scripts/tests/</code> ✅ |</p>
 <h3>Config Files (giữ ở root - standard)</h3>
-<p><tr><td>File</td><td>Mục đích</td><td>Location</td></tr>
-<tr><td>-------------------</td><td>------------------------</td><td>--------</td></tr>
-<tr><td><code>babel.config.js</code></td><td>Babel configuration</td><td>Root ✅</td></tr>
-<tr><td><code>jest.config.js</code></td><td>Jest configuration</td><td>Root ✅</td></tr>
-<tr><td><code>webpack.config.js</code></td><td>Webpack configuration</td><td>Root ✅</td></tr>
-<tr><td><code>postcss.config.js</code></td><td>PostCSS configuration</td><td>Root ✅</td></tr>
-<tr><td><code>lighthouserc.js</code></td><td>Lighthouse configuration</td><td>Root ✅</td></tr></p>
+<p>| File                | Mục đích                 | Location |
+| ------------------- | ------------------------ | -------- |
+| <code>babel.config.js</code>   | Babel configuration      | Root ✅  |
+| <code>jest.config.js</code>    | Jest configuration       | Root ✅  |
+| <code>webpack.config.js</code> | Webpack configuration    | Root ✅  |
+| <code>postcss.config.js</code> | PostCSS configuration    | Root ✅  |
+| <code>lighthouserc.js</code>   | Lighthouse configuration | Root ✅  |</p>
 <h3>Config Scripts (đã di chuyển)</h3>
-<p><tr><td>File</td><td>Mục đích</td><td>Location</td></tr>
-<tr><td>---------------</td><td>--------------------------------</td><td>--------------------</td></tr>
-<tr><td><code>env.config.js</code></td><td>Environment configuration script</td><td><code>scripts/config/</code> ✅</td></tr></table></p>
-<hr>
+<p>| File            | Mục đích                         | Location             |
+| --------------- | -------------------------------- | -------------------- |
+| <code>env.config.js</code> | Environment configuration script | <code>scripts/config/</code> ✅ |</p>
+<p>---</p>
 <h2>🚀 CÁCH SỬ DỤNG</h2>
 <h3>Chạy tests</h3>
-<pre><code class="language-bash"># Chạy tất cả tests
+<pre><code><h1>Chạy tất cả tests</h1>
 node scripts/tests/complete_system_test.js
 <h1>Chạy từng test</h1>
 node scripts/tests/end_to_end_test.js
 node scripts/tests/integration_test.js
 node scripts/tests/test_google_sheets.js
-node scripts/tests/ws-test.js</code></pre>
+node scripts/tests/ws-test.js
+</code></pre>
 <h3>Sử dụng config</h3>
-<pre><code class="language-bash"># Load env config
-node scripts/config/env.config.js</code></pre>
-<hr>
+<pre><code><h1>Load env config</h1>
+node scripts/config/env.config.js
+</code></pre>
+<p>---</p>
 <h2>📝 LƯU Ý</h2>
 <h3>Config Files ở Root</h3>
 <p>Các file như <code>babel.config.js</code>, <code>jest.config.js</code>, <code>webpack.config.js</code> được <strong>giữ ở root</strong> vì:</p>
@@ -1825,7 +1696,7 @@ node scripts/config/env.config.js</code></pre>
 <li>✅ Dễ quản lý và tìm kiếm</li>
 <li>✅ Tách biệt với source code</li>
 <li>✅ Có thể chạy từ scripts folder</li>
-<hr>
+<p>---</p>
 <h2>✅ CHECKLIST</h2>
 <li>[x] Phân tích files</li>
 <li>[x] Tạo directories</li>
@@ -1833,35 +1704,26 @@ node scripts/config/env.config.js</code></pre>
 <li>[x] Di chuyển config scripts</li>
 <li>[x] Tạo documentation</li>
 <li>[x] Verify organization</li>
-<hr>
+<p>---</p>
 <h2>📊 KẾT QUẢ</h2>
 <li><strong>Test files moved</strong>: 7 files</li>
 <li><strong>Config files moved</strong>: 1 file (env.config.js)</li>
 <li><strong>Config files kept in root</strong>: 5 files (standard)</li>
 <li><strong>Structure</strong>: Rõ ràng và dễ maintain hơn</li></ul>
-<hr>
+<p>---</p>
 <p><strong>Status</strong>: ✅ Organization Complete  
 <strong>Last Updated</strong>: 2025-01-27
 </p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>JAVASCRIPT_FILES_GUIDE.md</code></small>
-                </div>
             </section>
 
-                        <section id="reports" class="section">
-                <div class="section-header">
-                    <h2>📊 📊 Reports & Backups</h2>
-                    <p class="section-description">Quản lý reports và backups</p>
-                </div>
-                <div class="section-content">
-                    <h1>📊📦 Hướng Dẫn Quản Lý Reports & Backups</h1>
+            <section id="reports" class="section">
+                <h1>📊📦 Hướng Dẫn Quản Lý Reports & Backups</h1>
 <p>> <strong>React OAS Integration v4.0</strong>  
 > <strong>Ngày cập nhật</strong>: 2025-01-27</p>
-<hr>
+<p>---</p>
 <h2>✅ ĐÃ HOÀN THÀNH</h2>
 <h3>1. Cấu trúc thư mục mới ✅</h3>
-<pre><code class="language-text">reports/
+<pre><code>reports/
 ├── email/          # 9 files - Email test reports
 ├── telegram/       # 9 files - Telegram test reports
 ├── health/         # 9 files - Health check reports
@@ -1873,7 +1735,8 @@ node scripts/config/env.config.js</code></pre>
 ├── automation/     # Automation backups
 ├── backend/        # Backend backups
 ├── ai-service/     # AI service backups
-└── venv/           # 3557 items - Python venv backups</code></pre></p>
+└── venv/           # 3557 items - Python venv backups
+</code></pre></p>
 <h3>2. Scripts tự động ✅</h3>
 <ul><li>✅ <code>scripts/utils/organize-reports.sh</code> - Tự động tổ chức reports</li>
 <li>✅ <code>scripts/utils/cleanup-old-reports.sh</code> - Cleanup reports cũ</li>
@@ -1881,24 +1744,26 @@ node scripts/config/env.config.js</code></pre>
 <li>✅ <code>reports/README.md</code> - Hướng dẫn reports</li>
 <li>✅ <code>backups/README.md</code> - Hướng dẫn backups</li>
 <li>✅ Cập nhật <code>.gitignore</code> - Ignore reports/backups</li>
-<hr>
+<p>---</p>
 <h2>🚀 CÁCH SỬ DỤNG</h2>
 <h3>Tổ chức lại reports</h3>
-<pre><code class="language-bash"># Tự động tổ chức tất cả reports vào đúng thư mục
-./scripts/utils/organize-reports.sh</code></pre>
+<pre><code><h1>Tự động tổ chức tất cả reports vào đúng thư mục</h1>
+./scripts/utils/organize-reports.sh
+</code></pre>
 <p>Script sẽ:</p>
 <li>✅ Tìm tất cả reports trong project</li>
 <li>✅ Di chuyển vào đúng thư mục theo loại</li>
 <li>✅ Tổ chức lighthouse reports theo thư mục gốc</li>
 <li>✅ Hiển thị summary</li>
 <h3>Cleanup reports cũ</h3>
-<pre><code class="language-bash"># Dry run - xem sẽ xóa gì (không xóa thật)
+<pre><code><h1>Dry run - xem sẽ xóa gì (không xóa thật)</h1>
 ./scripts/utils/cleanup-old-reports.sh 30 true
 <h1>Xóa reports cũ hơn 30 ngày</h1>
 ./scripts/utils/cleanup-old-reports.sh 30 false
 <h1>Xóa reports cũ hơn 7 ngày</h1>
-./scripts/utils/cleanup-old-reports.sh 7 false</code></pre>
-<hr>
+./scripts/utils/cleanup-old-reports.sh 7 false
+</code></pre>
+<p>---</p>
 <h2>📋 LOẠI REPORTS</h2>
 <h3>Email Reports (<code>reports/email/</code>)</h3>
 <li><code>email-test-report-YYYY-MM-DD.json</code></li>
@@ -1924,7 +1789,7 @@ node scripts/config/env.config.js</code></pre>
 <li><code>lighthouse-YYYY-MM-DDTHH-MM-SS-sssZ.report.json</code></li>
 <li>Lighthouse audit results</li>
 <li>Tổ chức theo thư mục gốc (root, automation, backend, etc.)</li>
-<hr>
+<p>---</p>
 <h2>💾 BACKUPS</h2>
 <h3>Venv Backups (<code>backups/venv/</code>)</h3>
 <li><code>venv.backup.YYYYMMDD_HHMMSS/</code></li>
@@ -1933,26 +1798,28 @@ node scripts/config/env.config.js</code></pre>
 <h3>Service Backups</h3>
 <li>Scripts, automation, backend, ai-service backups</li>
 <li>Lưu trữ trước khi update</li>
-<hr>
+<p>---</p>
 <h2>🧹 CLEANUP POLICY</h2>
 <h3>Mặc định</h3>
 <li><strong>Reports</strong>: Giữ 30 ngày</li>
 <li><strong>Backups</strong>: Giữ 30 ngày</li>
 <li><strong>Lighthouse</strong>: Giữ 30 ngày</li>
 <h3>Tùy chỉnh</h3>
-<pre><code class="language-bash"># Giữ 7 ngày
+<pre><code><h1>Giữ 7 ngày</h1>
 ./scripts/utils/cleanup-old-reports.sh 7 false
 <h1>Giữ 60 ngày</h1>
-./scripts/utils/cleanup-old-reports.sh 60 false</code></pre>
-<hr>
+./scripts/utils/cleanup-old-reports.sh 60 false
+</code></pre>
+<p>---</p>
 <h2>⚙️ TỰ ĐỘNG HÓA</h2>
 <h3>Cron Job (tùy chọn)</h3>
 <p>Thêm vào crontab để tự động cleanup:</p>
-<pre><code class="language-bash"># Cleanup reports cũ hơn 30 ngày mỗi tuần
-0 2 <em> </em> 0 cd /path/to/project &amp;&amp; ./scripts/utils/cleanup-old-reports.sh 30 false
+<pre><code><h1>Cleanup reports cũ hơn 30 ngày mỗi tuần</h1>
+0 2 * * 0 cd /path/to/project && ./scripts/utils/cleanup-old-reports.sh 30 false
 <h1>Tổ chức lại reports mỗi ngày</h1>
-0 3 <em> </em> * cd /path/to/project &amp;&amp; ./scripts/utils/organize-reports.sh</code></pre>
-<hr>
+0 3 * * * cd /path/to/project && ./scripts/utils/organize-reports.sh
+</code></pre>
+<p>---</p>
 <h2>📝 LƯU Ý</h2>
 <h3>Git</h3>
 <li>✅ Reports và backups được ignore trong <code>.gitignore</code></li>
@@ -1963,11 +1830,12 @@ node scripts/config/env.config.js</code></pre>
 <li>Backups có thể lớn (venv backups)</li>
 <li>Cleanup định kỳ để tiết kiệm dung lượng</li>
 <h3>Restore</h3>
-<pre><code class="language-bash"># Restore venv backup
+<pre><code><h1>Restore venv backup</h1>
 cp -r backups/venv/venv.backup.YYYYMMDD_HHMMSS ./venv
 <h1>Xem report</h1>
-cat reports/email/email-test-report-2025-12-25.json | jq</code></pre>
-<hr>
+cat reports/email/email-test-report-2025-12-25.json | jq
+</code></pre>
+<p>---</p>
 <h2>📊 STATISTICS</h2>
 <p>Sau khi tổ chức:</p>
 <li><strong>Email reports</strong>: 9 files</li>
@@ -1977,7 +1845,7 @@ cat reports/email/email-test-report-2025-12-25.json | jq</code></pre>
 <li><strong>Performance reports</strong>: 1 file</li>
 <li><strong>Lighthouse reports</strong>: 21 files</li>
 <li><strong>Venv backups</strong>: 3557 items</li>
-<hr>
+<p>---</p>
 <h2>🔄 WORKFLOW</h2>
 <h3>Khi có report mới</h3>
 <li>Report được tạo ở bất kỳ đâu trong project</li>
@@ -1987,7 +1855,7 @@ cat reports/email/email-test-report-2025-12-25.json | jq</code></pre>
 <li>Chạy <code>./scripts/utils/cleanup-old-reports.sh 30 false</code></li>
 <li>Reports cũ hơn 30 ngày sẽ bị xóa</li>
 <li>Tiết kiệm dung lượng</li>
-<hr>
+<p>---</p>
 <h2>✅ CHECKLIST</h2>
 <li>[x] Tạo cấu trúc thư mục</li>
 <li>[x] Di chuyển reports vào đúng vị trí</li>
@@ -1996,23 +1864,14 @@ cat reports/email/email-test-report-2025-12-25.json | jq</code></pre>
 <li>[x] Cập nhật .gitignore</li>
 <li>[x] Tạo documentation</li>
 <li>[x] Test scripts</li></ul>
-<hr>
+<p>---</p>
 <p><strong>Status</strong>: ✅ Hoàn thành  
 <strong>Last Updated</strong>: 2025-01-27
 </p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>REPORTS_BACKUPS_GUIDE.md</code></small>
-                </div>
             </section>
 
-                        <section id="google-sheets" class="section">
-                <div class="section-header">
-                    <h2>📊 📊 Google Sheets</h2>
-                    <p class="section-description">Setup và cấu hình Google Sheets integration</p>
-                </div>
-                <div class="section-content">
-                    <h1>📊 HƯỚNG DẪN SETUP GOOGLE SHEETS INTEGRATION</h1>
+            <section id="google-sheets" class="section">
+                <h1>📊 HƯỚNG DẪN SETUP GOOGLE SHEETS INTEGRATION</h1>
 <h2>🎯 Mục tiêu</h2>
 <p>Tích hợp Google Sheets vào React OAS Integration project để quản lý dữ liệu, báo cáo và tự động hóa.</p>
 <h2>📋 Checklist Setup</h2>
@@ -2058,11 +1917,13 @@ cat reports/email/email-test-report-2025-12-25.json | jq</code></pre>
 <h3>✅ Bước 7: Cập nhật Environment Variables</h3>
 <li>Mở file <code>.env</code></li>
 <li>Cập nhật các giá trị sau:</li>
-   <pre><code class="language-env">REACT_APP_GOOGLE_SHEET_ID=YOUR_ACTUAL_SHEET_ID
-   GOOGLE_SHEETS_ID=YOUR_ACTUAL_SHEET_ID</code></pre>
+<p>   <pre><code>   REACT_APP_GOOGLE_SHEET_ID=YOUR_ACTUAL_SHEET_ID
+   GOOGLE_SHEETS_ID=YOUR_ACTUAL_SHEET_ID
+   </code></pre></p>
 <h3>✅ Bước 8: Test Connection</h3>
-<pre><code class="language-bash"># Chạy test script
-node test_google_sheets.js</code></pre>
+<pre><code><h1>Chạy test script</h1>
+node test_google_sheets.js
+</code></pre>
 <h2>🧪 Test Script Features</h2>
 <p>Script <code>test_google_sheets.js</code> sẽ:</p>
 <li>✅ Kiểm tra credentials file</li>
@@ -2073,15 +1934,15 @@ node test_google_sheets.js</code></pre>
 <li>✅ Thêm dữ liệu mẫu</li>
 <h2>📊 Dữ liệu mẫu sẽ được tạo</h2>
 <h3>Orders Sheet</h3>
-<table><tr><td>Ngày</td><td>Sản phẩm</td><td>Số lượng</td><td>Giá</td><td>Trạng thái</td><td>Khách hàng</td></tr>
-<tr><td>----------</td><td>----------</td><td>--------</td><td>------</td><td>----------</td><td>------------</td></tr>
-<tr><td>2025-09-13</td><td>Sản phẩm A</td><td>5</td><td>150000</td><td>Hoàn thành</td><td>Nguyễn Văn A</td></tr>
-<tr><td>2025-09-13</td><td>Sản phẩm B</td><td>3</td><td>200000</td><td>Đang xử lý</td><td>Trần Thị B</td></tr>
+<p>| Ngày       | Sản phẩm   | Số lượng | Giá    | Trạng thái | Khách hàng   |
+| ---------- | ---------- | -------- | ------ | ---------- | ------------ |
+| 2025-09-13 | Sản phẩm A | 5        | 150000 | Hoàn thành | Nguyễn Văn A |
+| 2025-09-13 | Sản phẩm B | 3        | 200000 | Đang xử lý | Trần Thị B   |</p>
 <h3>Dashboard Sheet</h3>
-<p><tr><td>Metric</td><td>Value</td><td>Change</td><td>Status</td></tr>
-<tr><td>-------------</td><td>----------</td><td>------</td><td>------</td></tr>
-<tr><td>Tổng đơn hàng</td><td>1250</td><td>+12%</td><td>Tăng</td></tr>
-<tr><td>Doanh thu</td><td>1250000000</td><td>+8%</td><td>Tăng</td></tr></table></p>
+<p>| Metric        | Value      | Change | Status |
+| ------------- | ---------- | ------ | ------ |
+| Tổng đơn hàng | 1250       | +12%   | Tăng   |
+| Doanh thu     | 1250000000 | +8%    | Tăng   |</p>
 <h2>🔧 Troubleshooting</h2>
 <h3>Lỗi: "No key or keyFile set"</h3>
 <li>Kiểm tra credentials file có đúng format JSON không</li>
@@ -2102,22 +1963,13 @@ node test_google_sheets.js</code></pre>
 <li>Verify các credentials</li>
 <li>Test từng bước một</li>
 <li>Kiểm tra network connectivity</li></ul>
-<hr>
+<p>---</p>
 <p>🎉 <strong>Chúc bạn setup thành công Google Sheets Integration!</strong>
 </p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>GOOGLE_SHEETS_SETUP_GUIDE.md</code></small>
-                </div>
             </section>
 
-                        <section id="websocket" class="section">
-                <div class="section-header">
-                    <h2>🔌 🔌 WebSocket</h2>
-                    <p class="section-description">WebSocket setup và real-time communication</p>
-                </div>
-                <div class="section-content">
-                    <h1>🔌 WebSocket Setup Guide - React OAS Integration v4.0</h1>
+            <section id="websocket" class="section">
+                <h1>🔌 WebSocket Setup Guide - React OAS Integration v4.0</h1>
 <h2>📋 Tổng Quan</h2>
 <p>Hướng dẫn thiết lập và sử dụng WebSocket (Socket.IO) cho real-time communication giữa Frontend và Backend.</p>
 <h2>✅ Đã Cài Đặt</h2>
@@ -2127,83 +1979,91 @@ node test_google_sheets.js</code></pre>
 <li>✅ <code>socket.io@4.8.1</code> - Server library cho WebSocket</li>
 <h2>🚀 Quick Start</h2>
 <h3>1. Khởi động Backend Server</h3>
-<pre><code class="language-bash"># Start backend server (WebSocket server sẽ tự động khởi động)
+<pre><code><h1>Start backend server (WebSocket server sẽ tự động khởi động)</h1>
 cd backend
 npm start
 <h1>Hoặc từ root</h1>
-npm run backend</code></pre>
+npm run backend
+</code></pre>
 <p>Backend server sẽ chạy tại: <code>http://localhost:3001</code></p>
 <h3>2. Kết nối từ Frontend</h3>
-<pre><code class="language-javascript">import io from &quot;socket.io-client&quot;;
+<pre><code>import io from "socket.io-client";
 <p>// Kết nối đến backend
-const socket = io(&quot;http://localhost:3001&quot;, {
-  transports: [&quot;websocket&quot;, &quot;polling&quot;],
+const socket = io("http://localhost:3001", {
+  transports: ["websocket", "polling"],
 });</p>
 <p>// Lắng nghe welcome message
-socket.on(&quot;welcome&quot;, (data) =&gt; {
-  console.log(&quot;Welcome:&quot;, data.message);
-  console.log(&quot;Timestamp:&quot;, data.timestamp);
+socket.on("welcome", (data) => {
+  console.log("Welcome:", data.message);
+  console.log("Timestamp:", data.timestamp);
 });</p>
 <p>// Yêu cầu real-time data
-socket.emit(&quot;request_data&quot;, {
-  type: &quot;dashboard&quot;,
+socket.emit("request_data", {
+  type: "dashboard",
   timestamp: new Date().toISOString(),
 });</p>
 <p>// Lắng nghe data updates
-socket.on(&quot;data_update&quot;, (data) =&gt; {
-  console.log(&quot;Data update:&quot;, data);
+socket.on("data_update", (data) => {
+  console.log("Data update:", data);
 });</p>
 <p>// Yêu cầu AI analysis
-socket.emit(&quot;ai_analysis&quot;, {
+socket.emit("ai_analysis", {
   data: [1, 2, 3, 4, 5],
-  model: &quot;test&quot;,
+  model: "test",
 });</p>
 <p>// Lắng nghe AI results
-socket.on(&quot;ai_result&quot;, (result) =&gt; {
-  console.log(&quot;AI result:&quot;, result);
-});</code></pre></p>
+socket.on("ai_result", (result) => {
+  console.log("AI result:", result);
+});
+</code></pre></p>
 <h2>📡 WebSocket Events</h2>
 <h3>Client → Server (Emit)</h3>
-<h4><code>request_data</code></h4>
+<p>#### <code>request_data</code></p>
 <p>Yêu cầu real-time data từ server.</p>
-<pre><code class="language-javascript">socket.emit(&quot;request_data&quot;, {
-  type: &quot;dashboard&quot;, // hoặc &#039;analytics&#039;, &#039;orders&#039;, etc.
+<pre><code>socket.emit("request_data", {
+  type: "dashboard", // hoặc 'analytics', 'orders', etc.
   timestamp: new Date().toISOString(),
-});</code></pre>
-<h4><code>ai_analysis</code></h4>
+});
+</code></pre>
+<p>#### <code>ai_analysis</code></p>
 <p>Yêu cầu AI analysis.</p>
-<pre><code class="language-javascript">socket.emit(&quot;ai_analysis&quot;, {
+<pre><code>socket.emit("ai_analysis", {
   data: [1, 2, 3, 4, 5],
-  model: &quot;prediction&quot;, // hoặc &#039;classification&#039;, &#039;clustering&#039;, etc.
-});</code></pre>
+  model: "prediction", // hoặc 'classification', 'clustering', etc.
+});
+</code></pre>
 <h3>Server → Client (Listen)</h3>
-<h4><code>welcome</code></h4>
+<p>#### <code>welcome</code></p>
 <p>Message chào mừng khi client kết nối.</p>
-<pre><code class="language-javascript">socket.on(&quot;welcome&quot;, (data) =&gt; {
-  // data.message: &quot;Connected to React OAS Backend&quot;
+<pre><code>socket.on("welcome", (data) => {
+  // data.message: "Connected to React OAS Backend"
   // data.timestamp: ISO timestamp
-});</code></pre>
-<h4><code>data_update</code></h4>
+});
+</code></pre>
+<p>#### <code>data_update</code></p>
 <p>Real-time data update từ server.</p>
-<pre><code class="language-javascript">socket.on(&quot;data_update&quot;, (data) =&gt; {
+<pre><code>socket.on("data_update", (data) => {
   // data.id: unique ID
   // data.timestamp: ISO timestamp
   // data.value: data value
-  // data.status: status (&#039;active&#039;, &#039;pending&#039;, etc.)
-});</code></pre>
-<h4><code>ai_result</code></h4>
+  // data.status: status ('active', 'pending', etc.)
+});
+</code></pre>
+<p>#### <code>ai_result</code></p>
 <p>AI analysis result từ server.</p>
-<pre><code class="language-javascript">socket.on(&quot;ai_result&quot;, (result) =&gt; {
+<pre><code>socket.on("ai_result", (result) => {
   // result.id: unique ID
   // result.prediction: prediction value
   // result.confidence: confidence score (0-1)
   // result.timestamp: ISO timestamp
   // result.analysis: analysis description
-});</code></pre>
+});
+</code></pre>
 <h2>🧪 Testing WebSocket</h2>
 <h3>Chạy Test Script</h3>
-<pre><code class="language-bash"># Test WebSocket connection
-npm run test:websocket</code></pre>
+<pre><code><h1>Test WebSocket connection</h1>
+npm run test:websocket
+</code></pre>
 <p>Test script sẽ kiểm tra:</p>
 <li>✅ WebSocket connection</li>
 <li>✅ Welcome message</li>
@@ -2211,12 +2071,14 @@ npm run test:websocket</code></pre>
 <li>✅ AI analysis results</li>
 <h3>Test Manually</h3>
 <li><strong>Start backend server:</strong></li>
-<p>   <pre><code class="language-bash">cd backend
-   npm start</code></pre></p>
+<p>   <pre><code>   cd backend
+   npm start
+   </code></pre></p>
 <li><strong>Run test script:</strong></li>
-<p>   <pre><code class="language-bash">npm run test:websocket</code></pre></p>
+<p>   <pre><code>   npm run test:websocket
+   </code></pre></p>
 <li><strong>Expected output:</strong></li>
-<p>   <pre><code class="language-text">🔌 WebSocket Connection Test
+<p>   <pre><code>   🔌 WebSocket Connection Test
    ======================================================================</p>
 <p>   🔗 Connecting to: http://localhost:3001
       ✅ Connected to WebSocket server
@@ -2225,90 +2087,97 @@ npm run test:websocket</code></pre>
       📨 Message: Connected to React OAS Backend
       ✅ Received data update
       ✅ Received AI result</p>
-<p>   ✅ ALL TESTS PASSED</code></pre></p>
+<p>   ✅ ALL TESTS PASSED
+   </code></pre></p>
 <h2>🔧 Configuration</h2>
 <h3>Environment Variables</h3>
-<pre><code class="language-bash"># Backend URL (default: http://localhost:3001)
-REACT_APP_API_URL=http://localhost:3001</code></pre>
+<pre><code><h1>Backend URL (default: http://localhost:3001)</h1>
+REACT_APP_API_URL=http://localhost:3001
+</code></pre>
 <h3>Backend Configuration</h3>
 <p>Backend server tự động cấu hình WebSocket với:</p>
-<pre><code class="language-javascript">const io = socketIo(server, {
+<pre><code>const io = socketIo(server, {
   cors: {
-    origin: &quot;*&quot;,
-    methods: [&quot;GET&quot;, &quot;POST&quot;],
+    origin: "*",
+    methods: ["GET", "POST"],
   },
-});</code></pre>
+});
+</code></pre>
 <h3>Frontend Configuration</h3>
-<pre><code class="language-javascript">const socket = io(API_URL, {
-  transports: [&quot;websocket&quot;, &quot;polling&quot;], // Fallback to polling nếu WebSocket fail
+<pre><code>const socket = io(API_URL, {
+  transports: ["websocket", "polling"], // Fallback to polling nếu WebSocket fail
   timeout: 5000,
   reconnection: true,
   reconnectionAttempts: 5,
   reconnectionDelay: 1000,
-});</code></pre>
+});
+</code></pre>
 <h2>📱 React Component Example</h2>
 <h3>Hook để sử dụng WebSocket</h3>
-<pre><code class="language-javascript">// hooks/useWebSocket.js
-import { useEffect, useState } from &quot;react&quot;;
-import io from &quot;socket.io-client&quot;;
+<pre><code>// hooks/useWebSocket.js
+import { useEffect, useState } from "react";
+import io from "socket.io-client";
 <p>export function useWebSocket(url) {
   const [socket, setSocket] = useState(null);
   const [connected, setConnected] = useState(false);
   const [data, setData] = useState(null);</p>
-<p>  useEffect(() =&gt; {
+<p>  useEffect(() => {
     const newSocket = io(url, {
-      transports: [&quot;websocket&quot;, &quot;polling&quot;],
+      transports: ["websocket", "polling"],
     });</p>
-<p>    newSocket.on(&quot;connect&quot;, () =&gt; {
+<p>    newSocket.on("connect", () => {
       setConnected(true);
-      console.log(&quot;Connected to WebSocket&quot;);
+      console.log("Connected to WebSocket");
     });</p>
-<p>    newSocket.on(&quot;disconnect&quot;, () =&gt; {
+<p>    newSocket.on("disconnect", () => {
       setConnected(false);
-      console.log(&quot;Disconnected from WebSocket&quot;);
+      console.log("Disconnected from WebSocket");
     });</p>
-<p>    newSocket.on(&quot;data_update&quot;, (newData) =&gt; {
+<p>    newSocket.on("data_update", (newData) => {
       setData(newData);
     });</p>
 <p>    setSocket(newSocket);</p>
-<p>    return () =&gt; {
+<p>    return () => {
       newSocket.close();
     };
   }, [url]);</p>
 <p>  return { socket, connected, data };
-}</code></pre></p>
+}
+</code></pre></p>
 <h3>Sử dụng trong Component</h3>
-<pre><code class="language-javascript">// components/Dashboard.jsx
-import { useWebSocket } from &quot;../hooks/useWebSocket&quot;;
+<pre><code>// components/Dashboard.jsx
+import { useWebSocket } from "../hooks/useWebSocket";
 <p>function Dashboard() {
-  const { socket, connected, data } = useWebSocket(&quot;http://localhost:3001&quot;);</p>
-<p>  useEffect(() =&gt; {
-    if (socket &amp;&amp; connected) {
+  const { socket, connected, data } = useWebSocket("http://localhost:3001");</p>
+<p>  useEffect(() => {
+    if (socket && connected) {
       // Request data khi component mount
-      socket.emit(&quot;request_data&quot;, {
-        type: &quot;dashboard&quot;,
+      socket.emit("request_data", {
+        type: "dashboard",
       });
     }
   }, [socket, connected]);</p>
 <p>  return (
-    &lt;div&gt;
-      &lt;h1&gt;Dashboard&lt;/h1&gt;
-      &lt;p&gt;Status: {connected ? &quot;✅ Connected&quot; : &quot;❌ Disconnected&quot;}&lt;/p&gt;
-      {data &amp;&amp; (
-        &lt;div&gt;
-          &lt;p&gt;Value: {data.value}&lt;/p&gt;
-          &lt;p&gt;Status: {data.status}&lt;/p&gt;
-        &lt;/div&gt;
+    <div>
+      <h1>Dashboard</h1>
+      <p>Status: {connected ? "✅ Connected" : "❌ Disconnected"}</p>
+      {data && (
+        <div>
+          <p>Value: {data.value}</p>
+          <p>Status: {data.status}</p>
+        </div>
       )}
-    &lt;/div&gt;
+    </div>
   );
-}</code></pre></p>
+}
+</code></pre></p>
 <h2>🔍 Troubleshooting</h2>
 <h3>Connection Failed</h3>
 <p><strong>Problem:</strong> WebSocket không kết nối được</p>
 <p><strong>Solutions:</strong></p>
 <li>Kiểm tra backend server có đang chạy không:</li>
-<p>   <pre><code class="language-bash">curl http://localhost:3001/health</code></pre></p>
+<p>   <pre><code>   curl http://localhost:3001/health
+   </code></pre></p>
 <li>Kiểm tra CORS configuration trong backend</li>
 <li>Kiểm tra firewall/proxy settings</li>
 <h3>Messages Not Received</h3>
@@ -2316,20 +2185,23 @@ import { useWebSocket } from &quot;../hooks/useWebSocket&quot;;
 <p><strong>Solutions:</strong></p>
 <li>Kiểm tra event names có đúng không</li>
 <li>Kiểm tra socket connection status:</li>
-<p>   <pre><code class="language-javascript">console.log(&quot;Socket connected:&quot;, socket.connected);</code></pre></p>
+<p>   <pre><code>   console.log("Socket connected:", socket.connected);
+   </code></pre></p>
 <li>Kiểm tra server logs để xem có emit message không</li>
 <h3>Connection Timeout</h3>
 <p><strong>Problem:</strong> Connection timeout sau vài giây</p>
 <p><strong>Solutions:</strong></p>
 <li>Tăng timeout value:</li>
-<p>   <pre><code class="language-javascript">const socket = io(url, {
+<p>   <pre><code>   const socket = io(url, {
      timeout: 10000, // 10 seconds
-   });</code></pre></p>
+   });
+   </code></pre></p>
 <li>Kiểm tra network latency</li>
 <li>Sử dụng polling transport:</li>
-<p>   <pre><code class="language-javascript">const socket = io(url, {
-     transports: [&quot;polling&quot;], // Force polling
-   });</code></pre></p>
+<p>   <pre><code>   const socket = io(url, {
+     transports: ["polling"], // Force polling
+   });
+   </code></pre></p>
 <h2>📚 Additional Resources</h2>
 <li><a href="https://socket.io/docs/v4/" target="_blank">Socket.IO Documentation</a></li>
 <li><a href="https://socket.io/docs/v4/client-api/" target="_blank">Socket.IO Client API</a></li>
@@ -2340,370 +2212,491 @@ import { useWebSocket } from &quot;../hooks/useWebSocket&quot;;
 <li><strong>Clean up sockets</strong> in useEffect cleanup</li>
 <li><strong>Use TypeScript</strong> for better type safety (optional)</li>
 <li><strong>Monitor connection</strong> health in production</li></ul>
-<hr>
+<p>---</p>
 <p><strong>✅ WebSocket đã được cài đặt và sẵn sàng sử dụng!</strong>
 </p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>WEBSOCKET_SETUP_GUIDE.md</code></small>
-                </div>
             </section>
 
-                        <section id="ui-components" class="section">
-                <div class="section-header">
-                    <h2>🎨 🎨 UI Components</h2>
-                    <p class="section-description">UI Components library và hướng dẫn sử dụng</p>
-                </div>
-                <div class="section-content">
-                    <h1>🎨 UI Components Library - Hướng Dẫn Sử Dụng</h1>
+            <section id="ui" class="section">
+                <h1>🎨 UI Components Library - Hướng Dẫn Sử Dụng</h1>
 <h2>📦 Tổng Quan</h2>
 <p>Thư viện UI Components hiện đại, accessible và có thể tái sử dụng cho React OAS Integration v4.0.</p>
 <h2>🚀 Components Đã Triển Khai</h2>
 <h3>1. <strong>Card Component</strong> 📇</h3>
 <p>Component Card linh hoạt với nhiều variants và hiệu ứng hover.</p>
-<h4>Cách Sử Dụng Cơ Bản</h4>
-<pre><code class="language-jsx">import { Card } from &#039;./components/ui&#039;;
+<p>#### Cách Sử Dụng Cơ Bản</p>
+<pre><code>import { Card } from './components/ui';
 <p>// Card đơn giản
-&lt;Card&gt;
-  &lt;Card.Title&gt;Tiêu đề Card&lt;/Card.Title&gt;
-  &lt;Card.Body&gt;Nội dung card&lt;/Card.Body&gt;
-&lt;/Card&gt;</p>
+<Card>
+  <Card.Title>Tiêu đề Card</Card.Title>
+  <Card.Body>Nội dung card</Card.Body>
+</Card></p>
 <p>// Card với variants
-&lt;Card variant=&quot;primary&quot; hoverable shadow=&quot;lg&quot;&gt;
-  &lt;Card.Header&gt;
-    &lt;Card.Title&gt;Card Header&lt;/Card.Title&gt;
-  &lt;/Card.Header&gt;
-  &lt;Card.Body&gt;Nội dung&lt;/Card.Body&gt;
-  &lt;Card.Footer&gt;Footer content&lt;/Card.Footer&gt;
-&lt;/Card&gt;</p>
+<Card variant="primary" hoverable shadow="lg">
+  <Card.Header>
+    <Card.Title>Card Header</Card.Title>
+  </Card.Header>
+  <Card.Body>Nội dung</Card.Body>
+  <Card.Footer>Footer content</Card.Footer>
+</Card></p>
 <p>// Card với loading state
-&lt;Card loading&gt;
-  &lt;Card.Body&gt;Sẽ hiển thị skeleton loader&lt;/Card.Body&gt;
-&lt;/Card&gt;</p>
+<Card loading>
+  <Card.Body>Sẽ hiển thị skeleton loader</Card.Body>
+</Card></p>
 <p>// Card với Meta (avatar + info)
-&lt;Card&gt;
-  &lt;Card.Meta
-    avatar={&lt;img src=&quot;avatar.jpg&quot; /&gt;}
-    title=&quot;Phúc Cao&quot;
-    description=&quot;Software Developer&quot;
-  /&gt;
-&lt;/Card&gt;</code></pre></p>
-<h4>Props</h4>
-<ul><li><code>variant</code>: <code>default</code> <table><tr><td><code>primary</code></td><td><code>success</code></td><td><code>warning</code></td><td><code>error</code></td></tr> <code>glass</code></li>
+<Card>
+  <Card.Meta
+    avatar={<img src="avatar.jpg" />}
+    title="Phúc Cao"
+    description="Software Developer"
+  />
+</Card>
+</code></pre></p>
+<p>#### Props</p>
+<ul><li><code>variant</code>: <code>default</code> | <code>primary</code> | <code>success</code> | <code>warning</code> | <code>error</code> | <code>glass</code></li>
 <li><code>hoverable</code>: <code>boolean</code> - Hiệu ứng hover</li>
 <li><code>bordered</code>: <code>boolean</code> - Viền card</li>
-<li><code>shadow</code>: <code>none</code> <tr><td><code>sm</code></td><td><code>md</code></td><td><code>lg</code></td></tr> <code>xl</code></li>
-<li><code>padding</code>: <code>none</code> <tr><td><code>sm</code></td><td><code>md</code></td><td><code>lg</code></td></tr> <code>xl</code></li>
+<li><code>shadow</code>: <code>none</code> | <code>sm</code> | <code>md</code> | <code>lg</code> | <code>xl</code></li>
+<li><code>padding</code>: <code>none</code> | <code>sm</code> | <code>md</code> | <code>lg</code> | <code>xl</code></li>
 <li><code>loading</code>: <code>boolean</code> - Hiển thị skeleton</li>
 <li><code>onClick</code>: <code>function</code> - Click handler</li>
-<hr>
+<p>---</p>
 <h3>2. <strong>Skeleton Component</strong> 💀</h3>
 <p>Loading placeholders đẹp mắt cho content đang tải.</p>
-<h4>Cách Sử Dụng</h4>
-<pre><code class="language-jsx">import { Skeleton } from &#039;./components/ui&#039;;
+<p>#### Cách Sử Dụng</p>
+<pre><code>import { Skeleton } from './components/ui';
 <p>// Skeleton cơ bản
-&lt;Skeleton variant=&quot;text&quot; count={3} /&gt;</p>
+<Skeleton variant="text" count={3} /></p>
 <p>// Skeleton Avatar
-&lt;Skeleton.Avatar size={48} /&gt;</p>
+<Skeleton.Avatar size={48} /></p>
 <p>// Skeleton Button
-&lt;Skeleton.Button width={120} height={40} /&gt;</p>
+<Skeleton.Button width={120} height={40} /></p>
 <p>// Skeleton Input
-&lt;Skeleton.Input /&gt;</p>
+<Skeleton.Input /></p>
 <p>// Skeleton Image
-&lt;Skeleton.Image height={200} /&gt;</p>
+<Skeleton.Image height={200} /></p>
 <p>// Skeleton Card (preset)
-&lt;Skeleton.Card /&gt;</p>
+<Skeleton.Card /></p>
 <p>// Skeleton List (preset)
-&lt;Skeleton.List rows={5} /&gt;</p>
+<Skeleton.List rows={5} /></p>
 <p>// Skeleton Table (preset)
-&lt;Skeleton.Table rows={5} columns={4} /&gt;</code></pre></p>
-<h4>Props</h4>
-<li><code>variant</code>: <code>text</code> <tr><td><code>title</code></td><td><code>avatar</code></td><td><code>button</code></td><td><code>input</code></td></tr> <code>image</code></li>
+<Skeleton.Table rows={5} columns={4} />
+</code></pre></p>
+<p>#### Props</p>
+<li><code>variant</code>: <code>text</code> | <code>title</code> | <code>avatar</code> | <code>button</code> | <code>input</code> | <code>image</code></li>
 <li><code>width</code>: <code>string | number</code> - Chiều rộng</li>
 <li><code>height</code>: <code>string | number</code> - Chiều cao</li>
 <li><code>circle</code>: <code>boolean</code> - Hình tròn</li>
-<li><code>animation</code>: <code>wave</code> <tr><td><code>pulse</code></td></tr> <code>none</code></li>
+<li><code>animation</code>: <code>wave</code> | <code>pulse</code> | <code>none</code></li>
 <li><code>count</code>: <code>number</code> - Số lượng skeleton</li>
-<hr>
+<p>---</p>
 <h3>3. <strong>Toast Notification System</strong> 🔔</h3>
 <p>Hệ thống thông báo hiện đại với nhiều variants.</p>
-<h4>Setup</h4>
-<pre><code class="language-jsx">import { ToastProvider } from &quot;./components/ui&quot;;
+<p>#### Setup</p>
+<pre><code>import { ToastProvider } from "./components/ui";
 <p>// Wrap app với ToastProvider
 function App() {
   return (
-    &lt;ToastProvider position=&quot;top-right&quot; maxToasts={5}&gt;
-      {/<em> Your app </em>/}
-    &lt;/ToastProvider&gt;
+    <ToastProvider position="top-right" maxToasts={5}>
+      {/* Your app */}
+    </ToastProvider>
   );
-}</code></pre></p>
-<h4>Cách Sử Dụng</h4>
-<pre><code class="language-jsx">import { useToast } from &quot;./components/ui&quot;;
+}
+</code></pre></p>
+<p>#### Cách Sử Dụng</p>
+<pre><code>import { useToast } from "./components/ui";
 <p>function MyComponent() {
   const toast = useToast();</p>
-<p>  const handleSuccess = () =&gt; {
-    toast.success(&quot;Thành công!&quot;, {
+<p>  const handleSuccess = () => {
+    toast.success("Thành công!", {
       duration: 3000,
       closable: true,
     });
   };</p>
-<p>  const handleError = () =&gt; {
-    toast.error(&quot;Có lỗi xảy ra!&quot;);
+<p>  const handleError = () => {
+    toast.error("Có lỗi xảy ra!");
   };</p>
-<p>  const handleWarning = () =&gt; {
-    toast.warning(&quot;Cảnh báo!&quot;);
+<p>  const handleWarning = () => {
+    toast.warning("Cảnh báo!");
   };</p>
-<p>  const handleInfo = () =&gt; {
-    toast.info(&quot;Thông tin&quot;);
+<p>  const handleInfo = () => {
+    toast.info("Thông tin");
   };</p>
-<p>  const handleWithAction = () =&gt; {
-    toast.success(&quot;File đã lưu&quot;, {
+<p>  const handleWithAction = () => {
+    toast.success("File đã lưu", {
       action: {
-        label: &quot;Xem&quot;,
-        onClick: () =&gt; console.log(&quot;View file&quot;),
+        label: "Xem",
+        onClick: () => console.log("View file"),
       },
     });
   };</p>
 <p>  return (
-    &lt;div&gt;
-      &lt;button onClick={handleSuccess}&gt;Show Success&lt;/button&gt;
-      &lt;button onClick={handleError}&gt;Show Error&lt;/button&gt;
-    &lt;/div&gt;
+    <div>
+      <button onClick={handleSuccess}>Show Success</button>
+      <button onClick={handleError}>Show Error</button>
+    </div>
   );
-}</code></pre></p>
-<h4>Toast Options</h4>
-<li><code>type</code>: <code>success</code> <tr><td><code>error</code></td><td><code>warning</code></td></tr> <code>info</code></li>
+}
+</code></pre></p>
+<p>#### Toast Options</p>
+<li><code>type</code>: <code>success</code> | <code>error</code> | <code>warning</code> | <code>info</code></li>
 <li><code>duration</code>: <code>number</code> - Thời gian hiển thị (ms), 0 = không tự động đóng</li>
 <li><code>closable</code>: <code>boolean</code> - Hiển thị nút đóng</li>
 <li><code>icon</code>: <code>ReactNode</code> - Custom icon</li>
 <li><code>action</code>: <code>{ label: string, onClick: function }</code> - Action button</li>
-<h4>Toast Provider Props</h4>
-<li><code>position</code>: <code>top-left</code> <tr><td><code>top-center</code></td><td><code>top-right</code></td><td><code>bottom-left</code></td><td><code>bottom-center</code></td></tr> <code>bottom-right</code></li>
+<p>#### Toast Provider Props</p>
+<li><code>position</code>: <code>top-left</code> | <code>top-center</code> | <code>top-right</code> | <code>bottom-left</code> | <code>bottom-center</code> | <code>bottom-right</code></li>
 <li><code>maxToasts</code>: <code>number</code> - Số toast tối đa hiển thị</li>
-<hr>
+<p>---</p>
 <h3>4. <strong>Button Component</strong> 🔘</h3>
 <p>Button component hiện đại với nhiều variants và states.</p>
-<h4>Cách Sử Dụng</h4>
-<pre><code class="language-jsx">import { Button } from &#039;./components/ui&#039;;
+<p>#### Cách Sử Dụng</p>
+<pre><code>import { Button } from './components/ui';
 <p>// Button cơ bản
-&lt;Button variant=&quot;primary&quot;&gt;Click me&lt;/Button&gt;</p>
+<Button variant="primary">Click me</Button></p>
 <p>// Button với icon
-&lt;Button
-  variant=&quot;success&quot;
-  icon={&lt;CheckIcon /&gt;}
-  iconPosition=&quot;left&quot;
-&gt;
+<Button
+  variant="success"
+  icon={<CheckIcon />}
+  iconPosition="left"
+>
   Save
-&lt;/Button&gt;</p>
+</Button></p>
 <p>// Button loading
-&lt;Button loading&gt;Loading...&lt;/Button&gt;</p>
+<Button loading>Loading...</Button></p>
 <p>// Button disabled
-&lt;Button disabled&gt;Disabled&lt;/Button&gt;</p>
+<Button disabled>Disabled</Button></p>
 <p>// Button full width
-&lt;Button fullWidth&gt;Full Width&lt;/Button&gt;</p>
+<Button fullWidth>Full Width</Button></p>
 <p>// Button chỉ icon
-&lt;Button icon={&lt;SearchIcon /&gt;} /&gt;</p>
+<Button icon={<SearchIcon />} /></p>
 <p>// Button Group
-&lt;Button.Group spacing=&quot;sm&quot;&gt;
-  &lt;Button variant=&quot;primary&quot;&gt;Left&lt;/Button&gt;
-  &lt;Button variant=&quot;secondary&quot;&gt;Middle&lt;/Button&gt;
-  &lt;Button variant=&quot;secondary&quot;&gt;Right&lt;/Button&gt;
-&lt;/Button.Group&gt;</code></pre></p>
-<h4>Props</h4>
-<li><code>variant</code>: <code>primary</code> <tr><td><code>secondary</code></td><td><code>success</code></td><td><code>warning</code></td><td><code>error</code></td><td><code>outline</code></td><td><code>ghost</code></td><td><code>link</code></td></tr> <code>text</code></li>
-<li><code>size</code>: <code>xs</code> <tr><td><code>sm</code></td><td><code>md</code></td><td><code>lg</code></td></tr> <code>xl</code></li>
+<Button.Group spacing="sm">
+  <Button variant="primary">Left</Button>
+  <Button variant="secondary">Middle</Button>
+  <Button variant="secondary">Right</Button>
+</Button.Group>
+</code></pre></p>
+<p>#### Props</p>
+<li><code>variant</code>: <code>primary</code> | <code>secondary</code> | <code>success</code> | <code>warning</code> | <code>error</code> | <code>outline</code> | <code>ghost</code> | <code>link</code> | <code>text</code></li>
+<li><code>size</code>: <code>xs</code> | <code>sm</code> | <code>md</code> | <code>lg</code> | <code>xl</code></li>
 <li><code>icon</code>: <code>ReactNode</code> - Icon element</li>
 <li><code>iconPosition</code>: <code>left</code> | <code>right</code></li>
 <li><code>loading</code>: <code>boolean</code> - Loading state</li>
 <li><code>disabled</code>: <code>boolean</code> - Disabled state</li>
 <li><code>fullWidth</code>: <code>boolean</code> - Full width</li>
 <li><code>onClick</code>: <code>function</code> - Click handler</li>
-<li><code>type</code>: <code>button</code> <tr><td><code>submit</code></td></tr> <code>reset</code></li>
-<hr>
+<li><code>type</code>: <code>button</code> | <code>submit</code> | <code>reset</code></li>
+<p>---</p>
 <h3>5. <strong>Loading Component</strong> ⏳</h3>
 <p>Nhiều loại loading indicators cho các contexts khác nhau.</p>
-<h4>Cách Sử Dụng</h4>
-<pre><code class="language-jsx">import { Loading } from &#039;./components/ui&#039;;
+<p>#### Cách Sử Dụng</p>
+<pre><code>import { Loading } from './components/ui';
 <p>// Loading spinner
-&lt;Loading variant=&quot;spinner&quot; size=&quot;md&quot; color=&quot;primary&quot; /&gt;</p>
+<Loading variant="spinner" size="md" color="primary" /></p>
 <p>// Loading với text
-&lt;Loading variant=&quot;spinner&quot; text=&quot;Đang tải...&quot; /&gt;</p>
+<Loading variant="spinner" text="Đang tải..." /></p>
 <p>// Loading dots
-&lt;Loading variant=&quot;dots&quot; /&gt;</p>
+<Loading variant="dots" /></p>
 <p>// Loading bars
-&lt;Loading variant=&quot;bars&quot; /&gt;</p>
+<Loading variant="bars" /></p>
 <p>// Loading pulse
-&lt;Loading variant=&quot;pulse&quot; /&gt;</p>
+<Loading variant="pulse" /></p>
 <p>// Loading ring
-&lt;Loading variant=&quot;ring&quot; /&gt;</p>
+<Loading variant="ring" /></p>
 <p>// Loading wave
-&lt;Loading variant=&quot;wave&quot; /&gt;</p>
+<Loading variant="wave" /></p>
 <p>// Full screen loading
-&lt;Loading fullScreen text=&quot;Đang xử lý...&quot; /&gt;</p>
+<Loading fullScreen text="Đang xử lý..." /></p>
 <p>// Loading Overlay (cho cards, sections)
-&lt;Loading.Overlay visible={isLoading}&gt;
-  &lt;YourContent /&gt;
-&lt;/Loading.Overlay&gt;</p>
+<Loading.Overlay visible={isLoading}>
+  <YourContent />
+</Loading.Overlay></p>
 <p>// Inline loading (cho buttons)
-&lt;button&gt;
-  &lt;Loading.Inline size=&quot;sm&quot; color=&quot;white&quot; /&gt;
+<button>
+  <Loading.Inline size="sm" color="white" />
   Loading...
-&lt;/button&gt;</code></pre></p>
-<h4>Props</h4>
-<li><code>variant</code>: <code>spinner</code> <tr><td><code>dots</code></td><td><code>bars</code></td><td><code>pulse</code></td><td><code>ring</code></td></tr> <code>wave</code></li>
-<li><code>size</code>: <code>xs</code> <tr><td><code>sm</code></td><td><code>md</code></td></tr> <code>lg</code></li>
-<li><code>color</code>: <code>primary</code> <tr><td><code>success</code></td><td><code>warning</code></td><td><code>error</code></td></tr> <code>gray</code></li>
+</button>
+</code></pre></p>
+<p>#### Props</p>
+<li><code>variant</code>: <code>spinner</code> | <code>dots</code> | <code>bars</code> | <code>pulse</code> | <code>ring</code> | <code>wave</code></li>
+<li><code>size</code>: <code>xs</code> | <code>sm</code> | <code>md</code> | <code>lg</code></li>
+<li><code>color</code>: <code>primary</code> | <code>success</code> | <code>warning</code> | <code>error</code> | <code>gray</code></li>
 <li><code>text</code>: <code>string</code> - Loading text</li>
 <li><code>fullScreen</code>: <code>boolean</code> - Full screen overlay</li>
-<hr>
+<p>---</p>
 <h3>6. <strong>Empty Component</strong> 📭</h3>
 <p>Empty states đẹp mắt với illustrations.</p>
-<h4>Cách Sử Dụng</h4>
-<pre><code class="language-jsx">import { Empty, Button } from &#039;./components/ui&#039;;
+<p>#### Cách Sử Dụng</p>
+<pre><code>import { Empty, Button } from './components/ui';
 <p>// Empty state cơ bản
-&lt;Empty
-  title=&quot;Không có dữ liệu&quot;
-  description=&quot;Chưa có dữ liệu nào được tạo&quot;
-/&gt;</p>
+<Empty
+  title="Không có dữ liệu"
+  description="Chưa có dữ liệu nào được tạo"
+/></p>
 <p>// Empty state với variants
-&lt;Empty
-  variant=&quot;search&quot;
-  title=&quot;Không tìm thấy kết quả&quot;
-  description=&quot;Thử tìm kiếm với từ khóa khác&quot;
-/&gt;</p>
+<Empty
+  variant="search"
+  title="Không tìm thấy kết quả"
+  description="Thử tìm kiếm với từ khóa khác"
+/></p>
 <p>// Empty state với action
-&lt;Empty
-  variant=&quot;folder&quot;
-  title=&quot;Thư mục trống&quot;
-  description=&quot;Chưa có file nào trong thư mục này&quot;
+<Empty
+  variant="folder"
+  title="Thư mục trống"
+  description="Chưa có file nào trong thư mục này"
   action={
-    &lt;Button variant=&quot;primary&quot;&gt;
+    <Button variant="primary">
       Tải file lên
-    &lt;/Button&gt;
+    </Button>
   }
-/&gt;</p>
+/></p>
 <p>// Empty state với custom image
-&lt;Empty
-  title=&quot;Custom Empty&quot;
-  image={&lt;img src=&quot;custom-empty.svg&quot; /&gt;}
-/&gt;</code></pre></p>
-<h4>Props</h4>
-<li><code>variant</code>: <code>default</code> <tr><td><code>search</code></td><td><code>error</code></td><td><code>success</code></td><td><code>folder</code></td></tr></table> <code>inbox</code></li>
+<Empty
+  title="Custom Empty"
+  image={<img src="custom-empty.svg" />}
+/>
+</code></pre></p>
+<p>#### Props</p>
+<li><code>variant</code>: <code>default</code> | <code>search</code> | <code>error</code> | <code>success</code> | <code>folder</code> | <code>inbox</code></li>
 <li><code>title</code>: <code>string</code> - Tiêu đề</li>
 <li><code>description</code>: <code>string</code> - Mô tả</li>
 <li><code>image</code>: <code>ReactNode</code> - Custom image</li>
 <li><code>action</code>: <code>ReactNode</code> - Action button/element</li>
-<hr>
+<p>---</p>
 <h2>🎨 Design Tokens</h2>
 <p>Tất cả components sử dụng Design Tokens từ <code>src/styles/design-tokens.css</code>:</p>
 <h3>Colors</h3>
-<pre><code class="language-css">var(--color-primary-500)
+<pre><code>var(--color-primary-500)
 var(--color-success-500)
 var(--color-warning-500)
 var(--color-error-500)
-var(--color-gray-500)</code></pre>
+var(--color-gray-500)
+</code></pre>
 <h3>Spacing</h3>
-<pre><code class="language-css">var(--spacing-xs)   /<em> 4px </em>/
-var(--spacing-sm)   /<em> 8px </em>/
-var(--spacing-md)   /<em> 16px </em>/
-var(--spacing-lg)   /<em> 24px </em>/
-var(--spacing-xl)   /<em> 32px </em>/</code></pre>
+<pre><code>var(--spacing-xs)   /* 4px */
+var(--spacing-sm)   /* 8px */
+var(--spacing-md)   /* 16px */
+var(--spacing-lg)   /* 24px */
+var(--spacing-xl)   /* 32px */
+</code></pre>
 <h3>Typography</h3>
-<pre><code class="language-css">var(--text-xs)      /<em> 12px </em>/
-var(--text-sm)      /<em> 14px </em>/
-var(--text-base)    /<em> 16px </em>/
-var(--text-lg)      /<em> 18px </em>/
-var(--text-xl)      /<em> 20px </em>/</code></pre>
+<pre><code>var(--text-xs)      /* 12px */
+var(--text-sm)      /* 14px */
+var(--text-base)    /* 16px */
+var(--text-lg)      /* 18px */
+var(--text-xl)      /* 20px */
+</code></pre>
 <h3>Shadows</h3>
-<pre><code class="language-css">var(--shadow-sm)
+<pre><code>var(--shadow-sm)
 var(--shadow-md)
 var(--shadow-lg)
-var(--shadow-xl)</code></pre>
+var(--shadow-xl)
+</code></pre>
 <h3>Border Radius</h3>
-<pre><code class="language-css">var(--radius-sm)    /<em> 4px </em>/
-var(--radius-md)    /<em> 8px </em>/
-var(--radius-lg)    /<em> 12px </em>/
-var(--radius-xl)    /<em> 16px </em>/
-var(--radius-full)  /<em> 9999px </em>/</code></pre>
-<hr>
+<pre><code>var(--radius-sm)    /* 4px */
+var(--radius-md)    /* 8px */
+var(--radius-lg)    /* 12px */
+var(--radius-xl)    /* 16px */
+var(--radius-full)  /* 9999px */
+</code></pre>
+<p>---</p>
 <h2>🎬 Animations</h2>
 <p>Sử dụng animations từ <code>src/styles/animations.css</code>:</p>
 <h3>CSS Classes</h3>
-<pre><code class="language-jsx">// Fade animations
-&lt;div className=&quot;animate-fade-in&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;animate-fade-out&quot;&gt;...&lt;/div&gt;
+<pre><code>// Fade animations
+<div className="animate-fade-in">...</div>
+<div className="animate-fade-out">...</div>
 <p>// Slide animations
-&lt;div className=&quot;animate-slide-in-up&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;animate-slide-in-down&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;animate-slide-in-left&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;animate-slide-in-right&quot;&gt;...&lt;/div&gt;</p>
+<div className="animate-slide-in-up">...</div>
+<div className="animate-slide-in-down">...</div>
+<div className="animate-slide-in-left">...</div>
+<div className="animate-slide-in-right">...</div></p>
 <p>// Scale animations
-&lt;div className=&quot;animate-scale-in&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;animate-scale-out&quot;&gt;...&lt;/div&gt;</p>
+<div className="animate-scale-in">...</div>
+<div className="animate-scale-out">...</div></p>
 <p>// Hover effects
-&lt;div className=&quot;hover-lift&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;hover-scale&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;hover-glow&quot;&gt;...&lt;/div&gt;</p>
+<div className="hover-lift">...</div>
+<div className="hover-scale">...</div>
+<div className="hover-glow">...</div></p>
 <p>// Loading states
-&lt;div className=&quot;loading-shimmer&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;loading-spin&quot;&gt;...&lt;/div&gt;
-&lt;div className=&quot;loading-pulse&quot;&gt;...&lt;/div&gt;</code></pre></p>
-<hr>
+<div className="loading-shimmer">...</div>
+<div className="loading-spin">...</div>
+<div className="loading-pulse">...</div>
+</code></pre></p>
+<p>---</p>
 <h2>📱 Responsive Design</h2>
 <p>Tất cả components đều responsive và hoạt động tốt trên mobile, tablet, desktop.</p>
 <h3>Breakpoints</h3>
 <li>Mobile: <code>< 768px</code></li>
 <li>Tablet: <code>768px - 1024px</code></li>
 <li>Desktop: <code>> 1024px</code></li>
-<hr>
+<p>---</p>
 <h2>♿ Accessibility</h2>
 <p>Tất cả components tuân thủ WCAG 2.1 guidelines:</p>
 <li>✅ Keyboard navigation</li>
 <li>✅ Screen reader support</li>
 <li>✅ Focus indicators</li>
 <li>✅ ARIA attributes</li>
-<li>✅ Reduced motion support</li></ul>
-<hr>
+<li>✅ Reduced motion support</li>
+<p>---</p>
 <h2>🎯 Best Practices</h2>
 <h3>1. Import Components</h3>
-<pre><code class="language-jsx">// ✅ Good - Named imports
-import { Card, Button, Toast } from &quot;./components/ui&quot;;
+<pre><code>// ✅ Good - Named imports
+import { Card, Button, Toast } from "./components/ui";
 <p>// ❌ Bad - Default imports
-import Card from &quot;./components/ui/Card&quot;;</code></pre></p>
+import Card from "./components/ui/Card";
+</code></pre></p>
 <h3>2. Use Design Tokens</h3>
-<pre><code class="language-jsx">// ✅ Good - Use design tokens
-&lt;div style={{ padding: &#039;var(--spacing-md)&#039; }}&gt;
+<pre><code>// ✅ Good - Use design tokens
+<div style={{ padding: 'var(--spacing-md)' }}>
 <p>// ❌ Bad - Hard-coded values
-&lt;div style={{ padding: &#039;16px&#039; }}&gt;</code></pre></p>
+<div style={{ padding: '16px' }}>
+</code></pre></p>
 <h3>3. Consistent Variants</h3>
-<pre><code class="language-jsx">// ✅ Good - Consistent variants
-&lt;Button variant=&quot;primary&quot;&gt;Submit&lt;/Button&gt;
-&lt;Card variant=&quot;primary&quot;&gt;...&lt;/Card&gt;
+<pre><code>// ✅ Good - Consistent variants
+<Button variant="primary">Submit</Button>
+<Card variant="primary">...</Card>
 <p>// ❌ Bad - Inconsistent
-&lt;Button variant=&quot;primary&quot;&gt;Submit&lt;/Button&gt;
-&lt;Card variant=&quot;blue&quot;&gt;...&lt;/Card&gt;</code></pre></p>
+<Button variant="primary">Submit</Button>
+<Card variant="blue">...</Card>
+</code></pre></p>
 <h3>4. Loading States</h3>
-<pre><code class="language-jsx">// ✅ Good - Show loading
-&lt;Button loading={isSubmitting}&gt;Submit&lt;/Button&gt;
+<pre><code>// ✅ Good - Show loading
+<Button loading={isSubmitting}>Submit</Button>
 <p>// ❌ Bad - No feedback
-&lt;Button&gt;Submit&lt;/Button&gt;</code></pre></p>
+<Button>Submit</Button>
+</code></pre></p>
 <h3>5. Empty States</h3>
-<p>```jsx
-// ✅ Good - Show empty state
+<pre><code>// ✅ Good - Show empty state
 {
-  </p>
-<p>... (truncated, see full file for complete content)</p>
-                </div>
-                <div class="section-footer">
-                    <small>📄 Source: <code>UI_COMPONENTS_GUIDE.md</code></small>
-                </div>
+  data.length === 0 ? (
+    <Empty title="No data" action={<Button>Add data</Button>} />
+  ) : (
+    <DataList data={data} />
+  );
+}
+<p>// ❌ Bad - No empty state
+{
+  data.map((item) => <Item key={item.id} />);
+}
+</code></pre></p>
+<p>---</p>
+<h2>🔧 Customization</h2>
+<h3>Override Styles</h3>
+<pre><code>// Using className
+<Card className="my-custom-card">
+  ...
+</Card>
+<p>// CSS
+.my-custom-card {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+</code></pre></p>
+<h3>Extend Components</h3>
+<pre><code>// Create custom component
+import { Button } from "./components/ui";
+<p>export const IconButton = ({ icon, ...props }) => <Button icon={icon} {...props} />;
+</code></pre></p>
+<p>---</p>
+<h2>📊 Examples</h2>
+<h3>Dashboard Card</h3>
+<pre><code><Card hoverable shadow="lg">
+  <Card.Header>
+    <Card.Title>Sales Overview</Card.Title>
+  </Card.Header>
+  <Card.Body>
+    <div className="stats">
+      <div className="stat">
+        <h4>Total Sales</h4>
+        <p>$125,000</p>
+      </div>
+    </div>
+  </Card.Body>
+  <Card.Footer>
+    <Button variant="outline" size="sm">
+      View Details
+    </Button>
+  </Card.Footer>
+</Card>
+</code></pre>
+<h3>Form with Loading</h3>
+<pre><code>function MyForm() {
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
+<p>  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);</p>
+<p>    try {
+      await submitForm();
+      toast.success("Form submitted successfully!");
+    } catch (error) {
+      toast.error("Failed to submit form");
+    } finally {
+      setLoading(false);
+    }
+  };</p>
+<p>  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" />
+      <Button type="submit" loading={loading}>
+        Submit
+      </Button>
+    </form>
+  );
+}
+</code></pre></p>
+<h3>Data List with Empty State</h3>
+<pre><code>function DataList({ data, loading }) {
+  if (loading) {
+    return <Skeleton.List rows={5} />;
+  }
+<p>  if (data.length === 0) {
+    return (
+      <Empty
+        variant="search"
+        title="No results found"
+        description="Try adjusting your search criteria"
+        action={<Button onClick={handleReset}>Reset</Button>}
+      />
+    );
+  }</p>
+<p>  return (
+    <div>
+      {data.map((item) => (
+        <Card key={item.id} hoverable>
+          <Card.Body>{item.name}</Card.Body>
+        </Card>
+      ))}
+    </div>
+  );
+}
+</code></pre></p>
+<p>---</p>
+<h2>🎉 Kết Luận</h2>
+<p>Thư viện UI Components này cung cấp:</p>
+<li>✅ <strong>6 Components chính</strong>: Card, Skeleton, Toast, Button, Loading, Empty</li>
+<li>✅ <strong>Design System hoàn chỉnh</strong>: Tokens, animations, typography</li>
+<li>✅ <strong>Responsive</strong>: Hoạt động tốt trên mọi thiết bị</li>
+<li>✅ <strong>Accessible</strong>: Tuân thủ WCAG guidelines</li>
+<li>✅ <strong>Customizable</strong>: Dễ dàng tùy chỉnh và mở rộng</li>
+<li>✅ <strong>Modern</strong>: Sử dụng công nghệ và best practices mới nhất</li>
+<p>---</p>
+<h2>📚 Tài Liệu Liên Quan</h2>
+<li><a href="./UX_UI_UPGRADE_PLAN.md" target="_blank">UX_UI_UPGRADE_PLAN.md</a> - Kế hoạch nâng cấp UX/UI</li>
+<li><a href="./src/styles/design-tokens.css" target="_blank">src/styles/design-tokens.css</a> - Design tokens</li>
+<li><a href="./src/styles/animations.css" target="_blank">src/styles/animations.css</a> - Animations</li>
+<li><a href="./src/styles/typography.css" target="_blank">src/styles/typography.css</a> - Typography</li></ul>
+<p>---</p>
+<p><strong>Version</strong>: 4.0.3
+<strong>Last Updated</strong>: Dec 11, 2025
+<strong>Status</strong>: ✅ Phase 2 Complete
+</p>
             </section>
-            </div>
 
             <div class="last-updated">
-                <p><strong>📅 Last Updated:</strong> lúc 07:21 16 tháng 2, 2026</p>
-                <p>🔄 <strong>Auto-generated</strong> from Markdown documentation files</p>
-                <p>📝 <strong>Regenerate:</strong> <code>node scripts/utils/generate-complete-docs.js</code></p>
+                <p>📅 Last Updated: 16/2/2026</p>
+                <p>🔄 Auto-generated from Markdown files</p>
             </div>
         </main>
     </div>
@@ -2715,7 +2708,7 @@ import Card from &quot;./components/ui/Card&quot;;</code></pre></p>
         const body = document.documentElement;
 
         const getInitialTheme = () => {
-            const savedTheme = localStorage.getItem('docs-theme');
+            const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 return savedTheme;
             }
@@ -2725,25 +2718,21 @@ import Card from &quot;./components/ui/Card&quot;;</code></pre></p>
         const applyTheme = (theme) => {
             if (theme === 'dark') {
                 body.setAttribute('data-theme', 'dark');
-                if (themeToggle) themeToggle.checked = true;
+                themeToggle.checked = true;
                 if (mobileThemeToggle) mobileThemeToggle.checked = true;
             } else {
                 body.removeAttribute('data-theme');
-                if (themeToggle) themeToggle.checked = false;
+                themeToggle.checked = false;
                 if (mobileThemeToggle) mobileThemeToggle.checked = false;
             }
-            localStorage.setItem('docs-theme', theme);
+            localStorage.setItem('theme', theme);
         };
 
-        // Set initial theme
         applyTheme(getInitialTheme());
 
-        // Theme toggle handlers
-        if (themeToggle) {
-            themeToggle.addEventListener('change', () => {
-                applyTheme(themeToggle.checked ? 'dark' : 'light');
-            });
-        }
+        themeToggle.addEventListener('change', () => {
+            applyTheme(themeToggle.checked ? 'dark' : 'light');
+        });
 
         if (mobileThemeToggle) {
             mobileThemeToggle.addEventListener('change', () => {
@@ -2767,12 +2756,10 @@ import Card from &quot;./components/ui/Card&quot;;</code></pre></p>
 
         const setActiveLink = () => {
             let currentSection = '';
-            const scrollPosition = window.scrollY + 150;
-
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                if (window.scrollY >= sectionTop - 100) {
                     currentSection = section.getAttribute('id');
                 }
             });
@@ -2786,9 +2773,8 @@ import Card from &quot;./components/ui/Card&quot;;</code></pre></p>
         };
 
         window.addEventListener('scroll', setActiveLink);
-        window.addEventListener('load', setActiveLink);
 
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2797,11 +2783,10 @@ import Card from &quot;./components/ui/Card&quot;;</code></pre></p>
 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 100,
+                        top: targetElement.offsetTop - 20,
                         behavior: 'smooth'
                     });
 
-                    // Close mobile menu after clicking
                     if (sidebar) {
                         sidebar.classList.remove('active');
                     }
@@ -2809,14 +2794,7 @@ import Card from &quot;./components/ui/Card&quot;;</code></pre></p>
             });
         });
 
-        // Close sidebar when clicking outside (mobile)
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('active')) {
-                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-                    sidebar.classList.remove('active');
-                }
-            }
-        });
+        setActiveLink();
     </script>
 </body>
 </html>
