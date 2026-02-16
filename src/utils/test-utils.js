@@ -148,7 +148,7 @@ export const createMockStore = (initialState = {}) => {
 
   const listeners = [];
 
-  return {
+  const mockStore = {
     getState: () => state,
     dispatch: jest.fn((action) => {
       // Simple reducer for testing
@@ -169,6 +169,8 @@ export const createMockStore = (initialState = {}) => {
     }),
     replaceReducer: jest.fn(),
   };
+
+  return mockStore;
 };
 
 /**

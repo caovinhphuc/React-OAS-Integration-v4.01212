@@ -108,10 +108,18 @@ describe("ProtectedRoute Component", () => {
     it("should show loading state initially", () => {
       const initialState = {
         auth: {
-          isAuthenticated: false,
-          sessionId: null,
+          isAuthenticated: true,
+          sessionId: "test-session-id",
         },
       };
+
+      localStorageMock.getItem.mockImplementation((key) => {
+        if (key === "authToken" || key === "token") return "valid-token";
+        if (key === "sessionId") return "test-session-id";
+        return null;
+      });
+
+      global.fetch.mockImplementation(() => new Promise(() => {}));
 
       renderWithProviders(<ProtectedRoute>{mockChildren}</ProtectedRoute>, {
         initialState,
@@ -330,7 +338,7 @@ describe("ProtectedRoute Component", () => {
 
       await waitFor(
         () => {
-          expect(mockLogoutThunk).toHaveBeenCalledWith(false);
+          expect(logout).toHaveBeenCalledWith(false);
         },
         { timeout: 2000 }
       );
@@ -405,7 +413,7 @@ describe("ProtectedRoute Component", () => {
 
       await waitFor(
         () => {
-          expect(mockLogoutThunk).toHaveBeenCalledWith(false);
+          expect(logout).toHaveBeenCalledWith(false);
         },
         { timeout: 2000 }
       );

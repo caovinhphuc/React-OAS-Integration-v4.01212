@@ -52,6 +52,7 @@ async function initGoogleDrive() {
       path.join(__dirname, "../../mia-logistics-469406-eec521c603c0.json"),
       path.join(__dirname, "../../config/service_account.json"),
       path.join(__dirname, "../../automation/config/service_account.json"),
+      path.join(__dirname, "../../automation/automation_new/config/service_account.json"),
     ];
 
     let keyFile = null;
@@ -98,6 +99,7 @@ async function initGoogleSheets() {
       process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH,
       path.join(__dirname, "../../config/service_account.json"),
       path.join(__dirname, "../../automation/config/service_account.json"),
+      path.join(__dirname, "../../automation/automation_new/config/service_account.json"),
       path.join(__dirname, "../../mia-logistics-469406-eec521c603c0.json"),
     ];
 

@@ -19,6 +19,7 @@ function getCredentialsFile() {
     path.join(__dirname, "../../mia-logistics-469406-eec521c603c0.json"),
     path.join(__dirname, "../../config/service_account.json"),
     path.join(__dirname, "../../automation/config/service_account.json"),
+    path.join(__dirname, "../../automation/automation_new/config/service_account.json"),
   ];
 
   for (const filePath of possiblePaths) {

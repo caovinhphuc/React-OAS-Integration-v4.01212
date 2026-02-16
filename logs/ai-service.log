@@ -1,1 +1,11 @@
-/opt/homebrew/opt/python@3.14/bin/python3.14: No module named uvicorn
+INFO:     Will watch for changes in these directories: ['/Users/phuccao/Workspace/mia-vn/React-OAS-Integration-v4.01212/ai-service']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [90401] using WatchFiles
+INFO:     Started server process [90404]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [90404]
+INFO:     Stopping reloader process [90401]

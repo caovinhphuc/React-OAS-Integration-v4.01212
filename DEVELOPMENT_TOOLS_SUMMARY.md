@@ -58,16 +58,8 @@ npm run format:check  # Check formatting
 ### Type Checking
 
 ```bash
-npm run type:check    # TypeScript type check (if tsconfig.json exists)
-npm run type:watch    # TypeScript watch mode
-```
 
-### Validation
-
-```bash
-npm run validate      # Run lint, format check, and tests
-npm run validate:full # Full validation including build
-npm run pre-commit    # Run lint-staged manually
+   # Run lint-staged manually
 ```
 
 ## 🚀 Usage
@@ -189,6 +181,7 @@ package-lock.json
 **Problem**: `fatal: 'origin' does not appear to be a git repository`
 
 **Solution**:
+
 ```bash
 git remote add origin https://github.com/caovinhphuc/React-OAS-Integration-v4.0.git
 git remote -v  # Verify
@@ -199,6 +192,7 @@ git remote -v  # Verify
 **Problem**: `Updates were rejected because the tip of your current branch is behind`
 
 **Solution**:
+
 ```bash
 git pull origin main --no-rebase
 # Resolve conflicts if any

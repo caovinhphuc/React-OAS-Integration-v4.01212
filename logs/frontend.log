@@ -1,3 +1,7 @@
- INFO  Accepting connections at http://localhost:8080
- HTTP  2/16/2026 6:24:09 AM ::1 GET /
- HTTP  2/16/2026 6:24:09 AM ::1 Returned 200 in 10 ms
+
+> react-oas-integration@3.0.0 start
+> react-scripts start
+
+(node:91736) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Something is already running on port 3000.
