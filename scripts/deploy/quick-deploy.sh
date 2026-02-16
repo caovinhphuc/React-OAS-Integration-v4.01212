@@ -147,7 +147,20 @@ rm -f /tmp/git-push.log
 print "Build frontend..."
 if [ ! -x "node_modules/.bin/react-scripts" ]; then
     print_warning "Thiếu dependencies (react-scripts). Đang chạy npm install..."
-    npm install
+    if npm install; then
+        print_success "Đã cài dependencies"
+    else
+        print_warning "npm install thất bại, thử lại với cache local để tránh lỗi quyền ~/.npm"
+        LOCAL_NPM_CACHE="$PROJECT_ROOT/.npm-cache"
+        mkdir -p "$LOCAL_NPM_CACHE"
+        if npm install --cache "$LOCAL_NPM_CACHE" --prefer-offline; then
+            print_success "Đã cài dependencies với cache local: $LOCAL_NPM_CACHE"
+        else
+            print_error "Không thể cài dependencies"
+            print "Nếu vẫn lỗi EACCES, chạy 1 lần: sudo chown -R $(id -u):$(id -g) ~/.npm"
+            exit 1
+        fi
+    fi
 fi
 
 if npm run build > /tmp/quick-deploy-build.log 2>&1; then
