@@ -34,14 +34,22 @@ function getCredentialsFile() {
   return null;
 }
 
+function hasInlineCredentials() {
+  return !!(
+    (process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || process.env.REACT_APP_GOOGLE_CLIENT_EMAIL) &&
+    (process.env.GOOGLE_PRIVATE_KEY || process.env.REACT_APP_GOOGLE_PRIVATE_KEY)
+  );
+}
+
 const credentialsFile = getCredentialsFile();
+const inlineCredentialsConfigured = hasInlineCredentials();
 
 // ==================== GOOGLE SHEETS ENDPOINTS ====================
 
 // POST /api/google/sheets/read
 router.post("/sheets/read", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -69,7 +77,7 @@ router.post("/sheets/read", async (req, res) => {
 // POST /api/google/sheets/write
 router.post("/sheets/write", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -97,7 +105,7 @@ router.post("/sheets/write", async (req, res) => {
 // POST /api/google/sheets/append
 router.post("/sheets/append", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -125,7 +133,7 @@ router.post("/sheets/append", async (req, res) => {
 // POST /api/google/sheets/clear
 router.post("/sheets/clear", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -153,7 +161,7 @@ router.post("/sheets/clear", async (req, res) => {
 // GET /api/google/sheets/metadata/:spreadsheetId
 router.get("/sheets/metadata/:spreadsheetId", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -181,7 +189,7 @@ router.get("/sheets/metadata/:spreadsheetId", async (req, res) => {
 // POST /api/google/sheets/batch-get
 router.post("/sheets/batch-get", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -211,7 +219,7 @@ router.post("/sheets/batch-get", async (req, res) => {
 // POST /api/google/drive/list
 router.post("/drive/list", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -236,7 +244,7 @@ router.post("/drive/list", async (req, res) => {
 // GET /api/google/drive/metadata/:fileId
 router.get("/drive/metadata/:fileId", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -264,7 +272,7 @@ router.get("/drive/metadata/:fileId", async (req, res) => {
 // POST /api/google/drive/delete/:fileId
 router.post("/drive/delete/:fileId", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -292,7 +300,7 @@ router.post("/drive/delete/:fileId", async (req, res) => {
 // POST /api/google/drive/share
 router.post("/drive/share", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -320,7 +328,7 @@ router.post("/drive/share", async (req, res) => {
 // POST /api/google/drive/rename
 router.post("/drive/rename", async (req, res) => {
   try {
-    if (!credentialsFile) {
+    if (!credentialsFile && !inlineCredentialsConfigured) {
       return res.status(503).json({ error: "Google credentials not configured" });
     }
 
@@ -378,7 +386,8 @@ router.get("/health", (req, res) => {
   res.json({
     status: "ok",
     message: "Google APIs proxy is running",
-    credentialsConfigured: !!credentialsFile,
+    credentialsConfigured: !!credentialsFile || inlineCredentialsConfigured,
+    credentialsMode: credentialsFile ? "file" : inlineCredentialsConfigured ? "env-inline" : "none",
   });
 });
 

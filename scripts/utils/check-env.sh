@@ -78,12 +78,32 @@ check_frontend_env() {
 
     local missing=0
 
-    check_var "VITE_API_URL" true || missing=$((missing + 1))
-    check_var "VITE_GOOGLE_SHEETS_SPREADSHEET_ID" true || missing=$((missing + 1))
+    if [ -n "${REACT_APP_API_BASE_URL:-}" ] || [ -n "${VITE_API_BASE_URL:-}" ]; then
+        if [ -n "${REACT_APP_API_BASE_URL:-}" ]; then
+            check_var "REACT_APP_API_BASE_URL" true
+        else
+            check_var "VITE_API_BASE_URL" true
+        fi
+    else
+        echo -e "  ${RED}❌${NC} REACT_APP_API_BASE_URL / VITE_API_BASE_URL ${RED}(REQUIRED - MISSING)${NC}"
+        missing=$((missing + 1))
+    fi
+
+    if [ -n "${REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID:-}" ] || [ -n "${VITE_GOOGLE_SHEETS_SPREADSHEET_ID:-}" ]; then
+        if [ -n "${REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID:-}" ]; then
+            check_var "REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID" true
+        else
+            check_var "VITE_GOOGLE_SHEETS_SPREADSHEET_ID" true
+        fi
+    else
+        echo -e "  ${RED}❌${NC} REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID / VITE_GOOGLE_SHEETS_SPREADSHEET_ID ${RED}(REQUIRED - MISSING)${NC}"
+        missing=$((missing + 1))
+    fi
+
+    check_var "REACT_APP_GOOGLE_DRIVE_FOLDER_ID" false
     check_var "VITE_GOOGLE_DRIVE_FOLDER_ID" false
-    check_var "VITE_GOOGLE_APPS_SCRIPT_URL" false
-    check_var "VITE_FEATURE_GOOGLE_SHEETS" false
-    check_var "VITE_FEATURE_GOOGLE_DRIVE" false
+    check_var "REACT_APP_AI_SERVICE_URL" false
+    check_var "VITE_AI_SERVICE_URL" false
 
     echo ""
     if [ $missing -gt 0 ]; then
@@ -101,14 +121,31 @@ check_backend_env() {
 
     local missing=0
 
-    check_var "GOOGLE_SERVICE_ACCOUNT_EMAIL" true || missing=$((missing + 1))
-    check_var "GOOGLE_PRIVATE_KEY" true || missing=$((missing + 1))
+    local has_file_credentials=0
+    local has_inline_credentials=0
+
+    if [ -n "${GOOGLE_CREDENTIALS_PATH:-}" ] || [ -n "${GOOGLE_APPLICATION_CREDENTIALS:-}" ] || [ -n "${GOOGLE_SERVICE_ACCOUNT_KEY_PATH:-}" ]; then
+        has_file_credentials=1
+        check_var "GOOGLE_CREDENTIALS_PATH" false
+        check_var "GOOGLE_APPLICATION_CREDENTIALS" false
+        check_var "GOOGLE_SERVICE_ACCOUNT_KEY_PATH" false
+    fi
+
+    if [ -n "${GOOGLE_SERVICE_ACCOUNT_EMAIL:-}" ] && [ -n "${GOOGLE_PRIVATE_KEY:-}" ]; then
+        has_inline_credentials=1
+        check_var "GOOGLE_SERVICE_ACCOUNT_EMAIL" true
+        check_var "GOOGLE_PRIVATE_KEY" true
+    fi
+
+    if [ $has_file_credentials -eq 0 ] && [ $has_inline_credentials -eq 0 ]; then
+        echo -e "  ${RED}❌${NC} Google credentials ${RED}(REQUIRED - set path OR service account env)${NC}"
+        missing=$((missing + 1))
+    fi
+
     check_var "JWT_SECRET" true || missing=$((missing + 1))
-    check_var "SESSION_SECRET" true || missing=$((missing + 1))
-    check_var "SENDGRID_API_KEY" false
-    check_var "SENDGRID_FROM_EMAIL" false
-    check_var "TELEGRAM_BOT_TOKEN" false
-    check_var "CORS_ORIGIN" false
+    check_var "GOOGLE_SHEETS_SPREADSHEET_ID" true || missing=$((missing + 1))
+    check_var "GOOGLE_DRIVE_FOLDER_ID" false
+    check_var "GOOGLE_PROJECT_ID" false
     check_var "PORT" false
     check_var "NODE_ENV" false
 

@@ -32,6 +32,7 @@ print_warning() {
 # Get commit message from argument or use default
 COMMIT_MSG="${1:-🔧 Update: Auto commit and deploy}"
 VERCEL_PROJECT_NAME="${VERCEL_PROJECT_NAME:-mia-vn-google-integration}"
+STRICT_ENV_CHECK="${STRICT_ENV_CHECK:-false}"
 
 BUILD_OK=false
 VERCEL_OK=false
@@ -54,11 +55,11 @@ if [ -f "scripts/utils/check-env.sh" ]; then
     else
         print_warning "Một số environment variables có thể thiếu"
         print_warning "Xem DEPLOY_ENV_CHECKLIST.md để biết chi tiết"
-        read -p "Tiếp tục deploy? (y/n) " -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            print_error "Deploy bị hủy"
+        if [ "$STRICT_ENV_CHECK" = "true" ]; then
+            print_error "Deploy bị hủy do STRICT_ENV_CHECK=true"
             exit 1
+        else
+            print_warning "Tiếp tục deploy (non-interactive mode). Đặt STRICT_ENV_CHECK=true để bắt buộc dừng."
         fi
     fi
     echo ""

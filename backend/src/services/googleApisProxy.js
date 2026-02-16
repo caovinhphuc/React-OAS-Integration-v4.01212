@@ -37,15 +37,42 @@ async function initGoogleAuth(keyFile) {
     const { google } = await initGoogle();
     const GoogleAuth = google.auth.GoogleAuth;
 
-    googleAuth = new GoogleAuth({
-      keyFile,
-      scopes: [
-        "https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive",
-        "https://www.googleapis.com/auth/drive.file",
-        "https://www.googleapis.com/auth/drive.readonly",
-      ],
-    });
+    const serviceAccountEmail =
+      process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || process.env.REACT_APP_GOOGLE_CLIENT_EMAIL;
+    const serviceAccountPrivateKey =
+      process.env.GOOGLE_PRIVATE_KEY || process.env.REACT_APP_GOOGLE_PRIVATE_KEY;
+    const serviceAccountProjectId =
+      process.env.GOOGLE_PROJECT_ID || process.env.REACT_APP_GOOGLE_PROJECT_ID;
+
+    const normalizedPrivateKey = serviceAccountPrivateKey
+      ? serviceAccountPrivateKey.replace(/\\n/g, "\n")
+      : null;
+
+    const scopes = [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/drive",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/drive.readonly",
+    ];
+
+    if (keyFile) {
+      googleAuth = new GoogleAuth({
+        keyFile,
+        scopes,
+      });
+    } else if (serviceAccountEmail && normalizedPrivateKey) {
+      googleAuth = new GoogleAuth({
+        credentials: {
+          type: "service_account",
+          client_email: serviceAccountEmail,
+          private_key: normalizedPrivateKey,
+          project_id: serviceAccountProjectId,
+        },
+        scopes,
+      });
+    } else {
+      throw new Error("Google credentials not configured");
+    }
 
     console.log("🔐 Google Auth initialized");
     return googleAuth;
