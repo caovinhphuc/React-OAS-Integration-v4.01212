@@ -31,7 +31,6 @@ print_warning() {
 
 # Get commit message from argument or use default
 COMMIT_MSG="${1:-🔧 Update: Auto commit and deploy}"
-VERCEL_PROJECT_NAME="${VERCEL_PROJECT_NAME:-mia-vn-google-integration}"
 STRICT_ENV_CHECK="${STRICT_ENV_CHECK:-false}"
 
 BUILD_OK=false
@@ -179,7 +178,7 @@ rm -f /tmp/quick-deploy-build.log
 # Step 5: Deploy Frontend to Vercel
 print "Deploy frontend lên Vercel..."
 if command -v vercel &> /dev/null; then
-    if vercel --prod --yes --name "$VERCEL_PROJECT_NAME" > /tmp/quick-deploy-vercel.log 2>&1; then
+    if vercel --prod --yes > /tmp/quick-deploy-vercel.log 2>&1; then
         tail -10 /tmp/quick-deploy-vercel.log
         VERCEL_URL=$(grep -Eo 'https://[^ ]+\.vercel\.app' /tmp/quick-deploy-vercel.log | tail -1 || true)
         print_success "Frontend đã deploy lên Vercel"
@@ -187,7 +186,7 @@ if command -v vercel &> /dev/null; then
     else
         tail -20 /tmp/quick-deploy-vercel.log || true
         print_error "Vercel deploy thất bại"
-        print_warning "Kiểm tra project name/link. Gợi ý: vercel link --project $VERCEL_PROJECT_NAME"
+        print_warning "Kiểm tra project link. Gợi ý: vercel link --project mia-vn-google-integration"
     fi
     rm -f /tmp/quick-deploy-vercel.log
 else
