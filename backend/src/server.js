@@ -5,6 +5,16 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
+const fs = require("fs");
+const dotenv = require("dotenv");
+
+const envCandidates = [path.resolve(__dirname, "../.env"), path.resolve(__dirname, "../../.env")];
+for (const envPath of envCandidates) {
+  if (fs.existsSync(envPath)) {
+    dotenv.config({ path: envPath });
+    break;
+  }
+}
 
 // Import Google APIs proxy router (lazy loads googleapis only when needed)
 const googleApisRouter = require("./routes/googleApis");
@@ -49,6 +59,7 @@ async function initGoogleDrive() {
     const possiblePaths = [
       process.env.GOOGLE_APPLICATION_CREDENTIALS,
       process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH,
+      process.env.GOOGLE_CREDENTIALS_PATH,
       path.join(__dirname, "../../mia-logistics-469406-eec521c603c0.json"),
       path.join(__dirname, "../../config/service_account.json"),
       path.join(__dirname, "../../automation/config/service_account.json"),
@@ -56,7 +67,6 @@ async function initGoogleDrive() {
     ];
 
     let keyFile = null;
-    const fs = require("fs");
     for (const filePath of possiblePaths) {
       if (filePath && fs.existsSync(filePath)) {
         keyFile = filePath;
@@ -97,6 +107,7 @@ async function initGoogleSheets() {
     const possiblePaths = [
       process.env.GOOGLE_APPLICATION_CREDENTIALS,
       process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH,
+      process.env.GOOGLE_CREDENTIALS_PATH,
       path.join(__dirname, "../../config/service_account.json"),
       path.join(__dirname, "../../automation/config/service_account.json"),
       path.join(__dirname, "../../automation/automation_new/config/service_account.json"),
@@ -105,7 +116,7 @@ async function initGoogleSheets() {
 
     let keyFile = null;
     for (const filePath of possiblePaths) {
-      if (filePath && require("fs").existsSync(filePath)) {
+      if (filePath && fs.existsSync(filePath)) {
         keyFile = filePath;
         break;
       }

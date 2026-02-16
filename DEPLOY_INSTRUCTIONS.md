@@ -261,7 +261,7 @@ git commit -m "message"
 
 **Last Updated**: January 21, 2026
 **Status**: ✅ Ready for deployment
-**Git Repository**: https://github.com/caovinhphuc/React-OAS-Integration-v4.0
+**Git Repository**: <https://github.com/caovinhphuc/React-OAS-Integration-v4.0>
 
 ---
 

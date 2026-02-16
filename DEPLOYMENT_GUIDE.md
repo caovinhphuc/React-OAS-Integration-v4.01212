@@ -385,8 +385,8 @@ PORT=3000
 REACT_APP_API_URL=http://localhost:3001
 REACT_APP_API_BASE_URL=http://localhost:3001/api
 REACT_APP_AI_SERVICE_URL=http://localhost:8000
-GOOGLE_SHEETS_ID=your_sheet_id
-GOOGLE_DRIVE_FOLDER_ID=your_folder_id
+REACT_APP_GOOGLE_SHEETS_SPREADSHEET_ID=your_sheet_id
+REACT_APP_GOOGLE_DRIVE_FOLDER_ID=your_folder_id
 ```
 
 ### Backend (backend/.env)
@@ -394,7 +394,24 @@ GOOGLE_DRIVE_FOLDER_ID=your_folder_id
 ```bash
 PORT=3001
 NODE_ENV=development
+JWT_SECRET=your_secret
+AI_SERVICE_URL=http://localhost:8000
+
+# Preferred credentials variable
+GOOGLE_CREDENTIALS_PATH=/absolute/path/to/service_account.json
+
+# Optional aliases (backward-compatible)
+# GOOGLE_APPLICATION_CREDENTIALS=/absolute/path/to/service_account.json
+# GOOGLE_SERVICE_ACCOUNT_KEY_PATH=/absolute/path/to/service_account.json
+
+GOOGLE_SHEETS_SPREADSHEET_ID=your_sheet_id
+GOOGLE_DRIVE_FOLDER_ID=your_folder_id
 ```
+
+### Production
+
+- Frontend: dùng `.env.production` (tham khảo `.env.production.template`)
+- Backend: inject env trực tiếp từ platform (Railway/VPS/Systemd), **không commit secrets**
 
 ---
 

@@ -16,6 +16,7 @@ function getCredentialsFile() {
   const possiblePaths = [
     process.env.GOOGLE_APPLICATION_CREDENTIALS,
     process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH,
+    process.env.GOOGLE_CREDENTIALS_PATH,
     path.join(__dirname, "../../../mia-logistics-469406-eec521c603c0.json"),
     path.join(__dirname, "../../../config/service_account.json"),
     path.join(__dirname, "../../../automation/config/service_account.json"),
