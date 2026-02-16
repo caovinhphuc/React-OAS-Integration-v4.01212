@@ -3,7 +3,7 @@
 # 🚀 QUICK DEPLOY - Commit & Deploy Nhanh
 # Tự động commit và deploy lên Vercel + Railway
 
-set -e
+set -euo pipefail
 
 # Colors
 RED='\033[0;31m'
@@ -31,6 +31,13 @@ print_warning() {
 
 # Get commit message from argument or use default
 COMMIT_MSG="${1:-🔧 Update: Auto commit and deploy}"
+VERCEL_PROJECT_NAME="${VERCEL_PROJECT_NAME:-mia-vn-google-integration}"
+
+BUILD_OK=false
+VERCEL_OK=false
+RAILWAY_OK=false
+VERCEL_URL=""
+RAILWAY_URL=""
 
 print "Bắt đầu quy trình commit và deploy..."
 
@@ -138,23 +145,32 @@ rm -f /tmp/git-push.log
 
 # Step 4: Build Frontend
 print "Build frontend..."
-if npm run build 2>&1 | tail -20; then
+if npm run build > /tmp/quick-deploy-build.log 2>&1; then
+    tail -20 /tmp/quick-deploy-build.log
     print_success "Frontend đã build thành công"
+    BUILD_OK=true
 else
+    tail -20 /tmp/quick-deploy-build.log || true
     print_error "Build frontend thất bại"
+    rm -f /tmp/quick-deploy-build.log
     exit 1
 fi
+rm -f /tmp/quick-deploy-build.log
 
 # Step 5: Deploy Frontend to Vercel
 print "Deploy frontend lên Vercel..."
 if command -v vercel &> /dev/null; then
-    # Deploy từ thư mục gốc, Vercel sẽ tự động detect build output từ vercel.json
-    # Vercel sẽ chỉ deploy các file cần thiết cho frontend
-    if vercel --prod --yes 2>&1 | tail -10; then
+    if vercel --prod --yes --name "$VERCEL_PROJECT_NAME" > /tmp/quick-deploy-vercel.log 2>&1; then
+        tail -10 /tmp/quick-deploy-vercel.log
+        VERCEL_URL=$(grep -Eo 'https://[^ ]+\.vercel\.app' /tmp/quick-deploy-vercel.log | tail -1 || true)
         print_success "Frontend đã deploy lên Vercel"
+        VERCEL_OK=true
     else
-        print_warning "Vercel deploy có thể thất bại, kiểm tra logs trên"
+        tail -20 /tmp/quick-deploy-vercel.log || true
+        print_error "Vercel deploy thất bại"
+        print_warning "Kiểm tra project name/link. Gợi ý: vercel link --project $VERCEL_PROJECT_NAME"
     fi
+    rm -f /tmp/quick-deploy-vercel.log
 else
     print_warning "Vercel CLI chưa cài đặt. Cài đặt: npm i -g vercel"
     print "Hoặc deploy qua Vercel Dashboard: https://vercel.com/dashboard"
@@ -168,12 +184,23 @@ if command -v railway &> /dev/null; then
         print_error "Không tìm thấy thư mục backend"
         exit 1
     }
-    if railway up 2>&1 | tail -10; then
-        print_success "Backend đã deploy lên Railway"
+    if railway status > /tmp/quick-deploy-railway-status.log 2>&1; then
+        if railway up > /tmp/quick-deploy-railway-up.log 2>&1; then
+            tail -10 /tmp/quick-deploy-railway-up.log
+            RAILWAY_URL=$(grep -Eo 'https://[^ ]+railway\.app[^ ]*' /tmp/quick-deploy-railway-up.log | head -1 || true)
+            print_success "Backend đã deploy lên Railway"
+            RAILWAY_OK=true
+        else
+            tail -20 /tmp/quick-deploy-railway-up.log || true
+            print_error "Railway deploy thất bại"
+            print "Lưu ý: Nếu có nhiều services, chỉ định: railway up --service backend"
+        fi
     else
-        print_warning "Railway deploy có thể thất bại, kiểm tra logs trên"
-        print "Lưu ý: Nếu có nhiều services, chỉ định: railway up --service backend"
+        tail -10 /tmp/quick-deploy-railway-status.log || true
+        print_error "Railway chưa link project"
+        print "Chạy: railway login && railway link"
     fi
+    rm -f /tmp/quick-deploy-railway-status.log /tmp/quick-deploy-railway-up.log
     cd ..
 else
     print_warning "Railway CLI chưa cài đặt. Cài đặt: npm i -g @railway/cli"
@@ -191,11 +218,36 @@ if [ "$SKIP_PUSH" != "true" ]; then
 else
     echo "   ⚠️  Bỏ qua push (secret scanning)"
 fi
-echo "   ✅ Đã deploy frontend (Vercel)"
-echo "   ✅ Đã deploy backend (Railway)"
+
+if [ "$BUILD_OK" = true ]; then
+    echo "   ✅ Frontend build thành công"
+else
+    echo "   ❌ Frontend build thất bại"
+fi
+
+if [ "$VERCEL_OK" = true ]; then
+    echo "   ✅ Đã deploy frontend (Vercel)"
+else
+    echo "   ❌ Deploy frontend (Vercel) thất bại"
+fi
+
+if [ "$RAILWAY_OK" = true ]; then
+    echo "   ✅ Đã deploy backend (Railway)"
+else
+    echo "   ❌ Deploy backend (Railway) thất bại"
+fi
 echo ""
 echo "🌐 Kiểm tra:"
-echo "   Frontend: https://mia-vn-google-integration.vercel.app"
-echo "   Backend:  https://mia-backend-production-7e56.up.railway.app/health"
+if [ -n "$VERCEL_URL" ]; then
+    echo "   Frontend: $VERCEL_URL"
+else
+    echo "   Frontend: (không lấy được URL, xem log Vercel)"
+fi
+
+if [ -n "$RAILWAY_URL" ]; then
+    echo "   Backend:  $RAILWAY_URL"
+else
+    echo "   Backend:  (không lấy được URL, xem log Railway)"
+fi
 echo ""
 
