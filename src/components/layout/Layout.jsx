@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BRAND_CONFIG } from "../../config/brand";
 import { logout } from "../../store/actions/authActions";
+import getApiBaseUrl from "../../utils/getApiBaseUrl";
 import ActionButton from "./ActionButton";
 import ConnectionSection from "./ConnectionSection";
 import HamburgerMenu from "./HamburgerMenu";
@@ -12,6 +13,8 @@ import "./Layout.css";
 import NavSection from "./NavSection";
 import { connectionData } from "./layoutData";
 import { navigationData } from "./navigationData";
+
+const API_BASE_URL = getApiBaseUrl();
 
 const Layout = ({ children }) => {
   const { message } = App.useApp();
@@ -36,9 +39,6 @@ const Layout = ({ children }) => {
       }
 
       try {
-        const API_BASE_URL =
-          process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
-
         const response = await fetch(`${API_BASE_URL}/api/auth/verify`, {
           method: "GET",
           headers: {

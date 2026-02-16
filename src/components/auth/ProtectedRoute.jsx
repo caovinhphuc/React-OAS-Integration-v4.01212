@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { logout } from "../../store/actions/authActions";
+import getApiBaseUrl from "../../utils/getApiBaseUrl";
 import Loading from "../Common/Loading";
+
+const API_BASE_URL = getApiBaseUrl();
 
 /**
  * ProtectedRoute - Component để bảo vệ routes yêu cầu authentication
@@ -32,10 +35,6 @@ const ProtectedRoute = ({ children }) => {
       // Nếu có token nhưng chưa có trong Redux state, thử validate
       if (token && !isAuthenticated) {
         try {
-          // Kiểm tra session với backend
-          const API_BASE_URL =
-            process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
-
           const token = localStorage.getItem("authToken") || localStorage.getItem("token");
 
           const response = await fetch(`${API_BASE_URL}/api/auth/verify`, {
@@ -77,9 +76,6 @@ const ProtectedRoute = ({ children }) => {
         // Đã authenticated trong Redux, kiểm tra session với backend
         if (sessionId || storedSessionId) {
           try {
-            const API_BASE_URL =
-              process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
-
             const token = localStorage.getItem("authToken") || localStorage.getItem("token");
 
             const response = await fetch(`${API_BASE_URL}/api/auth/verify`, {

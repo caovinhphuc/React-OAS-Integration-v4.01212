@@ -4,8 +4,9 @@
  * Service layer for Enterprise Security APIs (Auth, MFA, SSO, RBAC, Audit)
  */
 
-const API_BASE_URL =
-  process.env.REACT_APP_API_URL || process.env.VITE_API_URL || "http://localhost:3001";
+import getApiBaseUrl from "../utils/getApiBaseUrl";
+
+const API_BASE_URL = getApiBaseUrl();
 
 /**
  * Get authentication token from localStorage
