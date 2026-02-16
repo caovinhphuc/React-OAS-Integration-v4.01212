@@ -1,9 +1,13 @@
 {
+<<<<<<< HEAD
   "folders": [
     {
       "path": ".",
     },
   ],
+=======
+  "folders": [],
+>>>>>>> b39c56e74956566c7bd85a02eb35b5eb885b1666
   "settings": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
