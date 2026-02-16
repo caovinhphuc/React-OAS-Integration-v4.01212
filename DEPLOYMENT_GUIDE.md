@@ -36,6 +36,8 @@ npm start
 npm run serve:deployed
 # hoặc
 ./serve-build.sh 3000
+# hoặc chỉ rõ thư mục deploy
+./serve-build.sh 3000 ~/Sites/mia-vn-integration
 ```
 
 **Truy cập:** <http://localhost:3000>
@@ -210,6 +212,7 @@ git push origin main
 - ✅ Auto-detect server tool (npx, Python)
 - ✅ Custom port
 - ✅ Custom build directory
+- ✅ Mặc định ưu tiên `~/Sites/mia-vn-integration`, fallback `./build`
 
 **Sử dụng:**
 
@@ -222,6 +225,9 @@ git push origin main
 
 # Serve từ directory custom
 ./serve-build.sh 8080 /path/to/build
+
+# Serve đúng thư mục deploy local production (macOS)
+./serve-build.sh 3000 ~/Sites/mia-vn-integration
 ```
 
 ---
