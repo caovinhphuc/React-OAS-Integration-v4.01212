@@ -1,154 +1,154 @@
 {
-  "timestamp": "2026-02-20T04:06:27.285Z",
+  "timestamp": "2026-02-20T03:54:31.148Z",
   "bundle": {
     "jsFiles": [
       {
-        "name": "main.5f1cd7ca.js",
-        "path": "build/static/js/main.5f1cd7ca.js",
-        "size": 505405,
-        "mtimeMs": 1771560379754.3381,
-        "gzipSize": 157724,
-        "brotliSize": 130896
+        "name": "main.ef9d03cd.js",
+        "path": "build/static/js/main.ef9d03cd.js",
+        "size": 504602,
+        "mtimeMs": 1771559610126.6743,
+        "gzipSize": 157384,
+        "brotliSize": 130639
       },
       {
-        "name": "113.ea988d92.chunk.js",
-        "path": "build/static/js/113.ea988d92.chunk.js",
-        "size": 2758,
-        "mtimeMs": 1771560379754.251,
-        "gzipSize": 1217,
-        "brotliSize": 1027
+        "name": "539.9a0d4603.chunk.js",
+        "path": "build/static/js/539.9a0d4603.chunk.js",
+        "size": 2710,
+        "mtimeMs": 1771559610124.8784,
+        "gzipSize": 1174,
+        "brotliSize": 991
       },
       {
-        "name": "retail.128b7e9a.chunk.js",
-        "path": "build/static/js/retail.128b7e9a.chunk.js",
-        "size": 2474,
-        "mtimeMs": 1771560379754.6387,
-        "gzipSize": 919,
-        "brotliSize": 796
+        "name": "retail.a57f131a.chunk.js",
+        "path": "build/static/js/retail.a57f131a.chunk.js",
+        "size": 2423,
+        "mtimeMs": 1771559610126.876,
+        "gzipSize": 876,
+        "brotliSize": 763
       },
       {
-        "name": "google-apps-script.b6cfbeb0.chunk.js",
-        "path": "build/static/js/google-apps-script.b6cfbeb0.chunk.js",
-        "size": 1356,
-        "mtimeMs": 1771560379754.26,
-        "gzipSize": 755,
-        "brotliSize": 648
+        "name": "google-apps-script.4c97c3d8.chunk.js",
+        "path": "build/static/js/google-apps-script.4c97c3d8.chunk.js",
+        "size": 1293,
+        "mtimeMs": 1771559610125.3833,
+        "gzipSize": 710,
+        "brotliSize": 609
       },
       {
-        "name": "smart-automation.0866fd6d.chunk.js",
-        "path": "build/static/js/smart-automation.0866fd6d.chunk.js",
-        "size": 1348,
-        "mtimeMs": 1771560379754.3228,
-        "gzipSize": 746,
-        "brotliSize": 641
+        "name": "smart-automation.7737245a.chunk.js",
+        "path": "build/static/js/smart-automation.7737245a.chunk.js",
+        "size": 1287,
+        "mtimeMs": 1771559610127.0325,
+        "gzipSize": 704,
+        "brotliSize": 603
       },
       {
-        "name": "advanced-analytics.980e1767.chunk.js",
-        "path": "build/static/js/advanced-analytics.980e1767.chunk.js",
-        "size": 1346,
-        "mtimeMs": 1771560379754.1782,
-        "gzipSize": 751,
-        "brotliSize": 645
+        "name": "telegram.93b0f9d1.chunk.js",
+        "path": "build/static/js/telegram.93b0f9d1.chunk.js",
+        "size": 1287,
+        "mtimeMs": 1771559610127.1062,
+        "gzipSize": 700,
+        "brotliSize": 603
       },
       {
-        "name": "telegram.82ab14ad.chunk.js",
-        "path": "build/static/js/telegram.82ab14ad.chunk.js",
-        "size": 1340,
-        "mtimeMs": 1771560379754.2817,
-        "gzipSize": 742,
-        "brotliSize": 640
+        "name": "advanced-analytics.ddce27dd.chunk.js",
+        "path": "build/static/js/advanced-analytics.ddce27dd.chunk.js",
+        "size": 1283,
+        "mtimeMs": 1771559610124.974,
+        "gzipSize": 706,
+        "brotliSize": 606
       },
       {
-        "name": "automation.148d9483.chunk.js",
-        "path": "build/static/js/automation.148d9483.chunk.js",
-        "size": 1335,
-        "mtimeMs": 1771560379754.2842,
-        "gzipSize": 743,
-        "brotliSize": 640
+        "name": "automation.ad69b736.chunk.js",
+        "path": "build/static/js/automation.ad69b736.chunk.js",
+        "size": 1280,
+        "mtimeMs": 1771559610125.2095,
+        "gzipSize": 698,
+        "brotliSize": 598
       },
       {
-        "name": "google-sheets.daa5bff2.chunk.js",
-        "path": "build/static/js/google-sheets.daa5bff2.chunk.js",
-        "size": 1325,
-        "mtimeMs": 1771560379754.2024,
-        "gzipSize": 738,
-        "brotliSize": 639
+        "name": "google-sheets.2aefeb76.chunk.js",
+        "path": "build/static/js/google-sheets.2aefeb76.chunk.js",
+        "size": 1267,
+        "mtimeMs": 1771559610125.592,
+        "gzipSize": 695,
+        "brotliSize": 598
       },
       {
-        "name": "google-drive.4ad76a3e.chunk.js",
-        "path": "build/static/js/google-drive.4ad76a3e.chunk.js",
-        "size": 1323,
-        "mtimeMs": 1771560379754.2556,
-        "gzipSize": 740,
-        "brotliSize": 634
+        "name": "google-drive.9e5b8ee9.chunk.js",
+        "path": "build/static/js/google-drive.9e5b8ee9.chunk.js",
+        "size": 1266,
+        "mtimeMs": 1771559610125.495,
+        "gzipSize": 694,
+        "brotliSize": 594
       },
       {
-        "name": "dashboard.c08b19d0.chunk.js",
-        "path": "build/static/js/dashboard.c08b19d0.chunk.js",
-        "size": 1313,
-        "mtimeMs": 1771560379754.1638,
-        "gzipSize": 738,
-        "brotliSize": 637
+        "name": "dashboard.a04b59f7.chunk.js",
+        "path": "build/static/js/dashboard.a04b59f7.chunk.js",
+        "size": 1259,
+        "mtimeMs": 1771559610125.2915,
+        "gzipSize": 697,
+        "brotliSize": 594
       },
       {
-        "name": "ai-analytics.aa77c535.chunk.js",
-        "path": "build/static/js/ai-analytics.aa77c535.chunk.js",
-        "size": 1312,
-        "mtimeMs": 1771560379754.251,
-        "gzipSize": 743,
-        "brotliSize": 640
+        "name": "nlp.ea79b571.chunk.js",
+        "path": "build/static/js/nlp.ea79b571.chunk.js",
+        "size": 1258,
+        "mtimeMs": 1771559610126.7905,
+        "gzipSize": 698,
+        "brotliSize": 606
       },
       {
-        "name": "nlp.19f777a6.chunk.js",
-        "path": "build/static/js/nlp.19f777a6.chunk.js",
-        "size": 1307,
-        "mtimeMs": 1771560379754.2,
-        "gzipSize": 739,
-        "brotliSize": 643
+        "name": "ai-analytics.3dc87dc6.chunk.js",
+        "path": "build/static/js/ai-analytics.3dc87dc6.chunk.js",
+        "size": 1255,
+        "mtimeMs": 1771559610125.0564,
+        "gzipSize": 696,
+        "brotliSize": 599
       },
       {
-        "name": "security.2e465bf3.chunk.js",
-        "path": "build/static/js/security.2e465bf3.chunk.js",
-        "size": 633,
-        "mtimeMs": 1771560379760.2783,
-        "gzipSize": 422,
-        "brotliSize": 351
+        "name": "security.f53ae6b8.chunk.js",
+        "path": "build/static/js/security.f53ae6b8.chunk.js",
+        "size": 581,
+        "mtimeMs": 1771559610126.9514,
+        "gzipSize": 382,
+        "brotliSize": 310
       },
       {
-        "name": "alerts.ea889d96.chunk.js",
-        "path": "build/static/js/alerts.ea889d96.chunk.js",
-        "size": 604,
-        "mtimeMs": 1771560379760.2505,
-        "gzipSize": 400,
-        "brotliSize": 336
+        "name": "alerts.173f246a.chunk.js",
+        "path": "build/static/js/alerts.173f246a.chunk.js",
+        "size": 554,
+        "mtimeMs": 1771559610125.133,
+        "gzipSize": 359,
+        "brotliSize": 303
       }
     ],
     "cssFiles": [
       {
-        "name": "main.d6bec7e5.css",
-        "path": "build/static/css/main.d6bec7e5.css",
-        "size": 12681,
-        "mtimeMs": 1771560379754.3628,
-        "gzipSize": 3612,
-        "brotliSize": 3128
+        "name": "main.ca646634.css",
+        "path": "build/static/css/main.ca646634.css",
+        "size": 12569,
+        "mtimeMs": 1771559610124.1948,
+        "gzipSize": 3525,
+        "brotliSize": 3051
       }
     ],
-    "totalJsSize": 525179,
-    "totalJsGzipSize": 168117,
-    "totalJsBrotliSize": 139813,
-    "totalCssSize": 12681,
-    "totalCssGzipSize": 3612,
-    "totalCssBrotliSize": 3128,
-    "totalSize": 537860,
-    "totalGzipSize": 171729,
-    "totalBrotliSize": 142941,
+    "totalJsSize": 523605,
+    "totalJsGzipSize": 167173,
+    "totalJsBrotliSize": 139016,
+    "totalCssSize": 12569,
+    "totalCssGzipSize": 3525,
+    "totalCssBrotliSize": 3051,
+    "totalSize": 536174,
+    "totalGzipSize": 170698,
+    "totalBrotliSize": 142067,
     "mainChunk": {
-      "name": "main.5f1cd7ca.js",
-      "path": "build/static/js/main.5f1cd7ca.js",
-      "size": 505405,
-      "mtimeMs": 1771560379754.3381,
-      "gzipSize": 157724,
-      "brotliSize": 130896
+      "name": "main.ef9d03cd.js",
+      "path": "build/static/js/main.ef9d03cd.js",
+      "size": 504602,
+      "mtimeMs": 1771559610126.6743,
+      "gzipSize": 157384,
+      "brotliSize": 130639
     }
   },
   "dependencies": {
@@ -249,34 +249,34 @@
     {
       "key": "totalRaw",
       "label": "Total bundle (raw)",
-      "actual": 537860,
+      "actual": 536174,
       "budget": 1048576,
       "over": false,
-      "diff": -510716
+      "diff": -512402
     },
     {
       "key": "totalGzip",
       "label": "Total bundle (gzip)",
-      "actual": 171729,
+      "actual": 170698,
       "budget": 358400,
       "over": false,
-      "diff": -186671
+      "diff": -187702
     },
     {
       "key": "mainChunkRaw",
       "label": "Main chunk (raw)",
-      "actual": 505405,
+      "actual": 504602,
       "budget": 358400,
       "over": true,
-      "diff": 147005
+      "diff": 146202
     },
     {
       "key": "totalCssRaw",
       "label": "Total CSS (raw)",
-      "actual": 12681,
+      "actual": 12569,
       "budget": 81920,
       "over": false,
-      "diff": -69239
+      "diff": -69351
     }
   ],
   "previousBuildDelta": {
@@ -286,9 +286,9 @@
     "mainChunkSize": 0
   },
   "summary": {
-    "totalRaw": 537860,
-    "totalGzip": 171729,
-    "totalBrotli": 142941,
+    "totalRaw": 536174,
+    "totalGzip": 170698,
+    "totalBrotli": 142067,
     "budgetsExceeded": [
       "mainChunkRaw"
     ],
@@ -303,7 +303,7 @@
     },
     {
       "priority": "medium",
-      "issue": "Main chunk gzip is still high: 154.03 KB",
+      "issue": "Main chunk gzip is still high: 153.70 KB",
       "action": "Convert non-critical dashboard widgets to lazy loaded modules",
       "impact": "Medium"
     }

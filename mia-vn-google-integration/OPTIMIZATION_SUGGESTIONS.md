@@ -4,29 +4,29 @@
 
 [34m📦 Kích Thước Bundle:[0m
 
-[31m❌ JAVASCRIPT:  518.54 KB /     250 KB (207.4%)[0m
-[32m✅ CSS       :   12.34 KB /      50 KB (24.7%)[0m
+[31m❌ JAVASCRIPT:   517.8 KB /     250 KB (207.1%)[0m
+[32m✅ CSS       :   12.27 KB /      50 KB (24.5%)[0m
 [32m✅ IMAGES    :    0 Bytes /     500 KB (0.0%)[0m
 [32m✅ FONTS     :    0 Bytes /     100 KB (0.0%)[0m
-[32m✅ TOTAL     :  530.88 KB /       1 MB (51.8%)[0m
+[32m✅ TOTAL     :  530.07 KB /       1 MB (51.8%)[0m
 
 [34m📁 Top Files Lớn Nhất:[0m
 
-[36m   1. bundle-stats.json                                    56.83 MB[0m
-[36m   2. static/js/main.ef9d03cd.js                          493.52 KB[0m
-[36m   3. static/css/main.ca646634.css                         12.34 KB[0m
-[36m   4. logo512.png                                           9.44 KB[0m
-[36m   5. static/js/main.ef9d03cd.js.LICENSE.txt                6.47 KB[0m
-[36m   6. logo192.png                                           5.22 KB[0m
-[36m   7. static/js/539.9a0d4603.chunk.js                       2.65 KB[0m
-[36m   8. static/js/retail.a57f131a.chunk.js                    2.37 KB[0m
-[36m   9. favicon.ico                                           1.46 KB[0m
-[36m  10. static/js/google-apps-script.4c97c3d8.chunk.js        1.26 KB[0m
-[36m  11. static/js/smart-automation.7737245a.chunk.js          1.26 KB[0m
-[36m  12. static/js/telegram.93b0f9d1.chunk.js                  1.26 KB[0m
-[36m  13. static/js/advanced-analytics.ddce27dd.chunk.js        1.25 KB[0m
-[36m  14. static/js/automation.ad69b736.chunk.js                1.25 KB[0m
-[36m  15. static/js/google-sheets.2aefeb76.chunk.js             1.24 KB[0m
+[36m   1. static/js/main.ef9d03cd.js                          492.78 KB[0m
+[36m   2. static/css/main.ca646634.css                         12.27 KB[0m
+[36m   3. logo512.png                                           9.44 KB[0m
+[36m   4. static/js/main.ef9d03cd.js.LICENSE.txt                6.47 KB[0m
+[36m   5. logo192.png                                           5.22 KB[0m
+[36m   6. static/js/539.9a0d4603.chunk.js                       2.65 KB[0m
+[36m   7. static/js/retail.a57f131a.chunk.js                    2.37 KB[0m
+[36m   8. favicon.ico                                           1.46 KB[0m
+[36m   9. static/js/google-apps-script.4c97c3d8.chunk.js        1.26 KB[0m
+[36m  10. static/js/smart-automation.7737245a.chunk.js          1.26 KB[0m
+[36m  11. static/js/telegram.93b0f9d1.chunk.js                  1.26 KB[0m
+[36m  12. static/js/advanced-analytics.ddce27dd.chunk.js        1.25 KB[0m
+[36m  13. static/js/automation.ad69b736.chunk.js                1.25 KB[0m
+[36m  14. static/js/google-sheets.2aefeb76.chunk.js             1.24 KB[0m
+[36m  15. static/js/google-drive.9e5b8ee9.chunk.js              1.24 KB[0m
 
 [33m💡 Đề Xuất Tối Ưu Hóa:[0m
 

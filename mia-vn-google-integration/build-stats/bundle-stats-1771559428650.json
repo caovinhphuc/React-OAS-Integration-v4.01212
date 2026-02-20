@@ -1,0 +1,311 @@
+{
+  "timestamp": "2026-02-20T03:50:28.648Z",
+  "bundle": {
+    "jsFiles": [
+      {
+        "name": "main.ef9d03cd.js",
+        "path": "build/static/js/main.ef9d03cd.js",
+        "size": 504602,
+        "mtimeMs": 1771559417876.3584,
+        "gzipSize": 157384,
+        "brotliSize": 130639
+      },
+      {
+        "name": "539.9a0d4603.chunk.js",
+        "path": "build/static/js/539.9a0d4603.chunk.js",
+        "size": 2710,
+        "mtimeMs": 1771559417874.5723,
+        "gzipSize": 1174,
+        "brotliSize": 991
+      },
+      {
+        "name": "retail.a57f131a.chunk.js",
+        "path": "build/static/js/retail.a57f131a.chunk.js",
+        "size": 2423,
+        "mtimeMs": 1771559417876.5913,
+        "gzipSize": 876,
+        "brotliSize": 763
+      },
+      {
+        "name": "google-apps-script.4c97c3d8.chunk.js",
+        "path": "build/static/js/google-apps-script.4c97c3d8.chunk.js",
+        "size": 1293,
+        "mtimeMs": 1771559417875.0828,
+        "gzipSize": 710,
+        "brotliSize": 609
+      },
+      {
+        "name": "smart-automation.7737245a.chunk.js",
+        "path": "build/static/js/smart-automation.7737245a.chunk.js",
+        "size": 1287,
+        "mtimeMs": 1771559417876.7488,
+        "gzipSize": 704,
+        "brotliSize": 603
+      },
+      {
+        "name": "telegram.93b0f9d1.chunk.js",
+        "path": "build/static/js/telegram.93b0f9d1.chunk.js",
+        "size": 1287,
+        "mtimeMs": 1771559417876.8257,
+        "gzipSize": 700,
+        "brotliSize": 603
+      },
+      {
+        "name": "advanced-analytics.ddce27dd.chunk.js",
+        "path": "build/static/js/advanced-analytics.ddce27dd.chunk.js",
+        "size": 1283,
+        "mtimeMs": 1771559417874.676,
+        "gzipSize": 706,
+        "brotliSize": 606
+      },
+      {
+        "name": "automation.ad69b736.chunk.js",
+        "path": "build/static/js/automation.ad69b736.chunk.js",
+        "size": 1280,
+        "mtimeMs": 1771559417874.9255,
+        "gzipSize": 698,
+        "brotliSize": 598
+      },
+      {
+        "name": "google-sheets.2aefeb76.chunk.js",
+        "path": "build/static/js/google-sheets.2aefeb76.chunk.js",
+        "size": 1267,
+        "mtimeMs": 1771559417875.3,
+        "gzipSize": 695,
+        "brotliSize": 598
+      },
+      {
+        "name": "google-drive.9e5b8ee9.chunk.js",
+        "path": "build/static/js/google-drive.9e5b8ee9.chunk.js",
+        "size": 1266,
+        "mtimeMs": 1771559417875.1675,
+        "gzipSize": 694,
+        "brotliSize": 594
+      },
+      {
+        "name": "dashboard.a04b59f7.chunk.js",
+        "path": "build/static/js/dashboard.a04b59f7.chunk.js",
+        "size": 1259,
+        "mtimeMs": 1771559417874.9985,
+        "gzipSize": 697,
+        "brotliSize": 594
+      },
+      {
+        "name": "nlp.ea79b571.chunk.js",
+        "path": "build/static/js/nlp.ea79b571.chunk.js",
+        "size": 1258,
+        "mtimeMs": 1771559417876.502,
+        "gzipSize": 698,
+        "brotliSize": 606
+      },
+      {
+        "name": "ai-analytics.3dc87dc6.chunk.js",
+        "path": "build/static/js/ai-analytics.3dc87dc6.chunk.js",
+        "size": 1255,
+        "mtimeMs": 1771559417874.7627,
+        "gzipSize": 696,
+        "brotliSize": 599
+      },
+      {
+        "name": "security.f53ae6b8.chunk.js",
+        "path": "build/static/js/security.f53ae6b8.chunk.js",
+        "size": 581,
+        "mtimeMs": 1771559417876.6726,
+        "gzipSize": 382,
+        "brotliSize": 310
+      },
+      {
+        "name": "alerts.173f246a.chunk.js",
+        "path": "build/static/js/alerts.173f246a.chunk.js",
+        "size": 554,
+        "mtimeMs": 1771559417874.846,
+        "gzipSize": 359,
+        "brotliSize": 303
+      }
+    ],
+    "cssFiles": [
+      {
+        "name": "main.ca646634.css",
+        "path": "build/static/css/main.ca646634.css",
+        "size": 12569,
+        "mtimeMs": 1771559417873.983,
+        "gzipSize": 3525,
+        "brotliSize": 3051
+      }
+    ],
+    "totalJsSize": 523605,
+    "totalJsGzipSize": 167173,
+    "totalJsBrotliSize": 139016,
+    "totalCssSize": 12569,
+    "totalCssGzipSize": 3525,
+    "totalCssBrotliSize": 3051,
+    "totalSize": 536174,
+    "totalGzipSize": 170698,
+    "totalBrotliSize": 142067,
+    "mainChunk": {
+      "name": "main.ef9d03cd.js",
+      "path": "build/static/js/main.ef9d03cd.js",
+      "size": 504602,
+      "mtimeMs": 1771559417876.3584,
+      "gzipSize": 157384,
+      "brotliSize": 130639
+    }
+  },
+  "dependencies": {
+    "deps": {
+      "@ant-design/icons": "^6.1.0",
+      "@reduxjs/toolkit": "^2.11.2",
+      "@sendgrid/mail": "^8.1.6",
+      "antd": "^5.29.3",
+      "async": "^3.2.4",
+      "axios": "^1.13.2",
+      "bcrypt": "^6.0.0",
+      "build": "^0.1.4",
+      "compression-webpack-plugin": "^11.1.0",
+      "cors": "^2.8.6",
+      "css-loader": "^7.1.2",
+      "cssnano": "^7.1.2",
+      "dayjs": "^1.11.19",
+      "dotenv": "^17.3.1",
+      "express": "^5.2.1",
+      "form-data": "^4.0.5",
+      "google-auth-library": "^10.5.0",
+      "googleapis": "^170.1.0",
+      "handlebars": "^4.7.8",
+      "http-proxy-middleware": "^3.0.5",
+      "lodash-es": "^4.17.23",
+      "mjml": "^4.18.0",
+      "node-cron": "^4.2.1",
+      "node-telegram-bot-api": "^0.63.0",
+      "nodemailer": "^7.0.13",
+      "react": "^18.3.1",
+      "react-dnd": "^16.0.1",
+      "react-dnd-html5-backend": "^16.0.1",
+      "react-dom": "^18.3.1",
+      "react-grid-layout": "^2.2.2",
+      "react-is": "^18.3.1",
+      "react-redux": "^9.2.0",
+      "react-resizable": "^3.1.3",
+      "react-router-dom": "^7.13.0",
+      "recharts": "^3.7.0",
+      "redux": "^5.0.1",
+      "redux-persist": "^6.0.0",
+      "redux-thunk": "^3.1.0",
+      "run": "^1.5.0",
+      "socket.io": "^4.8.3",
+      "socket.io-client": "^4.8.3",
+      "web-vitals": "^5.1.0",
+      "webpack": "^5.2",
+      "ws": "^8.19.0"
+    },
+    "devDeps": {
+      "@babel/core": "^7.26.0",
+      "@babel/plugin-transform-class-properties": "^7.28.6",
+      "@babel/plugin-transform-private-methods": "^7.28.6",
+      "@babel/plugin-transform-private-property-in-object": "^7.28.6",
+      "@babel/plugin-transform-runtime": "^7.28.5",
+      "@babel/preset-env": "^7.28.6",
+      "@babel/preset-react": "^7.28.5",
+      "@babel/runtime": "^7.28.6",
+      "@tailwindcss/forms": "^0.5.10",
+      "@testing-library/jest-dom": "^6.9.1",
+      "@testing-library/react": "^16.3.2",
+      "@types/react": "^19.2.9",
+      "@types/react-dom": "^19.2.3",
+      "ajv": "^8.17.1",
+      "autoprefixer": "^10.4.22",
+      "babel-loader": "^10.0.0",
+      "babel-plugin-import": "^1.13.8",
+      "browserify-zlib": "^0.2.0",
+      "crypto-browserify": "^3.12.1",
+      "depcheck": "^1.4.7",
+      "eslint-config-prettier": "^10.1.8",
+      "eslint-plugin-prettier": "^5.5.5",
+      "https-browserify": "^1.0.0",
+      "husky": "^9.1.7",
+      "lint-staged": "^16.2.7",
+      "os-browserify": "^0.3.0",
+      "package.json": "^2.0.1",
+      "path-browserify": "^1.0.1",
+      "postcss": "^8.5.6",
+      "postcss-loader": "^8.2.0",
+      "prettier": "^3.8.1",
+      "querystring-es3": "^0.2.1",
+      "react-scripts": "^0.0.0",
+      "sharp": "^0.34.5",
+      "source-map-explorer": "^2.5.3",
+      "source-map-loader": "^5.0.0",
+      "stream-browserify": "^3.0.0",
+      "stream-http": "^3.2.0",
+      "style-loader": "^4.0.0",
+      "tailwindcss": "^3.4.18",
+      "terser-webpack-plugin": "^5.3.16",
+      "typescript": "^5.9.3",
+      "vm-browserify": "^1.1.2",
+      "webpack-bundle-analyzer": "^5.2.0"
+    }
+  },
+  "performanceBudget": [
+    {
+      "key": "totalRaw",
+      "label": "Total bundle (raw)",
+      "actual": 536174,
+      "budget": 1048576,
+      "over": false,
+      "diff": -512402
+    },
+    {
+      "key": "totalGzip",
+      "label": "Total bundle (gzip)",
+      "actual": 170698,
+      "budget": 358400,
+      "over": false,
+      "diff": -187702
+    },
+    {
+      "key": "mainChunkRaw",
+      "label": "Main chunk (raw)",
+      "actual": 504602,
+      "budget": 358400,
+      "over": true,
+      "diff": 146202
+    },
+    {
+      "key": "totalCssRaw",
+      "label": "Total CSS (raw)",
+      "actual": 12569,
+      "budget": 81920,
+      "over": false,
+      "diff": -69351
+    }
+  ],
+  "previousBuildDelta": {
+    "totalSize": -825,
+    "totalGzipSize": -345,
+    "totalBrotliSize": -294,
+    "mainChunkSize": -758
+  },
+  "summary": {
+    "totalRaw": 536174,
+    "totalGzip": 170698,
+    "totalBrotli": 142067,
+    "budgetsExceeded": [
+      "mainChunkRaw"
+    ],
+    "recommendationCount": 2
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "issue": "1 chunks > 350.00 KB",
+      "action": "Split large chunks into smaller pieces",
+      "impact": "High"
+    },
+    {
+      "priority": "medium",
+      "issue": "Main chunk gzip is still high: 153.70 KB",
+      "action": "Convert non-critical dashboard widgets to lazy loaded modules",
+      "impact": "Medium"
+    }
+  ]
+}
