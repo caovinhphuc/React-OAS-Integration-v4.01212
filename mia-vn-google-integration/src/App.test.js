@@ -1,9 +1,10 @@
-//App.test.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-// Placeholder test file for YourComponent
-// You can replace this with actual tests for your components
-
-test("renders YourComponent without crashing", () => {
-  // This is a placeholder test. Replace with actual tests.
-  expect(true).toBe(true);
+test("renders MIA Retail app", () => {
+  render(<App />);
+  const brandElement = screen.getByText("MIA Retail", {
+    selector: ".brand-text",
+  });
+  expect(brandElement).toBeInTheDocument();
 });

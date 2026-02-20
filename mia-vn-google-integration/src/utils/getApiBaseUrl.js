@@ -12,7 +12,7 @@ const normalizeApiBaseUrl = (rawUrl) => {
   return trimmed;
 };
 
-const getApiBaseUrl = () => {
+const resolveApiBaseUrl = () => {
   const envApiUrl = process.env.REACT_APP_API_URL || process.env.VITE_API_URL;
   const envApiBaseUrl = process.env.REACT_APP_API_BASE_URL || process.env.VITE_API_BASE_URL;
 
@@ -28,4 +28,4 @@ const getApiBaseUrl = () => {
   return "http://localhost:3001";
 };
 
-export default getApiBaseUrl;
+export default resolveApiBaseUrl;
