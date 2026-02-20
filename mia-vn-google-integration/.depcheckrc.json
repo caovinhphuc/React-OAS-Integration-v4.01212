@@ -1,0 +1,5 @@
+{
+  "ignoreDirs": ["build", "dist", "coverage", "build-stats", "node_modules", ".git"],
+  "ignoreMatches": ["package.json"],
+  "ignorePatterns": ["public/**", "**/*.min.js"]
+}

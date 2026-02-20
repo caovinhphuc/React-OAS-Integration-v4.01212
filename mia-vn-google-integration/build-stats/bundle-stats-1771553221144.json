@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-02-20T02:13:46.153Z",
+  "timestamp": "2026-02-20T02:07:01.143Z",
   "bundle": {
     "jsFiles": [
       {
         "name": "main.5f1cd7ca.js",
         "path": "build/static/js/main.5f1cd7ca.js",
         "size": 505405,
-        "mtimeMs": 1771553551585.9158,
+        "mtimeMs": 1771553179911.7158,
         "gzipSize": 157724,
         "brotliSize": 130896
       },
@@ -14,7 +14,7 @@
         "name": "113.ea988d92.chunk.js",
         "path": "build/static/js/113.ea988d92.chunk.js",
         "size": 2758,
-        "mtimeMs": 1771553551585.1584,
+        "mtimeMs": 1771553179911.6003,
         "gzipSize": 1217,
         "brotliSize": 1027
       },
@@ -22,7 +22,7 @@
         "name": "retail.128b7e9a.chunk.js",
         "path": "build/static/js/retail.128b7e9a.chunk.js",
         "size": 2474,
-        "mtimeMs": 1771553551603.981,
+        "mtimeMs": 1771553179911.9128,
         "gzipSize": 919,
         "brotliSize": 796
       },
@@ -30,7 +30,7 @@
         "name": "google-apps-script.b6cfbeb0.chunk.js",
         "path": "build/static/js/google-apps-script.b6cfbeb0.chunk.js",
         "size": 1356,
-        "mtimeMs": 1771553551585.538,
+        "mtimeMs": 1771553179911.5623,
         "gzipSize": 755,
         "brotliSize": 648
       },
@@ -38,7 +38,7 @@
         "name": "smart-automation.0866fd6d.chunk.js",
         "path": "build/static/js/smart-automation.0866fd6d.chunk.js",
         "size": 1348,
-        "mtimeMs": 1771553551585.8848,
+        "mtimeMs": 1771553179911.622,
         "gzipSize": 746,
         "brotliSize": 641
       },
@@ -46,7 +46,7 @@
         "name": "advanced-analytics.980e1767.chunk.js",
         "path": "build/static/js/advanced-analytics.980e1767.chunk.js",
         "size": 1346,
-        "mtimeMs": 1771553551585.2002,
+        "mtimeMs": 1771553179911.563,
         "gzipSize": 751,
         "brotliSize": 645
       },
@@ -54,7 +54,7 @@
         "name": "telegram.82ab14ad.chunk.js",
         "path": "build/static/js/telegram.82ab14ad.chunk.js",
         "size": 1340,
-        "mtimeMs": 1771553551585.3196,
+        "mtimeMs": 1771553179911.6172,
         "gzipSize": 742,
         "brotliSize": 640
       },
@@ -62,7 +62,7 @@
         "name": "automation.148d9483.chunk.js",
         "path": "build/static/js/automation.148d9483.chunk.js",
         "size": 1335,
-        "mtimeMs": 1771553551586.0796,
+        "mtimeMs": 1771553179911.6187,
         "gzipSize": 743,
         "brotliSize": 640
       },
@@ -70,7 +70,7 @@
         "name": "google-sheets.daa5bff2.chunk.js",
         "path": "build/static/js/google-sheets.daa5bff2.chunk.js",
         "size": 1325,
-        "mtimeMs": 1771553551585.3125,
+        "mtimeMs": 1771553179911.65,
         "gzipSize": 738,
         "brotliSize": 639
       },
@@ -78,7 +78,7 @@
         "name": "google-drive.4ad76a3e.chunk.js",
         "path": "build/static/js/google-drive.4ad76a3e.chunk.js",
         "size": 1323,
-        "mtimeMs": 1771553551585.3196,
+        "mtimeMs": 1771553179911.563,
         "gzipSize": 740,
         "brotliSize": 634
       },
@@ -86,7 +86,7 @@
         "name": "dashboard.c08b19d0.chunk.js",
         "path": "build/static/js/dashboard.c08b19d0.chunk.js",
         "size": 1313,
-        "mtimeMs": 1771553551585.8162,
+        "mtimeMs": 1771553179911.5,
         "gzipSize": 738,
         "brotliSize": 637
       },
@@ -94,7 +94,7 @@
         "name": "ai-analytics.aa77c535.chunk.js",
         "path": "build/static/js/ai-analytics.aa77c535.chunk.js",
         "size": 1312,
-        "mtimeMs": 1771553551586.2678,
+        "mtimeMs": 1771553179911.5635,
         "gzipSize": 743,
         "brotliSize": 640
       },
@@ -102,7 +102,7 @@
         "name": "nlp.19f777a6.chunk.js",
         "path": "build/static/js/nlp.19f777a6.chunk.js",
         "size": 1307,
-        "mtimeMs": 1771553551585.191,
+        "mtimeMs": 1771553179911.51,
         "gzipSize": 739,
         "brotliSize": 643
       },
@@ -110,7 +110,7 @@
         "name": "security.2e465bf3.chunk.js",
         "path": "build/static/js/security.2e465bf3.chunk.js",
         "size": 633,
-        "mtimeMs": 1771553551604.4226,
+        "mtimeMs": 1771553179917.6084,
         "gzipSize": 422,
         "brotliSize": 351
       },
@@ -118,7 +118,7 @@
         "name": "alerts.ea889d96.chunk.js",
         "path": "build/static/js/alerts.ea889d96.chunk.js",
         "size": 604,
-        "mtimeMs": 1771553551604.0144,
+        "mtimeMs": 1771553179917.5767,
         "gzipSize": 400,
         "brotliSize": 336
       }
@@ -128,7 +128,7 @@
         "name": "main.d6bec7e5.css",
         "path": "build/static/css/main.d6bec7e5.css",
         "size": 12681,
-        "mtimeMs": 1771553551586.5005,
+        "mtimeMs": 1771553179911.5073,
         "gzipSize": 3612,
         "brotliSize": 3128
       }
@@ -146,7 +146,7 @@
       "name": "main.5f1cd7ca.js",
       "path": "build/static/js/main.5f1cd7ca.js",
       "size": 505405,
-      "mtimeMs": 1771553551585.9158,
+      "mtimeMs": 1771553179911.7158,
       "gzipSize": 157724,
       "brotliSize": 130896
     }
