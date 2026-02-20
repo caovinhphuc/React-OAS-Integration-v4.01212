@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-22T18:51:21.649Z",
+  "timestamp": "2026-02-19T23:33:56.637Z",
   "budgets": {
     "bundle": {
       "javascript": 256000,
@@ -24,10 +24,7 @@
   },
   "results": {
     "bundle": {
-      "passed": false,
-      "warnings": [
-        "Build directory not found"
-      ]
+      "passed": true
     },
     "lighthouse": {
       "passed": true,
@@ -35,13 +32,13 @@
     },
     "api": {
       "passed": true,
-      "skipped": true
+      "responseTime": 15
     }
   },
   "summary": {
     "total": 3,
-    "passed": 2,
-    "failed": 1,
-    "skipped": 2
+    "passed": 3,
+    "failed": 0,
+    "skipped": 1
   }
 }
