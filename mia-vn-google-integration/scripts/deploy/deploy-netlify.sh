@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # Netlify Deployment Script
 echo "🚀 Deploying to Netlify..."
 
@@ -7,12 +9,12 @@ echo "🚀 Deploying to Netlify..."
 ENVIRONMENT=${1:-production}
 SITE_ID=${2:-$NETLIFY_SITE_ID}
 
-if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+if [ -z "${NETLIFY_AUTH_TOKEN:-}" ]; then
     echo "❌ NETLIFY_AUTH_TOKEN not set"
     exit 1
 fi
 
-if [ -z "$SITE_ID" ]; then
+if [ -z "${SITE_ID:-}" ]; then
     echo "❌ NETLIFY_SITE_ID not set"
     exit 1
 fi
@@ -23,30 +25,19 @@ if ! command -v netlify &> /dev/null; then
     npm install -g netlify-cli
 fi
 
-# Login to Netlify
-netlify login --token $NETLIFY_AUTH_TOKEN
+export NETLIFY_AUTH_TOKEN
 
 # Build application
 echo "Building application..."
 npm run build
 
-if [ $? -ne 0 ]; then
-    echo "❌ Build failed"
-    exit 1
-fi
-
 # Deploy
 if [ "$ENVIRONMENT" = "production" ]; then
     echo "Deploying to production..."
-    netlify deploy --prod --dir=build --site=$SITE_ID
+    netlify deploy --prod --dir=build --site="$SITE_ID"
 else
     echo "Deploying to staging..."
-    netlify deploy --dir=build --site=$SITE_ID
+    netlify deploy --dir=build --site="$SITE_ID"
 fi
 
-if [ $? -eq 0 ]; then
-    echo "✅ Deployment successful!"
-else
-    echo "❌ Deployment failed"
-    exit 1
-fi
+echo "✅ Deployment successful!"
