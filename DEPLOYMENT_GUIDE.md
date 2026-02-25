@@ -44,6 +44,32 @@ npm run serve:deployed
 
 **Build location:** `~/Sites/mia-vn-integration`
 
+### ℹ️ Giải thích logic serve production local
+
+Các lệnh sau dùng để **mở bản build production tĩnh** (không phải dev server):
+
+```bash
+npm run serve:deployed
+./serve-build.sh 3000
+./serve-build.sh 3000 ~/Sites/mia-vn-integration
+```
+
+- `npm run serve:deployed`: shortcut trong `package.json`, phù hợp khi muốn chạy nhanh theo cấu hình chuẩn của project.
+- `./serve-build.sh 3000`: chạy script thủ công và chỉ định port; script tự chọn thư mục build mặc định.
+- `./serve-build.sh 3000 ~/Sites/mia-vn-integration`: chỉ định rõ artifact production đã deploy local.
+
+**Vì sao dùng `~/Sites/mia-vn-integration`?**
+
+- `./deploy-production.sh` copy build vào thư mục này (macOS) để tách biệt với thư mục source.
+- Giúp kiểm thử đúng artifact production trước khi deploy cloud.
+- Tránh nhầm với `npm start` (dev mode, hot reload, behavior khác production).
+
+**Flow chuẩn:**
+
+1. Build/copy artifact: `./deploy-production.sh`
+2. Serve artifact: `npm run serve:deployed` hoặc `./serve-build.sh 3000 ~/Sites/mia-vn-integration`
+3. Verify trên browser: <http://localhost:3000>
+
 ---
 
 ### 3️⃣ Cloud Deployment (Vercel + Railway)
