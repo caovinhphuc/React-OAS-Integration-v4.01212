@@ -382,16 +382,9 @@ export const fetchGoogleSheets = async (spreadsheetId, range) => {
 ### Bundle Size Monitoring
 
 ```bash
-# Generate bundle analysis
 npm run perf:bundle
-
-# Check bundle size
 npm run perf:size
-
-# Run full analysis
 npm run analyze:all
-
-# Check for unused dependencies
 npm run perf:deps
 ```
 

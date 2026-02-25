@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-02-25T08:08:51.454Z",
+  "timestamp": "2026-02-25T08:03:34.181Z",
   "bundle": {
     "jsFiles": [
       {
         "name": "main.2a7810c8.js",
         "path": "build/static/js/main.2a7810c8.js",
-        "size": 712804
+        "size": 713623
       },
       {
         "name": "791.9d23a4a3.chunk.js",
@@ -65,7 +65,7 @@
       {
         "name": "security.fc6724be.chunk.js",
         "path": "build/static/js/security.fc6724be.chunk.js",
-        "size": 34228
+        "size": 34262
       },
       {
         "name": "489.f43b9666.chunk.js",
@@ -75,7 +75,7 @@
       {
         "name": "google-drive.dc913b8a.chunk.js",
         "path": "build/static/js/google-drive.dc913b8a.chunk.js",
-        "size": 33270
+        "size": 33846
       },
       {
         "name": "801.3037af87.chunk.js",
@@ -100,7 +100,7 @@
       {
         "name": "dashboard.3b996411.chunk.js",
         "path": "build/static/js/dashboard.3b996411.chunk.js",
-        "size": 21033
+        "size": 21699
       },
       {
         "name": "442.6808f842.chunk.js",
@@ -110,12 +110,12 @@
       {
         "name": "nlp.6b93ec48.chunk.js",
         "path": "build/static/js/nlp.6b93ec48.chunk.js",
-        "size": 19315
+        "size": 19385
       },
       {
         "name": "advanced-analytics.0831d095.chunk.js",
         "path": "build/static/js/advanced-analytics.0831d095.chunk.js",
-        "size": 17643
+        "size": 17694
       },
       {
         "name": "retail.a8567939.chunk.js",
@@ -130,7 +130,7 @@
       {
         "name": "ai-analytics.917440cc.chunk.js",
         "path": "build/static/js/ai-analytics.917440cc.chunk.js",
-        "size": 16551
+        "size": 16596
       },
       {
         "name": "799.7f376b4a.chunk.js",
@@ -165,7 +165,7 @@
       {
         "name": "google-apps-script.558f68a3.chunk.js",
         "path": "build/static/js/google-apps-script.558f68a3.chunk.js",
-        "size": 11266
+        "size": 11598
       },
       {
         "name": "955.864668b8.chunk.js",
@@ -173,14 +173,14 @@
         "size": 11246
       },
       {
+        "name": "telegram.7023aa2e.chunk.js",
+        "path": "build/static/js/telegram.7023aa2e.chunk.js",
+        "size": 10347
+      },
+      {
         "name": "241.0a5ca93f.chunk.js",
         "path": "build/static/js/241.0a5ca93f.chunk.js",
         "size": 10292
-      },
-      {
-        "name": "telegram.7023aa2e.chunk.js",
-        "path": "build/static/js/telegram.7023aa2e.chunk.js",
-        "size": 10281
       },
       {
         "name": "699.4de09420.chunk.js",
@@ -202,7 +202,7 @@
       {
         "name": "main.8268259e.css",
         "path": "build/static/css/main.8268259e.css",
-        "size": 41641
+        "size": 41708
       },
       {
         "name": "google-sheets.682f83c5.chunk.css",
@@ -270,9 +270,9 @@
         "size": 144
       }
     ],
-    "totalJsSize": 2455894,
-    "totalCssSize": 94923,
-    "totalSize": 2550817
+    "totalJsSize": 2458553,
+    "totalCssSize": 94990,
+    "totalSize": 2553543
   },
   "dependencies": {
     "deps": {
@@ -379,7 +379,7 @@
   "recommendations": [
     {
       "priority": "high",
-      "issue": "Large bundle size: 2.43 MB",
+      "issue": "Large bundle size: 2.44 MB",
       "action": "Implement code splitting with React.lazy()",
       "impact": "High"
     },

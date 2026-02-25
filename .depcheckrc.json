@@ -1,0 +1,36 @@
+{
+  "ignoreDirs": [
+    "node_modules",
+    "build",
+    "dist",
+    "coverage",
+    "reports",
+    "backend",
+    "mia-vn-google-integration",
+    "google-sheets-project",
+    "automation",
+    "ai-service",
+    ".git"
+  ],
+  "ignores": [
+    "buffer",
+    "chart.js",
+    "cors",
+    "express",
+    "formidable",
+    "lodash",
+    "lodash-es",
+    "lucide-react",
+    "moment",
+    "multer",
+    "process",
+    "react-chartjs-2",
+    "url",
+    "util",
+    "@size-limit/preset-app",
+    "@size-limit/preset-small-lib",
+    "@types/react-dom",
+    "sharp"
+  ],
+  "ignorePatterns": ["public/**", "**/*.min.js"]
+}

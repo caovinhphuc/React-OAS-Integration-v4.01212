@@ -16,22 +16,11 @@ Giảm bundle size để cải thiện:
 ### 1. Chạy Bundle Analyzer
 
 ```bash
-# Phân tích toàn diện (RECOMMENDED) ✅
 npm run perf:bundle
-
-# Generate bundle stats ✅
 npm run bundle:stats
-
-# Phân tích visual ✅
 npm run analyze
-
-# Kiểm tra dependencies không dùng ✅
 npm run perf:deps
-
-# Kiểm tra size limits ✅
 npm run perf:size
-
-# Check all tools ✅
 npm run check:tools
 ```
 
@@ -119,10 +108,7 @@ function Dashboard() {
 #### Replace Large Libraries
 
 ```bash
-# ❌ moment.js (~70KB)
 npm uninstall moment
-
-# ✅ dayjs (~2KB) - INSTALLED ✅
 npm install dayjs
 ```
 
@@ -141,8 +127,6 @@ const date = dayjs().format("YYYY-MM-DD");
 #### Optimize Lodash
 
 ```bash
-# ❌ lodash (full bundle)
-# ✅ lodash-es (tree-shakeable)
 npm install lodash-es
 ```
 
@@ -235,13 +219,8 @@ function ImportCSV() {
 #### Environment Variables:
 
 ```bash
-# Disable source maps in production
 GENERATE_SOURCEMAP=false
-
-# Enable production mode
 NODE_ENV=production
-
-# Optimize images
 IMAGE_INLINE_SIZE_LIMIT=10000
 ```
 
@@ -358,25 +337,12 @@ npx lighthouse https://your-app.com --view
 ### Analysis Tools (✅ Verified)
 
 ```bash
-# Bundle stats (comprehensive) ✅
 npm run bundle:stats
-
-# Performance bundle analyzer ✅
 npm run perf:bundle
-
-# Visual bundle analyzer ✅
 npm run analyze
-
-# Dependency checker ✅
 npm run perf:deps
-
-# Size limit ✅
 npm run perf:size
-
-# Check all tools ✅
 npm run check:tools
-
-# Analyze all (bundle + perf + deps) ✅
 npm run analyze:all
 ```
 
@@ -394,10 +360,7 @@ npm run analyze:all
 ### Google APIs Health Checks
 
 ```bash
-# Kiểm tra OAuth/Drive/Sheets credentials (google-auth-library)
 node scripts/check_google_apis.js
-
-# Health check tổng hợp Google APIs
 node "scripts/health-check copy.cjs"
 ```
 

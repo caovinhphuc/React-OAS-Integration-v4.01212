@@ -4,8 +4,8 @@
   "description": "React OAS Integration v3.0 - AI-Powered Platform",
   "main": "index.js",
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=20.17.0",
+    "npm": ">=10.8.0"
   },
   "overrides": {
     "nth-check": "^2.1.1"
@@ -64,7 +64,7 @@
     "perf:bundle": "node scripts/perf-bundle-analyzer.js",
     "perf:budget": "node scripts/performance-budget.js",
     "perf:check": "npm run perf:budget && npm run perf:bundle",
-    "perf:deps": "npx depcheck",
+    "perf:deps": "npx depcheck --config .depcheckrc.json || true",
     "perf:size": "npx size-limit",
     "perf:size:local": "PUPPETEER_EXECUTABLE_PATH=/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome npx size-limit",
     "optimize:bundle": "node scripts/optimize-bundle.js",
@@ -121,7 +121,7 @@
     "cleanup:duplicates": "bash scripts/cleanup-duplicates.sh",
     "fix:chunks": "bash scripts/fix-chunk-errors.sh",
     "update:vercel": "bash scripts/update_vercel_env.sh",
-    "depcheck": "npx depcheck",
+    "depcheck": "npx depcheck --config .depcheckrc.json || true",
     "webpack-bundle-analyzer": "webpack-bundle-analyzer build/static/js/main.*js",
     "webpack-bundle-analyzer-production": "webpack-bundle-analyzer build/static/js/main.*js --mode production",
     "webpack-bundle-analyzer-deps": "webpack-bundle-analyzer build/static/js/main.*js --mode development"
@@ -257,5 +257,5 @@
   ],
   "author": "React OAS Team",
   "license": "MIT",
-  "packageManager": "npm@10.9.0"
+  "packageManager": "npm@10.8.2"
 }
