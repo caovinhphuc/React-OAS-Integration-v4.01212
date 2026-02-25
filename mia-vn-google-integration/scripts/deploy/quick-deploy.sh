@@ -206,7 +206,12 @@ if command -v vercel &> /dev/null; then
     else
         tail -20 /tmp/quick-deploy-vercel.log || true
         print_error "Vercel deploy thất bại"
-        if grep -qi "must have access to the team" /tmp/quick-deploy-vercel.log; then
+        if grep -qi "scope does not exist\|scope-not-existent" /tmp/quick-deploy-vercel.log; then
+            print_warning "Scope chưa đúng. Dùng team slug (thường là chữ thường, ví dụ: git-react)"
+            print "Gợi ý:"
+            echo "  vercel teams ls"
+            echo "  VERCEL_SCOPE=git-react VERCEL_PROJECT_NAME=$VERCEL_PROJECT_NAME ./scripts/deploy/quick-deploy.sh \"deploy\""
+        elif grep -qi "must have access to the team" /tmp/quick-deploy-vercel.log; then
             print_warning "Tài khoản hiện tại chưa có quyền deploy vào team/project trên Vercel"
             print "Khắc phục nhanh:"
             echo "  1) vercel logout && vercel login"
