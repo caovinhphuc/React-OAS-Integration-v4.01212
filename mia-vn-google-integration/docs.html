@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React OAS Integration v4.0 - Complete Documentation</title>
+    <meta name="description" content="React OAS Integration v4.0 - AI-Powered Platform">
+    <title>react-oas-integration-v4.0 v4.0.0 - Complete Documentation</title>
     <style>
         :root {
             --primary-color: #3498db;
@@ -22,6 +23,7 @@
             --success-color: #27ae60;
             --warning-color: #f39c12;
             --error-color: #e74c3c;
+            --info-color: #3498db;
         }
 
         [data-theme="dark"] {
@@ -44,7 +46,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -60,73 +62,110 @@
         }
 
         .sidebar {
-            width: 280px;
+            width: 300px;
             background-color: var(--sidebar-bg);
             position: fixed;
             height: 100vh;
             overflow-y: auto;
             padding: 20px 0;
-            box-shadow: 2px 0 5px var(--shadow-color);
-            z-index: 10;
+            box-shadow: 2px 0 8px var(--shadow-color);
+            z-index: 1000;
             transition: transform 0.3s ease;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: var(--sidebar-bg);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
         }
 
         .sidebar-header {
             padding: 0 20px 20px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
             margin-bottom: 20px;
         }
 
         .sidebar-header h2 {
             color: var(--primary-color);
             font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header .version {
+            font-size: 0.85em;
+            opacity: 0.7;
+            color: var(--sidebar-text);
         }
 
         .nav-links {
             list-style: none;
+            padding: 0;
         }
 
         .nav-links li {
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }
 
         .nav-links a {
             display: block;
-            padding: 10px 20px;
+            padding: 12px 20px;
             color: var(--sidebar-text);
             text-decoration: none;
             border-left: 3px solid transparent;
             transition: all 0.2s ease;
+            font-size: 0.95em;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-links a:hover {
             background-color: var(--sidebar-active);
             border-left-color: var(--primary-color);
+            padding-left: 25px;
+        }
+
+        .nav-links a.active {
+            background-color: var(--sidebar-active);
+            border-left-color: var(--primary-color);
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
         .main-content {
             flex: 1;
-            margin-left: 280px;
-            padding: 20px;
-            max-width: 1200px;
+            margin-left: 300px;
+            padding: 0;
+            max-width: 1400px;
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 25px 40px;
             background-color: var(--header-bg);
             position: sticky;
             top: 0;
-            z-index: 5;
-            box-shadow: 0 2px 5px var(--shadow-color);
-            margin-bottom: 20px;
+            z-index: 100;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .header h1 {
             font-size: 2rem;
             margin: 0;
+            color: var(--primary-color);
+        }
+
+        .header .subtitle {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-top: 5px;
         }
 
         .theme-toggle {
@@ -180,28 +219,60 @@
             transform: translateX(30px);
         }
 
-        .section {
-            margin-bottom: 40px;
-            padding: 20px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px var(--shadow-color);
+        .content-wrapper {
+            padding: 30px 40px;
         }
 
-        h1, h2, h3, h4 {
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .section-description {
+            font-size: 1em;
+            opacity: 0.8;
+            color: var(--text-color);
+        }
+
+        .section-content {
+            margin-top: 25px;
+        }
+
+        .section-footer {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85em;
+            opacity: 0.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
             margin-bottom: 15px;
             color: var(--primary-color);
         }
 
         h1 {
             font-size: 2.5rem;
-            margin-top: 20px;
         }
 
         h2 {
             font-size: 2rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
             margin-top: 30px;
         }
 
@@ -220,7 +291,7 @@
         }
 
         ul, ol {
-            margin-left: 20px;
+            margin-left: 25px;
             margin-bottom: 15px;
         }
 
@@ -231,49 +302,65 @@
         code {
             background-color: var(--code-bg);
             color: var(--code-text);
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
             font-size: 0.9em;
         }
 
         pre {
             background-color: var(--code-bg);
             color: var(--code-text);
-            padding: 15px;
-            border-radius: 5px;
+            padding: 20px;
+            border-radius: 8px;
             overflow-x: auto;
-            margin-bottom: 15px;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
         }
 
         pre code {
             background: none;
             padding: 0;
+            font-size: 0.9em;
+            line-height: 1.5;
         }
 
         a {
             color: var(--primary-color);
             text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
         }
 
         a:hover {
-            text-decoration: underline;
+            border-bottom-color: var(--primary-color);
         }
 
-        .card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-color);
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        table th {
+            background-color: var(--code-bg);
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
         .badge {
             display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.85em;
-            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
             margin-right: 8px;
         }
 
@@ -292,32 +379,43 @@
             color: white;
         }
 
-        .tip {
-            background-color: #e8f4f8;
-            border-left: 4px solid var(--primary-color);
-            padding: 15px;
+        .badge-info {
+            background-color: var(--info-color);
+            color: white;
+        }
+
+        .tip, .warning, .info {
+            padding: 15px 20px;
             margin: 20px 0;
-            border-radius: 4px;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .tip {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left-color: var(--info-color);
         }
 
         .warning {
-            background-color: #fff3cd;
-            border-left: 4px solid var(--warning-color);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
+            background-color: rgba(243, 156, 18, 0.1);
+            border-left-color: var(--warning-color);
+        }
+
+        .info {
+            background-color: rgba(39, 174, 96, 0.1);
+            border-left-color: var(--success-color);
         }
 
         .mobile-header {
             display: none;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
+            padding: 15px 20px;
             background-color: var(--header-bg);
             box-shadow: 0 2px 5px var(--shadow-color);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1001;
         }
 
         .menu-toggle {
@@ -325,7 +423,21 @@
             border: none;
             cursor: pointer;
             color: var(--text-color);
-            padding: 5px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .last-updated {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.9em;
+            border-top: 2px solid var(--border-color);
+            margin-top: 50px;
+            background-color: var(--card-bg);
         }
 
         @media (max-width: 768px) {
@@ -345,25 +457,34 @@
                 display: flex;
             }
 
-            .menu-toggle, .mobile-header {
-                display: block;
+            .header {
+                padding: 20px;
+            }
+
+            .content-wrapper {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 20px;
             }
         }
 
-        .last-updated {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-color);
-            opacity: 0.7;
-            font-size: 0.9em;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
+        /* Print styles */
+        @media print {
+            .sidebar, .mobile-header, .theme-toggle {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
 <body>
     <div class="mobile-header">
-        <button class="menu-toggle" id="menuToggle">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -373,7 +494,7 @@
         <div class="theme-toggle">
             <span>🌞</span>
             <label class="toggle-switch">
-                <input type="checkbox" id="mobileThemeToggle">
+                <input type="checkbox" id="mobileThemeToggle" aria-label="Toggle theme">
                 <span class="slider"></span>
             </label>
             <span>🌙</span>
@@ -384,31 +505,174 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h2>📚 Documentation</h2>
-                <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;">React OAS Integration v4.0</p>
+                <div class="version">react-oas-integration-v4.0 v4.0.0</div>
             </div>
             <ul class="nav-links" id="navLinks">
-                
+                <li><a href="#overview" title="Tổng quan về dự án, tính năng chính và kiến trúc hệ thống">📋 📋 Tổng Quan</a></li>
+                <li><a href="#architecture" title="Kiến trúc hệ thống, service inventory và data flows">🏗️ 🏗️ Kiến Trúc</a></li>
+                <li><a href="#setup" title="Hướng dẫn setup, cài đặt và deployment">⚙️ ⚙️ Setup & Deployment</a></li>
+                <li><a href="#scripts" title="Hướng dẫn sử dụng các scripts trong project">🔧 🔧 Scripts Guide</a></li>
+                <li><a href="#python" title="Tổ chức và quản lý các file Python">🐍 🐍 Python Files</a></li>
+                <li><a href="#javascript" title="Tổ chức và quản lý các file JavaScript">📦 📦 JavaScript Files</a></li>
+                <li><a href="#reports" title="Quản lý reports và backups">📊 📊 Reports & Backups</a></li>
+                <li><a href="#google-sheets" title="Setup và cấu hình Google Sheets integration">📊 📊 Google Sheets</a></li>
+                <li><a href="#websocket" title="WebSocket setup và real-time communication">🔌 🔌 WebSocket</a></li>
+                <li><a href="#ui-components" title="UI Components library và hướng dẫn sử dụng">🎨 🎨 UI Components</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <header class="header">
-                <h1>🚀 React OAS Integration v4.0</h1>
+                <div>
+                    <h1>react-oas-integration-v4.0</h1>
+                    <div class="subtitle">React OAS Integration v4.0 - AI-Powered Platform</div>
+                </div>
                 <div class="theme-toggle">
                     <span>🌞</span>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="themeToggle">
+                        <input type="checkbox" id="themeToggle" aria-label="Toggle theme">
                         <span class="slider"></span>
                     </label>
                     <span>🌙</span>
                 </div>
             </header>
 
-            
+            <div class="content-wrapper">
+            <section id="overview" class="section">
+                <div class="section-header">
+                    <h2>📋 📋 Tổng Quan</h2>
+                    <p class="section-description">Tổng quan về dự án, tính năng chính và kiến trúc hệ thống</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>README.md</code></small>
+                </div>
+            </section>
+
+                        <section id="architecture" class="section">
+                <div class="section-header">
+                    <h2>🏗️ 🏗️ Kiến Trúc</h2>
+                    <p class="section-description">Kiến trúc hệ thống, service inventory và data flows</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>ARCHITECTURE.md</code></small>
+                </div>
+            </section>
+
+                        <section id="setup" class="section">
+                <div class="section-header">
+                    <h2>⚙️ ⚙️ Setup & Deployment</h2>
+                    <p class="section-description">Hướng dẫn setup, cài đặt và deployment</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>DEPLOYMENT_GUIDE.md</code></small>
+                </div>
+            </section>
+
+                        <section id="scripts" class="section">
+                <div class="section-header">
+                    <h2>🔧 🔧 Scripts Guide</h2>
+                    <p class="section-description">Hướng dẫn sử dụng các scripts trong project</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>SCRIPTS_GUIDE.md</code></small>
+                </div>
+            </section>
+
+                        <section id="python" class="section">
+                <div class="section-header">
+                    <h2>🐍 🐍 Python Files</h2>
+                    <p class="section-description">Tổ chức và quản lý các file Python</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>PYTHON_FILES_GUIDE.md</code></small>
+                </div>
+            </section>
+
+                        <section id="javascript" class="section">
+                <div class="section-header">
+                    <h2>📦 📦 JavaScript Files</h2>
+                    <p class="section-description">Tổ chức và quản lý các file JavaScript</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>JAVASCRIPT_FILES_GUIDE.md</code></small>
+                </div>
+            </section>
+
+                        <section id="reports" class="section">
+                <div class="section-header">
+                    <h2>📊 📊 Reports & Backups</h2>
+                    <p class="section-description">Quản lý reports và backups</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>REPORTS_BACKUPS_GUIDE.md</code></small>
+                </div>
+            </section>
+
+                        <section id="google-sheets" class="section">
+                <div class="section-header">
+                    <h2>📊 📊 Google Sheets</h2>
+                    <p class="section-description">Setup và cấu hình Google Sheets integration</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>GOOGLE_SHEETS_SETUP_GUIDE.md</code></small>
+                </div>
+            </section>
+
+                        <section id="websocket" class="section">
+                <div class="section-header">
+                    <h2>🔌 🔌 WebSocket</h2>
+                    <p class="section-description">WebSocket setup và real-time communication</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>WEBSOCKET_SETUP_GUIDE.md</code></small>
+                </div>
+            </section>
+
+                        <section id="ui-components" class="section">
+                <div class="section-header">
+                    <h2>🎨 🎨 UI Components</h2>
+                    <p class="section-description">UI Components library và hướng dẫn sử dụng</p>
+                </div>
+                <div class="section-content">
+                    <p>No content available</p>
+                </div>
+                <div class="section-footer">
+                    <small>📄 Source: <code>UI_COMPONENTS_GUIDE.md</code></small>
+                </div>
+            </section>
+            </div>
 
             <div class="last-updated">
-                <p>📅 Last Updated: 25/2/2026</p>
-                <p>🔄 Auto-generated from Markdown files</p>
+                <p><strong>📅 Last Updated:</strong> lúc 13:06 25 tháng 2, 2026</p>
+                <p>🔄 <strong>Auto-generated</strong> from Markdown documentation files</p>
+                <p>📝 <strong>Regenerate:</strong> <code>node scripts/utils/generate-complete-docs.js</code></p>
             </div>
         </main>
     </div>
@@ -420,7 +684,7 @@
         const body = document.documentElement;
 
         const getInitialTheme = () => {
-            const savedTheme = localStorage.getItem('theme');
+            const savedTheme = localStorage.getItem('docs-theme');
             if (savedTheme) {
                 return savedTheme;
             }
@@ -430,21 +694,25 @@
         const applyTheme = (theme) => {
             if (theme === 'dark') {
                 body.setAttribute('data-theme', 'dark');
-                themeToggle.checked = true;
+                if (themeToggle) themeToggle.checked = true;
                 if (mobileThemeToggle) mobileThemeToggle.checked = true;
             } else {
                 body.removeAttribute('data-theme');
-                themeToggle.checked = false;
+                if (themeToggle) themeToggle.checked = false;
                 if (mobileThemeToggle) mobileThemeToggle.checked = false;
             }
-            localStorage.setItem('theme', theme);
+            localStorage.setItem('docs-theme', theme);
         };
 
+        // Set initial theme
         applyTheme(getInitialTheme());
 
-        themeToggle.addEventListener('change', () => {
-            applyTheme(themeToggle.checked ? 'dark' : 'light');
-        });
+        // Theme toggle handlers
+        if (themeToggle) {
+            themeToggle.addEventListener('change', () => {
+                applyTheme(themeToggle.checked ? 'dark' : 'light');
+            });
+        }
 
         if (mobileThemeToggle) {
             mobileThemeToggle.addEventListener('change', () => {
@@ -468,10 +736,12 @@
 
         const setActiveLink = () => {
             let currentSection = '';
+            const scrollPosition = window.scrollY + 150;
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 100) {
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     currentSection = section.getAttribute('id');
                 }
             });
@@ -485,8 +755,9 @@
         };
 
         window.addEventListener('scroll', setActiveLink);
+        window.addEventListener('load', setActiveLink);
 
-        // Smooth scrolling
+        // Smooth scrolling for navigation links
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -495,10 +766,11 @@
 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 20,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
 
+                    // Close mobile menu after clicking
                     if (sidebar) {
                         sidebar.classList.remove('active');
                     }
@@ -506,7 +778,14 @@
             });
         });
 
-        setActiveLink();
+        // Close sidebar when clicking outside (mobile)
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
     </script>
 </body>
 </html>

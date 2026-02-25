@@ -35,7 +35,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false react-scripts build",
     "install:source-map-explorer": "npm install --save source-map-explorer",
     "test": "react-scripts test",
     "build:prod": "GENERATE_SOURCEMAP=false react-scripts build",

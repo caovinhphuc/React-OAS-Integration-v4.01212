@@ -1,4 +1,3 @@
-GENERATE_SOURCEMAP=false CI=false npm run vercel-build
 /**
  * =============================================================================
  * 🎨 Babel Configuration - MIA.vn Google Integration Platform
