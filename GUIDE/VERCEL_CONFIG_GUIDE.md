@@ -85,9 +85,7 @@ Build command trong `package.json`:
 ```json
 {
   "scripts": {
-    "vercel-build": "
-
-    "
+    "vercel-build": "GENERATE_SOURCEMAP=false CI=false react-scripts build"
   }
 }
 ```

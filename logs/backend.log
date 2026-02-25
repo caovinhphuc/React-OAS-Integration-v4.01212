@@ -1,13 +1,28 @@
 
-> react-oas-integration-backend@1.0.0 dev
-> nodemon src/server.js
+> react-oas-integration-backend@1.0.0 start
+> node src/server.js
 
-[33m[nodemon] 3.1.11[39m
-[33m[nodemon] to restart at any time, enter `rs`[39m
-[33m[nodemon] watching path(s): *.*[39m
-[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
-[32m[nodemon] starting `node src/server.js`[39m
-✅ Found credentials at: /Users/phuccao/Projects/React-OAS-Integration-v4.01212/automation/automation_new/config/service_account.json
-🚀 Backend server running on port 3001
-📊 Health check: http://localhost:3001/health
-🌐 WebSocket server ready for connections
+node:internal/modules/cjs/loader:1143
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /Users/phuccao/Projects/React-OAS-Integration-v4.01212/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (/Users/phuccao/Projects/React-OAS-Integration-v4.01212/backend/src/server.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/phuccao/Projects/React-OAS-Integration-v4.01212/backend/src/server.js'
+  ]
+}
+
+Node.js v18.20.8

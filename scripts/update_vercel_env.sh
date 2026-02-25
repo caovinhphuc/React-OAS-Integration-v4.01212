@@ -1,4 +1,4 @@
-#!/bin/bash
+npm run update:vercel#!/bin/bash
 
 # =============================================================================
 # Update Vercel Environment Variables - React OAS Integration v4.0
