@@ -161,6 +161,7 @@
     "react-router-dom": "^7.13.0",
     "recharts": "^3.7.0",
     "redux": "^5.0.1",
+    "react-scripts": "^5.0.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
     "run": "^1.5.0",
