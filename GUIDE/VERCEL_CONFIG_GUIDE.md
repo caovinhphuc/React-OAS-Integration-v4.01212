@@ -1,7 +1,7 @@
 # 🔧 Hướng Dẫn Cấu Hình Vercel - React OAS Integration v4.0
 
-> **Version:** 4.0.0  
-> **Last Updated:** 2025-01-27  
+> **Version:** 4.0.0
+> **Last Updated:** 2025-01-27
 > **Status:** ✅ Complete
 
 ---
@@ -85,7 +85,9 @@ Build command trong `package.json`:
 ```json
 {
   "scripts": {
-    "vercel-build": "GENERATE_SOURCEMAP=false CI=false react-scripts build"
+    "vercel-build": "
+
+    "
   }
 }
 ```

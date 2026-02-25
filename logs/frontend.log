@@ -1,3 +1,5 @@
- INFO  Accepting connections at http://localhost:53063
 
- INFO  Gracefully shutting down. Please wait...
+> react-oas-integration@3.0.0 start
+> react-scripts start
+
+sh: react-scripts: command not found
