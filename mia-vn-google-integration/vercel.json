@@ -1,16 +1,7 @@
 {
-  "projectId": "prj_LKSJnCdhbT8Cmr85Sdc646y9VzFm",
-  "orgId": "team_2QxVAInW2KD0ATucWbe7WjVw",
-  "projectName": "react-oas-integration-v4-01212",
-  "settings": {
-    "createdAt": 1771994664578,
-    "framework": "create-react-app",
-    "devCommand": null,
-    "installCommand": "npm install",
-    "buildCommand": "npm run vercel-build",
-    "outputDirectory": "build",
-    "rootDirectory": null,
-    "directoryListing": false,
-    "nodeVersion": "24.x"
-  }
+  "version": 2,
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "build",
+  "framework": null,
+  "installCommand": "npm install"
 }
