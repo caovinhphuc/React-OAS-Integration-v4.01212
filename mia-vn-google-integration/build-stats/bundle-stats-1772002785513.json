@@ -1,0 +1,389 @@
+{
+  "timestamp": "2026-02-25T06:59:45.513Z",
+  "bundle": {
+    "jsFiles": [
+      {
+        "name": "main.8e76dd14.js",
+        "path": "build/static/js/main.8e76dd14.js",
+        "size": 714300
+      },
+      {
+        "name": "727.21a46f7a.chunk.js",
+        "path": "build/static/js/727.21a46f7a.chunk.js",
+        "size": 370555
+      },
+      {
+        "name": "1.2035df11.chunk.js",
+        "path": "build/static/js/1.2035df11.chunk.js",
+        "size": 169478
+      },
+      {
+        "name": "513.27834da5.chunk.js",
+        "path": "build/static/js/513.27834da5.chunk.js",
+        "size": 121860
+      },
+      {
+        "name": "158.ee188328.chunk.js",
+        "path": "build/static/js/158.ee188328.chunk.js",
+        "size": 119702
+      },
+      {
+        "name": "328.00876217.chunk.js",
+        "path": "build/static/js/328.00876217.chunk.js",
+        "size": 102148
+      },
+      {
+        "name": "856.6f6b4759.chunk.js",
+        "path": "build/static/js/856.6f6b4759.chunk.js",
+        "size": 98733
+      },
+      {
+        "name": "842.b682bca8.chunk.js",
+        "path": "build/static/js/842.b682bca8.chunk.js",
+        "size": 88219
+      },
+      {
+        "name": "50.e6a5c416.chunk.js",
+        "path": "build/static/js/50.e6a5c416.chunk.js",
+        "size": 52777
+      },
+      {
+        "name": "131.6d5577cb.chunk.js",
+        "path": "build/static/js/131.6d5577cb.chunk.js",
+        "size": 43899
+      },
+      {
+        "name": "316.21aea239.chunk.js",
+        "path": "build/static/js/316.21aea239.chunk.js",
+        "size": 40789
+      },
+      {
+        "name": "726.c287ca2e.chunk.js",
+        "path": "build/static/js/726.c287ca2e.chunk.js",
+        "size": 40029
+      },
+      {
+        "name": "security.90f8bd87.chunk.js",
+        "path": "build/static/js/security.90f8bd87.chunk.js",
+        "size": 34324
+      },
+      {
+        "name": "google-drive.12433bec.chunk.js",
+        "path": "build/static/js/google-drive.12433bec.chunk.js",
+        "size": 34207
+      },
+      {
+        "name": "51.d482bd5a.chunk.js",
+        "path": "build/static/js/51.d482bd5a.chunk.js",
+        "size": 33903
+      },
+      {
+        "name": "667.41873197.chunk.js",
+        "path": "build/static/js/667.41873197.chunk.js",
+        "size": 32293
+      },
+      {
+        "name": "947.d8b4e236.chunk.js",
+        "path": "build/static/js/947.d8b4e236.chunk.js",
+        "size": 28424
+      },
+      {
+        "name": "948.0e2f9d2a.chunk.js",
+        "path": "build/static/js/948.0e2f9d2a.chunk.js",
+        "size": 26390
+      },
+      {
+        "name": "997.8d6f095e.chunk.js",
+        "path": "build/static/js/997.8d6f095e.chunk.js",
+        "size": 23436
+      },
+      {
+        "name": "dashboard.8284fb10.chunk.js",
+        "path": "build/static/js/dashboard.8284fb10.chunk.js",
+        "size": 22202
+      },
+      {
+        "name": "235.ec30dc1d.chunk.js",
+        "path": "build/static/js/235.ec30dc1d.chunk.js",
+        "size": 20089
+      },
+      {
+        "name": "nlp.34e2aaa5.chunk.js",
+        "path": "build/static/js/nlp.34e2aaa5.chunk.js",
+        "size": 19734
+      },
+      {
+        "name": "advanced-analytics.53f7bd5e.chunk.js",
+        "path": "build/static/js/advanced-analytics.53f7bd5e.chunk.js",
+        "size": 17765
+      },
+      {
+        "name": "retail.3a38a60b.chunk.js",
+        "path": "build/static/js/retail.3a38a60b.chunk.js",
+        "size": 17691
+      },
+      {
+        "name": "146.7dd3c6b2.chunk.js",
+        "path": "build/static/js/146.7dd3c6b2.chunk.js",
+        "size": 16699
+      },
+      {
+        "name": "ai-analytics.d66a480f.chunk.js",
+        "path": "build/static/js/ai-analytics.d66a480f.chunk.js",
+        "size": 16663
+      },
+      {
+        "name": "346.274a8ba4.chunk.js",
+        "path": "build/static/js/346.274a8ba4.chunk.js",
+        "size": 15963
+      },
+      {
+        "name": "smart-automation.792bd0d6.chunk.js",
+        "path": "build/static/js/smart-automation.792bd0d6.chunk.js",
+        "size": 15008
+      },
+      {
+        "name": "google-sheets.21f2474b.chunk.js",
+        "path": "build/static/js/google-sheets.21f2474b.chunk.js",
+        "size": 13625
+      },
+      {
+        "name": "173.ebf86807.chunk.js",
+        "path": "build/static/js/173.ebf86807.chunk.js",
+        "size": 13515
+      },
+      {
+        "name": "669.a159a969.chunk.js",
+        "path": "build/static/js/669.a159a969.chunk.js",
+        "size": 13105
+      },
+      {
+        "name": "automation.1404ff1d.chunk.js",
+        "path": "build/static/js/automation.1404ff1d.chunk.js",
+        "size": 12379
+      },
+      {
+        "name": "google-apps-script.2bfa300f.chunk.js",
+        "path": "build/static/js/google-apps-script.2bfa300f.chunk.js",
+        "size": 11966
+      },
+      {
+        "name": "249.4b6ee4e0.chunk.js",
+        "path": "build/static/js/249.4b6ee4e0.chunk.js",
+        "size": 11305
+      },
+      {
+        "name": "telegram.a4e48b5d.chunk.js",
+        "path": "build/static/js/telegram.a4e48b5d.chunk.js",
+        "size": 11001
+      },
+      {
+        "name": "450.3a4f24c8.chunk.js",
+        "path": "build/static/js/450.3a4f24c8.chunk.js",
+        "size": 10354
+      },
+      {
+        "name": "899.33761bde.chunk.js",
+        "path": "build/static/js/899.33761bde.chunk.js",
+        "size": 10190
+      },
+      {
+        "name": "alerts.69aa7ce1.chunk.js",
+        "path": "build/static/js/alerts.69aa7ce1.chunk.js",
+        "size": 9966
+      },
+      {
+        "name": "400.d239364e.chunk.js",
+        "path": "build/static/js/400.d239364e.chunk.js",
+        "size": 8703
+      }
+    ],
+    "cssFiles": [
+      {
+        "name": "main.88ce2823.css",
+        "path": "build/static/css/main.88ce2823.css",
+        "size": 41753
+      },
+      {
+        "name": "google-sheets.ac46fc9c.chunk.css",
+        "path": "build/static/css/google-sheets.ac46fc9c.chunk.css",
+        "size": 8614
+      },
+      {
+        "name": "telegram.693a9b47.chunk.css",
+        "path": "build/static/css/telegram.693a9b47.chunk.css",
+        "size": 7851
+      },
+      {
+        "name": "ai-analytics.9ed66dd7.chunk.css",
+        "path": "build/static/css/ai-analytics.9ed66dd7.chunk.css",
+        "size": 7459
+      },
+      {
+        "name": "automation.12b6f7b2.chunk.css",
+        "path": "build/static/css/automation.12b6f7b2.chunk.css",
+        "size": 7285
+      },
+      {
+        "name": "google-apps-script.b9cfbd3a.chunk.css",
+        "path": "build/static/css/google-apps-script.b9cfbd3a.chunk.css",
+        "size": 6408
+      },
+      {
+        "name": "google-drive.4f4f4125.chunk.css",
+        "path": "build/static/css/google-drive.4f4f4125.chunk.css",
+        "size": 5281
+      },
+      {
+        "name": "advanced-analytics.0e7a4efd.chunk.css",
+        "path": "build/static/css/advanced-analytics.0e7a4efd.chunk.css",
+        "size": 4293
+      },
+      {
+        "name": "security.1a85d7e2.chunk.css",
+        "path": "build/static/css/security.1a85d7e2.chunk.css",
+        "size": 3246
+      },
+      {
+        "name": "nlp.6a885581.chunk.css",
+        "path": "build/static/css/nlp.6a885581.chunk.css",
+        "size": 1557
+      },
+      {
+        "name": "899.fc33dbde.chunk.css",
+        "path": "build/static/css/899.fc33dbde.chunk.css",
+        "size": 914
+      },
+      {
+        "name": "dashboard.a70576f8.chunk.css",
+        "path": "build/static/css/dashboard.a70576f8.chunk.css",
+        "size": 602
+      },
+      {
+        "name": "smart-automation.91ca0eeb.chunk.css",
+        "path": "build/static/css/smart-automation.91ca0eeb.chunk.css",
+        "size": 322
+      },
+      {
+        "name": "alerts.a09dd5b2.chunk.css",
+        "path": "build/static/css/alerts.a09dd5b2.chunk.css",
+        "size": 197
+      }
+    ],
+    "totalJsSize": 2463389,
+    "totalCssSize": 95782,
+    "totalSize": 2559171
+  },
+  "dependencies": {
+    "deps": {
+      "@ant-design/icons": "^6.1.0",
+      "@reduxjs/toolkit": "^2.11.2",
+      "@sendgrid/mail": "^8.1.6",
+      "antd": "^5.29.3",
+      "async": "^3.2.4",
+      "axios": "^1.13.2",
+      "bcrypt": "^6.0.0",
+      "compression-webpack-plugin": "^11.1.0",
+      "cors": "^2.8.6",
+      "css-loader": "^7.1.2",
+      "cssnano": "^7.1.2",
+      "dayjs": "^1.11.19",
+      "express": "^5.2.1",
+      "form-data": "^4.0.5",
+      "google-auth-library": "^10.3.0",
+      "googleapis": "^170.1.0",
+      "handlebars": "^4.7.8",
+      "lodash-es": "^4.17.23",
+      "mjml": "^4.18.0",
+      "node-cron": "^4.2.1",
+      "node-telegram-bot-api": "^0.63.0",
+      "nodemailer": "^7.0.13",
+      "react": "^18.3.1",
+      "react-dnd": "^16.0.1",
+      "react-dnd-html5-backend": "^16.0.1",
+      "react-dom": "^18.3.1",
+      "react-grid-layout": "^2.2.2",
+      "react-is": "^18.3.1",
+      "react-redux": "^9.2.0",
+      "react-resizable": "^3.1.3",
+      "react-router-dom": "^7.13.0",
+      "react-scripts": "^5.0.1",
+      "recharts": "^3.7.0",
+      "redux": "^5.0.1",
+      "redux-persist": "^6.0.0",
+      "redux-thunk": "^3.1.0",
+      "socket.io": "^4.8.3",
+      "socket.io-client": "^4.8.3",
+      "web-vitals": "^5.1.0",
+      "webpack": "^5.2",
+      "ws": "^8.19.0"
+    },
+    "devDeps": {
+      "@babel/core": "^7.26.0",
+      "@babel/plugin-transform-class-properties": "^7.28.6",
+      "@babel/plugin-transform-private-methods": "^7.28.6",
+      "@babel/plugin-transform-private-property-in-object": "^7.28.6",
+      "@babel/plugin-transform-runtime": "^7.28.5",
+      "@babel/preset-env": "^7.28.6",
+      "@babel/preset-react": "^7.28.5",
+      "@babel/runtime": "^7.28.6",
+      "@tailwindcss/forms": "^0.5.10",
+      "@testing-library/dom": "^10.4.1",
+      "@testing-library/jest-dom": "^6.9.1",
+      "@testing-library/react": "^16.3.2",
+      "@testing-library/user-event": "^14.5.2",
+      "@types/react": "^19.2.9",
+      "@types/react-dom": "^19.2.3",
+      "ajv": "^8.17.1",
+      "autoprefixer": "^10.4.22",
+      "babel-loader": "^10.0.0",
+      "babel-plugin-import": "^1.13.8",
+      "browserify-zlib": "^0.2.0",
+      "concurrently": "^8.0.0",
+      "crypto-browserify": "^3.12.1",
+      "depcheck": "^1.4.7",
+      "dotenv": "^17.3.1",
+      "eslint": "^8.0.0",
+      "eslint-config-prettier": "^10.1.8",
+      "eslint-config-react-app": "^7.0.1",
+      "eslint-plugin-prettier": "^5.5.5",
+      "http-proxy-middleware": "^3.0.5",
+      "https-browserify": "^1.0.0",
+      "husky": "^9.1.7",
+      "lint-staged": "^15.5.2",
+      "os-browserify": "^0.3.0",
+      "path-browserify": "^1.0.1",
+      "postcss": "^8.5.6",
+      "postcss-loader": "^8.2.0",
+      "prettier": "^3.0.0",
+      "querystring-es3": "^0.2.1",
+      "react-scripts": "^5.0.1",
+      "serve": "^14.0.0",
+      "sharp": "^0.34.5",
+      "source-map-explorer": "^2.5.3",
+      "source-map-loader": "^5.0.0",
+      "stream-browserify": "^3.0.0",
+      "stream-http": "^3.2.0",
+      "style-loader": "^4.0.0",
+      "tailwindcss": "^3.4.18",
+      "terser-webpack-plugin": "^5.3.16",
+      "typescript": "^4.9.5",
+      "vm-browserify": "^1.1.2",
+      "webpack-bundle-analyzer": "^5.2.0"
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "issue": "Large bundle size: 2.44 MB",
+      "action": "Implement code splitting with React.lazy()",
+      "impact": "High"
+    },
+    {
+      "priority": "high",
+      "issue": "1 chunks > 500KB",
+      "action": "Split large chunks into smaller pieces",
+      "impact": "High"
+    }
+  ]
+}

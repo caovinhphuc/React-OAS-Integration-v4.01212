@@ -1,278 +1,451 @@
 {
-  "timestamp": "2026-02-25T07:05:16.037Z",
+  "timestamp": "2026-02-25T06:55:11.409Z",
   "bundle": {
     "jsFiles": [
       {
         "name": "main.3b42e849.js",
         "path": "build/static/js/main.3b42e849.js",
-        "size": 714230
+        "size": 713411,
+        "mtimeMs": 1772002472013.4124,
+        "gzipSize": 218434,
+        "brotliSize": 178054
       },
       {
         "name": "791.f8c2db4c.chunk.js",
         "path": "build/static/js/791.f8c2db4c.chunk.js",
-        "size": 370453
+        "size": 370453,
+        "mtimeMs": 1772002472009.2275,
+        "gzipSize": 103658,
+        "brotliSize": 87436
       },
       {
         "name": "849.e8c84dec.chunk.js",
         "path": "build/static/js/849.e8c84dec.chunk.js",
-        "size": 169436
+        "size": 169436,
+        "mtimeMs": 1772002472009.8923,
+        "gzipSize": 51365,
+        "brotliSize": 44171
       },
       {
         "name": "856.a6012ac8.chunk.js",
         "path": "build/static/js/856.a6012ac8.chunk.js",
-        "size": 121803
+        "size": 121803,
+        "mtimeMs": 1772002472010.696,
+        "gzipSize": 34136,
+        "brotliSize": 29812
       },
       {
         "name": "255.980288c1.chunk.js",
         "path": "build/static/js/255.980288c1.chunk.js",
-        "size": 119653
+        "size": 119653,
+        "mtimeMs": 1772002472006.3271,
+        "gzipSize": 37026,
+        "brotliSize": 32075
       },
       {
         "name": "200.5b79f93a.chunk.js",
         "path": "build/static/js/200.5b79f93a.chunk.js",
-        "size": 102092
+        "size": 102092,
+        "mtimeMs": 1772002472005.2222,
+        "gzipSize": 28887,
+        "brotliSize": 25294
       },
       {
         "name": "589.9a4e6ec8.chunk.js",
         "path": "build/static/js/589.9a4e6ec8.chunk.js",
-        "size": 98666
+        "size": 98666,
+        "mtimeMs": 1772002472008.271,
+        "gzipSize": 27256,
+        "brotliSize": 23216
       },
       {
         "name": "253.468b474a.chunk.js",
         "path": "build/static/js/253.468b474a.chunk.js",
-        "size": 88167
+        "size": 88167,
+        "mtimeMs": 1772002472006.0808,
+        "gzipSize": 28142,
+        "brotliSize": 24391
       },
       {
         "name": "217.468059d7.chunk.js",
         "path": "build/static/js/217.468059d7.chunk.js",
-        "size": 52735
+        "size": 52735,
+        "mtimeMs": 1772002472005.5105,
+        "gzipSize": 12604,
+        "brotliSize": 11140
       },
       {
         "name": "934.14b7f255.chunk.js",
         "path": "build/static/js/934.14b7f255.chunk.js",
-        "size": 43852
+        "size": 43852,
+        "mtimeMs": 1772002472011.1436,
+        "gzipSize": 13255,
+        "brotliSize": 12028
       },
       {
         "name": "701.f6f4072c.chunk.js",
         "path": "build/static/js/701.f6f4072c.chunk.js",
-        "size": 40748
+        "size": 40748,
+        "mtimeMs": 1772002472008.625,
+        "gzipSize": 12570,
+        "brotliSize": 11016
       },
       {
         "name": "396.7c9f2ff0.chunk.js",
         "path": "build/static/js/396.7c9f2ff0.chunk.js",
-        "size": 39981
+        "size": 39981,
+        "mtimeMs": 1772002472007.316,
+        "gzipSize": 15238,
+        "brotliSize": 13739
       },
       {
         "name": "security.0b73cc35.chunk.js",
         "path": "build/static/js/security.0b73cc35.chunk.js",
-        "size": 34272
-      },
-      {
-        "name": "google-drive.aaf8a12c.chunk.js",
-        "path": "build/static/js/google-drive.aaf8a12c.chunk.js",
-        "size": 34152
+        "size": 34238,
+        "mtimeMs": 1772002472013.8018,
+        "gzipSize": 8747,
+        "brotliSize": 7757
       },
       {
         "name": "489.eabe50bc.chunk.js",
         "path": "build/static/js/489.eabe50bc.chunk.js",
-        "size": 33861
+        "size": 33861,
+        "mtimeMs": 1772002472008.0193,
+        "gzipSize": 9883,
+        "brotliSize": 8786
+      },
+      {
+        "name": "google-drive.aaf8a12c.chunk.js",
+        "path": "build/static/js/google-drive.aaf8a12c.chunk.js",
+        "size": 33576,
+        "mtimeMs": 1772002472012.0728,
+        "gzipSize": 8824,
+        "brotliSize": 7717
       },
       {
         "name": "801.fc3bfca8.chunk.js",
         "path": "build/static/js/801.fc3bfca8.chunk.js",
-        "size": 32245
+        "size": 32245,
+        "mtimeMs": 1772002472009.557,
+        "gzipSize": 10984,
+        "brotliSize": 9758
       },
       {
         "name": "222.2a8316b7.chunk.js",
         "path": "build/static/js/222.2a8316b7.chunk.js",
-        "size": 28379
+        "size": 28379,
+        "mtimeMs": 1772002472005.639,
+        "gzipSize": 9731,
+        "brotliSize": 8559
       },
       {
         "name": "909.1a1f0d4b.chunk.js",
         "path": "build/static/js/909.1a1f0d4b.chunk.js",
-        "size": 26342
+        "size": 26342,
+        "mtimeMs": 1772002472010.9685,
+        "gzipSize": 7402,
+        "brotliSize": 6560
       },
       {
         "name": "266.40715a66.chunk.js",
         "path": "build/static/js/266.40715a66.chunk.js",
-        "size": 23394
+        "size": 23394,
+        "mtimeMs": 1772002472006.7969,
+        "gzipSize": 8331,
+        "brotliSize": 7354
       },
       {
         "name": "dashboard.8f4c1378.chunk.js",
         "path": "build/static/js/dashboard.8f4c1378.chunk.js",
-        "size": 22153
+        "size": 21487,
+        "mtimeMs": 1772002472011.8064,
+        "gzipSize": 6932,
+        "brotliSize": 6085
       },
       {
         "name": "442.7dcc9da5.chunk.js",
         "path": "build/static/js/442.7dcc9da5.chunk.js",
-        "size": 20040
+        "size": 20040,
+        "mtimeMs": 1772002472007.8416,
+        "gzipSize": 6393,
+        "brotliSize": 5712
       },
       {
         "name": "nlp.b876cc2a.chunk.js",
         "path": "build/static/js/nlp.b876cc2a.chunk.js",
-        "size": 19691
+        "size": 19621,
+        "mtimeMs": 1772002472013.572,
+        "gzipSize": 5685,
+        "brotliSize": 4995
       },
       {
         "name": "advanced-analytics.5998771d.chunk.js",
         "path": "build/static/js/advanced-analytics.5998771d.chunk.js",
-        "size": 17704
+        "size": 17653,
+        "mtimeMs": 1772002472011.3616,
+        "gzipSize": 5558,
+        "brotliSize": 4791
       },
       {
         "name": "retail.db1054b7.chunk.js",
         "path": "build/static/js/retail.db1054b7.chunk.js",
-        "size": 17643
+        "size": 17643,
+        "mtimeMs": 1772002472013.6758,
+        "gzipSize": 5591,
+        "brotliSize": 4904
       },
       {
         "name": "165.cbc003a1.chunk.js",
         "path": "build/static/js/165.cbc003a1.chunk.js",
-        "size": 16645
+        "size": 16645,
+        "mtimeMs": 1772002472004.9446,
+        "gzipSize": 6140,
+        "brotliSize": 5284
       },
       {
         "name": "ai-analytics.2973ea49.chunk.js",
         "path": "build/static/js/ai-analytics.2973ea49.chunk.js",
-        "size": 16606
+        "size": 16561,
+        "mtimeMs": 1772002472011.466,
+        "gzipSize": 4206,
+        "brotliSize": 3752
       },
       {
         "name": "799.65c00a70.chunk.js",
         "path": "build/static/js/799.65c00a70.chunk.js",
-        "size": 15917
+        "size": 15917,
+        "mtimeMs": 1772002472009.3894,
+        "gzipSize": 5581,
+        "brotliSize": 4869
       },
       {
         "name": "smart-automation.5c5c3e4d.chunk.js",
         "path": "build/static/js/smart-automation.5c5c3e4d.chunk.js",
-        "size": 14951
+        "size": 14951,
+        "mtimeMs": 1772002472013.8997,
+        "gzipSize": 3940,
+        "brotliSize": 3433
       },
       {
         "name": "google-sheets.6a1ae0a8.chunk.js",
         "path": "build/static/js/google-sheets.6a1ae0a8.chunk.js",
-        "size": 13567
+        "size": 13567,
+        "mtimeMs": 1772002472012.1716,
+        "gzipSize": 3668,
+        "brotliSize": 3250
       },
       {
         "name": "238.b1688ff8.chunk.js",
         "path": "build/static/js/238.b1688ff8.chunk.js",
-        "size": 13468
+        "size": 13468,
+        "mtimeMs": 1772002472005.7415,
+        "gzipSize": 4658,
+        "brotliSize": 4043
       },
       {
         "name": "878.ebddfaf9.chunk.js",
         "path": "build/static/js/878.ebddfaf9.chunk.js",
-        "size": 13060
+        "size": 13060,
+        "mtimeMs": 1772002472010.8174,
+        "gzipSize": 4738,
+        "brotliSize": 4237
       },
       {
         "name": "automation.e0087542.chunk.js",
         "path": "build/static/js/automation.e0087542.chunk.js",
-        "size": 12325
+        "size": 12325,
+        "mtimeMs": 1772002472011.6572,
+        "gzipSize": 3193,
+        "brotliSize": 2887
       },
       {
         "name": "google-apps-script.911e423e.chunk.js",
         "path": "build/static/js/google-apps-script.911e423e.chunk.js",
-        "size": 11904
+        "size": 11572,
+        "mtimeMs": 1772002472011.9463,
+        "gzipSize": 3384,
+        "brotliSize": 3038
       },
       {
         "name": "955.10ca9eac.chunk.js",
         "path": "build/static/js/955.10ca9eac.chunk.js",
-        "size": 11256
+        "size": 11256,
+        "mtimeMs": 1772002472011.244,
+        "gzipSize": 3219,
+        "brotliSize": 2875
       },
       {
         "name": "telegram.8ccbbbfc.chunk.js",
         "path": "build/static/js/telegram.8ccbbbfc.chunk.js",
-        "size": 10949
+        "size": 10883,
+        "mtimeMs": 1772002472014.0276,
+        "gzipSize": 3167,
+        "brotliSize": 2852
       },
       {
         "name": "241.486e851d.chunk.js",
         "path": "build/static/js/241.486e851d.chunk.js",
-        "size": 10302
+        "size": 10302,
+        "mtimeMs": 1772002472005.8743,
+        "gzipSize": 3682,
+        "brotliSize": 3255
       },
       {
         "name": "699.79126985.chunk.js",
         "path": "build/static/js/699.79126985.chunk.js",
-        "size": 10145
+        "size": 10145,
+        "mtimeMs": 1772002472008.4712,
+        "gzipSize": 3855,
+        "brotliSize": 3408
       },
       {
         "name": "alerts.aff95384.chunk.js",
         "path": "build/static/js/alerts.aff95384.chunk.js",
-        "size": 9919
+        "size": 9919,
+        "mtimeMs": 1772002472011.5547,
+        "gzipSize": 3906,
+        "brotliSize": 3348
       },
       {
         "name": "362.75239817.chunk.js",
         "path": "build/static/js/362.75239817.chunk.js",
-        "size": 8658
+        "size": 8658,
+        "mtimeMs": 1772002472007.1248,
+        "gzipSize": 3382,
+        "brotliSize": 2951
       }
     ],
     "cssFiles": [
       {
         "name": "main.8268259e.css",
         "path": "build/static/css/main.8268259e.css",
-        "size": 41708
+        "size": 41641,
+        "mtimeMs": 1772002472001.3096,
+        "gzipSize": 9297,
+        "brotliSize": 8202
       },
       {
         "name": "google-sheets.682f83c5.chunk.css",
         "path": "build/static/css/google-sheets.682f83c5.chunk.css",
-        "size": 8554
+        "size": 8554,
+        "mtimeMs": 1772002471976.227,
+        "gzipSize": 2088,
+        "brotliSize": 1765
       },
       {
         "name": "telegram.86ce571d.chunk.css",
         "path": "build/static/css/telegram.86ce571d.chunk.css",
-        "size": 7796
+        "size": 7796,
+        "mtimeMs": 1772002472003.4333,
+        "gzipSize": 1819,
+        "brotliSize": 1547
       },
       {
         "name": "ai-analytics.d87a0bad.chunk.css",
         "path": "build/static/css/ai-analytics.d87a0bad.chunk.css",
-        "size": 7400
+        "size": 7400,
+        "mtimeMs": 1772002471971.3135,
+        "gzipSize": 1880,
+        "brotliSize": 1568
       },
       {
         "name": "automation.15713765.chunk.css",
         "path": "build/static/css/automation.15713765.chunk.css",
-        "size": 7228
+        "size": 7228,
+        "mtimeMs": 1772002471972.6511,
+        "gzipSize": 1765,
+        "brotliSize": 1506
       },
       {
         "name": "google-apps-script.4a75cd87.chunk.css",
         "path": "build/static/css/google-apps-script.4a75cd87.chunk.css",
-        "size": 6343
+        "size": 6343,
+        "mtimeMs": 1772002471973.9736,
+        "gzipSize": 1616,
+        "brotliSize": 1360
       },
       {
         "name": "google-drive.d1f844e5.chunk.css",
         "path": "build/static/css/google-drive.d1f844e5.chunk.css",
-        "size": 5222
+        "size": 5222,
+        "mtimeMs": 1772002471974.7693,
+        "gzipSize": 1414,
+        "brotliSize": 1171
       },
       {
         "name": "advanced-analytics.ee55cb96.chunk.css",
         "path": "build/static/css/advanced-analytics.ee55cb96.chunk.css",
-        "size": 4228
+        "size": 4228,
+        "mtimeMs": 1772002471968.7253,
+        "gzipSize": 1117,
+        "brotliSize": 943
       },
       {
         "name": "security.2494bfa6.chunk.css",
         "path": "build/static/css/security.2494bfa6.chunk.css",
-        "size": 3191
+        "size": 3191,
+        "mtimeMs": 1772002472002.065,
+        "gzipSize": 875,
+        "brotliSize": 716
       },
       {
         "name": "nlp.8bad1a69.chunk.css",
         "path": "build/static/css/nlp.8bad1a69.chunk.css",
-        "size": 1507
+        "size": 1507,
+        "mtimeMs": 1772002472001.7095,
+        "gzipSize": 608,
+        "brotliSize": 466
       },
       {
         "name": "699.9ccd36ea.chunk.css",
         "path": "build/static/css/699.9ccd36ea.chunk.css",
-        "size": 864
+        "size": 864,
+        "mtimeMs": 1772002471967.8286,
+        "gzipSize": 442,
+        "brotliSize": 310
       },
       {
         "name": "dashboard.62512525.chunk.css",
         "path": "build/static/css/dashboard.62512525.chunk.css",
-        "size": 546
+        "size": 546,
+        "mtimeMs": 1772002471972.9502,
+        "gzipSize": 281,
+        "brotliSize": 184
       },
       {
         "name": "smart-automation.96621141.chunk.css",
         "path": "build/static/css/smart-automation.96621141.chunk.css",
-        "size": 259
+        "size": 259,
+        "mtimeMs": 1772002472002.1812,
+        "gzipSize": 172,
+        "brotliSize": 125
       },
       {
         "name": "alerts.623f89eb.chunk.css",
         "path": "build/static/css/alerts.623f89eb.chunk.css",
-        "size": 144
+        "size": 144,
+        "mtimeMs": 1772002471971.5278,
+        "gzipSize": 114,
+        "brotliSize": 83
       }
     ],
-    "totalJsSize": 2461364,
-    "totalCssSize": 94990,
-    "totalSize": 2556354
+    "totalJsSize": 2458705,
+    "totalJsGzipSize": 737351,
+    "totalJsBrotliSize": 628832,
+    "totalCssSize": 94923,
+    "totalCssGzipSize": 23488,
+    "totalCssBrotliSize": 19946,
+    "totalSize": 2553628,
+    "totalGzipSize": 760839,
+    "totalBrotliSize": 648778,
+    "mainChunk": {
+      "name": "main.3b42e849.js",
+      "path": "build/static/js/main.3b42e849.js",
+      "size": 713411,
+      "mtimeMs": 1772002472013.4124,
+      "gzipSize": 218434,
+      "brotliSize": 178054
+    }
   },
   "dependencies": {
     "deps": {
@@ -372,6 +545,58 @@
       "webpack-bundle-analyzer": "^5.2.0"
     }
   },
+  "performanceBudget": [
+    {
+      "key": "totalRaw",
+      "label": "Total bundle (raw)",
+      "actual": 2553628,
+      "budget": 1048576,
+      "over": true,
+      "diff": 1505052
+    },
+    {
+      "key": "totalGzip",
+      "label": "Total bundle (gzip)",
+      "actual": 760839,
+      "budget": 358400,
+      "over": true,
+      "diff": 402439
+    },
+    {
+      "key": "mainChunkRaw",
+      "label": "Main chunk (raw)",
+      "actual": 713411,
+      "budget": 358400,
+      "over": true,
+      "diff": 355011
+    },
+    {
+      "key": "totalCssRaw",
+      "label": "Total CSS (raw)",
+      "actual": 94923,
+      "budget": 81920,
+      "over": true,
+      "diff": 13003
+    }
+  ],
+  "previousBuildDelta": {
+    "totalSize": 0,
+    "totalGzipSize": null,
+    "totalBrotliSize": null,
+    "mainChunkSize": null
+  },
+  "summary": {
+    "totalRaw": 2553628,
+    "totalGzip": 760839,
+    "totalBrotli": 648778,
+    "budgetsExceeded": [
+      "totalRaw",
+      "totalGzip",
+      "mainChunkRaw",
+      "totalCssRaw"
+    ],
+    "recommendationCount": 4
+  },
   "recommendations": [
     {
       "priority": "high",
@@ -381,9 +606,21 @@
     },
     {
       "priority": "high",
-      "issue": "1 chunks > 500KB",
+      "issue": "Gzip bundle exceeds budget: 743.01 KB",
+      "action": "Move heavy business libraries to async routes and remove dead imports",
+      "impact": "High"
+    },
+    {
+      "priority": "high",
+      "issue": "2 chunks > 350.00 KB",
       "action": "Split large chunks into smaller pieces",
       "impact": "High"
+    },
+    {
+      "priority": "medium",
+      "issue": "Main chunk gzip is still high: 213.31 KB",
+      "action": "Convert non-critical dashboard widgets to lazy loaded modules",
+      "impact": "Medium"
     }
   ]
 }
