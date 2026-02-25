@@ -2,6 +2,23 @@
   "version": 2,
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "build",
-  "framework": null,
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "framework": "create-react-app",
+  "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=31536000,immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
