@@ -32,6 +32,8 @@ print_warning() {
 # Get commit message from argument or use default
 COMMIT_MSG="${1:-🔧 Update: Auto commit and deploy}"
 STRICT_ENV_CHECK="${STRICT_ENV_CHECK:-false}"
+VERCEL_SCOPE="${VERCEL_SCOPE:-}"
+VERCEL_PROJECT_NAME="${VERCEL_PROJECT_NAME:-mia-vn-google-integration}"
 
 BUILD_OK=false
 VERCEL_OK=false
@@ -45,7 +47,15 @@ print "Bắt đầu quy trình commit và deploy..."
 # Get script directory and change to project root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+WORKSPACE_ROOT="$(cd "$PROJECT_ROOT/.." && pwd)"
 cd "$PROJECT_ROOT"
+
+BACKEND_DIR=""
+if [ -d "$PROJECT_ROOT/backend" ]; then
+    BACKEND_DIR="$PROJECT_ROOT/backend"
+elif [ -d "$WORKSPACE_ROOT/backend" ]; then
+    BACKEND_DIR="$WORKSPACE_ROOT/backend"
+fi
 
 # Step 0: Check environment variables (optional)
 if [ -f "scripts/utils/check-env.sh" ]; then
@@ -183,7 +193,12 @@ rm -f /tmp/quick-deploy-build.log
 # Step 5: Deploy Frontend to Vercel
 print "Deploy frontend lên Vercel..."
 if command -v vercel &> /dev/null; then
-    if vercel --prod --yes > /tmp/quick-deploy-vercel.log 2>&1; then
+    VERCEL_CMD=(vercel --prod --yes)
+    if [ -n "$VERCEL_SCOPE" ]; then
+        VERCEL_CMD+=(--scope "$VERCEL_SCOPE")
+    fi
+
+    if "${VERCEL_CMD[@]}" > /tmp/quick-deploy-vercel.log 2>&1; then
         tail -10 /tmp/quick-deploy-vercel.log
         VERCEL_URL=$(grep -Eo 'https://[^ ]+\.vercel\.app' /tmp/quick-deploy-vercel.log | tail -1 || true)
         print_success "Frontend đã deploy lên Vercel"
@@ -191,7 +206,15 @@ if command -v vercel &> /dev/null; then
     else
         tail -20 /tmp/quick-deploy-vercel.log || true
         print_error "Vercel deploy thất bại"
-        print_warning "Kiểm tra project link. Gợi ý: vercel link --project mia-vn-google-integration"
+        if grep -qi "must have access to the team" /tmp/quick-deploy-vercel.log; then
+            print_warning "Tài khoản hiện tại chưa có quyền deploy vào team/project trên Vercel"
+            print "Khắc phục nhanh:"
+            echo "  1) vercel logout && vercel login"
+            echo "  2) vercel link --project $VERCEL_PROJECT_NAME ${VERCEL_SCOPE:+--scope $VERCEL_SCOPE}"
+            echo "  3) Nếu vẫn lỗi, mời user vào team trên Vercel (Project Settings -> Members)"
+        else
+            print_warning "Kiểm tra project link. Gợi ý: vercel link --project $VERCEL_PROJECT_NAME ${VERCEL_SCOPE:+--scope $VERCEL_SCOPE}"
+        fi
         OVERALL_OK=false
     fi
     rm -f /tmp/quick-deploy-vercel.log
@@ -203,11 +226,18 @@ fi
 # Step 6: Deploy Backend to Railway (optional)
 print "Deploy backend lên Railway..."
 if command -v railway &> /dev/null; then
-    # Deploy từ thư mục backend
-    cd backend || {
+    # Deploy từ thư mục backend (hỗ trợ nhiều cấu trúc thư mục)
+    if [ -z "$BACKEND_DIR" ]; then
         print_error "Không tìm thấy thư mục backend"
-        exit 1
-    }
+        print "Đã thử:"
+        echo "  - $PROJECT_ROOT/backend"
+        echo "  - $WORKSPACE_ROOT/backend"
+        OVERALL_OK=false
+    else
+        cd "$BACKEND_DIR"
+    fi
+
+    if [ -n "$BACKEND_DIR" ]; then
     if railway status > /tmp/quick-deploy-railway-status.log 2>&1; then
         if railway up > /tmp/quick-deploy-railway-up.log 2>&1; then
             tail -10 /tmp/quick-deploy-railway-up.log
@@ -227,7 +257,8 @@ if command -v railway &> /dev/null; then
         OVERALL_OK=false
     fi
     rm -f /tmp/quick-deploy-railway-status.log /tmp/quick-deploy-railway-up.log
-    cd ..
+    fi
+    cd "$PROJECT_ROOT"
 else
     print_warning "Railway CLI chưa cài đặt. Cài đặt: npm i -g @railway/cli"
     print "Hoặc deploy qua Railway Dashboard: https://railway.com"
