@@ -1,5 +1,27 @@
 {
   "ignoreDirs": ["build", "dist", "coverage", "build-stats", "node_modules", ".git"],
-  "ignoreMatches": ["package.json"],
+  "ignores": [
+    "@sendgrid/mail",
+    "async",
+    "bcrypt",
+    "cors",
+    "express",
+    "form-data",
+    "google-auth-library",
+    "handlebars",
+    "lodash-es",
+    "mjml",
+    "node-cron",
+    "node-telegram-bot-api",
+    "nodemailer",
+    "socket.io",
+    "ws",
+    "@babel/runtime",
+    "@tailwindcss/forms",
+    "ajv",
+    "babel-plugin-import",
+    "sharp",
+    "tailwindcss"
+  ],
   "ignorePatterns": ["public/**", "**/*.min.js"]
 }
